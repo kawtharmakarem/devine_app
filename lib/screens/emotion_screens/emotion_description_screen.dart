@@ -1,37 +1,58 @@
-import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
+import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
+import 'package:divinecontrol/widgets/emotion_widgets/custom_checkbox.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
-class AstrologyDescriptionScreen extends StatefulWidget {
-  const AstrologyDescriptionScreen({super.key, required this.astrologyModel});
-  final AstrologyModel astrologyModel;
+class EmotionDescriptionScreen extends StatefulWidget {
+  const EmotionDescriptionScreen({
+    super.key,
+    required this.emotionModel,
+  });
+  final EmotionModel emotionModel;
 
   @override
-  State<AstrologyDescriptionScreen> createState() =>
-      _AstrologyDescriptionScreenState();
+  State<EmotionDescriptionScreen> createState() =>
+      _EmotionDescriptionScreenState();
 }
 
-class _AstrologyDescriptionScreenState
-    extends State<AstrologyDescriptionScreen> {
+class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
   bool isChecked4 = false;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  Widget buildSigleCheckBox(CheckBoxState checkBoxState) {
+    return CheckboxListTile(
+      value: checkBoxState.value,
+      controlAffinity: ListTileControlAffinity.leading,
+      activeColor: AppColors.darkPrimary,
+      onChanged: (value) {
+        setState(() {
+          checkBoxState.value = value!;
+        });
+      },
+      title: Text(checkBoxState.title),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
+      backgroundColor: AppColors.lightPurple1,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
-          widget.astrologyModel.title,
+          widget.emotionModel.title,
           style: width < AppConstants.maxMobileWidth
               ? AppStyles.styleBold24(context)
                   .copyWith(color: AppColors.darkPrimary)
@@ -41,12 +62,6 @@ class _AstrologyDescriptionScreenState
         ),
         backgroundColor: AppColors.primary,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
       ),
       body: width < AppConstants.maxMobileWidth
           ? getMobileDescription(width, context)
@@ -64,7 +79,7 @@ class _AstrologyDescriptionScreenState
         ),
         Container(
             width: width * 0.6,
-            child: Image.asset(widget.astrologyModel.image)),
+            child: Image.asset(widget.emotionModel.detailsImage)),
         const SizedBox(
           height: 10,
         ),
@@ -89,7 +104,7 @@ class _AstrologyDescriptionScreenState
                 width: width * 0.8,
                 padding: EdgeInsets.only(bottom: 10),
                 child: Text(
-                  widget.astrologyModel.title1,
+                  widget.emotionModel.title1,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
@@ -113,7 +128,7 @@ class _AstrologyDescriptionScreenState
                 width: width * 0.8,
                 padding: EdgeInsets.only(bottom: 10),
                 child: Text(
-                  widget.astrologyModel.title2,
+                  widget.emotionModel.title2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
@@ -137,7 +152,7 @@ class _AstrologyDescriptionScreenState
                 width: width * 0.8,
                 padding: EdgeInsets.only(bottom: 10),
                 child: Text(
-                  widget.astrologyModel.title3,
+                  widget.emotionModel.title3,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
@@ -161,7 +176,7 @@ class _AstrologyDescriptionScreenState
                 width: width * 0.8,
                 padding: EdgeInsets.only(bottom: 10),
                 child: Text(
-                  widget.astrologyModel.title4,
+                  widget.emotionModel.title4,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
@@ -171,7 +186,18 @@ class _AstrologyDescriptionScreenState
                 ))
           ],
         ),
-        Divider()
+        Divider(),
+        const SizedBox(
+          height: 40,
+        ),
+        CustomButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            title: 'Cancel'),
+        const SizedBox(
+          height: 20,
+        )
       ],
     );
   }
@@ -185,7 +211,7 @@ class _AstrologyDescriptionScreenState
         Container(
             width: width * 0.6,
             child: Image.asset(
-              widget.astrologyModel.image,
+              widget.emotionModel.detailsImage,
               fit: BoxFit.fill,
             )),
         const SizedBox(
@@ -223,7 +249,7 @@ class _AstrologyDescriptionScreenState
                   width: width * 0.8,
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    widget.astrologyModel.title1,
+                    widget.emotionModel.title1,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -256,7 +282,7 @@ class _AstrologyDescriptionScreenState
                   width: width * 0.8,
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    widget.astrologyModel.title2,
+                    widget.emotionModel.title2,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -289,7 +315,7 @@ class _AstrologyDescriptionScreenState
                   width: width * 0.8,
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    widget.astrologyModel.title3,
+                    widget.emotionModel.title3,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -322,7 +348,7 @@ class _AstrologyDescriptionScreenState
                   width: width * 0.8,
                   padding: EdgeInsets.only(bottom: 20),
                   child: Text(
-                    widget.astrologyModel.title4,
+                    widget.emotionModel.title4,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -333,7 +359,18 @@ class _AstrologyDescriptionScreenState
             ],
           ),
         ),
-        Divider()
+        Divider(),
+        const SizedBox(
+          height: 40,
+        ),
+        CustomButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            title: 'Cancel'),
+        const SizedBox(
+          height: 20,
+        )
       ],
     );
   }
@@ -350,7 +387,7 @@ class _AstrologyDescriptionScreenState
             Container(
                 width: width * 0.35,
                 child: Image.asset(
-                  widget.astrologyModel.image,
+                  widget.emotionModel.detailsImage,
                   fit: BoxFit.fill,
                 )),
             const SizedBox(
@@ -392,7 +429,7 @@ class _AstrologyDescriptionScreenState
                     width: width * 0.8,
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
-                      widget.astrologyModel.title1,
+                      widget.emotionModel.title1,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -422,7 +459,7 @@ class _AstrologyDescriptionScreenState
                     width: width * 0.8,
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
-                      widget.astrologyModel.title2,
+                      widget.emotionModel.title2,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -452,7 +489,7 @@ class _AstrologyDescriptionScreenState
                     width: width * 0.8,
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
-                      widget.astrologyModel.title3,
+                      widget.emotionModel.title3,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -482,7 +519,7 @@ class _AstrologyDescriptionScreenState
                     width: width * 0.8,
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
-                      widget.astrologyModel.title4,
+                      widget.emotionModel.title4,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -492,7 +529,18 @@ class _AstrologyDescriptionScreenState
                     ))
               ],
             ),
-            Divider()
+            Divider(),
+            const SizedBox(
+              height: 40,
+            ),
+            CustomButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                title: 'Cancel'),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

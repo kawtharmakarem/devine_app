@@ -38,18 +38,18 @@ class CustomCard extends StatelessWidget {
         splashColor: AppColors.primary,
         child: Container(
           width: width * 0.45,
-          height: height * 0.25,
+          height: height * 0.24,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
             AppColors.primary,
             AppColors.primary.withOpacity(0.8)
           ])),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(image),
               Text(
-                title,
+                title,textAlign: TextAlign.center,
                 style: AppStyles.styleBold24(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
               ),
               const SizedBox(
@@ -115,25 +115,24 @@ class CustomCard extends StatelessWidget {
         splashColor: AppColors.primary,
         child: Container(
           width: width * 0.25,
-         height: height*0.4,
+         height: height*0.5,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
             AppColors.primary,
             AppColors.primary.withOpacity(0.8)
           ])),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                 width: width * 0.25, //  200,
-                  height: height * 0.25, // 200,
+                 width: width * 0.25, 
+                  height: height * 0.3, 
                   child: Image.asset(
                     image,
                     fit: BoxFit.fill,
                   )),
               Text(
-                title,
+                title,textAlign: TextAlign.center,
                 style: AppStyles.styleBold24(context).copyWith(
                     fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
               ),

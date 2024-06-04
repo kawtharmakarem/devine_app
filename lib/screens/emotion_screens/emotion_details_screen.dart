@@ -1,6 +1,9 @@
 import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
+import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
 import 'package:divinecontrol/screens/astrology_screens/astrology_description_screen.dart';
+import 'package:divinecontrol/screens/emotion_screens/emotion_description_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,16 +13,17 @@ import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
-class AstrologyDetailsPage extends StatelessWidget {
-  const AstrologyDetailsPage({super.key, required this.astrologyModel});
-  final AstrologyModel astrologyModel;
+class EmotionDetailsPage extends StatelessWidget {
+  const EmotionDetailsPage({super.key, required this.emotionModel});
+  final EmotionModel emotionModel;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
+      backgroundColor: AppColors.lightPurple1,
       appBar: AppBar(
         title: Text(
-          astrologyModel.title,
+          emotionModel.title,
           style: width < AppConstants.maxMobileWidth
               ? AppStyles.styleBold24(context)
                   .copyWith(color: AppColors.darkPrimary)
@@ -53,7 +57,7 @@ class AstrologyDetailsPage extends StatelessWidget {
           Container(
               width: width * 0.7,
               child: Image.asset(
-                astrologyModel.image,
+                emotionModel.detailsImage,
                 fit: BoxFit.fill,
               )),
           const SizedBox(
@@ -63,8 +67,10 @@ class AstrologyDetailsPage extends StatelessWidget {
             child: ListView(
               children: [
                 Text(
-                  astrologyModel.description,
-                  
+                  emotionModel.description,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 16,
                   style: width < AppConstants.maxMobileWidth
                       ? AppStyles.styleRegular20(context).copyWith(
                           fontSize:
@@ -83,8 +89,9 @@ class AstrologyDetailsPage extends StatelessWidget {
               title: 'Book Now',
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AstrologyDescriptionScreen(
-                        astrologyModel: astrologyModel)));
+                    builder: (context) => EmotionDescriptionScreen(
+                          emotionModel: emotionModel,
+                        )));
               },
               color: AppColors.black,
               textColor: AppColors.white,
@@ -107,7 +114,7 @@ class AstrologyDetailsPage extends StatelessWidget {
               Container(
                   width: width * 0.4,
                   child: Image.asset(
-                    astrologyModel.image,
+                    emotionModel.detailsImage,
                     fit: BoxFit.fill,
                   )),
               const SizedBox(
@@ -119,8 +126,8 @@ class AstrologyDetailsPage extends StatelessWidget {
                     title: 'Book Now',
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AstrologyDescriptionScreen(
-                              astrologyModel: astrologyModel)));
+                          builder: (context) => EmotionDescriptionScreen(
+                              emotionModel: emotionModel)));
                     },
                     color: AppColors.black,
                     textColor: AppColors.white,
@@ -134,7 +141,7 @@ class AstrologyDetailsPage extends StatelessWidget {
               child: ListView(
                 children: [
                   Text(
-                    astrologyModel.description,
+                    emotionModel.description,
                     style: AppStyles.styleRegular20(context).copyWith(
                         color: AppColors.black,
                         fontSize: getResponsiveFontSizeText(context, fontSize: 32)),

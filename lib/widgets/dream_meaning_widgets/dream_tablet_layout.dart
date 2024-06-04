@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
 import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
+import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
 import 'package:divinecontrol/screens/tarot_reading_screens/tarot_read_view.dart';
@@ -96,7 +97,10 @@ class _TabletLayoutState extends State<TabletLayout> {
                     }, title: "Numerology", image: AppImages.numerologyLogo),
                     CustomCard(onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationScreen()));
-                    }, title:"Meditation", image: AppImages.meditationLogo)
+                    }, title:"Meditation", image: AppImages.meditationLogo),
+                    CustomCard(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionScreen()));
+                    }, title: "Emotional Support", image: AppImages.emotionLogo)
         
                   ],
                 ),

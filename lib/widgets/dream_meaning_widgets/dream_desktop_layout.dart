@@ -4,6 +4,8 @@ import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/face_reading_screens/face_reading_view.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
+import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
+import 'package:divinecontrol/screens/traveltime_screens/traveltime_screen.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/second_child.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +114,13 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                       }, title: "Meditation", image: AppImages.meditationLogo),
                       CustomCard(onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionScreen()));
-                      }, title: "Emotional Support", image: AppImages.emotionLogo)
+                      }, title: "Emotional Support", image: AppImages.emotionLogo),
+                      CustomCard(onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PalemReadingScreen()));
+                      }, title: "Palm Reading", image: AppImages.palemreadingLogo),
+                      CustomCard(onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TravelTimeScreen()));
+                      }, title: "Time Travel", image: AppImages.travellogo)
                 ],
               ),
               secondChild: const SecondChild(),

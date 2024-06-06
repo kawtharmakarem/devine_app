@@ -121,5 +121,25 @@ static const String sexdetails="assets/emotionalimages/sexdetails.JPG";
 static const String sleepdetails="assets/emotionalimages/sleepdetails.JPG";
 static const String stressdetails="assets/emotionalimages/stressdetails.JPG";
 static const String workdetails="assets/emotionalimages/workdetails.JPG";
-
+//palemimages
+static const String palemreadingLogo="assets/palmreadingimages/palemlogo.png";
+static const String browesimage="assets/palmreadingimages/browesimage.png";
+static const String careerimage="assets/palmreadingimages/career.png";
+static const String palemhand="assets/palmreadingimages/hand.png";
+static const String headline="assets/palmreadingimages/headline.png";
+static const String heartline="assets/palmreadingimages/heartline.png";
+static const String lifeline="assets/palmreadingimages/lifeline.png";
+static const String lifelineline="assets/palmreadingimages/lifelineline.png";
+static const String palemhealth="assets/palmreadingimages/palemhealth.png";
+static const String palemrelation="assets/palmreadingimages/palemrelation.png";
+static const String scanpalem="assets/palmreadingimages/scanpalem.png";
+static const String wealthpalem="assets/palmreadingimages/wealth.png";
+//travel time
+static const String travellogo="assets/traveltimeimages/travellogo.png";
+static const String kidstraveltime="assets/traveltimeimages/kids.png";
+static const String marriageTraveltime="assets/traveltimeimages/marriage.png";
+static const String occupation="assets/traveltimeimages/occupation.png";
+static const String pasttime="assets/traveltimeimages/pasttime.png";
+static const String wealthtime="assets/traveltimeimages/wealthtime.png";
+static const String futuretime="assets/traveltimeimages/future.png";
 }

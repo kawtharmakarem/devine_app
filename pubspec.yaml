@@ -76,6 +76,8 @@ flutter:
     - assets/numerologyimages/
     - assets/meditationimages/
     - assets/emotionalimages/
+    - assets/palmreadingimages/
+    - assets/traveltimeimages/
 
   #   - images/a_dot_ham.jpeg
 

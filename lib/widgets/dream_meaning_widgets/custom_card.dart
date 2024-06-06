@@ -38,7 +38,7 @@ class CustomCard extends StatelessWidget {
         splashColor: AppColors.primary,
         child: Container(
           width: width * 0.45,
-          height: height * 0.24,
+          height: height * 0.26,
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
             AppColors.primary,

@@ -142,4 +142,6 @@ static const String occupation="assets/traveltimeimages/occupation.png";
 static const String pasttime="assets/traveltimeimages/pasttime.png";
 static const String wealthtime="assets/traveltimeimages/wealthtime.png";
 static const String futuretime="assets/traveltimeimages/future.png";
+//checklove
+static const String checklovelogo="assets/checkloveimages/checklovelogo.png";
 }

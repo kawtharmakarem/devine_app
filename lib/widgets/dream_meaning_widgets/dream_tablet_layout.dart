@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
 import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
+import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
@@ -72,6 +73,9 @@ class _TabletLayoutState extends State<TabletLayout> {
                   const  SizedBox(
                       height:30,
                     ),
+                     CustomCard(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Flower()));
+                    }, title: "Love Check", image: AppImages.checklovelogo),
                     CustomCard(image: AppImages.dream,title: 'Dream Meaning',
                       onTap: () {
                       setState(() {
@@ -80,6 +84,7 @@ class _TabletLayoutState extends State<TabletLayout> {
                     
                     }),
                     const SizedBox(height: 30,),
+                   
                     CustomCard(onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TarotReadView()));
                     }, title: 'Tarot Reading', image: AppImages.tarortReading),
@@ -108,7 +113,8 @@ class _TabletLayoutState extends State<TabletLayout> {
                     }, title: "Palm Reading", image: AppImages.palemreadingLogo),
                     CustomCard(onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TravelTimeScreen()));
-                    }, title: "Time Travel", image: AppImages.travellogo)
+                    }, title: "Time Travel", image: AppImages.travellogo),
+                    
         
                   ],
                 ),

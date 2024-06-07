@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
 import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
+import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/face_reading_screens/face_reading_view.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
@@ -79,7 +80,9 @@ class _DesktopLayoutState extends State<DesktopLayout> {
               firstChild: Wrap(
                 
                 children: [
-                  
+                  CustomCard(onTap: (){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Flower()));
+                  }, title: "Love Check", image: AppImages.checklovelogo),
                   CustomCard(
                       image: AppImages.dream,
                       title: 'Dream Meaning',

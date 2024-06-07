@@ -42,6 +42,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   image_picker: ^1.1.1
   fl_chart: ^0.68.0
+  fluttertoast: ^8.2.6
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,7 @@ flutter:
     - assets/emotionalimages/
     - assets/palmreadingimages/
     - assets/traveltimeimages/
+    - assets/checkloveimages/
 
   #   - images/a_dot_ham.jpeg
 

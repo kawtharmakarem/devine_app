@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
 import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
+import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/face_reading_screens/face_reading_view.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
@@ -83,6 +84,9 @@ class _MobileLayoutState extends State<MobileLayout> {
                 child: Wrap(
                   
                   children: [
+                     CustomCard(onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Flower()));
+                        }, title: "Love Check", image: AppImages.checklovelogo),
                     CustomCard(
                         image: AppImages.dream,
                         title: 'Dream Meaning',
@@ -114,6 +118,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                     const SizedBox(
                       height: 10,
                     ),
+                    
                     CustomCard(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BiorhythmPage()));
@@ -137,7 +142,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                         }, title: "Palm Reading", image: AppImages.palemreadingLogo),
                         CustomCard(onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TravelTimeScreen()));
-                        }, title: "Time Travel", image: AppImages.travellogo)
+                        }, title: "Time Travel", image: AppImages.travellogo),
+                       
                   ],
                 ),
               ),

@@ -1,5 +1,4 @@
 import 'package:divinecontrol/models/numerlogy_models/numerology_details_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';

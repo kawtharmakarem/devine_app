@@ -14,9 +14,9 @@ class FaceReadingResults extends StatelessWidget {
   const FaceReadingResults({super.key});
    static final  List<FaceReadingResultsModel> _results=[
  const FaceReadingResultsModel(title: 'Personal Traits', image: AppImages.person,subTitle: "You are in a negative cycle for your physical attributes. Negative physical days find us needing more rest, and our immunity might not be at its best. Our sex drives are usually lower, and we may be prone to overexertion and overindulgence. Your strength, coordination, and well-being may not be at their highest, so it is a good opportunity to work on them!"),
-   FaceReadingResultsModel(title: 'Life Path And Purpose', image: AppImages.lifepath,subTitle: "You are in a positive cycle for your emotional attributes. On positive emotional days, we are in a good mood and get along easily with others. On very high positive days, we might be overly emotional, impulsive, and prone to outbursts. Take advantage of your enhanced sensitivity, mood, creativity, awareness and perception while they are at their peak."),
-    FaceReadingResultsModel(title: 'Relationship Compatibility', image: AppImages.relation,subTitle: "You are in a negative cycle for your intellectual attributes. On negative intellectual days, we might have a tough time trying to make decisions, be unable to concentrate, and have trouble communicating effectively with others. Your logical analysis, analytical thinking, alertness, memory and communication may not be at their highest, so it is a good opportunity to work on them"),
-    FaceReadingResultsModel(title: 'Growth and Development', image: AppImages.growth,subTitle: "You are in a negative cycle for your intellectual attributes. On negative intellectual days, we might have a tough time trying to make decisions, be unable to concentrate, and have trouble communicating effectively with others. Your logical analysis, analytical thinking, alertness, memory and communication may not be at their highest, so it is a good opportunity to work on them."),
+   const FaceReadingResultsModel(title: 'Life Path And Purpose', image: AppImages.lifepath,subTitle: "You are in a positive cycle for your emotional attributes. On positive emotional days, we are in a good mood and get along easily with others. On very high positive days, we might be overly emotional, impulsive, and prone to outbursts. Take advantage of your enhanced sensitivity, mood, creativity, awareness and perception while they are at their peak."),
+    const FaceReadingResultsModel(title: 'Relationship Compatibility', image: AppImages.relation,subTitle: "You are in a negative cycle for your intellectual attributes. On negative intellectual days, we might have a tough time trying to make decisions, be unable to concentrate, and have trouble communicating effectively with others. Your logical analysis, analytical thinking, alertness, memory and communication may not be at their highest, so it is a good opportunity to work on them"),
+    const FaceReadingResultsModel(title: 'Growth and Development', image: AppImages.growth,subTitle: "You are in a negative cycle for your intellectual attributes. On negative intellectual days, we might have a tough time trying to make decisions, be unable to concentrate, and have trouble communicating effectively with others. Your logical analysis, analytical thinking, alertness, memory and communication may not be at their highest, so it is a good opportunity to work on them."),
    ];
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class FaceReadingResults extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10,right: 10,left: 10),
       child: GridView(
         
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           
           crossAxisCount: 2,mainAxisSpacing: 20,crossAxisSpacing: 20,childAspectRatio: 3/2),
           

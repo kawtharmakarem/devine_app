@@ -1,13 +1,9 @@
 import 'dart:io';
 
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_details_screen.dart';
-import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
-import 'package:divinecontrol/widgets/face_reading_widgets/scan_face_widget.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_image_widget.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_palem_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -15,7 +11,6 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
-import '../../widgets/face_reading_widgets/custom_scan_button.dart';
 
 class PalemReadingScreen extends StatefulWidget {
   const PalemReadingScreen({super.key});
@@ -185,7 +180,7 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
               CustomPalemButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => PalemReadingDetailsScreen()));
+                        builder: (context) => const PalemReadingDetailsScreen()));
                   },
                   title: 'Scan '),
               const SizedBox(
@@ -367,7 +362,7 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          PalemReadingDetailsScreen()));
+                                          const PalemReadingDetailsScreen()));
                                 },
                                 title: 'Scan '),
                             const SizedBox(

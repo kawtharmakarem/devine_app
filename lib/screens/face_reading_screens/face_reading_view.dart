@@ -39,7 +39,7 @@ class _FaceReadingViewState extends State<FaceReadingView> {
           icon: SvgPicture.asset(AppImages.leftArrow),
         ),
       ),
-      body: Column(children: [
+      body:const Column(children: [
         Expanded(child: ScanFaceWidget())
       ],),
     );

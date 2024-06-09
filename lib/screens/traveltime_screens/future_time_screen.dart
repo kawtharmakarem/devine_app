@@ -76,7 +76,7 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
           CustomTravelButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => SeeFutureDetailsScreen()));
+                  builder: (context) => const SeeFutureDetailsScreen()));
             },
             title: "See future",
           )
@@ -113,7 +113,7 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
                 CustomTravelButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => SeeFutureDetailsScreen()));
+                        builder: (context) => const SeeFutureDetailsScreen()));
                   },
                   title: "See future",
                 ),

@@ -38,12 +38,12 @@ class AstrologyMainPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.only(top:15),
+        padding:const EdgeInsets.only(top:15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
-            CustomToggleButton(),
+           const CustomToggleButton(),
             const SizedBox(height: 20,),
             Expanded(
               child: GridView.builder(

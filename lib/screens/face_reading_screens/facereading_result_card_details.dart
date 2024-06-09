@@ -35,7 +35,7 @@ double width = MediaQuery.of(context).size.width;
           Text(resultModel.title,style: AppStyles.styleBold24(context),),
           Image.asset(resultModel.image),
           
-          Divider(color: AppColors.black,
+          const Divider(color: AppColors.black,
           thickness: 2,),
           Text('Descriptions',style: AppStyles.styleBold24(context),),
           Text(resultModel.subTitle),
@@ -64,7 +64,7 @@ double width = MediaQuery.of(context).size.width;
           ),
           Image.asset(resultModel.image),
           
-          Divider(color: AppColors.black,
+          const Divider(color: AppColors.black,
           thickness: 2,),
           Text('Descriptions',style: AppStyles.styleBold24(context).copyWith(fontSize: 40),),
           Text(resultModel.subTitle,style: AppStyles.styleRegular26(context).copyWith(color: AppColors.black),),

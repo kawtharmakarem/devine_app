@@ -144,4 +144,6 @@ static const String wealthtime="assets/traveltimeimages/wealthtime.png";
 static const String futuretime="assets/traveltimeimages/future.png";
 //checklove
 static const String checklovelogo="assets/checkloveimages/checklovelogo.png";
+//fortunewheelimages
+static const String fortunewheellogo="assets/fortunewheelimages/fortunelogo.png";
 }

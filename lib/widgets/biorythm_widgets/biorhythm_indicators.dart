@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'biorhythm_circle.dart';
 
 class BiorhythmIndicators extends StatelessWidget {
+  const BiorhythmIndicators({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         IndicatorCircle(

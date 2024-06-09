@@ -56,7 +56,7 @@ class Numerology extends StatelessWidget {
             CustomNumerlogyCard(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NumerologyDetailsScreen()));
+                    builder: (context) =>const NumerologyDetailsScreen()));
               },
             ),
             const SizedBox(
@@ -97,7 +97,7 @@ class Numerology extends StatelessWidget {
             CustomNumerlogyCard(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NumerologyDetailsScreen()));
+                    builder: (context) =>const NumerologyDetailsScreen()));
               },
             ),
             const SizedBox(
@@ -140,7 +140,7 @@ class Numerology extends StatelessWidget {
             child: CustomNumerlogyCard(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => NumerologyDetailsScreen()));
+                    builder: (context) =>const NumerologyDetailsScreen()));
               },
             ),
           ),

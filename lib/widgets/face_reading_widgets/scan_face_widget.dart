@@ -106,7 +106,7 @@ class _ScanFaceWidgetState extends State<ScanFaceWidget> {
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          FaceReadingResults()));
+                                          const FaceReadingResults()));
                                 },
                                 title: 'Scan '),
                                 const SizedBox(height: 5,),
@@ -210,7 +210,7 @@ class _ScanFaceWidgetState extends State<ScanFaceWidget> {
                               onPressed: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        FaceReadingResults()));
+                                        const FaceReadingResults()));
                               },
                               title: 'Scan '),
                               const SizedBox(height: 20,),
@@ -238,10 +238,10 @@ class _ScanFaceWidgetState extends State<ScanFaceWidget> {
             height: 20,
           ),
          Expanded(child: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20,mainAxisSpacing: 20),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 20,mainAxisSpacing: 20),
             shrinkWrap: true,
             
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               for(final cardModel in _cards)
               Container(margin: const EdgeInsets.only(bottom: 10),

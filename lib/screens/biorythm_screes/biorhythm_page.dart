@@ -81,9 +81,9 @@ class BiorhythmPage extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
-        BiorhythmChart(),
+        const BiorhythmChart(),
         const SizedBox(height: 16),
-        BiorhythmIndicators(),
+        const BiorhythmIndicators(),
         const SizedBox(height: 16),
         Expanded(
             child: ListView(
@@ -128,11 +128,11 @@ class BiorhythmPage extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
+              const Expanded(
                 child: Column(
                   children: [
-                    BiorhythmChart(),
-                    const SizedBox(height: 16),
+                   BiorhythmChart(),
+                    SizedBox(height: 16),
                     BiorhythmIndicators(),
                   ],
                 ),

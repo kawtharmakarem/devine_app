@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/homepage_screens/spalsh_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
       ),
       home:const DreamInterpretationView(),
      //home: SplashView(),
+     routes: {
+      "flowerroute":(context)=>const Flower()
+     },
     );
   }
 }

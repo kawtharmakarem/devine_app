@@ -9,7 +9,7 @@ class IndicatorCircle extends StatelessWidget {
   final int value;
   final Color color;
 
-  IndicatorCircle({
+  const IndicatorCircle({super.key, 
     required this.label,
     required this.value,
     required this.color,

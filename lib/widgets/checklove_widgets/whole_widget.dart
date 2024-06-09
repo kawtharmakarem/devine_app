@@ -26,6 +26,6 @@ class HoleWidget extends StatelessWidget {
             height: 30,
             width: 30,
             decoration:
-                ShapeDecoration(color: Colors.white, shape: CircleBorder())));
+                const ShapeDecoration(color: Colors.white, shape: CircleBorder())));
   }
 }

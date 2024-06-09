@@ -77,7 +77,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
         const SizedBox(
           height: 10,
         ),
-        Container(
+        SizedBox(
             width: width * 0.6,
             child: Image.asset(widget.emotionModel.detailsImage)),
         const SizedBox(
@@ -89,7 +89,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 24)),
         ),
-        Divider(),
+       const Divider(),
         Row(
           children: [
             Checkbox(
@@ -102,7 +102,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding:const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title1,
                   softWrap: true,
@@ -126,7 +126,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding:const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title2,
                   softWrap: true,
@@ -150,7 +150,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding:const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title3,
                   softWrap: true,
@@ -174,7 +174,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding:const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title4,
                   softWrap: true,
@@ -186,7 +186,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ))
           ],
         ),
-        Divider(),
+      const  Divider(),
         const SizedBox(
           height: 40,
         ),
@@ -208,7 +208,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
         const SizedBox(
           height: 20,
         ),
-        Container(
+        SizedBox(
             width: width * 0.6,
             child: Image.asset(
               widget.emotionModel.detailsImage,
@@ -223,7 +223,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
         ),
-        Divider(),
+      const  Divider(),
         const SizedBox(
           height: 10,
         ),
@@ -247,7 +247,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding:const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title1,
                     softWrap: true,
@@ -280,7 +280,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding:const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title2,
                     softWrap: true,
@@ -313,7 +313,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding:const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title3,
                     softWrap: true,
@@ -346,7 +346,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding:const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title4,
                     softWrap: true,
@@ -359,7 +359,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ],
           ),
         ),
-        Divider(),
+       const Divider(),
         const SizedBox(
           height: 40,
         ),
@@ -384,7 +384,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
                 width: width * 0.35,
                 child: Image.asset(
                   widget.emotionModel.detailsImage,
@@ -405,7 +405,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                     fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
               ),
             ),
-            Divider(),
+         const   Divider(),
             const SizedBox(
               height: 10,
             ),
@@ -427,7 +427,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title1,
                       softWrap: true,
@@ -457,7 +457,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title2,
                       softWrap: true,
@@ -487,7 +487,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title3,
                       softWrap: true,
@@ -517,7 +517,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title4,
                       softWrap: true,
@@ -529,7 +529,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                     ))
               ],
             ),
-            Divider(),
+          const  Divider(),
             const SizedBox(
               height: 40,
             ),

@@ -76,7 +76,7 @@ class SeeFutureDetailsCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
         child: Container(
           height:height*0.3 ,
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding:const EdgeInsets.symmetric(horizontal: 20),
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(

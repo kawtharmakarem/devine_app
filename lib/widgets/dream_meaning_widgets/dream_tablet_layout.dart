@@ -2,6 +2,7 @@ import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
 import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
 import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
+import 'package:divinecontrol/screens/fortunewheel_screens/fortunewheel_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
@@ -74,8 +75,11 @@ class _TabletLayoutState extends State<TabletLayout> {
                       height:30,
                     ),
                      CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Flower()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Flower()));
                     }, title: "Love Check", image: AppImages.checklovelogo),
+                    CustomCard(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyFortuneWheel()));
+                    }, title: "Fortune Wheel", image: AppImages.fortunewheellogo),
                     CustomCard(image: AppImages.dream,title: 'Dream Meaning',
                       onTap: () {
                       setState(() {
@@ -86,33 +90,33 @@ class _TabletLayoutState extends State<TabletLayout> {
                     const SizedBox(height: 30,),
                    
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TarotReadView()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const TarotReadView()));
                     }, title: 'Tarot Reading', image: AppImages.tarortReading),
                     const SizedBox(height: 30,),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FaceReadingView()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const FaceReadingView()));
                     }, title: 'Face Reading', image:AppImages.facelogo),
                     const SizedBox(height: 30,),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BiorhythmPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const BiorhythmPage()));
                     }, title: 'Biorhytm', image: AppImages.biorythmlogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AstrologyMainPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const AstrologyMainPage()));
                     }, title: 'Astrology', image: AppImages.astrologylogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Numerology()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Numerology()));
                     }, title: "Numerology", image: AppImages.numerologyLogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MeditationScreen()));
                     }, title:"Meditation", image: AppImages.meditationLogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const EmotionScreen()));
                     }, title: "Emotional Support", image: AppImages.emotionLogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PalemReadingScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PalemReadingScreen()));
                     }, title: "Palm Reading", image: AppImages.palemreadingLogo),
                     CustomCard(onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>TravelTimeScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const TravelTimeScreen()));
                     }, title: "Time Travel", image: AppImages.travellogo),
                     
         

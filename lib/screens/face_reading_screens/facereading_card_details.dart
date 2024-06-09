@@ -16,8 +16,8 @@ class FaceReadingCardDetails extends StatelessWidget {
     return  SafeArea(
         child: Scaffold(
       body: Container(
-        padding: EdgeInsets.all(30),
-        decoration: BoxDecoration(color: AppColors.lightPurple1),
+        padding:const EdgeInsets.all(30),
+        decoration:const BoxDecoration(color: AppColors.lightPurple1),
         child:width<AppConstants.maxMobileWidth? getMobileDetails(context):getDesktopDetails(context,width),
       ),
     ));

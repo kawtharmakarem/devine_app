@@ -48,11 +48,11 @@ class TravelTimeScreen extends StatelessWidget {
         padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 10,vertical: 20) :const EdgeInsets.symmetric(horizontal: 100,vertical: 100),
         child: Column(children: [
           CustomTravelTimeCard(onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FutureTimeScreen()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const FutureTimeScreen()));
           }, travelTimeModel: TravelTimeModel(title: "Future Prediction", image: AppImages.futuretime)),  
       width<AppConstants.maxMobileWidth?  const SizedBox(height: 30,):const SizedBox(height: 50,),
          CustomTravelTimeCard(onTap: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PastLifePredictionScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PastLifePredictionScreen()));
          }, travelTimeModel: TravelTimeModel(title: "Past Life Prediction", image: AppImages.pasttime))
         ],),
       );
@@ -60,7 +60,7 @@ class TravelTimeScreen extends StatelessWidget {
 
   Padding getDesktopTravelScreen(double width, BuildContext context) {
     return Padding(
-        padding:EdgeInsets.symmetric(horizontal: 100,vertical: 100),
+        padding:const EdgeInsets.symmetric(horizontal: 100,vertical: 100),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -68,14 +68,14 @@ class TravelTimeScreen extends StatelessWidget {
             width: width*0.4,
             height: width*0.28,
             child: CustomTravelTimeCard(onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FutureTimeScreen()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const FutureTimeScreen()));
             }, travelTimeModel: TravelTimeModel(title: "Future Prediction", image: AppImages.futuretime)),
           ),  
          SizedBox(
           width: width*0.4,
           height: width*0.28,
            child: CustomTravelTimeCard(onTap: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PastLifePredictionScreen()));
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PastLifePredictionScreen()));
            }, travelTimeModel: TravelTimeModel(title: "Past Life Prediction", image: AppImages.pasttime)),
          )
         ],),

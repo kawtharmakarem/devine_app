@@ -1,7 +1,5 @@
 import 'package:divinecontrol/models/palemreading_models/palemreading_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -62,7 +60,7 @@ class CustomPalemReadingDetailsCard extends StatelessWidget {
                       top: 25,
                       left: 0,
                       right: 0,
-                      child:palemReadingModel.addtionImage==null? SizedBox(): Image.asset(palemReadingModel.addtionImage!)
+                      child:palemReadingModel.addtionImage==null?const SizedBox(): Image.asset(palemReadingModel.addtionImage!)
                           
                         
                     )
@@ -100,7 +98,7 @@ class CustomPalemReadingDetailsCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
         child: Container(
           height:height*0.3 ,
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding:const EdgeInsets.symmetric(horizontal: 20),
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
@@ -133,7 +131,7 @@ class CustomPalemReadingDetailsCard extends StatelessWidget {
                       top: 25,
                       left: 0,
                       right: 0,
-                      child:palemReadingModel.addtionImage==null? SizedBox(): Image.asset(palemReadingModel.addtionImage!)
+                      child:palemReadingModel.addtionImage==null?const SizedBox(): Image.asset(palemReadingModel.addtionImage!)
                           
                         
                     )
@@ -205,7 +203,7 @@ class CustomPalemReadingDetailsCard extends StatelessWidget {
                       top: 25,
                       left: 0,
                       right: 0,
-                      child:palemReadingModel.addtionImage==null? SizedBox(): Image.asset(palemReadingModel.addtionImage!)
+                      child:palemReadingModel.addtionImage==null?const SizedBox(): Image.asset(palemReadingModel.addtionImage!)
                           
                         
                     )

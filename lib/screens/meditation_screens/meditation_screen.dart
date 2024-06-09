@@ -44,7 +44,7 @@ class MeditationScreen extends StatelessWidget {
           children: [
            for(final item in items)
            Padding(
-             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):EdgeInsets.symmetric(horizontal: 25,vertical: 25),
+             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 25,vertical: 25),
              child: CustomMeditationCard(onTap: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: item)));
              }, meditationModel: item),

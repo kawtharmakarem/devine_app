@@ -36,7 +36,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
 
         children: [
           Padding(
-            padding: width<AppConstants.maxTabletWidth? EdgeInsets.symmetric(horizontal: 10, vertical: 5):EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+            padding: width<AppConstants.maxTabletWidth?const EdgeInsets.symmetric(horizontal: 10, vertical: 5):const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
             child: Row(
               children: [
                 Image.asset(AppImages.chat),
@@ -49,7 +49,7 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
             ),
           ),
           Padding(
-              padding: width<AppConstants.maxTabletWidth? EdgeInsets.symmetric(horizontal: 10, vertical: 5):EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+              padding: width<AppConstants.maxTabletWidth?const EdgeInsets.symmetric(horizontal: 10, vertical: 5):const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
             child: Row(
               children: [
                 const Icon(

@@ -18,4 +18,12 @@ abstract class AppColors{
   static const Color myGray = Color(0x80D9D9D9);
   static const Color myBlue= Color(0xff9EB7E9);
   static const Color myLightRed = Color(0xFFC02D62);
+  //fortunewheel
+   static const Color borderColor=Color(0xffDAA520);
+  static const Color orang=Color(0xffFF7F00);
+  static const Color blue=Color(0xff0000FF);
+  static const Color purpleColor=Color(0xff8A2BE2);
+  static const Color yello=Color(0xffFFFF00);
+  static const Color red=Color(0xffFF0000);
+  static const Color green=Color(0xff00FF00);
 }

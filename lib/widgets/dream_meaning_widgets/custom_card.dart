@@ -106,7 +106,7 @@ class CustomCard extends StatelessWidget {
 
   Card getDesktopCard(double width, double height, BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(20),
+      margin:const EdgeInsets.all(20),
       elevation: 2,
       clipBehavior: Clip.hardEdge,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

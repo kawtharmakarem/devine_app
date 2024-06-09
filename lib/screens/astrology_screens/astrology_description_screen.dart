@@ -1,7 +1,5 @@
 import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
@@ -62,7 +60,7 @@ class _AstrologyDescriptionScreenState
         const SizedBox(
           height: 10,
         ),
-        Container(
+        SizedBox(
             width: width * 0.6,
             child: Image.asset(widget.astrologyModel.image)),
         const SizedBox(
@@ -74,7 +72,7 @@ class _AstrologyDescriptionScreenState
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 24)),
         ),
-        Divider(),
+        const Divider(),
         Row(
           children: [
             Checkbox(
@@ -87,7 +85,7 @@ class _AstrologyDescriptionScreenState
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.astrologyModel.title1,
                   softWrap: true,
@@ -111,7 +109,7 @@ class _AstrologyDescriptionScreenState
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.astrologyModel.title2,
                   softWrap: true,
@@ -135,7 +133,7 @@ class _AstrologyDescriptionScreenState
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.astrologyModel.title3,
                   softWrap: true,
@@ -159,7 +157,7 @@ class _AstrologyDescriptionScreenState
             ),
             Container(
                 width: width * 0.8,
-                padding: EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.astrologyModel.title4,
                   softWrap: true,
@@ -171,7 +169,7 @@ class _AstrologyDescriptionScreenState
                 ))
           ],
         ),
-        Divider()
+        const Divider()
       ],
     );
   }
@@ -182,7 +180,7 @@ class _AstrologyDescriptionScreenState
         const SizedBox(
           height: 20,
         ),
-        Container(
+        SizedBox(
             width: width * 0.6,
             child: Image.asset(
               widget.astrologyModel.image,
@@ -197,7 +195,7 @@ class _AstrologyDescriptionScreenState
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
         ),
-        Divider(),
+        const Divider(),
         const SizedBox(
           height: 10,
         ),
@@ -221,7 +219,7 @@ class _AstrologyDescriptionScreenState
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.astrologyModel.title1,
                     softWrap: true,
@@ -254,7 +252,7 @@ class _AstrologyDescriptionScreenState
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.astrologyModel.title2,
                     softWrap: true,
@@ -287,7 +285,7 @@ class _AstrologyDescriptionScreenState
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.astrologyModel.title3,
                     softWrap: true,
@@ -320,7 +318,7 @@ class _AstrologyDescriptionScreenState
               ),
               Container(
                   width: width * 0.8,
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.astrologyModel.title4,
                     softWrap: true,
@@ -333,7 +331,7 @@ class _AstrologyDescriptionScreenState
             ],
           ),
         ),
-        Divider()
+      const  Divider()
       ],
     );
   }
@@ -347,7 +345,7 @@ class _AstrologyDescriptionScreenState
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
                 width: width * 0.35,
                 child: Image.asset(
                   widget.astrologyModel.image,
@@ -368,7 +366,7 @@ class _AstrologyDescriptionScreenState
                     fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
               ),
             ),
-            Divider(),
+         const   Divider(),
             const SizedBox(
               height: 10,
             ),
@@ -390,7 +388,7 @@ class _AstrologyDescriptionScreenState
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.astrologyModel.title1,
                       softWrap: true,
@@ -420,7 +418,7 @@ class _AstrologyDescriptionScreenState
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.astrologyModel.title2,
                       softWrap: true,
@@ -450,7 +448,7 @@ class _AstrologyDescriptionScreenState
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.astrologyModel.title3,
                       softWrap: true,
@@ -480,7 +478,7 @@ class _AstrologyDescriptionScreenState
                 ),
                 Container(
                     width: width * 0.8,
-                    padding: EdgeInsets.only(bottom: 20),
+                    padding:const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.astrologyModel.title4,
                       softWrap: true,
@@ -492,7 +490,7 @@ class _AstrologyDescriptionScreenState
                     ))
               ],
             ),
-            Divider()
+          const  Divider()
           ],
         ),
       ),

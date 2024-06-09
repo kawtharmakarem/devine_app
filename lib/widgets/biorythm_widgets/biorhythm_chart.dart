@@ -3,6 +3,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class BiorhythmChart extends StatelessWidget {
+  const BiorhythmChart({super.key});
+
   @override
   Widget build(BuildContext context) {
     double height=MediaQuery.sizeOf(context).height;

@@ -1,23 +1,37 @@
+import 'dart:developer';
+
+import 'package:divinecontrol/screens/check_lovers_screens/custom_checklover_button.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_book_card.dart';
+import 'package:divinecontrol/widgets/palemreading_widgets/custom_palem_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
 import '../../utils/app_constants.dart';
 import '../../utils/app_styles.dart';
-import '../../widgets/checklove_widgets/petal_widget.dart';
+import '../../widgets/checklove_widgets/petal_clipper_widget.dart';
 import '../../widgets/checklove_widgets/whole_widget.dart';
+import '../../widgets/dream_meaning_widgets/history_button.dart';
 
 class Flower extends StatefulWidget {
   const Flower({super.key});
 
   @override
   State<Flower> createState() => _FlowerState();
+  static _FlowerState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_FlowerState>();
 }
 
 class _FlowerState extends State<Flower> {
+  int _counter = 0;
+  set counter(int count) => setState(() {
+        _counter = count;
+      });
+
+ 
+
   static const module = -math.pi / 2;
   // final angle1=math.pi+module;
   // final angle2=5*math.pi/4+module;
@@ -54,6 +68,8 @@ class _FlowerState extends State<Flower> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    log("counter ${_counter}");
+
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
         backgroundColor: AppColors.lightPurple1,
@@ -73,7 +89,8 @@ class _FlowerState extends State<Flower> {
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
-              }, icon: SvgPicture.asset(AppImages.leftArrow)),
+              },
+              icon: SvgPicture.asset(AppImages.leftArrow)),
         ),
         body: width < AppConstants.maxMobileWidth
             ? getMobileFlower(context, size)
@@ -99,8 +116,30 @@ class _FlowerState extends State<Flower> {
                     (index) => Petal(
                           angle: angles[index],
                           index: index,
+                          callBack: (val) {
+                            setState(() {
+                                                          _counter = val;
+
+                            });
+                            return _counter;
+                          },
                         )),
-                HoleWidget(size: size)
+                _counter >= 12
+                    ? Positioned(
+                        top: size.height / 3,
+                        right: size.width / 2.8,
+                        child: CustomButton(
+                            onPressed: () {
+                              
+                              setState(() {
+                                _counter=0;
+                               Navigator.popAndPushNamed(context, "flowerroute");
+                              });
+                            },
+                            title: "Restart")
+                        
+                        )
+                    : HoleWidget(size: size)
               ],
             ),
           ),
@@ -130,7 +169,25 @@ class _FlowerState extends State<Flower> {
                     (index) => Petal(
                           angle: angles[index],
                           index: index,
+                          callBack: (val) {
+                            _counter = val;
+                            return _counter;
+                          },
                         )),
+                         _counter >= 12
+                    ? Positioned(
+                        top: size.height / 2.1,
+                        right: size.width / 2.4,
+                        child:
+                        CustomCheckLoverButton(onPressed: (){
+                          setState(() {
+                                _counter=0;
+                               Navigator.popAndPushNamed(context, "flowerroute");
+                              });
+                        }, title: "Restart") 
+                       
+                        )
+                    : 
                 HoleWidget(size: size)
               ],
             ),
@@ -144,7 +201,7 @@ class _FlowerState extends State<Flower> {
     return Column(
       children: [
         const SizedBox(
-          height: 10,
+          height: 30,
         ),
         Text(
           "Tap on Petels to remove it",
@@ -161,13 +218,130 @@ class _FlowerState extends State<Flower> {
                     (index) => Petal(
                           angle: angles[index],
                           index: index,
+                          callBack: (val) {
+                            _counter = val;
+                            return _counter;
+                          },
                         )),
+                         _counter >= 12
+                    ? Positioned(
+                        top: size.height / 3,
+                        right: size.width / 2.21,
+                        child: CustomCheckLoverButton(
+                            onPressed: () {
+                              
+                              setState(() {
+                                _counter=0;
+                               Navigator.popAndPushNamed(context, "flowerroute");
+                              });
+                            },
+                            title: "Restart")
+                        
+                        )
+                    : 
                 HoleWidget(size: size)
               ],
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+typedef int IntCallBack(int value);
+
+class Petal extends StatefulWidget {
+  const Petal(
+      {super.key,
+      required this.angle,
+      required this.index,
+      required this.callBack});
+  final double angle;
+  final int index;
+  final IntCallBack callBack;
+
+  @override
+  State<Petal> createState() => _PetalState();
+}
+
+class _PetalState extends State<Petal> {
+  int opacity = 1;
+static int counter = 0;
+@override
+  void initState() {
+    counter=0;
+    super.initState();
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Positioned(
+      top: 50 * math.cos(widget.angle),
+      right: 50 * math.sin(widget.angle),
+      child: Transform.translate(
+        //offset: Offset(-size.width/2.7, size.height/2.7),
+        offset: size.width < AppConstants.maxMobileWidth
+            ? Offset(-size.width / 2.7, size.height / 3.5)
+            : size.width < AppConstants.maxTabletWidth
+                ? Offset(-size.width / 2.3, size.height / 2.7)
+                : Offset(-size.width / 2.15, size.height / 2.9),
+        child: Transform.rotate(
+            angle: widget.angle,
+            child: ClipPath(
+              clipper: PetalClipper(),
+              child: GestureDetector(
+                onTap: () {
+                  opacity = 0;
+                  ScaffoldMessenger.of(context)
+                    ..removeCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                      backgroundColor: AppColors.lightPurple1,
+                      content: Align(
+                        child: Text(
+                          widget.index % 2 == 0 ? "Love" : "Doesn't Love",
+                          style: size.width < AppConstants.maxMobileWidth
+                              ? AppStyles.styleBold24(context).copyWith(
+                                  fontSize: getResponsiveFontSizeText(context,
+                                      fontSize: 36))
+                              : size.width < AppConstants.maxTabletWidth
+                                  ? AppStyles.styleBold24(context).copyWith(
+                                      fontSize: getResponsiveFontSizeText(
+                                          context,
+                                          fontSize: 40),
+                                    )
+                                  : AppStyles.styleBold24(context).copyWith(
+                                      fontSize: getResponsiveFontSizeText(
+                                          context,
+                                          fontSize: 40)),
+                        ),
+                      ),
+                    ));
+                  counter += 1;
+                  widget.callBack(counter);
+                  Flower.of(context)!.counter = counter;
+
+                  setState(() {});
+
+                },
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  decoration: BoxDecoration(
+                      color: opacity == 0
+                          ? Colors.transparent
+                          : Color.fromRGBO(
+                              math.Random().nextInt(255),
+                              math.Random().nextInt(255),
+                              math.Random().nextInt(255),
+                              1)),
+                ),
+              ),
+            )),
+      ),
     );
   }
 }

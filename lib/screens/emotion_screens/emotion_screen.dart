@@ -44,7 +44,7 @@ class EmotionScreen extends StatelessWidget {
           children: [
            for(final emotion in emotions)
            Padding(
-             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
              child: CustomEmotionCard(onTap: (){
               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotion)));
              }, emotionModel:emotion ),

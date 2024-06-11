@@ -103,9 +103,9 @@ class _MyFortuneWheelState extends State<MyFortuneWheel> {
                       ))
                   ],
                   physics: CircularPanPhysics(
-                    duration: const Duration(seconds: 1),
+                    duration: const Duration(seconds: 2),
                       curve: Curves.decelerate),
-                     duration:const Duration(seconds: 20),
+                     //duration:const Duration(seconds: 2),
 
                   // onFling: () {
                   //   setState(() {});

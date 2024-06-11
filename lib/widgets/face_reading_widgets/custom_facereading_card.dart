@@ -3,7 +3,6 @@ import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/app_colors.dart';
 
 class CustomFaceReadingCard extends StatelessWidget {
   const CustomFaceReadingCard(

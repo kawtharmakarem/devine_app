@@ -146,4 +146,10 @@ static const String futuretime="assets/traveltimeimages/future.png";
 static const String checklovelogo="assets/checkloveimages/checklovelogo.png";
 //fortunewheelimages
 static const String fortunewheellogo="assets/fortunewheelimages/fortunelogo.png";
+//kundliimages
+static const String kundlilogo="assets/kundliimages/kundlilogo.png";
+static const String score="assets/kundliimages/score.png";
+static const String lifereport="assets/kundliimages/lifereport.JPG";
+static const String match="assets/kundliimages/match.JPG";
+static const String remediesKundli="assets/kundliimages/remedies.JPG";
 }

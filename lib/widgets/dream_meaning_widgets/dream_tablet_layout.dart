@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../screens/face_reading_screens/face_reading_view.dart';
+import '../../screens/kundli_screens/kundli_screen.dart';
 import '../../utils/app_styles.dart';
 import 'custom_card.dart';
 import 'second_child.dart';
@@ -87,6 +88,10 @@ class _TabletLayoutState extends State<TabletLayout> {
                       });
                     
                     }),
+                    const SizedBox(height: 30,),
+                     CustomCard(onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
+                        }, title: "Kundli", image: AppImages.kundlilogo),
                     const SizedBox(height: 30,),
                    
                     CustomCard(onTap: (){

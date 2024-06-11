@@ -13,6 +13,7 @@ import 'package:divinecontrol/widgets/dream_meaning_widgets/second_child.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../screens/kundli_screens/kundli_screen.dart';
 import '../../screens/tarot_reading_screens/tarot_read_view.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
@@ -87,6 +88,9 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                   CustomCard(onTap: (){
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyFortuneWheel()));
                   }, title: "Fortune Wheel", image: AppImages.fortunewheellogo),
+                   CustomCard(onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
+                        }, title: "Kundli", image: AppImages.kundlilogo),
                   CustomCard(
                       image: AppImages.dream,
                       title: 'Dream Meaning',

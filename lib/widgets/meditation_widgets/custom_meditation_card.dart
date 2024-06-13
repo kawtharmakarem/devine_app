@@ -1,10 +1,8 @@
 import 'package:divinecontrol/models/meditation_models/meditation_models.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../utils/app_colors.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
 class CustomMeditationCard extends StatelessWidget {

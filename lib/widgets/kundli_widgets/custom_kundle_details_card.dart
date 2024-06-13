@@ -1,10 +1,7 @@
-import 'package:divinecontrol/screens/kundli_screens/match_markting_details_screen.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
-import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_dropdown_list.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_checkbox.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_datetimpicker.dart';
-import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_button.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_dropdown.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
 import 'package:flutter/material.dart';

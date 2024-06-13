@@ -4,6 +4,7 @@ import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/face_reading_screens/face_reading_view.dart';
 import 'package:divinecontrol/screens/fortunewheel_screens/fortunewheel_screen.dart';
+import 'package:divinecontrol/screens/horoscope_screens/horoscope_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
@@ -91,6 +92,9 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                    CustomCard(onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
                         }, title: "Kundli", image: AppImages.kundlilogo),
+                        CustomCard(onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HoroscopeScreen()));
+                        }, title: "Horoscope", image: AppImages.horoscopelogo),
                   CustomCard(
                       image: AppImages.dream,
                       title: 'Dream Meaning',

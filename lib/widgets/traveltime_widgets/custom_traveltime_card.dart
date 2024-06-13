@@ -1,10 +1,8 @@
-import 'package:divinecontrol/models/facereading_models/facereading_card_model.dart';
 import 'package:divinecontrol/models/traveltime_models/traveltime_model.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../utils/app_colors.dart';
 
 class CustomTravelTimeCard extends StatelessWidget {
   const CustomTravelTimeCard(

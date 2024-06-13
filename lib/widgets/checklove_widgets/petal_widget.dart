@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';

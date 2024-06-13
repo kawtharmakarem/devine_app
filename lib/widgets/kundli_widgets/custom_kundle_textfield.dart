@@ -4,28 +4,36 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_styles.dart';
 
-class CustomKundleTextField extends StatelessWidget {
+class CustomKundleTextField extends StatefulWidget {
   const CustomKundleTextField({
     super.key,
     required this.hintText,
-    required this.label,
-    this.onTap,
+     this.label,
     required this.controller,
+    this.keyboardType, this.onFieldSubmitted
   });
-  final String label;
+  final String? label;
   final String hintText;
-  final void Function()? onTap;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
+ final void Function(String)? onFieldSubmitted;
+
+  @override
+  State<CustomKundleTextField> createState() => _CustomKundleTextFieldState();
+}
+
+class _CustomKundleTextFieldState extends State<CustomKundleTextField> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
+     widget. label==null?  Container() : Text(
+            widget.label! ,
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.styleBold24(context).copyWith(
                     fontSize: getResponsiveFontSizeText(context, fontSize: 20))
@@ -36,6 +44,7 @@ class CustomKundleTextField extends StatelessWidget {
             height: 2,
           ),
           TextFormField(
+            keyboardType: widget.keyboardType,
             validator: (data) {
               if (data!.isEmpty) {
                 return 'Field is required';
@@ -47,10 +56,10 @@ class CustomKundleTextField extends StatelessWidget {
                 ? AppStyles.styleRegular20(context)
                 : AppStyles.styleRegular20(context).copyWith(
                     fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
-            controller: controller,
-            onTap: onTap,
+            controller: widget.controller,
+            onFieldSubmitted: widget.onFieldSubmitted,
             decoration: InputDecoration(
-              hintText: hintText,
+              hintText: widget.hintText,
               errorStyle: width < AppConstants.maxMobileWidth
                   ? AppStyles.styleRegular20(context).copyWith(
                       color: Colors.red,

@@ -1,11 +1,7 @@
-import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
 import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
-import 'package:divinecontrol/screens/astrology_screens/astrology_description_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_description_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';

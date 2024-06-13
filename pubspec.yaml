@@ -44,6 +44,8 @@ dependencies:
   fl_chart: ^0.68.0
   fluttertoast: ^8.2.6
   flutter_fortune_wheel: ^1.3.1
+  syncfusion_flutter_gauges: 25.2.4
+
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +85,7 @@ flutter:
     - assets/checkloveimages/
     - assets/fortunewheelimages/
     - assets/kundliimages/
+    - assets/horoscopeimages/
 
   #   - images/a_dot_ham.jpeg
 

@@ -3,8 +3,6 @@ import 'dart:developer';
 import 'package:divinecontrol/screens/check_lovers_screens/custom_checklover_button.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_images.dart';
-import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_book_card.dart';
-import 'package:divinecontrol/widgets/palemreading_widgets/custom_palem_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;

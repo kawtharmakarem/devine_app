@@ -65,8 +65,11 @@ class _RemediesScreenState extends State<RemediesScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: SingleChildScrollView(
+  padding: width < AppConstants.maxMobileWidth
+            ? const EdgeInsets.symmetric(horizontal: 10)
+            : width < AppConstants.maxTabletWidth
+                ? const EdgeInsets.symmetric(horizontal: 30, vertical: 20)
+                : const EdgeInsets.symmetric(horizontal: 100, vertical: 20),        child: SingleChildScrollView(
           child: Form(
             key: formState,
             child: Column(

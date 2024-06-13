@@ -3,6 +3,7 @@ import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
 import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/screens/fortunewheel_screens/fortunewheel_screen.dart';
+import 'package:divinecontrol/screens/horoscope_screens/horoscope_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
@@ -92,6 +93,10 @@ class _TabletLayoutState extends State<TabletLayout> {
                      CustomCard(onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
                         }, title: "Kundli", image: AppImages.kundlilogo),
+                    const SizedBox(height: 30,),
+                    CustomCard(onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(context)=>const HoroscopeScreen()));
+                    }, title: "Horoscope", image:AppImages.horoscopelogo),
                     const SizedBox(height: 30,),
                    
                     CustomCard(onTap: (){

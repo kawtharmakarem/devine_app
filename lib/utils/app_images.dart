@@ -152,4 +152,18 @@ static const String score="assets/kundliimages/score.png";
 static const String lifereport="assets/kundliimages/lifereport.JPG";
 static const String match="assets/kundliimages/match.JPG";
 static const String remediesKundli="assets/kundliimages/remedies.JPG";
+//horoscope
+static const String horoscopelogo="assets/horoscopeimages/horoscopelogo.png";
+static const String aquarius="assets/horoscopeimages/aquarius.png";
+static const String aries="assets/horoscopeimages/aries.png";
+static const String cancer="assets/horoscopeimages/cancer.png";
+static const String capricorn="assets/horoscopeimages/capricorn.png";
+static const String gemini="assets/horoscopeimages/gemini.png";
+static const String leo="assets/horoscopeimages/leo.png";
+static const String libra="assets/horoscopeimages/libra.png";
+static const String pisces="assets/horoscopeimages/pisces.png";
+static const String sagittarius="assets/horoscopeimages/sagittarius.png";
+static const String scorpion="assets/horoscopeimages/scorpion.png";
+static const String taurus="assets/horoscopeimages/taurus.png";
+static const String virgo="assets/horoscopeimages/virgo.png";
 }

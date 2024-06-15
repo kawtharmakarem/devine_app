@@ -339,12 +339,7 @@ class _CustomTHoroscopeToggleButtonState
               } else {
                 isSelected[i] = false;
               }
-              // if (widget.index == newIndex) {
-              //   isSelected[widget.index] = true;
-              // } else {
-              //   isSelected[widget.index] = false;
-              // }
-
+              
               widget.callBack(widget.index);
               CustomHoroscopeDetailsCard.of(context)!.index = widget.index;
             }

@@ -15,20 +15,23 @@ class DrawerCustomTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return isActive
-        ? Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                color: AppColors.lightPurple2,
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(width: 0.5, color: AppColors.purple)),
-            child: Row(
-              children: [
-                Text(drawerTitle.title,
-                    style: AppStyles.styleRegular18(context)),
-                SvgPicture.asset(drawerTitle.image)
-              ],
+        ? GestureDetector(
+          onTap: drawerTitle.onTap,
+          child: Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  color: AppColors.lightPurple2,
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(width: 0.5, color: AppColors.purple)),
+              child: Row(
+                children: [
+                  Text(drawerTitle.title,
+                      style: AppStyles.styleRegular18(context)),
+                  SvgPicture.asset(drawerTitle.image)
+                ],
+              ),
             ),
-          )
+        )
         : Row(
             children: [
               Text(drawerTitle.title,

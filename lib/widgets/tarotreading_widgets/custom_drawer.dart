@@ -1,3 +1,5 @@
+import 'package:divinecontrol/screens/dream_meaning_screens/dream_interpretation_view.dart';
+import 'package:divinecontrol/screens/shopping_screens/shopping_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +20,7 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer> {
   List<DrawerTitleModel> titles = [];
-  int activeIndex = 0;
+  int activeIndex = 2;
   @override
   void initState() {
     titles = getTitles();
@@ -41,10 +43,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       child: Row(
         children: [
-          Image.asset(
-            AppImages.logo,
-            // width: 117,
-            // height: 50,
+          SizedBox(
+            child: Image.asset(
+              AppImages.logo,fit: BoxFit.fill,
+               width: 250,
+               height: 100,
+            ),
           ), //todo
           ...List.generate(
               titles.length,
@@ -68,12 +72,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
           const Expanded(child: FittedBox(child: ChooseLang())),
           SvgPicture.asset(
-            AppImages.bell,
-            width: 30,
+            AppImages.bell,fit: BoxFit.fill,
+            width: 40,
           ),
           SvgPicture.asset(
-            AppImages.profile,
-            height: 30,
+            AppImages.profile,fit: BoxFit.fill,
+            width: 40,
           ),
         ],
       ),
@@ -185,10 +189,31 @@ class _CustomDrawerState extends State<CustomDrawer> {
     );
   }
 
-  List<DrawerTitleModel> getTitles() => [
-        DrawerTitleModel(title: "Today's Luck", image: AppImages.todayluck),
-        DrawerTitleModel(title: "Shopping", image: AppImages.cart),
+ List<DrawerTitleModel> getTitles() => [
         DrawerTitleModel(
-            title: "Find Your Divine Connection..", image: AppImages.search),
+            title: "Today's Luck",
+            image: AppImages.todayluck,
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Container()));
+            }),
+        DrawerTitleModel(
+            title: "Shopping",
+            image: AppImages.cart,
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ShoppingMainPage()));
+              });
+            }),
+        DrawerTitleModel(
+            title: "Find Divine Connection",
+            image: AppImages.search,
+            onTap: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DreamInterpretationView()));
+              });
+            }),
       ];
 }

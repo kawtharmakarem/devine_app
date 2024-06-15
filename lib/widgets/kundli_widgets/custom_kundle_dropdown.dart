@@ -5,9 +5,9 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
 class CustomKundleDropDownList extends StatefulWidget {
-const  CustomKundleDropDownList({super.key, required this.items, required this.label, required this.controller});
+const  CustomKundleDropDownList({super.key, required this.items, this.label, required this.controller});
 final List<String> items;
-final String label;
+final String? label;
 final TextEditingController controller;
   @override
   State<CustomKundleDropDownList> createState() => _CustomKundleDropDownListState();
@@ -28,8 +28,8 @@ class _CustomKundleDropDownListState extends State<CustomKundleDropDownList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Text(
-           widget. label,
+     widget. label==null ?const  SizedBox() :  Text(
+           widget. label!,
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.styleBold24(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 20))
                 : AppStyles.styleBold24(context).copyWith(

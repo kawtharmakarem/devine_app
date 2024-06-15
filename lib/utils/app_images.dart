@@ -166,4 +166,9 @@ static const String sagittarius="assets/horoscopeimages/sagittarius.png";
 static const String scorpion="assets/horoscopeimages/scorpion.png";
 static const String taurus="assets/horoscopeimages/taurus.png";
 static const String virgo="assets/horoscopeimages/virgo.png";
+//shoppingimages
+static const String durga="assets/shoppingimages/durga.png";
+static const String krishna="assets/shoppingimages/krishna.png";
+static const String plant="assets/shoppingimages/plant.png";
+static const String shani="assets/shoppingimages/shani.png";
 }

@@ -140,55 +140,56 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Transform.scale(
-                  scale: 1.5,
-                  child: Lottie.asset(AppImages.obox, fit: BoxFit.fill)),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    index = math.Random().nextInt(8);
-              
-                    isVisible = !isVisible;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.myGray,
-                  padding: EdgeInsets.symmetric(
-                      horizontal: width / 10, vertical: width / 40),
-                ),
-                child: Text(
-                  'Retry',
-                  style: AppStyles.styleBold24(context).copyWith(
-                          fontSize:
-                              getResponsiveFontSizeText(context, fontSize: 32)),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            width: width*0.4,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: AppColors.lightOrange.withOpacity(0.5)),
-              child: FutureBuilder(
-                future: Future.delayed(const Duration(milliseconds: 3000)),
-                builder: (context,snapshot)=>
-                 
-                  snapshot.connectionState==ConnectionState.done? Text(
-                    quotes[index],
-                    style: width < AppConstants.maxMobileWidth
-                        ? AppStyles.stylePacificoRegular28(context)
-                        : AppStyles.stylePacificoRegular28(context).copyWith(
-                            fontSize:
-                                getResponsiveFontSizeText(context, fontSize: 36)),
-                    textAlign: TextAlign.center,
-                  ):const SizedBox()
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Transform.scale(
+                    scale: 1.5,
+                    child: Lottie.asset(AppImages.obox, fit: BoxFit.fill)),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      index = math.Random().nextInt(8);
                 
-              )),
+                      isVisible = !isVisible;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.myGray,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: width / 10, vertical: width / 40),
+                  ),
+                  child: Text(
+                    'Retry',
+                    style: AppStyles.styleBold24(context).copyWith(
+                            fontSize:
+                                getResponsiveFontSizeText(context, fontSize: 32)),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: FutureBuilder(
+              future: Future.delayed(const Duration(milliseconds: 3000)),
+              builder: (context,snapshot) =>snapshot.connectionState==ConnectionState.done?
+                 Container(
+                  width: width*0.4,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: AppColors.lightOrange.withOpacity(0.5)),
+                    child: Text(
+                      quotes[index],
+                      style: AppStyles.stylePacificoRegular28(context).copyWith(
+                              fontSize:
+                                  getResponsiveFontSizeText(context, fontSize: 40)),
+                      textAlign: TextAlign.center,
+                    )):Container()
+              
+            ),
+          ),
         ],
       ),
     );

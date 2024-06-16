@@ -171,4 +171,7 @@ static const String durga="assets/shoppingimages/durga.png";
 static const String krishna="assets/shoppingimages/krishna.png";
 static const String plant="assets/shoppingimages/plant.png";
 static const String shani="assets/shoppingimages/shani.png";
+//todayluckimages
+static const String obox="assets/todayluckimages/obox.json";
+static const String cbox="assets/todayluckimages/cbox.json";
 }

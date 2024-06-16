@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/dream_meaning_screens/dream_interpretation_view.dart';
 import 'package:divinecontrol/screens/shopping_screens/shopping_main_screen.dart';
+import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -195,7 +196,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             image: AppImages.todayluck,
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Container()));
+                  .push(MaterialPageRoute(builder: (context)=>const TodaysLuckScreen()));
             }),
         DrawerTitleModel(
             title: "Shopping",

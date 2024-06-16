@@ -1,4 +1,5 @@
 import 'package:divinecontrol/screens/dream_meaning_screens/dream_interpretation_view.dart';
+import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/widgets/main_widgets/main_custom_title.dart';
 import 'package:divinecontrol/widgets/main_widgets/main_login_register.dart';
@@ -155,8 +156,9 @@ class _MainDrawerState extends State<MainDrawer> {
             title: "Today's Luck",
             image: AppImages.todayluck,
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Container()));
+             setState(() {
+               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const TodaysLuckScreen()));
+             });
             }),
         DrawerTitleModel(
             title: "Shopping",

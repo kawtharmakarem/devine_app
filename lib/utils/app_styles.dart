@@ -34,6 +34,14 @@ abstract class AppStyles{
     );
   }
 
+  static TextStyle stylePacificoRegular28(BuildContext context){
+    return TextStyle(
+      fontFamily: 'Pacifico',
+      color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 28),
+      fontWeight: FontWeight.w400
+    );
+  }
+
   //tarot
   static TextStyle styleRegular16(BuildContext context){
     return TextStyle(

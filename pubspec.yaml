@@ -45,6 +45,8 @@ dependencies:
   fluttertoast: ^8.2.6
   flutter_fortune_wheel: ^1.3.1
   syncfusion_flutter_gauges: 25.2.4
+  lottie: ^3.1.2
+  audioplayers: ^6.0.0
 
 
 dev_dependencies:
@@ -87,6 +89,8 @@ flutter:
     - assets/kundliimages/
     - assets/horoscopeimages/
     - assets/shoppingimages/
+    - assets/todayluckimages/
+    - assets/sounds/
 
   #   - images/a_dot_ham.jpeg
 
@@ -116,6 +120,9 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

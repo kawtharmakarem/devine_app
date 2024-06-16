@@ -26,4 +26,6 @@ abstract class AppColors{
   static const Color yello=Color(0xffFFFF00);
   static const Color red=Color(0xffFF0000);
   static const Color green=Color(0xff00FF00);
+  //today's luck
+  static const Color lightOrange=Color(0xffEBB02A);
 }

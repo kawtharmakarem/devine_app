@@ -41,6 +41,30 @@ abstract class AppStyles{
       fontWeight: FontWeight.w400
     );
   }
+  static TextStyle styleRufinaBold32(BuildContext context){
+    return TextStyle(
+      fontFamily: 'Rufina',
+      color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 32),
+      fontWeight: FontWeight.w700
+    );
+
+  }
+  static TextStyle stylePoppinsRegular20(BuildContext context){
+    return TextStyle(
+      fontFamily: 'Poppins',
+      color: AppColors.black,
+      fontWeight: FontWeight.w400,
+      fontSize: getResponsiveFontSizeText(context, fontSize: 20)
+    );
+  }
+  static TextStyle stylePoppinsBold24(BuildContext context){
+    return TextStyle(
+      fontFamily: 'Poppins',
+      color: AppColors.black,
+      fontWeight: FontWeight.w700,
+      fontSize: getResponsiveFontSizeText(context, fontSize: 24)
+    );
+  }
 
   //tarot
   static TextStyle styleRegular16(BuildContext context){

@@ -1,9 +1,6 @@
-import 'package:divinecontrol/models/numerlogy_models/numerology_details_model.dart';
 import 'package:divinecontrol/models/palemreading_models/palemreading_model.dart';
-import 'package:divinecontrol/widgets/numerology_widgets/custom_numerology_details_card.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_palemreading_details_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';

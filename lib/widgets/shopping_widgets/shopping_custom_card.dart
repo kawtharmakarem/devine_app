@@ -15,6 +15,7 @@ class ShoppingCustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
+    double height=MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: onTap,
       child: Card(
@@ -25,7 +26,8 @@ class ShoppingCustomCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child:width<AppConstants.maxMobileWidth?
-               getMobileCustomCard(context, width):width<AppConstants.maxTabletWidth? getTabletCustomCard(context, width):getDesktopCustomCard(context, width)
+               getMobileCustomCard(context, width):width<AppConstants.maxTabletWidth? getTabletCustomCard(context, width):
+               getDesktopCustomCard(context, width,height)
       ),
     );
   }
@@ -118,7 +120,7 @@ class ShoppingCustomCard extends StatelessWidget {
     ]);
   }
 
-Column getDesktopCustomCard(BuildContext context, double width) {
+Column getDesktopCustomCard(BuildContext context, double width,double height) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -127,7 +129,7 @@ Column getDesktopCustomCard(BuildContext context, double width) {
         children: [
           Container(
             width: double.maxFinite,
-            height: width / 6,
+            height: height / 4,
             color: AppColors.myGray,
           ),
           SizedBox(

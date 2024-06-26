@@ -77,6 +77,10 @@ static const String star="assets/astrologyimages/star.png";
 //homepage
 static const String companyLogo="assets/homepageimages/logo.png";
 static const String background="assets/homepageimages/background.png";
+static const String google="assets/homepageimages/google.png";
+static const String facebook="assets/homepageimages/facebook.png";
+static const String logoonly="assets/homepageimages/logoonly.png";
+
 //Numerology
 static const String numerologyLogo="assets/numerologyimages/numlogo.png";
 static const String color="assets/numerologyimages/color.png";

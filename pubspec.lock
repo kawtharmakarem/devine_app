@@ -113,6 +113,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.18.0"
+  country_code_picker:
+    dependency: "direct main"
+    description:
+      name: country_code_picker
+      sha256: "92818885f0e47486539f80463b66f649970506a91dd3c0731ca3ba5308324a4d"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.0"
   cross_file:
     dependency: transitive
     description:
@@ -129,6 +137,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.3"
+  csc_picker:
+    dependency: "direct main"
+    description:
+      name: csc_picker
+      sha256: "7e5d6023a81f53b89a7fb0369953fd4dc676f7ea20e9a0c0707973a5f0aedf14"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.7"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -283,6 +299,22 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.19"
+  flutter_settings_screens:
+    dependency: "direct main"
+    description:
+      name: flutter_settings_screens
+      sha256: b9e5ff87537fceeb67012560db6ef4bb0ff7d7a031e8184e1689538756ca99a0
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.4"
+  flutter_staggered_animations:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_animations
+      sha256: "81d3c816c9bb0dca9e8a5d5454610e21ffb068aedb2bde49d2f8d04f75538351"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -485,6 +517,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.5"
+  motion_tab_bar:
+    dependency: "direct main"
+    description:
+      name: motion_tab_bar
+      sha256: "71bcb42a91253479896a2767f18424cac0ed967d73763e0f8ae467b97661a588"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.4"
   nested:
     dependency: transitive
     description:
@@ -493,6 +533,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  page_transition:
+    dependency: "direct main"
+    description:
+      name: page_transition
+      sha256: dee976b1f23de9bbef5cd512fe567e9f6278caee11f5eaca9a2115c19dc49ef6
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.0"
   path:
     dependency: transitive
     description:

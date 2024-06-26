@@ -1,5 +1,4 @@
 import 'package:divinecontrol/models/shopping_models/shopping_model.dart';
-import 'package:divinecontrol/screens/main_screens/main_drawer.dart';
 import 'package:divinecontrol/widgets/shopping_widgets/shopping_book.dart';
 import 'package:divinecontrol/widgets/shopping_widgets/shopping_custom_card.dart';
 import 'package:divinecontrol/widgets/shopping_widgets/shopping_lists.dart';
@@ -10,7 +9,6 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
-import '../../widgets/tarotreading_widgets/custom_drawer.dart';
 
 class ShoppingMainPage extends StatefulWidget {
   const ShoppingMainPage({super.key});
@@ -143,8 +141,8 @@ GlobalKey<ScaffoldState> key=GlobalKey();
       child: Scaffold(
         key: key,
           backgroundColor: AppColors.lightPurple1,
-          appBar:width<AppConstants.maxTabletWidth? getAppBar(width, context):null,
-          drawer: width<AppConstants.maxTabletWidth?const MainDrawer() :null,
+         // appBar:width<AppConstants.maxTabletWidth? getAppBar(width, context):null,
+        //  drawer: width<AppConstants.maxTabletWidth?const MainDrawer() :null,
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: width < AppConstants.maxMobileWidth
@@ -256,7 +254,7 @@ GlobalKey<ScaffoldState> key=GlobalKey();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        CustomDrawer(),
+        // CustomDrawer(),
         const SizedBox(height: 20,),
         CustomShoppingToggleButton(callBack: (val) {
           setState(() {

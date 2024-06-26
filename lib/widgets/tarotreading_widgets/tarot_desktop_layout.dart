@@ -1,4 +1,3 @@
-import 'package:divinecontrol/widgets/tarotreading_widgets/custom_drawer.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_read_body.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,7 @@ class TarotDesktopLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return    const Column(
       children: [
-        CustomDrawer(),
+        // CustomDrawer(),
         Expanded(child: TarotReadViewBody())
       ],
     );

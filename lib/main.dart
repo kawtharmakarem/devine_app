@@ -1,40 +1,49 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
-import 'package:divinecontrol/screens/homepage_screens/spalsh_screen.dart';
+import 'package:divinecontrol/screens/homepage_screens/main_homepage_screen.dart';
+import 'package:divinecontrol/screens/settings/header_page.dart';
+import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
-import 'screens/dream_meaning_screens/dream_interpretation_view.dart';
 
-void main() => runApp(
+void main() async {
+    await Settings.init(cacheProvider: SharePreferenceCache());
+
+  runApp(
   DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) =>const MyApp(), // Wrap your app
   ),
 );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
 
-      title: 'Dream Interpretation',
-      theme: ThemeData(
-       
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home:const DreamInterpretationView(),
-     //home: SplashView(),
-     routes: {
-      "flowerroute":(context)=>const Flower()
-     },
+    
+    return ValueChangeObserver<bool>(
+      cacheKey: HeaderPage.keyDarkMode,
+      defaultValue: false,
+      builder: (_,isDarkMode,__) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
+        
+          title: 'Divine App',
+         theme: isDarkMode? ThemeData.dark():ThemeData.light(),
+         home:const MainHomePageScreen(),
+         routes: {
+          "flowerroute":(context)=>const Flower(),
+          "todayluckroute":(context)=>const TodaysLuckScreen()
+         },
+        );
+      }
     );
   }
 }

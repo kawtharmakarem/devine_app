@@ -1,10 +1,7 @@
-import 'dart:io';
 
 import 'package:divinecontrol/screens/traveltime_screens/seefuture_details_screen.dart';
 import 'package:divinecontrol/widgets/traveltime_widgets/custom_travelbutton.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 

@@ -1,5 +1,3 @@
-import 'package:divinecontrol/screens/main_screens/main_drawer.dart';
-import 'package:divinecontrol/widgets/tarotreading_widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -21,18 +19,16 @@ class _DreamInterpretationViewState extends State<DreamInterpretationView> {
   GlobalKey<ScaffoldState> key=GlobalKey();
   @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         key: key,
-        appBar:width<AppConstants.maxTabletWidth? getAppBar(width, context):null,
-        drawer:width<AppConstants.maxTabletWidth? const MainDrawer():null,
+       
         body: AdaptiveLayout(
             mobileLayout: (context) =>const MobileLayout(),
-            tabletLayout: (context) =>const TabletLayout(),
-            desktopLayout: (context) =>const DesktopLayout()),
+             tabletLayout: (context) =>const TabletLayout(),
+             desktopLayout: (context) =>const DesktopLayout()),
       ),
-    );
+      );
   }
 
   AppBar getAppBar(double width, BuildContext context) {
@@ -48,9 +44,7 @@ class _DreamInterpretationViewState extends State<DreamInterpretationView> {
       ),
       backgroundColor: AppColors.primary,
       centerTitle: true,
-      leading: IconButton(onPressed: (){
-          key.currentState!.openDrawer();
-      }, icon: Icon(Icons.menu,size: width<AppConstants.maxMobileWidth? 40:60,)),
+      
      
     );
   }

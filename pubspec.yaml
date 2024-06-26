@@ -47,6 +47,12 @@ dependencies:
   syncfusion_flutter_gauges: 25.2.4
   lottie: ^3.1.2
   audioplayers: ^6.0.0
+  country_code_picker: ^3.0.0
+  csc_picker: ^0.2.7
+  flutter_settings_screens: ^0.3.4
+  flutter_staggered_animations: ^1.1.1
+  motion_tab_bar: ^2.0.4
+  page_transition: ^2.1.0
 
 
 dev_dependencies:
@@ -123,8 +129,11 @@ flutter:
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - family: Rufina
+      fonts:
+        - asset: assets/fonts/Rufina-Regular.ttf
+        - asset: assets/fonts/Rufina-Bold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

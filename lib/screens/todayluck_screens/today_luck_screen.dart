@@ -2,10 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:divinecontrol/utils/app_images.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../utils/app_colors.dart';
@@ -23,18 +20,7 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
   late AudioPlayer player;
   bool isVisible = false;
   int index = 0;
-  //  Timer? _timer;
-  //  _startDelay(){
-  //   _timer=Timer(Duration(milliseconds: 100), () {
-
-  // WidgetsBinding.instance.addPostFrameCallback((_) async {
-  //     await player.setSource(AssetSource('sounds/sound.m4a'));
-  //     await player.resume();
-  //   });
-
-  //    });
-  //  }
-
+ 
   @override
   void initState() {
     super.initState();
@@ -47,25 +33,7 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
-        appBar: AppBar(
-          title: Text(
-            "Today's Luck",
-            style: width < AppConstants.maxMobileWidth
-                ? AppStyles.styleBold24(context)
-                    .copyWith(color: AppColors.darkPrimary)
-                : AppStyles.styleBold24(context).copyWith(
-                    color: AppColors.darkPrimary,
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-          ),
-          backgroundColor: AppColors.white,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: SvgPicture.asset(AppImages.leftArrow),
-          ),
-        ),
+        
         body: AnimatedCrossFade(
           firstChild: getCloseBox(context, width),
           secondChild:width<AppConstants.maxTabletWidth? getMobileOpenBox(context, width):getDesktopOpenBox(context, width),
@@ -83,35 +51,39 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
+          FutureBuilder(
+            future: Future.delayed(const Duration(milliseconds: 3000)),
+            builder: (context,snapshot)=>
+             
+              snapshot.connectionState==ConnectionState.done? Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: AppColors.lightOrange.withOpacity(0.5)),
-              child: FutureBuilder(
-                future: Future.delayed(const Duration(milliseconds: 3000)),
-                builder: (context,snapshot)=>
-                 
-                  snapshot.connectionState==ConnectionState.done? Text(
-                    quotes[index],
-                    style: width < AppConstants.maxMobileWidth
-                        ? AppStyles.stylePacificoRegular28(context)
-                        : AppStyles.stylePacificoRegular28(context).copyWith(
-                            fontSize:
-                                getResponsiveFontSizeText(context, fontSize: 36)),
-                    textAlign: TextAlign.center,
-                  ):const SizedBox()
-                
-              )),
+                  color: AppColors.lightOrange.withOpacity(0.5)
+                ),
+                child: Text(
+                  quotes[index],
+                  style: width < AppConstants.maxMobileWidth
+                      ? AppStyles.stylePacificoRegular28(context)
+                      : AppStyles.stylePacificoRegular28(context).copyWith(
+                          fontSize:
+                              getResponsiveFontSizeText(context, fontSize: 36)),
+                  textAlign: TextAlign.center,
+                ),
+              ):const SizedBox(width: double.maxFinite,)
+            
+          ),
           Transform.scale(
               scale: 1.5,
-              child: Lottie.asset(AppImages.obox, fit: BoxFit.fill)),
+              child: Lottie.asset(AppImages.obox, fit: BoxFit.fill,repeat: false)),
           ElevatedButton(
             onPressed: () {
               setState(() {
-                index = math.Random().nextInt(8);
+                index = math.Random().nextInt(quotes.length-1);
 
-                isVisible = !isVisible;
+               // isVisible = !isVisible;
+               Navigator.popAndPushNamed(context, "todayluckroute");
+                
               });
             },
             style: ElevatedButton.styleFrom(
@@ -146,13 +118,14 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
               children: [
                 Transform.scale(
                     scale: 1.5,
-                    child: Lottie.asset(AppImages.obox, fit: BoxFit.fill)),
+                    child: Lottie.asset(AppImages.obox, fit: BoxFit.fill,repeat: false)),
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      index = math.Random().nextInt(8);
+                      index = math.Random().nextInt(quotes.length-1);
+                                     Navigator.popAndPushNamed(context, "todayluckroute");
+
                 
-                      isVisible = !isVisible;
                     });
                   },
                   style: ElevatedButton.styleFrom(

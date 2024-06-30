@@ -4,7 +4,9 @@ import 'package:divinecontrol/screens/settings/notifications_page.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -19,39 +21,91 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
     double height=MediaQuery.sizeOf(context).height;
-    return Scaffold(body: 
-    ListView(
+    return Scaffold(body: width<AppConstants.maxTabletWidth?
+    getMobileSettingsContent(context, width, height):getDesktopSettingsContent(context, width, height));
+  }
+
+  ListView getMobileSettingsContent(BuildContext context, double width, double height) {
+    return ListView(
+    children: [
+      
+      SettingsGroup(title: 'GENERAl',
+      titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+       children: [
+      const  HeaderPage(),
+                   SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+
+       const AccountPage(),
+                            SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+
+       const NotificationsPage(),
+                            SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+
+        buildLogout(width),
+                   SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+        buildDeleteAccount(width),
+                             SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+
+      ]),
+      const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
+      SettingsGroup(title: 'FEEDBACK', 
+      titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
       children: [
-        
-        SettingsGroup(title: 'GENERAl',
-        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+         SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+        buildReportBug(width),
+         SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+        buildSendFeedBack(width),
+      ])
+    ],
+  );
+  }
+
+
+  Widget getDesktopSettingsContent(BuildContext context, double width, double height) {
+    return GridView(
+      padding:const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+
+      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+    children: [
+      
+      SizedBox(
+        width: width*0.45,
+        child: SettingsGroup(title: 'GENERAl',
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
          children: [
         const  HeaderPage(),
-                     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
+                     SizedBox(height:height*0.035 ,),
+        
          const AccountPage(),
-                              SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
+                              SizedBox(height:height*0.035 ,),
+        
          const NotificationsPage(),
-                              SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
+                              SizedBox(height:height*0.035 ,),
+        
           buildLogout(width),
-                     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
+                     SizedBox(height:height*0.035 ,),
           buildDeleteAccount(width),
-                               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
+                               SizedBox(height:height*0.035,),
+        
         ]),
-        const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
-        SettingsGroup(title: 'FEEDBACK', 
-        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+      ),
+      const SizedBox(
+        height: double.infinity,
+        child: VerticalDivider(thickness: 1,color: AppColors.darkPrimary,endIndent: 10,indent: 10,width: 10),),
+      Container(width: width*0.5,
+      alignment: Alignment.topLeft,
+        child: SettingsGroup(
+          title: 'FEEDBACK', 
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
         children: [
-           SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+           SizedBox(height:height*0.035,),
           buildReportBug(width),
-           SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+           SizedBox(height:height*0.035,),
           buildSendFeedBack(width),
-        ])
-      ],
-    ));
+        ]),
+      )
+    ],
+  );
   }
 
   Widget buildLogout(double width)=>SimpleSettingsTile(

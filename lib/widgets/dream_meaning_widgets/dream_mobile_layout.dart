@@ -15,6 +15,7 @@ import 'package:divinecontrol/screens/traveltime_screens/traveltime_screen.dart'
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../models/dream_meaning.models/custom_card_model.dart';
@@ -229,21 +230,19 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart1(BuildContext context) {
     return [
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const HoroscopeScreen()));
-        // Navigator.of(context).push(PageTransition(
-        //   duration: const Duration(milliseconds: 1500),
-        //   child: const HoroscopeScreen(), type: PageTransitionType.bottomToTop));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const HoroscopeScreen()));
+        Get.to(()=>const HoroscopeScreen());
       }, title: "Horoscope", image: AppImages.horoscopelogo),
       CustomCardModel(() {
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (context) => const Flower()));
-        Navigator.of(context).push(PageTransition(child: const Flower(), type: PageTransitionType.bottomToTop,duration: const Duration(milliseconds: 1500)));
+        Get.to(()=>const Flower(),transition: Transition.zoom,duration:const Duration(seconds: 3));
       }, title: "Love Check", image: AppImages.checklovelogo),
       CustomCardModel(() {
         // Navigator.of(context).push(
         //     MaterialPageRoute(builder: (context) => const MyFortuneWheel()));
-        Navigator.of(context).push(PageTransition(child:const MyFortuneWheel(), type: PageTransitionType.fade,duration: const Duration(milliseconds: 1500)));
+        Get.to(()=>const MyFortuneWheel(),transition: Transition.fade,duration:const Duration(seconds: 3));
       }, title: "Fortune Wheel", image: AppImages.fortunewheellogo),
     ];
   }
@@ -253,16 +252,17 @@ class _MobileLayoutState extends State<MobileLayout> {
       CustomCardModel(() {
         // Navigator.of(context).push(
         //     MaterialPageRoute(builder: (context) => const TarotReadView()));
-        Navigator.of(context).push(PageTransition(child:const TarotReadView(), type: PageTransitionType.leftToRight,duration: const Duration(milliseconds: 1500)));
+        Navigator.of(context).push(PageTransition(child: const TarotReadView(), type: PageTransitionType.fade,duration:const Duration(seconds: 3)));
       }, title: "Tarot Reading", image: AppImages.tarortReading),
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const FaceReadingView()));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const FaceReadingView()));
+        Get.to(()=>const FaceReadingView(),transition: Transition.circularReveal,duration:const Duration(seconds: 3));
       }, title: "Face Reading", image: AppImages.facelogo),
       CustomCardModel(() {
         // Navigator.of(context).push(MaterialPageRoute(
         //     builder: (context) => const PalemReadingScreen()));
-        Navigator.of(context).push(PageTransition(child:const PalemReadingScreen(), type: PageTransitionType.fade,duration: const Duration(milliseconds: 1500)));
+        Get.to(()=>const PalemReadingScreen(),transition: Transition.size,duration:const Duration(seconds: 3));
       }, title: "Palm Reading", image: AppImages.palemreadingLogo),
     ];
   }

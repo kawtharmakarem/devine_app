@@ -1,22 +1,89 @@
-import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
+// import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
+// import 'package:divinecontrol/screens/emotion_screens/emotion_details_screen.dart';
+// import 'package:divinecontrol/widgets/emotion_widgets/custom_emtion_card.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+
+// import '../../utils/app_colors.dart';
+// import '../../utils/app_constants.dart';
+// import '../../utils/app_images.dart';
+// import '../../utils/app_styles.dart';
+
+// class EmotionScreen extends StatelessWidget {
+//   const EmotionScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     double width=MediaQuery.sizeOf(context).width;
+//    return Scaffold(
+//       backgroundColor: AppColors.lightPurple1,
+//       appBar: AppBar(
+//         title: Text(
+//           'Emotional Support',
+//           style: width < AppConstants.maxMobileWidth
+//               ? AppStyles.styleBold24(context)
+//                   .copyWith(color: AppColors.darkPrimary)
+//               : AppStyles.styleBold24(context).copyWith(
+//                   color: AppColors.darkPrimary,
+//                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
+//         ),
+//         backgroundColor: AppColors.primary,
+//         centerTitle: true,
+//         leading: IconButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           icon: SvgPicture.asset(AppImages.leftArrow),
+//         ),
+//       ),
+//        body: Container(
+//         width: width,
+//         child: SingleChildScrollView(
+//           child: Wrap(
+//             alignment: WrapAlignment.spaceEvenly,
+//           children: [
+//            for(final emotion in emotions)
+//            Padding(
+//              padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+//              child: CustomEmotionCard(onTap: (){
+//               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotion)));
+//              }, emotionModel:emotion, index: emotions.indexOf(emotion), ),
+//            )
+//           ],),
+//         ),
+//       ),
+//       );
+//   }
+
 import 'package:divinecontrol/screens/emotion_screens/emotion_details_screen.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_emtion_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../models/emotion_models/emotion_model.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
-class EmotionScreen extends StatelessWidget {
+class EmotionScreen extends StatefulWidget {
   const EmotionScreen({super.key});
 
   @override
+  State<EmotionScreen> createState() => _EmotionScreenState();
+}
+
+class _EmotionScreenState extends State<EmotionScreen> {
+  double width=0;
+  double height=0;
+
+ 
+  @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.sizeOf(context).width;
-   return Scaffold(
-      backgroundColor: AppColors.lightPurple1,
+     width=MediaQuery.sizeOf(context).width;
+
+    return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: Text(
           'Emotional Support',
@@ -27,7 +94,7 @@ class EmotionScreen extends StatelessWidget {
                   color: AppColors.darkPrimary,
                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.lightPurple1,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -36,23 +103,46 @@ class EmotionScreen extends StatelessWidget {
           icon: SvgPicture.asset(AppImages.leftArrow),
         ),
       ),
-       body: Container(
-        width: width,
-        child: SingleChildScrollView(
-          child: Wrap(
-            alignment: WrapAlignment.spaceEvenly,
-          children: [
-           for(final emotion in emotions)
-           Padding(
-             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-             child: CustomEmotionCard(onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotion)));
-             }, emotionModel:emotion ),
-           )
-          ],),
-        ),
-      ),
+      body: Padding(padding: EdgeInsets.symmetric(horizontal: width/20,vertical: width/20),
+      child: SingleChildScrollView(
+        physics:const BouncingScrollPhysics(),
+        child:width<AppConstants.maxMobileWidth? getMobileEmotionalContent():getTabletEmotionalContent(),),),
+    );
+  }
+
+  Column getMobileEmotionalContent() {
+    return Column(
+        children: [
+          GridView.builder(gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+          ),
+          shrinkWrap: true,
+          itemCount: emotions.length,
+          
+           itemBuilder: (context,index){
+          return CustomEmotionCard(index: index,emotionModel:emotions[index] ,onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotions[index])));
+          },);
+          })
+        ],
       );
+  }
+
+   Widget getTabletEmotionalContent() {
+    return Column(
+      children: [
+        const SizedBox(height: 20,),
+        GridView.builder(gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:width<AppConstants.maxTabletWidth? 3:4,mainAxisSpacing: 50,crossAxisSpacing: 30
+        ),
+        shrinkWrap: true,
+        itemCount: emotions.length,
+        
+         itemBuilder: (context,index){
+        return CustomEmotionCard(index: index,emotionModel:emotions[index] ,onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotions[index])));
+        },);
+        }),
+      ],
+    );
   }
   static final List<EmotionModel> emotions=[
     EmotionModel(title1: "Your Anger Management is conducted by one of our expert astrologer.",title2: "You'll recieve comprehensive insights and guidance tailored to your specific questions and concerns.",title3: "Waiting in queue for astrologer to get free.",title4: "Call completed",image: AppImages.anger, title: "Anger Management",detailsImage: AppImages.angerDetails,description: "Explore transformative anger management techniques with expert guidance from certified online psychologists and counselors at Divine Connection. Our affordable and confidential therapy sessions are designed to equip you with the tools needed to effectively manage anger and restore emotional balance. Trust in our secure online platform to safeguard your privacy as you embark on a journey towards greater inner peace and well-being."),

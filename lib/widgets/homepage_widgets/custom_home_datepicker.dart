@@ -36,7 +36,7 @@ class _CustomRegisterDatePickerState extends State<CustomRegisterDatePicker> {
           flex: 2,
           child: Text(
             widget.label,
-            style:AppStyles.stylePoppinsRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 18))
+            style:AppStyles.stylePoppinsRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 18:30))
           ),
         ),
        

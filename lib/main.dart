@@ -6,6 +6,7 @@ import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:get/get.dart';
 
 
 void main() async {
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       cacheKey: HeaderPage.keyDarkMode,
       defaultValue: false,
       builder: (_,isDarkMode,__) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           locale: DevicePreview.locale(context),
           builder: DevicePreview.appBuilder,

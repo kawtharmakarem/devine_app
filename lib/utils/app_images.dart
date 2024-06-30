@@ -102,7 +102,10 @@ static const String sleep="assets/meditationimages/sleep.jpg";
 //emotion
 static const String emotionLogo="assets/emotionalimages/emotion.png";
 static const String anger="assets/emotionalimages/anger.jpg";
+// static const String anger="assets/emotionalimages/anger.svg";
+
 static const String angerDetails="assets/emotionalimages/angerdetails.JPG";
+
 static const String depression="assets/emotionalimages/depression.jpg";
 static const String loneliness="assets/emotionalimages/loneliness.jpg";
 static const String loss="assets/emotionalimages/loss.jpg";

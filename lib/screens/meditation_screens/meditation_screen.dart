@@ -1,22 +1,89 @@
-import 'package:divinecontrol/models/meditation_models/meditation_models.dart';
+// import 'package:divinecontrol/models/meditation_models/meditation_models.dart';
+// import 'package:divinecontrol/screens/meditation_screens/meditation_details_screen.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+
+// import '../../utils/app_colors.dart';
+// import '../../utils/app_constants.dart';
+// import '../../utils/app_images.dart';
+// import '../../utils/app_styles.dart';
+// import '../../widgets/meditation_widgets/custom_meditation_card.dart';
+
+// class MeditationScreen extends StatelessWidget {
+//   const MeditationScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//    double width = MediaQuery.sizeOf(context).width;
+//     return Scaffold(
+//       backgroundColor: AppColors.lightPurple1,
+//       appBar: AppBar(
+//         title: Text(
+//           'Meditation',
+//           style: width < AppConstants.maxMobileWidth
+//               ? AppStyles.styleBold24(context)
+//                   .copyWith(color: AppColors.darkPrimary)
+//               : AppStyles.styleBold24(context).copyWith(
+//                   color: AppColors.darkPrimary,
+//                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
+//         ),
+//         backgroundColor: AppColors.primary,
+//         centerTitle: true,
+//         leading: IconButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           icon: SvgPicture.asset(AppImages.leftArrow),
+//         ),
+//       ),
+//       body: Container(
+//         width: width,
+//         child: SingleChildScrollView(
+//           child: Wrap(
+//             alignment: WrapAlignment.spaceEvenly,
+//           children: [
+//            for(final item in items)
+//            Padding(
+//              padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 25,vertical: 25),
+//              child: CustomMeditationCard(onTap: (){
+//               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: item)));
+//              }, meditationModel: item, index: items.indexOf(item),),
+//            )
+//           ],),
+//         ),
+//       ),
+//       );
+//   }
+
 import 'package:divinecontrol/screens/meditation_screens/meditation_details_screen.dart';
+import 'package:divinecontrol/widgets/meditation_widgets/custom_meditation_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../models/meditation_models/meditation_models.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
-import '../../widgets/meditation_widgets/custom_meditation_card.dart';
 
-class MeditationScreen extends StatelessWidget {
+class MeditationScreen extends StatefulWidget {
   const MeditationScreen({super.key});
 
   @override
+  State<MeditationScreen> createState() => _MeditationScreenState();
+}
+
+class _MeditationScreenState extends State<MeditationScreen> {
+  double width=0;
+  double height=0;
+
+ 
+  @override
   Widget build(BuildContext context) {
-   double width = MediaQuery.sizeOf(context).width;
+     width=MediaQuery.sizeOf(context).width;
+
     return Scaffold(
-      backgroundColor: AppColors.lightPurple1,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: Text(
           'Meditation',
@@ -27,7 +94,7 @@ class MeditationScreen extends StatelessWidget {
                   color: AppColors.darkPrimary,
                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
         ),
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.lightPurple1,
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
@@ -36,23 +103,46 @@ class MeditationScreen extends StatelessWidget {
           icon: SvgPicture.asset(AppImages.leftArrow),
         ),
       ),
-      body: Container(
-        width: width,
-        child: SingleChildScrollView(
-          child: Wrap(
-            alignment: WrapAlignment.spaceEvenly,
-          children: [
-           for(final item in items)
-           Padding(
-             padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 25,vertical: 25),
-             child: CustomMeditationCard(onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: item)));
-             }, meditationModel: item),
-           )
-          ],),
-        ),
-      ),
+      body: Padding(padding: EdgeInsets.symmetric(horizontal: width/20,vertical: width/20),
+      child: SingleChildScrollView(
+        physics:const BouncingScrollPhysics(),
+        child:width<AppConstants.maxMobileWidth? getMobileMeditationContent():getTabletMeditationContent(),),),
+    );
+  }
+
+  Column getMobileMeditationContent() {
+    return Column(
+        children: [
+          GridView.builder(gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+          ),
+          shrinkWrap: true,
+          itemCount:items.length,
+          
+           itemBuilder: (context,index){
+          return CustomMeditationCard(index: index,meditationModel:items[index] ,onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: items[index])));
+          },);
+          })
+        ],
       );
+  }
+
+   Widget getTabletMeditationContent() {
+    return Column(
+      children: [
+        const SizedBox(height: 20,),
+        GridView.builder(gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:width<AppConstants.maxTabletWidth? 3:4,mainAxisSpacing: 50,crossAxisSpacing: 30
+        ),
+        shrinkWrap: true,
+        itemCount: items.length,
+        
+         itemBuilder: (context,index){
+        return CustomMeditationCard(index: index,meditationModel:items[index] ,onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: items[index])));
+        },);
+        }),
+      ],
+    );
   }
 
 

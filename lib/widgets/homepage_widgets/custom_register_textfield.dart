@@ -24,7 +24,7 @@ class CustomRegisterTextField extends StatelessWidget {
         style: width < AppConstants.maxMobileWidth
             ? AppStyles.stylePoppinsRegular20(context)
             : AppStyles.stylePoppinsRegular20(context).copyWith(
-                fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
+                fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:30)),
         controller: controller,
         decoration: InputDecoration(
           label: Text(
@@ -32,7 +32,7 @@ class CustomRegisterTextField extends StatelessWidget {
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.stylePoppinsRegular20(context)
                 : AppStyles.stylePoppinsRegular20(context).copyWith(
-                    fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
+                    fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:30)),
           ),
         ),
       ),

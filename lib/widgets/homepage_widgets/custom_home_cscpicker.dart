@@ -1,4 +1,5 @@
 import 'package:divinecontrol/utils/app_colors.dart';
+import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,24 +31,25 @@ class _CustomCscPickerState extends State<CustomCscPicker> {
   // String cityValue = "";
   @override
   Widget build(BuildContext context) {
-    GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
+    GlobalKey<CSCPickerState> cscPickerKey = GlobalKey();
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
 
     return SizedBox(
-      height: height * 0.13,
+      height:width<AppConstants.maxMobileWidth? height * 0.15:height*0.2,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
               flex: 2,
               child: Text(
                 'Place of birth :',
-                style: AppStyles.stylePoppinsRegular20(context),
+                style:width<AppConstants.maxTabletWidth? AppStyles.stylePoppinsRegular20(context):AppStyles.stylePoppinsRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
               )),
           Expanded(
             flex: 3,
             child: CSCPicker(
-              key: _cscPickerKey,
+              key: cscPickerKey,
               currentCountry: widget.currentCountry,
               currentState: widget.currentState,
               currentCity: widget.currentCity,
@@ -67,13 +69,13 @@ class _CustomCscPickerState extends State<CustomCscPicker> {
               selectedItemStyle: AppStyles.stylePoppinsRegular20(context)
                   .copyWith(
                       fontSize:
-                          getResponsiveFontSizeText(context, fontSize: 18)),
+                          getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 18:28)),
               dropdownHeadingStyle: AppStyles.stylePoppinsRegular20(context)
                   .copyWith(fontWeight: FontWeight.w600),
               dropdownItemStyle: AppStyles.stylePoppinsRegular20(context)
                   .copyWith(
                       fontSize:
-                          getResponsiveFontSizeText(context, fontSize: 18)),
+                          getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 18:28)),
               dropdownDialogRadius: 10.0,
               searchBarRadius: 10.0,
               onCountryChanged: widget.onCountryChanged,

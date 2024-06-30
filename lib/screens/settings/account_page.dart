@@ -4,7 +4,9 @@ import 'package:divinecontrol/screens/settings/app_settings_page.dart';
 import 'package:divinecontrol/screens/settings/notifications_page.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 import '../../utils/app_colors.dart';
@@ -32,34 +34,89 @@ class AccountPage extends StatelessWidget {
     hasAppBar: false,
 
     title: 'Account Settings',
-    children: [
-          const  CustomBackButton(title: 'Account Settings',),
-
-      const SizedBox(height: 32,),
-      buildLanguage(context,width),
-       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-      buildLocation(context,width),
-       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-      buildPassword(context,width),
-             SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-
-        const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
-               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-
-      buildPrivacy(context,width),
-       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-      buildSecurity(context,width),
-       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-  
-      buildAcountInfo(context,width),
-       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-      buildEditAccount(context,width),
-             SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-
-              const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
-  
-    ]),
+    children:width<AppConstants.maxTabletWidth? getMobileSettingsList(context, width, height):getDesktopSettingsList(context, width, height)),
   );
+  }
+
+  List<Widget> getMobileSettingsList(BuildContext context, double width, double height) {
+    return [
+        const  CustomBackButton(title: 'Account Settings',),
+
+    const SizedBox(height: 32,),
+    buildLanguage(context,width),
+     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+    buildLocation(context,width),
+     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+    buildPassword(context,width),
+           SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+
+      const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
+             SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+
+    buildPrivacy(context,width),
+     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+    buildSecurity(context,width),
+     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+
+    buildAcountInfo(context,width),
+     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+    buildEditAccount(context,width),
+           SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
+
+            const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
+
+  ];
+  }
+
+  List<Widget> getDesktopSettingsList(BuildContext context, double width, double height) {
+    return [
+        const  CustomBackButton(title: 'Account Settings',),
+
+    const SizedBox(height: 32,),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SizedBox(
+          width: width*0.4,
+          child: Column(
+            children: [
+              buildLanguage(context,width),
+               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              buildLocation(context,width),
+               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              buildPassword(context,width),
+                     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              
+                 
+            ],
+          ),
+        ),
+        const SizedBox(
+                  height: 300,
+                  child: VerticalDivider(thickness: 1,color: AppColors.darkPrimary,endIndent: 10,indent: 10,width: 5,),),
+        
+        SizedBox(
+          width: width*0.4,
+          child: Column(
+            children: [
+              buildPrivacy(context,width),
+               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              buildSecurity(context,width),
+               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              
+              buildAcountInfo(context,width),
+               SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+              buildEditAccount(context,width),
+                     SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
+            ],
+          ),
+        ),
+      ],
+    ),
+
+            // const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
+
+  ];
   }
   
  Widget buildPrivacy(BuildContext context,double width) =>SimpleSettingsTile(title: 'Privacy',

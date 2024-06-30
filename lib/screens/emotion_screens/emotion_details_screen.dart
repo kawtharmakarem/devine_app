@@ -2,6 +2,7 @@ import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_description_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
@@ -79,20 +80,27 @@ class EmotionDetailsPage extends StatelessWidget {
               ],
             ),
           ), //todo make scrollable
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            child: CustomAstrologyButton(
-              title: 'Book Now',
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => EmotionDescriptionScreen(
-                          emotionModel: emotionModel,
-                        )));
-              },
-              color: AppColors.black,
-              textColor: AppColors.white,
+          SizedBox(
+            width: width*0.6,
+            child: Transform.scale(
+              scale: 1.3,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                child: CustomAstrologyButton(
+                  title: 'Book Now',
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => EmotionDescriptionScreen(
+                              emotionModel: emotionModel,
+                            )));
+                  },
+                  color: AppColors.black,
+                  textColor: AppColors.white,
+                ),
+              ),
             ),
           ),
+          const SizedBox(height: 10,)
         ],
       ),
     );

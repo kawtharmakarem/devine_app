@@ -1,11 +1,12 @@
+import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../models/tarotreading_models/gridview_item_model.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
-import '../../utils/tarot_constants.dart';
 
 class GridViewItem extends StatelessWidget {
   const GridViewItem(
@@ -18,14 +19,15 @@ class GridViewItem extends StatelessWidget {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: width < TarotAppConstants.tabletMaxWidth
+      //child: width < AppConstants.tabletMaxWidth
+      child: width < AppConstants.maxTabletWidth
           ? getMobileGridViewItem(context, width)
           : getDesktopGridViewItem(context, width),
     );
   }
 
-  InkWell getMobileGridViewItem(BuildContext context, double width) {
-    return InkWell(
+  Widget getMobileGridViewItem(BuildContext context, double width) {
+    return GestureDetector(
       onTap: () => onSlectedItem(itemModel),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,23 +46,34 @@ class GridViewItem extends StatelessWidget {
                     itemModel.image,
                     fit: BoxFit.fill,
                   ))),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(itemModel.title,
-                style: AppStyles.styleSemiBold24(context)
-                    .copyWith(color: AppColors.black)),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.only(left: 5,right: 5),
+              //shrinkWrap: true,
+              children: [
+                Text(itemModel.title,
+                    style: AppStyles.styleSemiBold24(context).copyWith(
+                        color: AppColors.black,
+                        fontSize: getResponsiveFontSizeText(context,
+                            fontSize: width < AppConstants.maxMobileWidth
+                                ? 20
+                                : 24))),
+                                Text('Date',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 18:20)),),
+                Text(itemModel.description,
+                    style: AppStyles.styleRegular20(context).copyWith(
+                        color: AppColors.black,
+                        fontSize: getResponsiveFontSizeText(context,
+                            fontSize: width < AppConstants.maxMobileWidth
+                                ? 18
+                                : 20))),
+              ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(itemModel.description,
-                style: AppStyles.styleRegular18(context)
-                    .copyWith(color: AppColors.black)),
-          ),
-          width < TarotAppConstants.mobileMaxWidth
-              ? Container()
-              : const Expanded(child: SizedBox()),
+          // width < AppConstants.maxMobileWidth
+          //     ? Container()
+          //     : const Expanded(child: SizedBox()),
           Container(
-            padding: const EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 5),
             child: Row(
               children: [
                 Row(
@@ -70,8 +83,8 @@ class GridViewItem extends StatelessWidget {
                       '${itemModel.likesNumber}',
                       style: AppStyles.styleBold24(context).copyWith(
                           color: AppColors.black,
-                          fontSize: getResponsiveFontSizeTextTarot(context,
-                              fontSize: 22)),
+                          fontSize:
+                              getResponsiveFontSizeText(context, fontSize: 18)),
                     )
                   ],
                 ),
@@ -82,8 +95,8 @@ class GridViewItem extends StatelessWidget {
                       '${itemModel.seeNumber}k',
                       style: AppStyles.styleBold24(context).copyWith(
                           color: AppColors.black,
-                          fontSize: getResponsiveFontSizeTextTarot(context,
-                              fontSize: 22)),
+                          fontSize:
+                              getResponsiveFontSizeText(context, fontSize: 18)),
                     )
                   ],
                 )
@@ -115,59 +128,51 @@ class GridViewItem extends StatelessWidget {
                     itemModel.image,
                     fit: BoxFit.fill,
                   ))),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(itemModel.title,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-                style: AppStyles.styleSemiBold24(context).copyWith(
-                    color: AppColors.black,
-                    fontSize:
-                        getResponsiveFontSizeTextTarot(context, fontSize: 16))),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(itemModel.description,
-                softWrap: true,
-                overflow: TextOverflow.ellipsis,
-                style: AppStyles.styleRegular16(context).copyWith(
-                    color: AppColors.black,
-                    fontSize:
-                        getResponsiveFontSizeTextTarot(context, fontSize: 14))),
-          ),
-          width < TarotAppConstants.mobileMaxWidth
-              ? Container()
-              : const Expanded(child: SizedBox()),
-          Container(
-            padding: const EdgeInsets.only(left: 10),
-            child: Row(
+          Expanded(
+            
+            child: ListView(
+              padding: const EdgeInsets.only(left: 5,right: 5),
               children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(AppImages.hand),
-                    Text(
-                      '${itemModel.likesNumber}',
-                      style: AppStyles.styleBold24(context).copyWith(
-                          color: AppColors.black,
-                          fontSize: getResponsiveFontSizeTextTarot(context,
-                              fontSize: 14)),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(AppImages.eye),
-                    Text(
-                      '${itemModel.seeNumber}k',
-                      style: AppStyles.styleBold24(context).copyWith(
-                          color: AppColors.black,
-                          fontSize: getResponsiveFontSizeTextTarot(context,
-                              fontSize: 14)),
-                    )
-                  ],
-                )
+                Text(itemModel.title,
+                    style: AppStyles.styleSemiBold24(context).copyWith(
+                        color: AppColors.black,
+                        fontSize:
+                            getResponsiveFontSizeText(context, fontSize: 28))),
+                            Text('Date',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24)),),
+                Text(itemModel.description,
+                   
+                    style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))),
               ],
             ),
+          ),
+          // width < AppConstants.maxMobileWidth
+          //     ? Container()
+          //     : const Expanded(child: SizedBox()),
+          Row(
+            children: [
+              Row(
+                children: [
+                  SvgPicture.asset(AppImages.hand,width: 30,height: 30,),
+                  Text(
+                    '${itemModel.likesNumber}',
+                    style: AppStyles.styleBold24(context).copyWith(
+                        color: AppColors.black,
+                       ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  SvgPicture.asset(AppImages.eye,width: 30,height: 30,),
+                  Text(
+                    '${itemModel.seeNumber}k',
+                    style: AppStyles.styleBold24(context).copyWith(
+                        color: AppColors.black,
+                    ),
+                  )
+                ],
+              )
+            ],
           )
         ],
       ),

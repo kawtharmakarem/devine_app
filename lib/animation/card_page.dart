@@ -1,13 +1,14 @@
 import 'dart:math';
 
+import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../models/tarotreading_models/gridview_item_model.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_images.dart';
 import '../utils/app_styles.dart';
-import '../utils/tarot_constants.dart';
 import '../widgets/tarotreading_widgets/item_details.dart';
 import 'card_values.dart';
 
@@ -81,9 +82,9 @@ class _CardsPageState extends State<CardsPage> {
               Text(
                 widget.itemModel.title,
                 style: AppStyles.styleSemiBold24(context).copyWith(
-                    fontSize: getResponsiveFontSizeTextTarot(context,
+                    fontSize: getResponsiveFontSizeText(context,
                         fontSize:
-                            width < TarotAppConstants.mobileMaxWidth ? 32 : 50)),
+                            width < AppConstants.maxMobileWidth ? 24 : 50)),
               ),
               const SizedBox(),
             ],
@@ -95,11 +96,8 @@ class _CardsPageState extends State<CardsPage> {
                 borderRadius: BorderRadius.circular(5)),
             child: Text(
               'Choose One Card',
-              style: width < TarotAppConstants.mobileMaxWidth
-                  ? AppStyles.styleRegular28(context)
-                  : AppStyles.styleRegular28(context).copyWith(
-                      fontSize:
-                          getResponsiveFontSizeTextTarot(context, fontSize: 40)),
+              style:AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28))
+            
             ),
           ),
           const SizedBox(
@@ -107,7 +105,6 @@ class _CardsPageState extends State<CardsPage> {
           ),
           Image.asset(AppImages.shuffleImage),
           SizedBox(
-          //width:width<TarotAppConstants.mobileMaxWidth? 460:double.infinity,
             width: width,
             height: MediaQuery.of(context).size.height ,
             child: Stack(children: [
@@ -126,10 +123,14 @@ class _CardsPageState extends State<CardsPage> {
                     width: 70,
                     child: InkWell(
                       onTap: () {
-                        width < TarotAppConstants.mobileMaxWidth
-                            ? Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    ItemDetails(itemModel: widget.itemModel)))
+                        width < AppConstants.maxMobileWidth
+                            ? 
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (context) =>
+                            //         ItemDetails(itemModel: widget.itemModel),
+                            //         ),
+                            //         )
+                            Get.to(()=>ItemDetails(itemModel: widget.itemModel),transition: Transition.size,duration: const Duration(seconds: 3))
                             : showDialog(
                                 context: context,
                                 builder: (context) {
@@ -234,7 +235,7 @@ class _CardsPageState extends State<CardsPage> {
                   child: Container(
                     margin: const EdgeInsets.all(20),
                     //padding: const EdgeInsets.symmetric(horizontal: 50 , vertical: 20),
-                    width: 300,
+                    width: width*0.5,
                     height: height * 0.07,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -242,11 +243,9 @@ class _CardsPageState extends State<CardsPage> {
                         border: Border.all(width: 2, color: AppColors.purple),
                         borderRadius: BorderRadius.circular(5)),
                     child: Text('Shuffle Cards',
-                        style: width < TarotAppConstants.mobileMaxWidth
-                            ? AppStyles.styleSemiBold24(context)
-                            : AppStyles.styleSemiBold24(context).copyWith(
-                                fontSize: getResponsiveFontSizeTextTarot(context,
-                                    fontSize: 40))),
+                        style:AppStyles.styleBold24(context).copyWith(color: AppColors.darkPrimary,
+                                fontSize: getResponsiveFontSizeText(context,
+                                    fontSize:width<AppConstants.maxMobileWidth? 20: 40))),
                   ),
                 ),
               ),

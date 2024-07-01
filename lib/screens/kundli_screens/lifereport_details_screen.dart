@@ -1,4 +1,3 @@
-import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_details_card.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundli_result_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

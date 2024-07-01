@@ -9,6 +9,9 @@ abstract class AppImages{
 
 //tarot
    static const String logo="assets/tarotimages/logo.png";
+   static const String tarotLogo="assets/tarotimages/tarotlogo.png";
+   static const String fortuneBg="assets/tarotimages/fortuneBg.png";
+   static const String fortune="assets/tarotimages/fortune.png";
   static const String todayluck="assets/tarotimages/todayluck.svg";
   static const String cart="assets/tarotimages/cart.svg";
   static const String search="assets/tarotimages/search.svg";

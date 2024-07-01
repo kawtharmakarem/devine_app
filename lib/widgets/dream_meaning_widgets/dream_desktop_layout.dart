@@ -11,11 +11,12 @@ import 'package:divinecontrol/screens/kundli_screens/kundli_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
-import 'package:divinecontrol/screens/tarot_reading_screens/tarot_read_view.dart';
+import 'package:divinecontrol/screens/tarot_reading_screens/main_tarot_read_view.dart';
 import 'package:divinecontrol/screens/traveltime_screens/traveltime_screen.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 
 import '../../models/dream_meaning.models/custom_card_model.dart';
 import '../../utils/app_colors.dart';
@@ -320,9 +321,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
     return [ CustomCardModel(() { 
       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const HoroscopeScreen()));
    }, title: "Horoscope", image:AppImages.horoscopelogo),
+
+   //this is the place of kundle
+      
        CustomCardModel(() { 
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Flower()));
-       }, title: "Love Check", image: AppImages.checklovelogo),
+  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
+ }, title: "Kundli", image: AppImages.kundlilogo),
        CustomCardModel(() {
         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const MyFortuneWheel()));
         }, title: "Fortune Wheel", image: AppImages.fortunewheellogo),];
@@ -331,8 +335,14 @@ class _DesktopLayoutState extends State<DesktopLayout> {
   static List getCardPart2(BuildContext context){
     return [
        CustomCardModel(() {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const TarotReadView()));
-        }, title: "Tarot Reading", image: AppImages.tarortReading),
+        // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const TarotReadView()));
+
+        Get.to(()=>const MainTarotReadView(),transition: Transition.zoom,duration:const Duration(seconds: 3));
+
+        }, title: "Tarot Reading", image: AppImages.tarotLogo),
+
+
+
      CustomCardModel(() { 
       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const FaceReadingView()));
      }, title: "Face Reading", image: AppImages.facelogo),
@@ -366,9 +376,12 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                 CustomCardModel(() {
                   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Numerology()));
                  }, title: "Numerology", image: AppImages.numerologyLogo),
+//this place of check love
  CustomCardModel(() { 
-  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const KundliScreen()));
- }, title: "Kundli", image: AppImages.kundlilogo),
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const Flower()));
+       }, title: "Love Check", image: AppImages.checklovelogo),
+
+ 
        
     ];
   }

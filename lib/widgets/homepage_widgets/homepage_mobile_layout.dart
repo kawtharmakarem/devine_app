@@ -1,6 +1,5 @@
 
 import 'package:divinecontrol/screens/homepage_screens/welcom_screen.dart';
-import 'package:divinecontrol/widgets/homepage_widgets/homepage_tablet_layout.dart';
 import 'package:flutter/material.dart';
 import '../../animation/staggered_raindrop_animation.dart';
 import '../../utils/app_colors.dart';

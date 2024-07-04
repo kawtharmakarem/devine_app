@@ -1,34 +1,24 @@
-
-
-import 'package:divinecontrol/utils/app_styles.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/app_colors.dart';
 import 'tarot_read_body.dart';
-
-
 
 class TarotMobileLayout extends StatelessWidget {
   const TarotMobileLayout({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-      // String quest=ModalRoute.of(context)!.settings.arguments as String;
+    // String quest=ModalRoute.of(context)!.settings.arguments as String;
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.lightPurple2,
-        title: Text("Your Favourite",style: AppStyles.styleBold24(context).copyWith(color: AppColors.darkPrimary),),
-      automaticallyImplyLeading: false,
-      actions: [IconButton(onPressed: (){
+    return  Scaffold(
+      appBar: CustomAppBar(title: "What's Your Question?",actions: Icons.close,actionesFn: (){
         Get.back();
-      }, icon:const Icon(Icons.close_sharp,size: 30,color: AppColors.darkPrimary,))],
+      }, leading: false,),
+      body:const Column(
+        children: [Expanded(child: TarotReadViewBody())],
       ),
-      body:const Column(children: [
-        Expanded(child: TarotReadViewBody())
-      ],),
     );
   }
 }
+

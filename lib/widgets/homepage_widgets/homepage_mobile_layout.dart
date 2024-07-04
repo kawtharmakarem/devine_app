@@ -1,5 +1,5 @@
 
-import 'package:divinecontrol/screens/homepage_screens/welcom_screen.dart';
+import 'package:divinecontrol/screens/auth_screens/welcom_screen.dart';
 import 'package:flutter/material.dart';
 import '../../animation/staggered_raindrop_animation.dart';
 import '../../utils/app_colors.dart';
@@ -109,7 +109,7 @@ late  StaggeredRaindropAnimation _animation;
             child: Opacity(
               opacity: _animation.textOpacity.value,
               child: Text(
-                'Divine Connect',
+                'Divine Connection',
                 style: AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary)
               )
             )

@@ -16,12 +16,10 @@
 //   }
 // }
 
-import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../utils/app_colors.dart';
-import '../../utils/app_styles.dart';
 import 'tarot_read_body.dart';
 
 class TarotTabletLayout extends StatelessWidget {
@@ -29,30 +27,11 @@ class TarotTabletLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.sizeOf(context).width;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.lightPurple2,
-        title: Text(
-          "Your Favourite",
-          style: AppStyles.styleBold24(context)
-              .copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth?24:32)),
-        ),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const Icon(
-                Icons.close_sharp,
-                size:60,
-                color: AppColors.darkPrimary,
-              ))
-        ],
-      ),
+      appBar:CustomAppBar(title: "What's Your Question?",actions: Icons.close,actionesFn: (){
+        Get.back();
+      }, leading: false,),
       body:const Column(
         children: [Expanded(child: TarotReadViewBody())],
       ),

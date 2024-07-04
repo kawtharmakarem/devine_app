@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../models/tarotreading_models/gridview_item_model.dart';
 import '../utils/app_colors.dart';
@@ -52,7 +53,7 @@ class _CardsPageState extends State<CardsPageTablet> {
     double height = MediaQuery.sizeOf(context).height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.lightPurple2,
+        backgroundColor: AppColors.lightPurple1,
         body: width < AppConstants.maxTabletWidth
             ? getCardPageContent(context, width, height)
             : getDesktopCardPageContent(context, width, height),
@@ -138,7 +139,8 @@ class _CardsPageState extends State<CardsPageTablet> {
                             //                 itemModel: widget.itemModel),
                             //           );
                             //         });
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ItemDetails(itemModel: widget.itemModel)));
+                           // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>ItemDetails(itemModel: widget.itemModel)));
+                            Get.to(()=>ItemDetails(itemModel: widget.itemModel),transition: Transition.fade,duration:const Duration(seconds: 1));
                             // if(isMoved [index]){
                             //   topList[index] =
                             //       200 *
@@ -272,7 +274,7 @@ class _CardsPageState extends State<CardsPageTablet> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: SvgPicture.asset(AppImages.leftarrow)),
+                  child: SvgPicture.asset(AppImages.leftarrow,width: 50,height: 50,)),
               Text(
                 widget.itemModel.title,
                 style: AppStyles.styleSemiBold24(context).copyWith(

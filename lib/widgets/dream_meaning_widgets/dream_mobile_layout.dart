@@ -181,13 +181,16 @@ class _MobileLayoutState extends State<MobileLayout> {
                   children:
                       List.generate(getCardPart4(context).length, (index) {
                     return AnimationConfiguration.staggeredGrid(
-                        position: index,
-                        duration: const Duration(seconds: 2),
-                        columnCount: 3,
-                        child: ScaleAnimation(
-                            child: FadeInAnimation(
-                                child: CustomCard(
-                                    cardModel: getCardPart4(context)[index]))));
+                      position: index,
+                      duration: const Duration(seconds: 2),
+                      columnCount: 3,
+                      child: ScaleAnimation(
+                        child: FadeInAnimation(
+                          child: CustomCard(
+                              cardModel: getCardPart4(context)[index]),
+                        ),
+                      ),
+                    );
                   }),
                 ),
                 AnimatedContainer(
@@ -204,8 +207,8 @@ class _MobileLayoutState extends State<MobileLayout> {
                 GridView.count(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  crossAxisCount: 3,
-                  childAspectRatio: 2 / 2.7,
+                  crossAxisCount: 2, //3
+                  childAspectRatio: 1, //2 / 2.7,
                   children:
                       List.generate(getCardPart5(context).length, (index) {
                     return AnimationConfiguration.staggeredGrid(
@@ -231,19 +234,22 @@ class _MobileLayoutState extends State<MobileLayout> {
       CustomCardModel(() {
         // Navigator.of(context).push(
         //     MaterialPageRoute(builder: (context) => const HoroscopeScreen()));
-        Get.to(()=>const HoroscopeScreen());
+        Get.to(() => const HoroscopeScreen(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Horoscope", image: AppImages.horoscopelogo),
-     
-      
+
       //this is place of kundle
-       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const KundliScreen()));
+      CustomCardModel(() {
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const KundliScreen()));
+        Get.to(() => const KundliScreen(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Kundli", image: AppImages.kundlilogo),
       CustomCardModel(() {
         // Navigator.of(context).push(
         //     MaterialPageRoute(builder: (context) => const MyFortuneWheel()));
-        Get.to(()=>const MyFortuneWheel(),transition: Transition.fade,duration:const Duration(seconds: 3));
+        Get.to(() => const MyFortuneWheel(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Fortune Wheel", image: AppImages.fortunewheellogo),
     ];
   }
@@ -251,23 +257,22 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart2(BuildContext context) {
     return [
       CustomCardModel(() {
-        // Navigator.of(context).push(
-        //     MaterialPageRoute(builder: (context) => const TarotReadView()));
-    //Get.to(()=>const TarotReadView(),transition: Transition.zoom,duration:const Duration(seconds: 3));
-    Get.to(()=>const MainTarotReadView(),transition: Transition.zoom,duration:const Duration(seconds: 3));
+        
+        Get.to(() => const MainTarotReadView(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Tarot Reading", image: AppImages.tarotLogo),
-     
-     
-     
       CustomCardModel(() {
         // Navigator.of(context).push(
         //     MaterialPageRoute(builder: (context) => const FaceReadingView()));
-        Get.to(()=>const FaceReadingView(),transition: Transition.circularReveal,duration:const Duration(seconds: 3));
+        Get.to(() => const FaceReadingView(),
+            transition: Transition.zoom,
+            duration: const Duration(seconds: 1));
       }, title: "Face Reading", image: AppImages.facelogo),
       CustomCardModel(() {
         // Navigator.of(context).push(MaterialPageRoute(
         //     builder: (context) => const PalemReadingScreen()));
-        Get.to(()=>const PalemReadingScreen(),transition: Transition.size,duration:const Duration(seconds: 3));
+        Get.to(() => const PalemReadingScreen(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Palm Reading", image: AppImages.palemreadingLogo),
     ];
   }
@@ -275,16 +280,19 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart3(BuildContext context) {
     return [
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const TravelTimeScreen()));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const TravelTimeScreen()));
+        Get.to(()=>const TravelTimeScreen(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Time Travel", image: AppImages.travellogo),
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const AstrologyMainPage()));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const AstrologyMainPage()));
+        Get.to(()=>const AstrologyMainPage(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Astrology", image: AppImages.astrologylogo),
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const BiorhythmPage()));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const BiorhythmPage()));
+        Get.to(()=>const BiorhythmPage(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Biorythm", image: AppImages.biorythmlogo),
     ];
   }
@@ -292,36 +300,38 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart4(BuildContext context) {
     return [
       CustomCardModel(() {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const DreamMeaningMainView()));
+        // Navigator.of(context).push(MaterialPageRoute(
+        //     builder: (context) => const DreamMeaningMainView()));
+        Get.to(()=>const DreamMeaningMainView(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Dream Meaning", image: AppImages.dream),
       CustomCardModel(() {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const Numerology()));
+        // Navigator.of(context)
+        //     .push(MaterialPageRoute(builder: (context) => const Numerology()));
+        Get.to(()=>const Numerology(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Numerology", image: AppImages.numerologyLogo),
 
-
       //this is the place of check love
- CustomCardModel(() {
+      CustomCardModel(() {
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (context) => const Flower()));
-        Get.to(()=>const Flower(),transition: Transition.zoom,duration:const Duration(seconds: 3));
+        Get.to(() => const Flower(),
+            transition: Transition.zoom, duration: const Duration(seconds: 1));
       }, title: "Love Check", image: AppImages.checklovelogo),
-
-     
     ];
   }
 
   static List getCardPart5(BuildContext context) {
     return [
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const MeditationScreen()));
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const MeditationScreen()));
+        Get.to(()=>const MeditationScreen(),transition: Transition.zoom,duration: const Duration(seconds: 1));
       }, title: "Meditation", image: AppImages.meditationLogo),
       CustomCardModel(() {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const EmotionScreen()));
-      }, title: "Emotional", image: AppImages.emotionLogo),
+        // Navigator.of(context).push(
+        //     MaterialPageRoute(builder: (context) => const EmotionScreen()));
+        Get.to(()=>const EmotionScreen(),transition: Transition.zoom,duration:const Duration(seconds: 1));
+      }, title: "Emotional Support", image: AppImages.emotionLogo),
     ];
   }
 }

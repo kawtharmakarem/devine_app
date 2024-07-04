@@ -54,6 +54,7 @@ dependencies:
   motion_tab_bar: ^2.0.4
   page_transition: ^2.1.0
   get: ^4.6.6
+  glassmorphism: ^3.0.0
 
 
 dev_dependencies:

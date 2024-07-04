@@ -57,7 +57,7 @@ class CustomCard extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.primary.withOpacity(0.4)),
-              width: width * 0.28,
+              width: width * 0.29,//0.28
               height: height * 0.07,
               child: Center(
                 child: Text(
@@ -67,7 +67,7 @@ class CustomCard extends StatelessWidget {
                       color: AppColors.darkPrimary,
                       fontWeight: FontWeight.w800,
                       fontSize:
-                          getResponsiveFontSizeText(context, fontSize: 16)),
+                          getResponsiveFontSizeText(context, fontSize: 18)),//16
                 ),
               ),
             ),

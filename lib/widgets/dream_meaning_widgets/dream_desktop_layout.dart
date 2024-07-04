@@ -288,7 +288,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                     child: GridView.count(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      crossAxisCount: 3,
+                      crossAxisCount: 2,//3
                       //childAspectRatio: 1.7,
                       children: List.generate(getCardPart5(context).length, (index) {
                         return AnimationConfiguration.staggeredGrid(

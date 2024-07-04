@@ -56,7 +56,7 @@ class _CardsPageState extends State<CardsPage> {
     double height = MediaQuery.sizeOf(context).height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.lightPurple2,
+        backgroundColor: AppColors.lightPurple1,
         body: getCardPageContent(context, width, height),
       ),
     );
@@ -130,7 +130,7 @@ class _CardsPageState extends State<CardsPage> {
                             //         ItemDetails(itemModel: widget.itemModel),
                             //         ),
                             //         )
-                            Get.to(()=>ItemDetails(itemModel: widget.itemModel),transition: Transition.size,duration: const Duration(seconds: 3))
+                            Get.to(()=>ItemDetails(itemModel: widget.itemModel),transition: Transition.size,duration: const Duration(seconds: 1))
                             : showDialog(
                                 context: context,
                                 builder: (context) {

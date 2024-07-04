@@ -1,5 +1,5 @@
 
-import 'package:divinecontrol/screens/homepage_screens/edit_account.dart';
+import 'package:divinecontrol/screens/auth_screens/edit_account.dart';
 import 'package:divinecontrol/screens/settings/app_settings_page.dart';
 import 'package:divinecontrol/screens/settings/notifications_page.dart';
 import 'package:divinecontrol/utils/app_constants.dart';

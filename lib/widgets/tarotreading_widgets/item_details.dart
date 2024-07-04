@@ -1,4 +1,5 @@
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,17 +19,7 @@ class ItemDetails extends StatelessWidget {
 
     return Scaffold(
             backgroundColor: AppColors.lightPurple1,
-            appBar: AppBar(
-              backgroundColor: AppColors.lightPurple2,
-
-              title: Text(itemModel.title,
-                  style: AppStyles.styleSemiBold24(context).copyWith(
-                      fontSize:
-                           getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:40))),
-                          leading: IconButton(onPressed: (){
-                            Navigator.pop(context);
-                          }, icon: SvgPicture.asset(AppImages.leftArrow)),
-            ),
+            appBar:CustomAppBar(title: itemModel.title, leading: true),
             body:width <  AppConstants.maxTabletWidth ? getMobileItemDetails(height, width,context):
             // width<AppConstants.maxTabletWidth? getTabletItemDetails(width, context): 
             getDesktopItemDetails(height, context,width),

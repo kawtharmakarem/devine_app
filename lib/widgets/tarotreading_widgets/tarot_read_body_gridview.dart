@@ -87,17 +87,20 @@ Widget getMobileTarotGridView(BuildContext context) {
         shrinkWrap: true,
         gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.5),
         children: [
-          ...List.generate(items.length, (index) =>GridViewItem(
-                  itemModel: items[index],
-                  onSlectedItem: (itemModel)
-                   {
-                  //  Navigator.of(context)
-                  //      .push(MaterialPageRoute(builder: (context) {
-                  //    return CardsPage(itemModel: itemModel);
-                  //   }));
-                  Get.to(()=>CardsPage(itemModel: itemModel),transition: Transition.fade,duration:const Duration(seconds: 3));
-                  },
-                ),
+          ...List.generate(items.length, (index) =>Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: GridViewItem(
+                    itemModel: items[index],
+                    onSlectedItem: (itemModel)
+                     {
+                    //  Navigator.of(context)
+                    //      .push(MaterialPageRoute(builder: (context) {
+                    //    return CardsPage(itemModel: itemModel);
+                    //   }));
+                    Get.to(()=>CardsPage(itemModel: itemModel),transition: Transition.fade,duration:const Duration(seconds: 3));
+                    },
+                  ),
+          ),
                 )
             
         ],

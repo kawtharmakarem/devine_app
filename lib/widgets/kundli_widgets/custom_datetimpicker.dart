@@ -110,7 +110,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                         foregroundColor: AppColors.darkPrimary,
                         textStyle: TextStyle(
                             fontSize: getResponsiveFontSizeText(context,
-                                fontSize: 20))))),
+                                fontSize: 20),),),),),
             child: child!,
           ),
         );

@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
           builder: DevicePreview.appBuilder,
         
           title: 'Divine App',
-         theme: isDarkMode? ThemeData.dark():ThemeData.light(),
+         //theme: isDarkMode? ThemeData.dark():ThemeData.light(),
+         theme: ThemeData.light(),
          home:const MainHomePageScreen(),
          routes: {
           "flowerroute":(context)=>const Flower(),

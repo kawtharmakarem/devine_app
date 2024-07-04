@@ -1,5 +1,6 @@
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_desktop_layout.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_mobile_layout.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_tablet_layout.dart';
@@ -25,21 +26,7 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        backgroundColor: AppColors.lightPurple2,
-        centerTitle: true,
-        title: Text(
-          'TarotReading',
-          style: AppStyles.styleBold24(context).copyWith(
-              color: AppColors.darkPrimary,
-              fontSize: getResponsiveFontSizeText(context,
-                  fontSize: width < AppConstants.maxMobileWidth
-                      ? 24
-                      : width < AppConstants.maxTabletWidth
-                          ? 32
-                          : 40)),
-        ),
-      ),
+      appBar:const CustomAppBar(title: "Tarot Reading", leading: true),
       body: width < AppConstants.maxTabletWidth
           ? getMobileMainContent(width, height, context)
           : getDesktopMainContent(width, height, context),
@@ -68,7 +55,7 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
                     ? AppStyles.styleRegular20(context)
                     : AppStyles.styleRegular20(context).copyWith(
                         fontSize:
-                            getResponsiveFontSizeText(context, fontSize: 28)),
+                            getResponsiveFontSizeText(context, fontSize:28)),
                 textAlign: TextAlign.center,
               )),
           // CustomSearchTextField(
@@ -96,7 +83,7 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
                   // arguments: searchController.text,
                   transition: Transition.circularReveal,
                   fullscreenDialog: false,
-                  duration: const Duration(seconds: 3));
+                  duration: const Duration(seconds: 1));
             },
           )
         ],
@@ -130,36 +117,18 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
                     decoration: const BoxDecoration(),
                     child: Text(
                       'This one card prediction will reveal the answers to all of your underlying questions about business, love, finance, and relationships.',
-                      style: width < AppConstants.maxMobileWidth
-                          ? AppStyles.styleRegular20(context)
-                          : AppStyles.styleRegular20(context).copyWith(
-                              fontSize: getResponsiveFontSizeText(context,
-                                  fontSize: 28)),
+                      style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
+                         
                       textAlign: TextAlign.center,
                     )),
-                // CustomSearchTextField(
-                //     onChanged: (value) {
-                //       setState(() {
-                //         textFieldValue = value;
-                //         searchController.text = value;
-                //       });
-                //     },
-                //     controller: searchController,
-                //     labelText: 'Enter Your Question',
-                //     prefixIcon:  Icon(
-                //       Icons.search,
-                //       color: AppColors.darkPrimary,
-                //       size: width<AppConstants.maxMobileWidth? 30:50,
-                //     ),
-                //     hintText: 'your question'),
+                
                 CustomTarotButton(
                   title: 'Next',
                   onPressed: () {
                     Get.to(() => const TarotDesktopLayout(),
-                        // arguments: searchController.text,
                         transition: Transition.fade,
                         fullscreenDialog: false,
-                        duration: const Duration(seconds: 3));
+                        duration: const Duration(seconds: 1));
                   },
                 ),
               ],
@@ -172,7 +141,6 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
 
   @override
   void dispose() {
-    // searchController.dispose();
     super.dispose();
   }
 }

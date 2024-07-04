@@ -43,7 +43,7 @@ class CustomTextField extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 12),
             child: TextFormField(
-              style: width<AppConstants.maxMobileWidth? AppStyles.styleRegular16(context):AppStyles.styleRegular20(context),
+              style: width<AppConstants.maxMobileWidth? AppStyles.styleRegular20(context):AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
               controller: controller,
               onTap: onTap,
               maxLines: maxLines,

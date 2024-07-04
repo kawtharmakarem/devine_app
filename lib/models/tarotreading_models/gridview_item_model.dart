@@ -1,4 +1,5 @@
 class GridViewItemModel {
+  final String imageBg;
   final String image;
   final String title;
   final String description;
@@ -10,6 +11,7 @@ class GridViewItemModel {
 
   GridViewItemModel(
       {required this.image,
+      required this.imageBg,
       required this.title,
       required this.description,
       required this.likesNumber,

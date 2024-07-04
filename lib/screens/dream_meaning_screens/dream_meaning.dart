@@ -1,12 +1,11 @@
 import 'dart:developer';
 
 import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 import '../../widgets/dream_meaning_widgets/custom_dropdown_list.dart';
 
@@ -47,25 +46,7 @@ class _DreamMeaningState extends State<DreamMeaning> {
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Dream Meaning',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:const CustomAppBar(title: "Dream Meaning", leading: true),
       body: Container(
         padding: const EdgeInsets.only(left: 20, right: 20),
         width: double.infinity,

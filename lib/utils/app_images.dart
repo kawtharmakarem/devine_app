@@ -5,6 +5,45 @@ abstract class AppImages{
   static const String book="assets/images/book.jpg";
   static const String leftArrow="assets/images/leftarrow.svg";
   static const String tarortReading="assets/images/tarotreading.jpg";
+//tarot new
+   static const String dailytarot="assets/tarotimages/dailytarot.png";
+   static const String dailytarotBg="assets/tarotimages/dailytarot.jpg";
+
+   static const String careertarotBg="assets/tarotimages/careertarot.jpg";
+   static const String careertarot="assets/tarotimages/careertarot.png";
+
+   static const String changetarot="assets/tarotimages/changetarot.png";
+   static const String changetarotBg="assets/tarotimages/changetarot.jpg";
+
+   static const String feeltarotBg="assets/tarotimages/feeltarot.jpg";
+   static const String feeltarot="assets/tarotimages/feeltarot.png";
+
+   static const String financestarot="assets/tarotimages/financestarot.png";
+   static const String financestarotBg="assets/tarotimages/financestarot.jpg";
+
+   static const String hiddentarot="assets/tarotimages/hiddentarot.png";
+   static const String hiddentarotBg="assets/tarotimages/hiddentarot.jpg";
+
+   static const String lifeclaritytarot="assets/tarotimages/lifeclaritytarot.png";
+   static const String lifeclaritytarotBg="assets/tarotimages/lifeclaritytarot.jpg";
+
+   static const String lifelessons="assets/tarotimages/lifelessons.png";
+   static const String lifelessonsBg="assets/tarotimages/lifelessons.jpg";
+
+   static const String weekendtarot="assets/tarotimages/weekendtarot.png";
+   static const String weekendtarotBg="assets/tarotimages/weekendtarot.jpg";
+
+
+   static const String whereistarot="assets/tarotimages/whereistarot.png";
+
+   static const String whereistarotBg="assets/tarotimages/whereistarot.jpg";
+
+   static const String weeklytarot="assets/tarotimages/weeklytarot.png";
+   static const String weeklytarotBg="assets/tarotimages/weeklytarot.jpg";
+
+
+static const String reservedtarot="assets/tarotimages/reservedtarot.png";
+static const String reservedtarotBg="assets/tarotimages/reservedtarot.jpg";
 
 
 //tarot
@@ -17,12 +56,12 @@ abstract class AppImages{
   static const String search="assets/tarotimages/search.svg";
   static const String bell="assets/tarotimages/bell.svg";
   static const String profile="assets/tarotimages/profile.svg";
-  static const String weekend="assets/tarotimages/weekend.png";
-  static const String weekly="assets/tarotimages/weekly.png";
-  static const String whereis="assets/tarotimages/whereis.png";
-  static const String firsthalf="assets/tarotimages/firsthalf.png";
-  static const String change="assets/tarotimages/change.png";
-  static const String hidden="assets/tarotimages/hidden.png";
+  //static const String weekend="assets/tarotimages/weekend.png";
+  //static const String weekly="assets/tarotimages/weekly.png";
+  //static const String whereis="assets/tarotimages/whereis.png";
+  //static const String firsthalf="assets/tarotimages/firsthalf.png";
+  //static const String change="assets/tarotimages/change.png";
+  //static const String hidden="assets/tarotimages/hidden.png";
 
   static const String hand="assets/tarotimages/hand.svg";
   static const String eye="assets/tarotimages/eye.svg";

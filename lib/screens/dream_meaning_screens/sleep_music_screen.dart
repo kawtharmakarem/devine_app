@@ -1,11 +1,8 @@
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_sleep_card.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 
 class SleepMusicScreen extends StatefulWidget {
   const SleepMusicScreen({super.key});
@@ -43,25 +40,7 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Sleep Music',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:const CustomAppBar(title: "Sleep Music", leading: true),
       body: width < AppConstants.maxTabletWidth
           ? getMobileSleepMusic()
           : getDesktopSleepMusic(),

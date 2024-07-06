@@ -19,9 +19,10 @@ class _HomePageDesktopLayoutState extends State<HomePageDesktopLayout> {
     return const Material(
         child: Stack(
       children: [
+       // OnBoardingScreen(),
        WelcomeView(),
         
-        IgnorePointer(child: AnimationScreen(color: AppColors.white)),
+       IgnorePointer(child: AnimationScreen(color: AppColors.white)),
         
       ],
     ));

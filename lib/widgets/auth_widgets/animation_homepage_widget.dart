@@ -2,6 +2,7 @@
 import 'dart:math';
 
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -17,52 +18,111 @@ class MyAnimationClipPath extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
-    return  Column(
-        children: [
-          Expanded(child: Stack(children: [
-            
-            Positioned(
-              bottom: cos(animation.value*100)+100,
-              left:sin(animation.value*50) ,
-              
-              child:  SizedBox(
-                      width: width * 0.35,
-                      child: Image.asset(
-                        AppImages.logoonly,
-                        fit: BoxFit.fill,
-                      )),
-              // Image.asset(AppImages.logoonly)
-              ),
-            Positioned(
-              bottom: 0,
-              right: animation.value,
-              child: ClipPath(
-                clipper: MyBottomWaveClipper(),
-                child: Opacity(opacity: 0.5,
-                child: Container(color: AppColors.darkPrimary,
-                height: 200,
-                width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth?2000: 3000,//1000
-                ),),
-              )),
+    return width<AppConstants.maxTabletWidth?  getMobileWaves(context,width):getDesktopWaves(width);
+  }
 
-               Positioned(
-              bottom: 0,
-              left: animation.value,
-              child: ClipPath(
-                clipper: MyBottomWaveClipper(),
-                child: Opacity(opacity: 0.5,
-                child: Container(color: AppColors.darkPrimary,
-                height:200,
-                width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth? 2000:3000,//1000
-                ),),
-              )),
-
-          ],
+  Column getMobileWaves(BuildContext context,double width) {
+    return Column(
+      children: [
+        Expanded(child: Stack(children: [
+          
+          Positioned(
+            bottom:130,//sin(animation.value*12)+130,
+            left:10,// cos(animation.value*6) ,
             
-          ))
+            child:  Row(
+              children: [
+                SizedBox(
+                        width: width * 0.40,
+                        child: Image.asset(
+                          AppImages.logoonly,
+                          fit: BoxFit.fill,
+                        )),
+                        Text('Divine Connection',style:AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 24)) ,)
+              ],
+            ),
+            // Image.asset(AppImages.logoonly)
+            ),
+          Positioned(
+            bottom: 0,
+            right: animation.value,
+            child: ClipPath(
+              clipper: MyBottomWaveClipper(),
+              child: Opacity(opacity: 0.5,
+              child: Container(color: AppColors.darkPrimary,
+              height: 200,
+              width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth?2000: 3000,//1000
+              ),),
+            )),
+
+             Positioned(
+            bottom: 0,
+            left: animation.value,
+            child: ClipPath(
+              clipper: MyBottomWaveClipper(),
+              child: Opacity(opacity: 0.5,
+              child: Container(color: AppColors.darkPrimary,
+              height:200,
+              width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth? 2000:3000,//1000
+              ),),
+            )),
+
         ],
-    
-    );
+          
+        ))
+      ],
+  
+  );
+  }
+
+
+   Column getDesktopWaves(double width) {
+    return Column(
+      children: [
+        Expanded(child: Stack(children: [
+          
+          Positioned(
+            bottom: cos(animation.value*100)+100,
+            left:sin(animation.value*50) ,
+            
+            child:  SizedBox(
+                    width: width * 0.35,
+                    child: Image.asset(
+                      AppImages.logoonly,
+                      fit: BoxFit.fill,
+                    )),
+            // Image.asset(AppImages.logoonly)
+            ),
+          Positioned(
+            bottom: 0,
+            right: animation.value,
+            child: ClipPath(
+              clipper: MyBottomWaveClipper(),
+              child: Opacity(opacity: 0.5,
+              child: Container(color: AppColors.darkPrimary,
+              height: 200,
+              width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth?2000: 3000,//1000
+              ),),
+            )),
+
+             Positioned(
+            bottom: 0,
+            left: animation.value,
+            child: ClipPath(
+              clipper: MyBottomWaveClipper(),
+              child: Opacity(opacity: 0.5,
+              child: Container(color: AppColors.darkPrimary,
+              height:200,
+              width:width<AppConstants.maxMobileWidth?1000:width<AppConstants.maxTabletWidth? 2000:3000,//1000
+              ),),
+            )),
+
+        ],
+          
+        ))
+      ],
+  
+  );
   }
 }
 

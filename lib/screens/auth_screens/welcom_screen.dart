@@ -1,5 +1,6 @@
 import 'package:divinecontrol/screens/auth_screens/main_cards_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -16,7 +17,7 @@ class WelcomeView extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-      backgroundColor: AppColors.primary.withOpacity(0.3),
+      backgroundColor: AppColors.primary.withOpacity(0.2),
       body:width<AppConstants.maxTabletWidth? getMobileWelcomeContent(height, width, context):getDesktopWelcomeContent(height, width, context),
     );
   }
@@ -28,7 +29,7 @@ class WelcomeView extends StatelessWidget {
           width: double.maxFinite,
           height: height / 1.7,
           decoration:
-              BoxDecoration(color: AppColors.primary.withOpacity(0.3)),
+              BoxDecoration(color: AppColors.primary.withOpacity(0.2)),
           child: Transform.scale(
             scale: width < AppConstants.maxMobileWidth ? 1.5 : 3,
             child: Image.asset(
@@ -53,7 +54,7 @@ class WelcomeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        'Welcome to \nWorld of Magic',
+                        'Welcome to \nDivine Connection',
                         textAlign: TextAlign.center,
                         style: width < AppConstants.maxMobileWidth
                             ? AppStyles.styleRufinaBold32(context).copyWith(
@@ -69,12 +70,13 @@ class WelcomeView extends StatelessWidget {
                       CustomWelcomeButton(
                         title: "Let's Start",
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  //builder: (context) => const LoginScreen(),
-                                  builder: (context) => const MainCardsPage(),
-                                  ),
-                                  );
+                          // Navigator.of(context).pushReplacement(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const MainCardsPage(),
+                          //         ),
+                          //         );
+
+                            Get.off(()=>const MainCardsPage(),transition: Transition.zoom,duration: const Duration(seconds: 2));
                         },
                       ),
                     ],
@@ -125,7 +127,7 @@ class WelcomeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        'Welcome to \nWorld of Magic',
+                        'Welcome to \nDivine Connection',
                         textAlign: TextAlign.center,
                         style:AppStyles.styleRufinaBold32(context).copyWith(
                                 color: AppColors.darkPrimary,

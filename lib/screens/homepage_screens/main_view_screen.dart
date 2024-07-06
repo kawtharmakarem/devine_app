@@ -26,7 +26,7 @@ class _MainViewScreenState extends State<MainViewScreen>
   MotionTabBarController? _motionTabBarController;
   String? title;
   final titles = [
-    'Divine your Connect...',
+    'Divine Connection',
     'shopping',
     'Today\'s Lucky',
     'settings'
@@ -63,7 +63,7 @@ class _MainViewScreenState extends State<MainViewScreen>
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.primary.withOpacity(0.3),
-          title: Text(width<AppConstants.maxTabletWidth? title ?? 'Divine your Connect...':titles[currentIndex],style:width<AppConstants.maxTabletWidth? AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary):AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 40)),),
+          title: Text(width<AppConstants.maxTabletWidth? title ?? 'Divine Connection':titles[currentIndex],style:width<AppConstants.maxTabletWidth? AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary):AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 40)),),
           centerTitle: true,
           
         ),

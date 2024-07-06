@@ -1,5 +1,5 @@
 
-import 'package:divinecontrol/screens/auth_screens/welcom_screen.dart';
+import 'package:divinecontrol/screens/onboarding_screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import '../../animation/staggered_raindrop_animation.dart';
 import '../../utils/app_colors.dart';
@@ -16,12 +16,14 @@ class HomePageMobileLayout extends StatefulWidget {
 class _HomePageMobileLayoutState extends State<HomePageMobileLayout> {
   @override
   Widget build(BuildContext context) {
-    return const Material(
+    return  Material(
+      
         child: Stack(
       children: [
-       WelcomeView(),
+        OnBoardingScreen(),
+      // WelcomeView(),
         
-        IgnorePointer(child: AnimationScreen(color: AppColors.white)),
+       const IgnorePointer(child: AnimationScreen(color: Colors.white)),
         
       ],
     ));
@@ -73,6 +75,7 @@ late  StaggeredRaindropAnimation _animation;
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: [
         SizedBox(
@@ -98,7 +101,9 @@ late  StaggeredRaindropAnimation _animation;
                 
                 visible: _animation.dropVisible.value
               ),
-              child:_animation.dropVisible.value? Image.asset(AppImages.logoonly,fit: BoxFit.cover,):Container(),
+              child:_animation.dropVisible.value? Transform.scale(
+                scale: 1.3,
+                child: Image.asset(AppImages.logoonly,fit: BoxFit.cover,)):Container(),
           )
           )
         ),

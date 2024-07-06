@@ -2,9 +2,11 @@
 class CustomCardModel{
   final String title;
   final String image;
-    final void Function() onTap;
+    final int index;
+        //final void Function()? onTap;
 
 
-  CustomCardModel(this.onTap,{required this.title, required this.image});
+
+  CustomCardModel({required this.title, required this.image,required this.index});
   
 }

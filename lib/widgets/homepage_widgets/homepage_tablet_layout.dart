@@ -1,4 +1,4 @@
-import 'package:divinecontrol/screens/auth_screens/welcom_screen.dart';
+import 'package:divinecontrol/screens/onboarding_screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import '../../animation/staggered_raindrop_animation.dart';
 import '../../utils/app_colors.dart';
@@ -15,11 +15,12 @@ class HomePageTabletLayout extends StatefulWidget {
 class _HomePageTabletLayoutState extends State<HomePageTabletLayout> {
   @override
   Widget build(BuildContext context) {
-    return const Material(
+    return  Material(
         child: Stack(
       children: [
-        WelcomeView(),
-        IgnorePointer(child: AnimationScreen(color: AppColors.white)),
+        OnBoardingScreen(),
+       // WelcomeView(),
+       const IgnorePointer(child: AnimationScreen(color: AppColors.white)),
       ],
     ));
   }

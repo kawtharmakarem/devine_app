@@ -56,14 +56,7 @@ static const String reservedtarotBg="assets/tarotimages/reservedtarot.jpg";
   static const String search="assets/tarotimages/search.svg";
   static const String bell="assets/tarotimages/bell.svg";
   static const String profile="assets/tarotimages/profile.svg";
-  //static const String weekend="assets/tarotimages/weekend.png";
-  //static const String weekly="assets/tarotimages/weekly.png";
-  //static const String whereis="assets/tarotimages/whereis.png";
-  //static const String firsthalf="assets/tarotimages/firsthalf.png";
-  //static const String change="assets/tarotimages/change.png";
-  //static const String hidden="assets/tarotimages/hidden.png";
-
-  static const String hand="assets/tarotimages/hand.svg";
+ static const String hand="assets/tarotimages/hand.svg";
   static const String eye="assets/tarotimages/eye.svg";
   static const String leftarrow="assets/tarotimages/leftarrow.svg";
   static const String share="assets/tarotimages/share.svg";
@@ -223,4 +216,8 @@ static const String shani="assets/shoppingimages/shani.png";
 //todayluckimages
 static const String obox="assets/todayluckimages/obox.json";
 static const String cbox="assets/todayluckimages/cbox.json";
+//onboarding
+static const String onboardingcard="assets/onboardingimages/tarotcard.png";
+static const String onboardingfirst="assets/onboardingimages/onboardingfirst.png";
+static const String onboardingsecond="assets/onboardingimages/onboardingsecond.png";
 }

@@ -18,16 +18,7 @@ class _MainCardsPageState extends State<MainCardsPage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor:AppColors.lightPurple1,
-        // appBar:width<AppConstants.maxTabletWidth? AppBar(
-        //   centerTitle: true,
-        //   title: Text('Login Or Register',style: AppStyles.styleBold24(context).copyWith(color:AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?24:32)),
-        //         ),
-        // backgroundColor:AppColors.lightPurple1,
-        // leading: SizedBox(
-        //   width:width<AppConstants.maxMobileWidth? 30:50,
-        //   child: Image.asset(AppImages.logoonly,fit: BoxFit.fill,),),
-        // )
-       // :null,
+       
         body: Container(
           decoration:const BoxDecoration(
             color: AppColors.lightPurple1,

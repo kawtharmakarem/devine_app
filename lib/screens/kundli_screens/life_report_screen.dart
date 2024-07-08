@@ -1,11 +1,10 @@
 import 'package:divinecontrol/screens/kundli_screens/lifereport_details_screen.dart';
-import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_datetimpicker.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_button.dart';
-import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_dropdown.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
+import 'package:divinecontrol/widgets/kundli_widgets/custom_kundli_cspicker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -21,6 +20,9 @@ class LifeReportScreen extends StatefulWidget {
 class _LifeReportScreenState extends State<LifeReportScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController textListController = TextEditingController();
+  String countryValue="";
+  String stateValue="";
+  String cityValue="";
   final List<String> items = [
     'City 1',
     'City 2',
@@ -44,25 +46,7 @@ class _LifeReportScreenState extends State<LifeReportScreen> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          "Enter Your details",
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 32)),
-        ),
-        backgroundColor: AppColors.lightPurple1,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:const CustomAppBar(title: "Enter Your Details", leading: true),
       body: Padding(
         padding: width < AppConstants.maxMobileWidth
             ? const EdgeInsets.symmetric(horizontal: 10)
@@ -98,11 +82,28 @@ class _LifeReportScreenState extends State<LifeReportScreen> {
                 SizedBox(
                   height: width < AppConstants.maxMobileWidth ? 15 : 30,
                 ),
-                CustomKundleDropDownList(
-                  items: items,
-                  label: "Place Of Birth :",
-                  controller: textListController,
-                ),
+                // CustomKundleDropDownList(
+                //   items: items,
+                //   label: "Place Of Birth :",
+                //   controller: textListController,
+                // ),
+                CustomKundlicscPicker(
+                  currentCountry: countryValue,
+                  currentState: stateValue,
+                  currentCity: cityValue,
+                  onCountryChanged: (value){
+                    setState(() {
+                      countryValue=value;
+                    });
+                  }, onStateChanged: (value){
+                    setState(() {
+                      stateValue=value!;
+                    });
+                  }, onCityChanged: (value){
+                    setState(() {
+                      cityValue=value!;
+                    });
+                  }),
                 width < AppConstants.maxMobileWidth
                     ? const SizedBox(
                         height: 10,

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:divinecontrol/screens/auth_screens/glass_register.dart';
 import 'package:divinecontrol/screens/homepage_screens/main_view_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -304,16 +305,25 @@ class _GlassLoginState extends State<GlassLogin> {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: height * 0.03,
+                        height: height * 0.01,
                       ),
-                      Text(
-                        'Welcome Back!!',
-                        style: AppStyles.styleRufinaBold32(context).copyWith(
-                            fontSize: getResponsiveFontSizeText(context,
-                                fontSize: width < AppConstants.maxMobileWidth
-                                    ? 40
-                                    : 60)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                           
+
+                          SizedBox(width: width*0.3,child: Image.asset(AppImages.companyLogo,fit: BoxFit.fill,),),
+                          Text(
+                            'Welcome Back!!',
+                            style: AppStyles.styleRufinaBold32(context).copyWith(
+                                fontSize: getResponsiveFontSizeText(context,
+                                    fontSize: width < AppConstants.maxMobileWidth
+                                        ? 32
+                                        : 60)),
+                          ),
+                        ],
                       ),
+                      SizedBox(height:height*0.02,),
                       Text(
                         'Please Login On Divine Connection',
                         style: AppStyles.stylePoppinsRegular20(context)
@@ -363,10 +373,11 @@ class _GlassLoginState extends State<GlassLogin> {
                       ),
                       CustomHomePageButton(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MainViewScreen()));
+                          // Navigator.of(context).pushReplacement(
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             const MainViewScreen()));
+                          Get.off(()=>const MainViewScreen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
                         },
                         title: 'Login',
                       ),
@@ -447,7 +458,9 @@ class _GlassLoginState extends State<GlassLogin> {
                     ],
                   ),
                 ),
-               const MyAnimationWidget()
+               Transform.translate(
+                offset: Offset(0, height<670?60:0),
+                child: const MyAnimationWidget())
               ],
             )
           :const GlassRegister(),
@@ -459,7 +472,7 @@ class _GlassLoginState extends State<GlassLogin> {
     return Stack(
       children: [
         Positioned(
-          top: height * 0.15,
+          bottom: height * 0.15,
           left: 20,
           child: Text(
             'Welcome Back!!',
@@ -523,10 +536,11 @@ class _GlassLoginState extends State<GlassLogin> {
 
                       CustomHomePageButton(
                         onTap: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MainViewScreen()));
+                          // Navigator.of(context).pushReplacement(
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             const MainViewScreen()));
+                          Get.off(()=>const MainViewScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
                         },
                         title: 'Login',
                       ),
@@ -537,8 +551,9 @@ class _GlassLoginState extends State<GlassLogin> {
                           questionText: "Don't have an account?",
                           buttonTitle: 'Register',
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const GlassRegister()));
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (context) => const GlassRegister()));
+                            Get.to(()=>const GlassRegister(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
                           }),
                       SizedBox(
                         height: height * 0.05,

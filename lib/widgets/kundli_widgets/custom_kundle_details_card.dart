@@ -2,8 +2,8 @@ import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_checkbox.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_datetimpicker.dart';
-import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_dropdown.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
+import 'package:divinecontrol/widgets/kundli_widgets/custom_kundli_cspicker.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_styles.dart';
@@ -23,16 +23,19 @@ class _CustomKundleDetailsCardState extends State<CustomKundleDetailsCard> {
   GlobalKey<FormState> formKey=GlobalKey();
   bool isChecked = false;
    TextEditingController textListController = TextEditingController();
-  final List<String> items = [
-    'City 1',
-    'City 2',
-    'City 3',
-    'City 4',
-    'City 5',
-    'City 6',
-    'City 7',
-    'City 8',
-  ];
+   String countryValue="";
+   String stateValue="";
+   String cityValue="";
+  // final List<String> items = [
+  //   'City 1',
+  //   'City 2',
+  //   'City 3',
+  //   'City 4',
+  //   'City 5',
+  //   'City 6',
+  //   'City 7',
+  //   'City 8',
+  // ];
 
   @override
   void dispose() {
@@ -98,13 +101,24 @@ class _CustomKundleDetailsCardState extends State<CustomKundleDetailsCard> {
                 const SizedBox(
                   height: 10,
                 ),
-                CustomKundleDropDownList(items: items, label: "Birth Place", controller: textListController)
-                // CustomKundleTextField(
-                //     hintText: "Enter birth city name",
-                //     label: "Birth Place",
-                //     controller: cityController),
-                //     const SizedBox(height: 10,),
-                   
+                // CustomKundleDropDownList(items: items, label: "Birth Place", controller: textListController)
+                CustomKundlicscPicker(
+                  currentCountry: countryValue,
+                  currentState: stateValue,
+                  currentCity: cityValue,
+                  onCountryChanged: (value){
+                    setState(() {
+                      countryValue=value;
+                    });
+                  }, onStateChanged: (value){
+                    setState(() {
+                      stateValue=value!;
+                    });
+                  }, onCityChanged: (value){
+                    setState(() {
+                      cityValue=value!;
+                    });
+                  })
                , const SizedBox(
                   height: 30,
                 )

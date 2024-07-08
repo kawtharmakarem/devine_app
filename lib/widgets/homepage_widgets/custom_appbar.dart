@@ -33,7 +33,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             color: AppColors.darkPrimary,
             fontSize: getResponsiveFontSizeText(context,
                 fontSize: width < AppConstants.maxMobileWidth
-                    ? 32
+                    ? 30
                     : width < AppConstants.maxTabletWidth
                         ? 42
                         : 46)),

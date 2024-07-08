@@ -29,49 +29,44 @@ class _CustomRegisterDatePickerState extends State<CustomRegisterDatePicker> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Row(
-    crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Expanded(
-          flex: 2,
-          child: Text(
-            widget.label,
-       style:  AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:width<AppConstants.maxTabletWidth? 28:32)),
+    return Container(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+
+      child: TextFormField(
+        
+        // validator: (data) {
+        //   if (data!.isEmpty) {
+        //     return 'Field is required';
+        //   } else {
+        //     return null;
+        //   }
+        // },
+        style: width < AppConstants.maxMobileWidth
+            ? AppStyles.stylePoppinsRegular20(context)
+            : AppStyles.stylePoppinsRegular20(context).copyWith(
+                fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
+        decoration: InputDecoration(
+                    contentPadding:const EdgeInsets.symmetric(horizontal: 0,vertical: 0),
+      
+          label: Text(widget.label,),
+            labelStyle: AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:width<AppConstants.maxTabletWidth? 28:32)),
+          
+           enabledBorder:const UnderlineInputBorder(
+            borderSide: BorderSide(
+              width: 1,
+              color: AppColors.darkPrimary
+            )
           ),
-        ),
-       
-        Expanded(
-        flex: 3,
-          child: TextFormField(
-            validator: (data) {
-              if (data!.isEmpty) {
-                return 'Field is required';
-              } else {
-                return null;
-              }
-            },
-            style: width < AppConstants.maxMobileWidth
-                ? AppStyles.stylePoppinsRegular20(context)
-                    
-                : AppStyles.stylePoppinsRegular20(context).copyWith(
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 26)),
-            decoration: InputDecoration(
-                errorStyle: width < AppConstants.maxMobileWidth
-                    ? AppStyles.stylePoppinsRegular20(context).copyWith(
-                        color: Colors.red,
-                        fontSize:
-                            getResponsiveFontSizeText(context, fontSize: 16))
-                    : AppStyles.stylePoppinsRegular20(context)
-                        .copyWith(color: Colors.red),
-               ),
-            controller: dateController,
-            onTap: () async {
-              FocusScope.of(context).requestFocus( FocusNode());
-              _selectDate(context, width);
-            },
-          ),
-        ),
-      ],
+          focusedBorder:const UnderlineInputBorder(
+            borderSide: BorderSide(width: 2,color: AppColors.darkPrimary)
+          )
+           ),
+        controller: dateController,
+        onTap: () async {
+          FocusScope.of(context).requestFocus( FocusNode());
+          _selectDate(context, width);
+        },
+      ),
     );
   }
 

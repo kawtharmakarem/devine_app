@@ -44,7 +44,7 @@ class _CustomCscPickerState extends State<CustomCscPicker> {
               flex: 2,
               child: Text(
                 'Place of birth :',
-      style:   AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:width<AppConstants.maxTabletWidth? 28:32)),
+            style: AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:width<AppConstants.maxTabletWidth? 28:32)),
               )),
           Expanded(
             flex: 3,
@@ -66,16 +66,18 @@ class _CustomCscPickerState extends State<CustomCscPicker> {
               countryDropdownLabel: "Country",
               stateDropdownLabel: "State",
               cityDropdownLabel: "City",
-              selectedItemStyle: AppStyles.stylePoppinsRegular20(context)
-                  .copyWith(
-                      fontSize:
-                          getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 18:28)),
-              dropdownHeadingStyle: AppStyles.stylePoppinsRegular20(context)
-                  .copyWith(fontWeight: FontWeight.w600),
-              dropdownItemStyle: AppStyles.stylePoppinsRegular20(context)
-                  .copyWith(
-                      fontSize:
-                          getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 18:28)),
+              selectedItemStyle:  width < AppConstants.maxMobileWidth
+          ? AppStyles.stylePoppinsRegular20(context)
+          : AppStyles.stylePoppinsRegular20(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
+              dropdownHeadingStyle: width < AppConstants.maxMobileWidth
+          ? AppStyles.stylePoppinsRegular20(context)
+          : AppStyles.stylePoppinsRegular20(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
+              dropdownItemStyle: width < AppConstants.maxMobileWidth
+          ? AppStyles.stylePoppinsRegular20(context)
+          : AppStyles.stylePoppinsRegular20(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
               dropdownDialogRadius: 10.0,
               searchBarRadius: 10.0,
               onCountryChanged: widget.onCountryChanged,

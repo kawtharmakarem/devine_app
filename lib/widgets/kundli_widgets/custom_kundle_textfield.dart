@@ -45,13 +45,13 @@ class _CustomKundleTextFieldState extends State<CustomKundleTextField> {
           ),
           TextFormField(
             keyboardType: widget.keyboardType,
-            validator: (data) {
-              if (data!.isEmpty) {
-                return 'Field is required';
-              } else {
-                return null;
-              }
-            },
+            // validator: (data) {
+            //   if (data!.isEmpty) {
+            //     return 'Field is required';
+            //   } else {
+            //     return null;
+            //   }
+            // },
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.styleRegular20(context)
                 : AppStyles.styleRegular20(context).copyWith(

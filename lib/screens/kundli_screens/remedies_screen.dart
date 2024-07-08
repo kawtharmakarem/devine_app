@@ -1,10 +1,9 @@
-import 'package:divinecontrol/screens/kundli_screens/lifereport_details_screen.dart';
 import 'package:divinecontrol/screens/kundli_screens/remedies_details_screen.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_datetimpicker.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_button.dart';
-import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_dropdown.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
+import 'package:divinecontrol/widgets/kundli_widgets/custom_kundli_cspicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,16 +21,20 @@ class RemediesScreen extends StatefulWidget {
 class _RemediesScreenState extends State<RemediesScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController textListController = TextEditingController();
-  final List<String> items = [
-    'City 1',
-    'City 2',
-    'City 3',
-    'City 4',
-    'City 5',
-    'City 6',
-    'City 7',
-    'City 8',
-  ];
+  String countryValue="";
+  String stateValue="";
+  String cityValue="";
+
+  // final List<String> items = [
+  //   'City 1',
+  //   'City 2',
+  //   'City 3',
+  //   'City 4',
+  //   'City 5',
+  //   'City 6',
+  //   'City 7',
+  //   'City 8',
+  // ];
   GlobalKey<FormState> formState = GlobalKey();
   @override
   void dispose() {
@@ -47,7 +50,7 @@ class _RemediesScreenState extends State<RemediesScreen> {
       backgroundColor: AppColors.lightPurple1,
       appBar: AppBar(
         title: Text(
-          "Enter Your details",
+          "Enter Your Details",
           style: width < AppConstants.maxMobileWidth
               ? AppStyles.styleBold24(context)
                   .copyWith(color: AppColors.darkPrimary)
@@ -98,11 +101,29 @@ class _RemediesScreenState extends State<RemediesScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                CustomKundleDropDownList(
-                  items: items,
-                  label: "Place Of Birth :",
-                  controller: textListController,
-                ),
+                // CustomKundleDropDownList(
+                //   items: items,
+                //   label: "Place Of Birth :",
+                //   controller: textListController,
+                // ),
+                CustomKundlicscPicker(
+                  currentCountry: countryValue,
+                  currentState: stateValue,
+                  currentCity: cityValue,
+                  onCountryChanged: (value){
+                    setState(() {
+                      countryValue=value;
+                    });
+                  }, onStateChanged: (value){
+                    setState(() {
+                      stateValue=value!;
+                    });
+                  }, onCityChanged: (value){
+                    setState(() {
+                      cityValue=value!;
+                    });
+                  }),
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,

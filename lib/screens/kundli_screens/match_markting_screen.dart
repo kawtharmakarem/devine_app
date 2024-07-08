@@ -1,12 +1,11 @@
 import 'package:divinecontrol/screens/kundli_screens/match_markting_details_screen.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_details_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 import '../../widgets/kundli_widgets/custom_kundle_button.dart';
 
 class MatchMarktingScreen extends StatelessWidget {
@@ -17,25 +16,7 @@ class MatchMarktingScreen extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          "Match Making",
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 32)),
-        ),
-        backgroundColor: AppColors.lightPurple1,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:const CustomAppBar(title: "Match Making", leading: true),
       body: width < AppConstants.maxTabletWidth
           ? getMobileMatchContent(context)
           : getDesktopMatchContent(context),
@@ -65,8 +46,9 @@ class MatchMarktingScreen extends StatelessWidget {
             CustomKundleButton(
               title: 'Match Kundli',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MatchMarktingDetailsScreen()));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => const MatchMarktingDetailsScreen()));
+                Get.to(()=>const MatchMarktingDetailsScreen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
               },
             ),
           ],
@@ -106,8 +88,9 @@ class MatchMarktingScreen extends StatelessWidget {
           CustomKundleButton(
             title: 'Match Kundli',
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const MatchMarktingDetailsScreen()));
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => const MatchMarktingDetailsScreen()));
+              Get.to(()=>const MatchMarktingDetailsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
             },
           ),
         ],

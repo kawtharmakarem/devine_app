@@ -25,7 +25,7 @@ class _HoroscopeScreenState extends State<HoroscopeScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar:const CustomAppBar(title: "HoroScope", leading:true),
+      appBar:const CustomAppBar(title: "Horoscope", leading:true),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width / 20),
         child: SingleChildScrollView(
@@ -52,12 +52,8 @@ class _HoroscopeScreenState extends State<HoroscopeScreen> {
                 index: index,
                 horoscopeModel: horoscopes[index],
                 onTap: () {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //     builder: (context) => HoroscopeDetailsScreen(
-                  //         horoscopeModel: horoscopes[index]),
-                  //         ),
-                  //         );
-                  Get.to(()=>HoroscopeDetailsScreen(horoscopeModel: horoscopes[index]),transition: Transition.size,duration:const Duration(seconds: 1));
+                  
+                  Get.to(()=>HoroscopeDetailsScreen(horoscopeModel: horoscopes[index]),transition: Transition.circularReveal,duration:const Duration(seconds: 2));
                 },
               );
             })
@@ -83,9 +79,13 @@ class _HoroscopeScreenState extends State<HoroscopeScreen> {
                 index: index,
                 horoscopeModel: horoscopes[index],
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => HoroscopeDetailsScreen(
-                          horoscopeModel: horoscopes[index])));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (context) => HoroscopeDetailsScreen(
+                  //         horoscopeModel: horoscopes[index]),
+                  //         ),
+                  //         );
+                                    Get.to(()=>HoroscopeDetailsScreen(horoscopeModel: horoscopes[index]),transition: Transition.zoom,duration:const Duration(seconds: 2));
+
                 },
               );
             }),

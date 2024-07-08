@@ -1,8 +1,6 @@
 // 
-import 'dart:math';
 
 import 'package:divinecontrol/utils/app_constants.dart';
-import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -18,7 +16,8 @@ class MyAnimationClipPath extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
-    return width<AppConstants.maxTabletWidth?  getMobileWaves(context,width):getDesktopWaves(width);
+    double height=MediaQuery.sizeOf(context).height;
+    return width<AppConstants.maxTabletWidth?  getMobileWaves(context,width):getDesktopWaves(width,height);
   }
 
   Column getMobileWaves(BuildContext context,double width) {
@@ -26,23 +25,14 @@ class MyAnimationClipPath extends AnimatedWidget {
       children: [
         Expanded(child: Stack(children: [
           
-          Positioned(
-            bottom:130,//sin(animation.value*12)+130,
-            left:10,// cos(animation.value*6) ,
+          // Positioned(
+          //   bottom:110,//sin(animation.value*12)+130,
+          //   left:10,// cos(animation.value*6) ,
             
-            child:  Row(
-              children: [
-                SizedBox(
-                        width: width * 0.40,
-                        child: Image.asset(
-                          AppImages.logoonly,
-                          fit: BoxFit.fill,
-                        )),
-                        Text('Divine Connection',style:AppStyles.styleRufinaBold32(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 24)) ,)
-              ],
-            ),
-            // Image.asset(AppImages.logoonly)
-            ),
+          //   child: SizedBox(
+          //     width: width*0.4,
+          //     child: Image.asset(AppImages.companyLogo,fit: BoxFit.fill,))
+          //   ),
           Positioned(
             bottom: 0,
             right: animation.value,
@@ -76,19 +66,21 @@ class MyAnimationClipPath extends AnimatedWidget {
   }
 
 
-   Column getDesktopWaves(double width) {
+   Column getDesktopWaves(double width,double height) {
     return Column(
       children: [
         Expanded(child: Stack(children: [
           
           Positioned(
-            bottom: cos(animation.value*100)+100,
-            left:sin(animation.value*50) ,
+           // bottom: cos(animation.value*100)+100,
+           // left:sin(animation.value*50) ,
+           bottom:height*0.3 ,
+           left: 20,
             
             child:  SizedBox(
-                    width: width * 0.35,
+                    width: width * 0.3,
                     child: Image.asset(
-                      AppImages.logoonly,
+                      AppImages.companyLogo,
                       fit: BoxFit.fill,
                     )),
             // Image.asset(AppImages.logoonly)

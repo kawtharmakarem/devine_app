@@ -1,7 +1,6 @@
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_score_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';

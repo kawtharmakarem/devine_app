@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:glassmorphism/glassmorphism.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -42,276 +40,276 @@ class _GlassRegisterState extends State<GlassRegister> {
         : getDesktopAnimatioRegister(width, context, height);
   }
 
-  TweenAnimationBuilder<double> getMobileRegisterContent(
-      double width, double height, BuildContext context) {
-    return TweenAnimationBuilder<double>(
-        tween: Tween(begin: 0, end: val),
-        duration: const Duration(seconds: 1),
-        onEnd: () => setState(() {
-              print('OnEndRegiste');
-            }),
-        builder: (context, value, child) {
-          return Transform(
-            transform: Matrix4.identity()
-              ..setEntry(3, 2, 0.001)
-              ..rotateY(value),
-            alignment: Alignment.bottomCenter,
-            child: child,
-          );
-        },
-        child: switchScreen
-            ? Transform(
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..rotateY(pi),
-                alignment: Alignment.bottomCenter,
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                        child: Container(
-                      decoration: BoxDecoration(color: AppColors.lightPurple1),
-                      child: Transform.scale(
-                          scale: 1.5, child: Image.asset(AppImages.logoonly)),
-                    )),
-                    ListView(
-                      physics: BouncingScrollPhysics(),
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      children: [
-                        GlassmorphicContainer(
-                          width: width,
-                          height: height * 0.8,
-                          borderRadius: 20,
-                          alignment: Alignment.bottomCenter,
-                          linearGradient: LinearGradient(
-                              colors: [
-                                // Color(0xffffffff).withOpacity(0.1),
-                                // Color(0xffffffff).withOpacity(0.05)
-                                AppColors.darkPrimary.withOpacity(0.1),
-                                AppColors.darkPrimary.withOpacity(0.05),
-                              ],
-                              stops: [
-                                0.1,
-                                1
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.centerRight),
-                          border: 2,
-                          blur: 3,
-                          borderGradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                AppColors.darkPrimary.withOpacity(0.5),
-                                AppColors.darkPrimary.withOpacity(0.5),
+  // TweenAnimationBuilder<double> getMobileRegisterContent(
+  //     double width, double height, BuildContext context) {
+  //   return TweenAnimationBuilder<double>(
+  //       tween: Tween(begin: 0, end: val),
+  //       duration: const Duration(seconds: 1),
+  //       onEnd: () => setState(() {
+  //             print('OnEndRegiste');
+  //           }),
+  //       builder: (context, value, child) {
+  //         return Transform(
+  //           transform: Matrix4.identity()
+  //             ..setEntry(3, 2, 0.001)
+  //             ..rotateY(value),
+  //           alignment: Alignment.bottomCenter,
+  //           child: child,
+  //         );
+  //       },
+  //       child: switchScreen
+  //           ? Transform(
+  //               transform: Matrix4.identity()
+  //                 ..setEntry(3, 2, 0.001)
+  //                 ..rotateY(pi),
+  //               alignment: Alignment.bottomCenter,
+  //               child: Stack(
+  //                 children: [
+  //                   Positioned.fill(
+  //                       child: Container(
+  //                     decoration: BoxDecoration(color: AppColors.lightPurple1),
+  //                     child: Transform.scale(
+  //                         scale: 1.5, child: Image.asset(AppImages.logoonly)),
+  //                   )),
+  //                   ListView(
+  //                     physics: BouncingScrollPhysics(),
+  //                     padding: EdgeInsets.symmetric(horizontal: 15),
+  //                     children: [
+  //                       GlassmorphicContainer(
+  //                         width: width,
+  //                         height: height * 0.8,
+  //                         borderRadius: 20,
+  //                         alignment: Alignment.bottomCenter,
+  //                         linearGradient: LinearGradient(
+  //                             colors: [
+  //                               // Color(0xffffffff).withOpacity(0.1),
+  //                               // Color(0xffffffff).withOpacity(0.05)
+  //                               AppColors.darkPrimary.withOpacity(0.1),
+  //                               AppColors.darkPrimary.withOpacity(0.05),
+  //                             ],
+  //                             stops: [
+  //                               0.1,
+  //                               1
+  //                             ],
+  //                             begin: Alignment.topLeft,
+  //                             end: Alignment.centerRight),
+  //                         border: 2,
+  //                         blur: 3,
+  //                         borderGradient: LinearGradient(
+  //                             begin: Alignment.topLeft,
+  //                             end: Alignment.bottomRight,
+  //                             colors: [
+  //                               AppColors.darkPrimary.withOpacity(0.5),
+  //                               AppColors.darkPrimary.withOpacity(0.5),
 
-                                //Color(0xffffffff).withOpacity(0.5),
-                                // Color(0xffffffff).withOpacity(0.5)
-                              ]),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Text(
-                                  'Register here',
-                                  style: AppStyles.styleRufinaBold32(context)
-                                      .copyWith(
-                                          fontSize: getResponsiveFontSizeText(
-                                              context,
-                                              fontSize: width <
-                                                      AppConstants
-                                                          .maxMobileWidth
-                                                  ? 40
-                                                  : 60)),
-                                ),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
-                                Text(
-                                  'Create Your Account On Divine Connection',
-                                  textAlign: TextAlign.center,
-                                  style: AppStyles.styleRufinaBold32(context)
-                                      .copyWith(
-                                          color: AppColors.darkPrimary,
-                                          fontSize: getResponsiveFontSizeText(
-                                              context,
-                                              fontSize: width <
-                                                      AppConstants
-                                                          .maxMobileWidth
-                                                  ? 18
-                                                  : 28)),
-                                ),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
+  //                               //Color(0xffffffff).withOpacity(0.5),
+  //                               // Color(0xffffffff).withOpacity(0.5)
+  //                             ]),
+  //                         child: SingleChildScrollView(
+  //                           child: Column(
+  //                             children: [
+  //                               Text(
+  //                                 'Register here',
+  //                                 style: AppStyles.styleRufinaBold32(context)
+  //                                     .copyWith(
+  //                                         fontSize: getResponsiveFontSizeText(
+  //                                             context,
+  //                                             fontSize: width <
+  //                                                     AppConstants
+  //                                                         .maxMobileWidth
+  //                                                 ? 40
+  //                                                 : 60)),
+  //                               ),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
+  //                               Text(
+  //                                 'Create Your Account On Divine Connection',
+  //                                 textAlign: TextAlign.center,
+  //                                 style: AppStyles.styleRufinaBold32(context)
+  //                                     .copyWith(
+  //                                         color: AppColors.darkPrimary,
+  //                                         fontSize: getResponsiveFontSizeText(
+  //                                             context,
+  //                                             fontSize: width <
+  //                                                     AppConstants
+  //                                                         .maxMobileWidth
+  //                                                 ? 18
+  //                                                 : 28)),
+  //                               ),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
 
-                                const NormalTextField(
-                                    labelText: "First Name",
-                                    prefixIcon: Icon(
-                                      Icons.account_circle,
-                                      color: AppColors.darkPrimary,
-                                    ),
-                                    hintText: "Enter Your First Name"),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
-                                const NormalTextField(
-                                    labelText: "Last Name",
-                                    prefixIcon: Icon(
-                                      Icons.account_circle,
-                                      color: AppColors.darkPrimary,
-                                    ),
-                                    hintText: "Enter Your Last Name"),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
+  //                               const NormalTextField(
+  //                                   labelText: "First Name",
+  //                                   prefixIcon: Icon(
+  //                                     Icons.account_circle,
+  //                                     color: AppColors.darkPrimary,
+  //                                   ),
+  //                                   hintText: "Enter Your First Name"),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
+  //                               const NormalTextField(
+  //                                   labelText: "Last Name",
+  //                                   prefixIcon: Icon(
+  //                                     Icons.account_circle,
+  //                                     color: AppColors.darkPrimary,
+  //                                   ),
+  //                                   hintText: "Enter Your Last Name"),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
 
-                                const NormalTextField(
-                                    labelText: 'Email',
-                                    prefixIcon: Icon(
-                                      Icons.email,
-                                    ),
-                                    hintText: 'Enter Your Email'),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
-                                const NormalTextField(
-                                    labelText: 'Phone No.',
-                                    prefixIcon: Icon(
-                                      Icons.phone,
-                                    ),
-                                    hintText: 'Enter Your Mobile Number'),
+  //                               const NormalTextField(
+  //                                   labelText: 'Email',
+  //                                   prefixIcon: Icon(
+  //                                     Icons.email,
+  //                                   ),
+  //                                   hintText: 'Enter Your Email'),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
+  //                               const NormalTextField(
+  //                                   labelText: 'Phone No.',
+  //                                   prefixIcon: Icon(
+  //                                     Icons.phone,
+  //                                   ),
+  //                                   hintText: 'Enter Your Mobile Number'),
 
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
 
-                                const PasswordTextField(
-                                    labelText: 'Password',
-                                    hintText: "Enter Your Password"),
-                                SizedBox(
-                                  height: height * 0.0075,
-                                ),
+  //                               const PasswordTextField(
+  //                                   labelText: 'Password',
+  //                                   hintText: "Enter Your Password"),
+  //                               SizedBox(
+  //                                 height: height * 0.0075,
+  //                               ),
 
-                                const PasswordTextField(
-                                    labelText: "Confrim Password",
-                                    hintText: "ReEnter Your Password"),
-                                SizedBox(
-                                  height: height * 0.05,
-                                ),
-                                CustomHomePageButton(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) => Container()));
-                                  },
-                                  title: 'Register',
-                                ),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.center,
-                                //   children: [
-                                //     Text(
-                                //       'Already have an account!',
-                                //       style: TextStyle(color: Colors.white),
-                                //     ),
-                                //     TextButton(
-                                //         onPressed: () {
-                                //           setState(() {
-                                //             val = pi;
-                                //             registerTimer =
-                                //                 Timer(Duration(milliseconds: 500), () {
-                                //               setState(() {
-                                //                 switchScreen = false;
-                                //               });
-                                //             });
-                                //           });
+  //                               const PasswordTextField(
+  //                                   labelText: "Confrim Password",
+  //                                   hintText: "ReEnter Your Password"),
+  //                               SizedBox(
+  //                                 height: height * 0.05,
+  //                               ),
+  //                               CustomHomePageButton(
+  //                                 onTap: () {
+  //                                   Navigator.of(context).push(
+  //                                       MaterialPageRoute(
+  //                                           builder: (context) => Container()));
+  //                                 },
+  //                                 title: 'Register',
+  //                               ),
+  //                               // Row(
+  //                               //   mainAxisAlignment: MainAxisAlignment.center,
+  //                               //   children: [
+  //                               //     Text(
+  //                               //       'Already have an account!',
+  //                               //       style: TextStyle(color: Colors.white),
+  //                               //     ),
+  //                               //     TextButton(
+  //                               //         onPressed: () {
+  //                               //           setState(() {
+  //                               //             val = pi;
+  //                               //             registerTimer =
+  //                               //                 Timer(Duration(milliseconds: 500), () {
+  //                               //               setState(() {
+  //                               //                 switchScreen = false;
+  //                               //               });
+  //                               //             });
+  //                               //           });
 
-                                //         },
-                                //         child: Text(
-                                //           'Login',
-                                //           style: TextStyle(color: Colors.red),
-                                //         ))
-                                //   ],
-                                // )
-                                CustomHomeTextButton(
-                                    questionText: 'Already have an account?',
-                                    buttonTitle: "Login",
-                                    onPressed: () {
-                                      setState(() {
-                                        val = pi;
-                                        registerTimer = Timer(
-                                            Duration(milliseconds: 500), () {
-                                          setState(() {
-                                            switchScreen = false;
-                                          });
-                                        });
-                                      });
-                                      // Get.to(()=>GlassLogin(),transition: Transition.zoom,duration: Duration(seconds: 3));
-                                    }),
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                        child: Divider(
-                                      color: AppColors.black,
-                                    )),
-                                    Text(
-                                      'or signup with',
-                                      style: AppStyles.stylePoppinsRegular20(
-                                              context)
-                                          .copyWith(
-                                              fontSize:
-                                                  getResponsiveFontSizeText(
-                                                      context,
-                                                      fontSize: width <
-                                                              AppConstants
-                                                                  .maxMobileWidth
-                                                          ? 18
-                                                          : 24)),
-                                    ),
-                                    const Expanded(
-                                        child: Divider(
-                                      color: AppColors.black,
-                                    ))
-                                  ],
-                                ),
+  //                               //         },
+  //                               //         child: Text(
+  //                               //           'Login',
+  //                               //           style: TextStyle(color: Colors.red),
+  //                               //         ))
+  //                               //   ],
+  //                               // )
+  //                               CustomHomeTextButton(
+  //                                   questionText: 'Already have an account?',
+  //                                   buttonTitle: "Login",
+  //                                   onPressed: () {
+  //                                     setState(() {
+  //                                       val = pi;
+  //                                       registerTimer = Timer(
+  //                                           Duration(milliseconds: 500), () {
+  //                                         setState(() {
+  //                                           switchScreen = false;
+  //                                         });
+  //                                       });
+  //                                     });
+  //                                     // Get.to(()=>GlassLogin(),transition: Transition.zoom,duration: Duration(seconds: 3));
+  //                                   }),
+  //                               Row(
+  //                                 children: [
+  //                                   const Expanded(
+  //                                       child: Divider(
+  //                                     color: AppColors.black,
+  //                                   )),
+  //                                   Text(
+  //                                     'or signup with',
+  //                                     style: AppStyles.stylePoppinsRegular20(
+  //                                             context)
+  //                                         .copyWith(
+  //                                             fontSize:
+  //                                                 getResponsiveFontSizeText(
+  //                                                     context,
+  //                                                     fontSize: width <
+  //                                                             AppConstants
+  //                                                                 .maxMobileWidth
+  //                                                         ? 18
+  //                                                         : 24)),
+  //                                   ),
+  //                                   const Expanded(
+  //                                       child: Divider(
+  //                                     color: AppColors.black,
+  //                                   ))
+  //                                 ],
+  //                               ),
 
-                                Row(
-                                  children: [
-                                    const Spacer(),
-                                    IconButton(
-                                        onPressed: () {
-                                          // launch a new page with url on web
-                                          //launchUrlString('https://www.google.com');
-                                        },
-                                        icon: Image.asset(
-                                          AppImages.google,
-                                          fit: BoxFit.fill,
-                                          width: width * 0.08,
-                                        )),
-                                    // SizedBox(
-                                    //   width: width*0.027,
-                                    // ),
-                                    IconButton(
-                                        onPressed: () {
-                                          // launchUrlString("https://www.facebook.com");
-                                        },
-                                        icon: Image.asset(
-                                          AppImages.facebook,
-                                          fit: BoxFit.fill,
-                                          width: width * 0.08,
-                                        )),
-                                    const Spacer()
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            : GlassLogin());
-  }
+  //                               Row(
+  //                                 children: [
+  //                                   const Spacer(),
+  //                                   IconButton(
+  //                                       onPressed: () {
+  //                                         // launch a new page with url on web
+  //                                         //launchUrlString('https://www.google.com');
+  //                                       },
+  //                                       icon: Image.asset(
+  //                                         AppImages.google,
+  //                                         fit: BoxFit.fill,
+  //                                         width: width * 0.08,
+  //                                       )),
+  //                                   // SizedBox(
+  //                                   //   width: width*0.027,
+  //                                   // ),
+  //                                   IconButton(
+  //                                       onPressed: () {
+  //                                         // launchUrlString("https://www.facebook.com");
+  //                                       },
+  //                                       icon: Image.asset(
+  //                                         AppImages.facebook,
+  //                                         fit: BoxFit.fill,
+  //                                         width: width * 0.08,
+  //                                       )),
+  //                                   const Spacer()
+  //                                 ],
+  //                               )
+  //                             ],
+  //                           ),
+  //                         ),
+  //                       )
+  //                     ],
+  //                   )
+  //                 ],
+  //               ),
+  //             )
+  //           : GlassLogin());
+  // }
 
   TweenAnimationBuilder<double> getMobileRegisterWaveContent(
       double width, double height, BuildContext context) {
@@ -344,15 +342,21 @@ class _GlassRegisterState extends State<GlassRegister> {
                     SingleChildScrollView(
                       child: Column(
                         children: [
-                          Text(
-                            'Register here',
-                            style: AppStyles.styleRufinaBold32(context)
-                                .copyWith(
-                                    fontSize: getResponsiveFontSizeText(context,
-                                        fontSize:
-                                            width < AppConstants.maxMobileWidth
-                                                ? 40
-                                                : 60)),
+                          Row(
+                            children: [
+                            SizedBox(width: width*0.3,child: Image.asset(AppImages.companyLogo,fit: BoxFit.fill,),),
+
+                              Text(
+                                'Register here',
+                                style: AppStyles.styleRufinaBold32(context)
+                                    .copyWith(
+                                        fontSize: getResponsiveFontSizeText(context,
+                                            fontSize:
+                                                width < AppConstants.maxMobileWidth
+                                                    ? 40
+                                                    : 60)),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             height: height * 0.0075,
@@ -508,7 +512,7 @@ class _GlassRegisterState extends State<GlassRegister> {
                                   icon: Image.asset(
                                     AppImages.facebook,
                                     fit: BoxFit.fill,
-                                    width: width * 0.08,
+                                    width: width * 0.07,
                                   )),
                               const Spacer()
                             ],
@@ -517,7 +521,7 @@ class _GlassRegisterState extends State<GlassRegister> {
                       ),
                     ),
                     Transform.translate(
-                      offset: Offset(0, height<=670? 50:0),
+                      offset: Offset(0, height<=670? 70:0),
                       child: const MyAnimationWidget())
                   ],
                 ),
@@ -531,10 +535,10 @@ class _GlassRegisterState extends State<GlassRegister> {
       child: Scaffold(
         body: Stack(children: [
           Positioned(
-            top: height * 0.1,
-            left: 20,
+            bottom: height * 0.15,
+          left: 20,
             child: Text(
-              'Register Here ...',
+              'Register Here',
               style: AppStyles.styleRufinaBold32(context).copyWith(
                   fontSize: getResponsiveFontSizeText(context,
                       fontSize: width < AppConstants.maxMobileWidth ? 40 : 60)),
@@ -630,7 +634,9 @@ class _GlassRegisterState extends State<GlassRegister> {
                                 questionText: 'Already have an account?',
                                 buttonTitle: "Login",
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Get.back();
+                                   //Navigator.pop(context);
+                                 // Get.off(()=>const GlassLogin(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
                                 }),
                             Row(
                               children: [

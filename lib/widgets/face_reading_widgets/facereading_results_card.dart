@@ -24,10 +24,14 @@ class FaceReadingResultsCard extends StatelessWidget {
         ),
         child: Container(
             color: AppColors.white,
-            child: ExpansionTile(
-              initiallyExpanded: true,
+            child: Column(
+             // initiallyExpanded: true,
               
-              title: Text(
+             // title:
+              
+              
+              children: [
+                 Text(
                 faceModel.title,
                 style: width < AppConstants.maxMobileWidth
                     ? AppStyles.styleBold24(context).copyWith(
@@ -35,9 +39,7 @@ class FaceReadingResultsCard extends StatelessWidget {
                             getResponsiveFontSizeText(context, fontSize: 22))
                     : AppStyles.styleBold24(context).copyWith(
                         fontSize:
-                            getResponsiveFontSizeText(context, fontSize: 32)),
-              ),
-              children: [
+                            getResponsiveFontSizeText(context, fontSize: 32))),
                 Image.asset(faceModel.image),
                 const Divider(
                   color: AppColors.black,
@@ -47,20 +49,28 @@ class FaceReadingResultsCard extends StatelessWidget {
                 Container(
                   padding:
                       const EdgeInsets.only(left: 10, right: 10, bottom: 5),
-                  child: Text(
-                    faceModel.subTitle,
-                    // overflow: TextOverflow.ellipsis,
-                    // maxLines: 5,
-                    style: width < AppConstants.maxMobileWidth
-                        ? AppStyles.styleRegular18(context).copyWith(
-                            fontSize: getResponsiveFontSizeTextTarot(context,
-                                fontSize: 24),
-                            color: AppColors.black)
-                        : width < AppConstants.maxTabletWidth
-                            ? AppStyles.styleRegular20(context)
-                            : AppStyles.styleRegular20(context).copyWith(
-                                fontSize: getResponsiveFontSizeText(context,
-                                    fontSize: 24)),
+                  child: Expanded(
+                    
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        Text(
+                          faceModel.subTitle,
+                          // overflow: TextOverflow.ellipsis,
+                          // maxLines: 5,
+                          style: width < AppConstants.maxMobileWidth
+                              ? AppStyles.styleRegular20(context).copyWith(
+                                  fontSize: getResponsiveFontSizeText(context,
+                                      fontSize: 20),
+                                  color: AppColors.black)
+                              : width < AppConstants.maxTabletWidth
+                                  ? AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))
+                                  : AppStyles.styleRegular20(context).copyWith(
+                                      fontSize: getResponsiveFontSizeText(context,
+                                          fontSize: 28)),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],

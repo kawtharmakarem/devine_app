@@ -19,8 +19,8 @@ class CustomHomePageButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width:width<AppConstants.maxTabletWidth? width * 0.8:width*0.35,
-        height:width<AppConstants.maxTabletWidth? height * 0.075:height*0.09,
+        width:width<AppConstants.maxTabletWidth? width * 0.5:width*0.2,
+        height:width<AppConstants.maxTabletWidth? height * 0.07:height*0.09,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: AppColors.darkPrimary),
@@ -30,7 +30,7 @@ class CustomHomePageButton extends StatelessWidget {
                     color: AppColors.white,
                     fontSize: getResponsiveFontSizeText(context,
                         fontSize: width < AppConstants.maxMobileWidth
-                            ? 22
+                            ? 24
                             : width < AppConstants.maxTabletWidth
                                 ? 28
                                 : 32)))),

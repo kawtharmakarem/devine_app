@@ -2,13 +2,12 @@ import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
 import 'package:divinecontrol/screens/astrology_screens/astrology_details_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/astrology_custom_card.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_toggle_button.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 
 class AstrologyMainPage extends StatelessWidget {
   const AstrologyMainPage({super.key});
@@ -18,25 +17,7 @@ class AstrologyMainPage extends StatelessWidget {
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar:  AppBar(
-        title: Text(
-          'Astrology',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Astrology", leading: true),
       body: Container(
         padding:const EdgeInsets.only(top:15),
         child: Column(

@@ -115,6 +115,8 @@ static const String background="assets/homepageimages/background.png";
 static const String google="assets/homepageimages/google.png";
 static const String facebook="assets/homepageimages/facebook.png";
 static const String logoonly="assets/homepageimages/logoonly.png";
+static const String forgotpassword="assets/homepageimages/forgotpassword.png";
+static const String ques="assets/homepageimages/question.png";
 
 //Numerology
 static const String numerologyLogo="assets/numerologyimages/numlogo.png";

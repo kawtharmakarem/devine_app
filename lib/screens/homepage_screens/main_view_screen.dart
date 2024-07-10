@@ -29,7 +29,7 @@ class _MainViewScreenState extends State<MainViewScreen>
     'Divine Connection',
     'shopping',
     'Today\'s Lucky',
-    'settings'
+    'Settings'
   ];
   final _screens = [
   const DesktopLayout(),

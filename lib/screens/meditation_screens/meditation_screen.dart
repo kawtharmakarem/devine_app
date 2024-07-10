@@ -1,59 +1,3 @@
-// import 'package:divinecontrol/models/meditation_models/meditation_models.dart';
-// import 'package:divinecontrol/screens/meditation_screens/meditation_details_screen.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-
-// import '../../utils/app_colors.dart';
-// import '../../utils/app_constants.dart';
-// import '../../utils/app_images.dart';
-// import '../../utils/app_styles.dart';
-// import '../../widgets/meditation_widgets/custom_meditation_card.dart';
-
-// class MeditationScreen extends StatelessWidget {
-//   const MeditationScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//    double width = MediaQuery.sizeOf(context).width;
-//     return Scaffold(
-//       backgroundColor: AppColors.lightPurple1,
-//       appBar: AppBar(
-//         title: Text(
-//           'Meditation',
-//           style: width < AppConstants.maxMobileWidth
-//               ? AppStyles.styleBold24(context)
-//                   .copyWith(color: AppColors.darkPrimary)
-//               : AppStyles.styleBold24(context).copyWith(
-//                   color: AppColors.darkPrimary,
-//                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-//         ),
-//         backgroundColor: AppColors.primary,
-//         centerTitle: true,
-//         leading: IconButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           icon: SvgPicture.asset(AppImages.leftArrow),
-//         ),
-//       ),
-//       body: Container(
-//         width: width,
-//         child: SingleChildScrollView(
-//           child: Wrap(
-//             alignment: WrapAlignment.spaceEvenly,
-//           children: [
-//            for(final item in items)
-//            Padding(
-//              padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 25,vertical: 25),
-//              child: CustomMeditationCard(onTap: (){
-//               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MeditationDetailsScreen(meditationModel: item)));
-//              }, meditationModel: item, index: items.indexOf(item),),
-//            )
-//           ],),
-//         ),
-//       ),
-//       );
-//   }
 
 import 'package:divinecontrol/screens/meditation_screens/meditation_details_screen.dart';
 import 'package:divinecontrol/widgets/meditation_widgets/custom_meditation_card.dart';
@@ -188,7 +132,7 @@ static List<String>? powerTitles=["Universal Light Energy Healing","White Light 
     MeditationModel(image: AppImages.positive, title: "Meditation for Positive Energy",videos: positiveVideos,videoTitles: positiveTitles),
     MeditationModel(image: AppImages.beginners, title: "Meditation for beginners",videos: beginnersVideos,videoTitles: beginnersTitles),
     MeditationModel(image: AppImages.mental, title: "Meditation for Mental Health",videos: mentalVideos,videoTitles: mentalTitles),
-    MeditationModel(image: AppImages.power, title: "Epic Power Meditation",videos: positiveVideos,videoTitles: powerTitles),
+    MeditationModel(image: AppImages.power, title: "Epic Power Meditation",videos: powerVideos,videoTitles: powerTitles,),
   ];
 }
 

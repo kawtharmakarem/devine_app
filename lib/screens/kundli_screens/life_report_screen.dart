@@ -5,6 +5,7 @@ import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_button.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundle_textfield.dart';
 import 'package:divinecontrol/widgets/kundli_widgets/custom_kundli_cspicker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -46,7 +47,7 @@ class _LifeReportScreenState extends State<LifeReportScreen> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar:const CustomAppBar(title: "Enter Your Details", leading: true),
+      appBar:const CustomAppBar(title: "Enter Details", leading: true),
       body: Padding(
         padding: width < AppConstants.maxMobileWidth
             ? const EdgeInsets.symmetric(horizontal: 10)
@@ -154,11 +155,12 @@ class _LifeReportScreenState extends State<LifeReportScreen> {
                     alignment: Alignment.center,
                     child: CustomKundleButton(
                         onPressed: () {
-                          if (formState.currentState!.validate()) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    const LifeReportDetailsScreen()));
-                          }
+                          // if (formState.currentState!.validate()) {
+                          //   Navigator.of(context).push(MaterialPageRoute(
+                          //       builder: (context) =>
+                          //           const LifeReportDetailsScreen()));
+                          // }
+                          Get.to(()=>const LifeReportDetailsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
                         },
                         title: "Submit"))
               ],

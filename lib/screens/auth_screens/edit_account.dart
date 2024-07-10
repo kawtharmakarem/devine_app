@@ -22,7 +22,7 @@ class EditAccountScreen extends StatefulWidget {
 class _EditAccountScreenState extends State<EditAccountScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController otpController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController cityController = TextEditingController();
   TextEditingController langController = TextEditingController();
   int _selectedValue = 1;
@@ -138,10 +138,10 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                         //width: 30,
                         // height: 40,
                         child: CountryCodePicker(
-                          textStyle: AppStyles.stylePoppinsRegular20(context)
+                          textStyle: AppStyles.styleRegular20(context)
                               .copyWith(
                                   fontSize: getResponsiveFontSizeText(context,
-                                      fontSize: 18)),
+                                      fontSize:width<AppConstants.maxMobileWidth? 18:28)),
                           initialSelection: '+91',
                           showDropDownButton: true,
                           enabled: true,
@@ -175,12 +175,13 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                 // CustomRegisterTextField(
                 //     controller: otpController, label: 'OTP :'),
                 NormalTextField(
-                    labelText: "OTP",
+                  controller: emailController,
+                    labelText: "Email",
                     prefixIcon: Icon(
-                      Icons.abc,
+                      Icons.email,
                       size: width < AppConstants.maxMobileWidth ? 30 : 50,
                     ),
-                    hintText: "OTP"),
+                    hintText: "Email"),
                 SizedBox(
                   height: height * 0.02,
                 ),
@@ -212,23 +213,12 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                 ),
                 getGender(context, width),
                
-                Row(
-                  children: [
-                    Expanded(
-                        child: CustomHomePageButton(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      title: 'Save',
-                    )),
-                    SizedBox(
-                      width: height * 0.01,
-                    ),
-                    Expanded(
-                        child:
-                            CustomHomePageButton(onTap: () {}, title: 'Edit'))
-                  ],
-                )
+                CustomHomePageButton(
+                                      onTap: () {
+                Navigator.pop(context);
+                                      },
+                                      title: 'Save',
+                                    )
               ],
             ),
           ),
@@ -250,7 +240,7 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
           'Edit Your Account',
           style: AppStyles.styleRufinaBold32(context).copyWith(
               fontSize: getResponsiveFontSizeText(context,
-                  fontSize: width < AppConstants.maxMobileWidth ? 40 : 60)),
+                  fontSize:  60)),
         ),
       ),
       Positioned(
@@ -340,13 +330,14 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               // CustomRegisterTextField(
               //     controller: otpController, label: 'OTP :'),
               NormalTextField(
-                labelText: "OTP :",
+                
+                labelText: "Email",
                 prefixIcon: const Icon(
                   Icons.abc,
                   size: 40,
                 ),
-                hintText: "OTP",
-                controller: otpController,
+                hintText: "Email",
+                controller: emailController,
               ),
               SizedBox(
                 height: height * 0.03,
@@ -383,22 +374,12 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
               SizedBox(
                 height: height * 0.02,
               ),
-              Row(
-                children: [
-                  Expanded(
-                      child: CustomHomePageButton(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    title: 'Save',
-                  )),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Expanded(
-                      child: CustomHomePageButton(onTap: () {}, title: 'Edit'))
-                ],
-              ),
+              CustomHomePageButton(
+                                  onTap: () {
+              Navigator.pop(context);
+                                  },
+                                  title: 'Save',
+                                ),
             ],
           )),
         ),

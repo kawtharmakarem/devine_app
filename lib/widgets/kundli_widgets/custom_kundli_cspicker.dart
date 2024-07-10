@@ -36,7 +36,7 @@ class _CustomKundlicscPickerState extends State<CustomKundlicscPicker> {
 
     return SizedBox(
       height:
-          width < AppConstants.maxMobileWidth ? height * 0.15 : height * 0.2,
+          width < AppConstants.maxMobileWidth ? height * 0.2 : height * 0.25,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

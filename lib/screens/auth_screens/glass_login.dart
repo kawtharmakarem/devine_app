@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:divinecontrol/screens/auth_screens/forgot_password.dart';
 import 'package:divinecontrol/screens/auth_screens/glass_register.dart';
 import 'package:divinecontrol/screens/homepage_screens/main_view_screen.dart';
 import 'package:flutter/material.dart';
@@ -314,7 +315,7 @@ class _GlassLoginState extends State<GlassLogin> {
 
                           SizedBox(width: width*0.3,child: Image.asset(AppImages.companyLogo,fit: BoxFit.fill,),),
                           Text(
-                            'Welcome Back!!',
+                            'Welcome Back !!',
                             style: AppStyles.styleRufinaBold32(context).copyWith(
                                 fontSize: getResponsiveFontSizeText(context,
                                     fontSize: width < AppConstants.maxMobileWidth
@@ -357,15 +358,18 @@ class _GlassLoginState extends State<GlassLogin> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          'Forgot password?',
+                        child: TextButton(
+                          onPressed: (){
+                            Get.to(()=>const ForgotPasswordSceen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
+                          },
+                         child:Text( 'Forgot password?  ',
                           style: AppStyles.stylePoppinsRegular20(context)
                               .copyWith(
                                   fontSize: getResponsiveFontSizeText(context,
                                       fontSize:
                                           width < AppConstants.maxMobileWidth
                                               ? 18
-                                              : 24)),
+                                              : 24)),)
                         ),
                       ),
                       SizedBox(
@@ -475,7 +479,7 @@ class _GlassLoginState extends State<GlassLogin> {
           bottom: height * 0.15,
           left: 20,
           child: Text(
-            'Welcome Back!!',
+            'Welcome Back !!',
             style: AppStyles.styleRufinaBold32(context).copyWith(
                 fontSize: getResponsiveFontSizeText(context,
                     fontSize: width < AppConstants.maxMobileWidth ? 40 : 60)),
@@ -522,13 +526,16 @@ class _GlassLoginState extends State<GlassLogin> {
                       ),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          'Forgot password?',
+                        child: TextButton(
+                          onPressed: (){
+                            Get.to(()=>const ForgotPasswordSceen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+                          },
+                        child: Text( 'Forgot password?  ',
                           style: AppStyles.stylePoppinsRegular20(context)
                               .copyWith(
                                   fontSize: getResponsiveFontSizeText(context,
                                       fontSize: 28)),
-                        ),
+                        ),)
                       ),
                       SizedBox(
                         height: height * 0.05,

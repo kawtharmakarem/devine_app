@@ -1,13 +1,13 @@
 import 'package:divinecontrol/screens/settings/account_page.dart';
+import 'package:divinecontrol/screens/settings/faqs_screen.dart';
 import 'package:divinecontrol/screens/settings/header_page.dart';
 import 'package:divinecontrol/screens/settings/notifications_page.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:get/get.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -21,16 +21,21 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
     double height=MediaQuery.sizeOf(context).height;
-    return Scaffold(body: width<AppConstants.maxTabletWidth?
+    return Scaffold(
+      
+      body: width<AppConstants.maxTabletWidth?
     getMobileSettingsContent(context, width, height):getDesktopSettingsContent(context, width, height));
   }
 
   ListView getMobileSettingsContent(BuildContext context, double width, double height) {
     return ListView(
+      padding:const EdgeInsets.symmetric(horizontal: 5),
     children: [
       
-      SettingsGroup(title: 'GENERAl',
-      titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+      SettingsGroup(
+
+        title: 'GENERAl',
+      titleTextStyle: AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
        children: [
       const  HeaderPage(),
                    SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
@@ -49,10 +54,10 @@ class _SettingsPageState extends State<SettingsPage> {
       ]),
       const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
       SettingsGroup(title: 'FEEDBACK', 
-      titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+      titleTextStyle: AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
       children: [
          SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-        buildReportBug(width),
+        buildFAQs(width),
          SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
         buildSendFeedBack(width),
       ])
@@ -99,7 +104,7 @@ class _SettingsPageState extends State<SettingsPage> {
         titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
         children: [
            SizedBox(height:height*0.035,),
-          buildReportBug(width),
+          buildFAQs(width),
            SizedBox(height:height*0.035,),
           buildSendFeedBack(width),
         ]),
@@ -127,12 +132,14 @@ class _SettingsPageState extends State<SettingsPage> {
 
     onTap: (){});
 
-    Widget buildReportBug(double width)=>SimpleSettingsTile(title: 'Repoer A Bug',
+    Widget buildFAQs(double width)=>SimpleSettingsTile(title: 'FAQs',
     subtitle: '',
     titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
     showDivider: false,
-    leading:const IconWidget(color: Colors.teal, icon: Icons.bug_report),
-    onTap: (){},);
+    leading:const IconWidget(color: Colors.teal, icon: Icons.question_mark_rounded),
+    onTap: (){
+      Get.to(()=>const FaqsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+    },);
 
     Widget buildSendFeedBack(double width)=>SimpleSettingsTile(title: 'Send FeedBack',
     subtitle: '',

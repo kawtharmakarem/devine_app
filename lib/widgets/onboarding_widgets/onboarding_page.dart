@@ -28,7 +28,7 @@ class OnBoardingPage extends StatelessWidget {
 
   Container getMobileOnBoardingContent(double height, BuildContext context) {
     return Container(
-      padding:const EdgeInsets.symmetric(horizontal: 30),
+      //padding:const EdgeInsets.symmetric(horizontal: 30),
       color: onBoardingModel.bgColor,
       child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -36,7 +36,7 @@ class OnBoardingPage extends StatelessWidget {
            SizedBox(height: height*0.01,),
           Image.asset(
             onBoardingModel.image,
-            height: height * 0.4,
+            height: height * 0.37,
           ),
           // SizedBox(height: height*0.02,),
           Text(
@@ -47,6 +47,7 @@ class OnBoardingPage extends StatelessWidget {
           ),
           Expanded(
             child: ListView(
+              padding: const EdgeInsets.only(left: 10,right: 30),
               shrinkWrap: true,
               children: [
                 Text(
@@ -55,7 +56,7 @@ class OnBoardingPage extends StatelessWidget {
                       fontFamily: 'Rufina',
                       color: AppColors.darkPrimary,
                       
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
                 ),
               ],
             ),
@@ -123,6 +124,7 @@ class OnBoardingPage extends StatelessWidget {
       color: onBoardingModel.bgColor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
             height: height*0.6,
@@ -149,20 +151,18 @@ class OnBoardingPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                Expanded(
-                  child: ListView(
-                    shrinkWrap: true,
-                    children: [
-                      Text(
-                        onBoardingModel.subTitle,textAlign: TextAlign.center,
-                        style: AppStyles.styleRegular20(context).copyWith(
-                            fontFamily: 'Rufina',
-                            color: AppColors.darkPrimary,
-                            fontWeight: FontWeight.w500,
-                            fontSize: getResponsiveFontSizeText(context, fontSize: 36)),
-                      ),
-                    ],
-                  ),
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Text(
+                      onBoardingModel.subTitle,textAlign: TextAlign.center,
+                      style: AppStyles.styleRegular20(context).copyWith(
+                          fontFamily: 'Rufina',
+                          color: AppColors.darkPrimary,
+                          fontWeight: FontWeight.w500,
+                          fontSize: getResponsiveFontSizeText(context, fontSize: 36)),
+                    ),
+                  ],
                 ),
                               const SizedBox(height: 130,)
 

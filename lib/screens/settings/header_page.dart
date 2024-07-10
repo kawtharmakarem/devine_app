@@ -1,3 +1,4 @@
+import 'package:divinecontrol/screens/settings/about_us_screen.dart';
 import 'package:divinecontrol/screens/settings/app_settings_page.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
@@ -18,7 +19,8 @@ class HeaderPage extends StatelessWidget {
       const SizedBox(height: 32,),
       buildUser(context,width),
       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-      buildDarkMode(context,width),
+     // buildDarkMode(context,width),
+    const AboutUs()
       
 
 
@@ -35,14 +37,14 @@ class HeaderPage extends StatelessWidget {
  subtitleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 18:24)),
  leading:const IconWidget(color: Colors.grey, icon: Icons.person),);
   
- Widget buildDarkMode(BuildContext context,double width) =>SwitchSettingsTile(title: 'Dark Mode',
+//  Widget buildDarkMode(BuildContext context,double width) =>SwitchSettingsTile(title: 'Dark Mode',
  
- showDivider: false,
-  settingKey: keyDarkMode,
-  titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
- leading:const IconWidget(color: Color(0xff462ef3), icon: Icons.dark_mode),
- onChange: (isDarkMode){
+//  showDivider: false,
+//   settingKey: keyDarkMode,
+//   titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
+//  leading:const IconWidget(color: Color(0xff462ef3), icon: Icons.dark_mode),
+//  onChange: (isDarkMode){
  
- },
- );
+//  },
+//  );
 }

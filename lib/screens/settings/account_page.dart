@@ -1,13 +1,13 @@
 
 import 'package:divinecontrol/screens/auth_screens/edit_account.dart';
 import 'package:divinecontrol/screens/settings/app_settings_page.dart';
-import 'package:divinecontrol/screens/settings/notifications_page.dart';
+import 'package:divinecontrol/screens/settings/disclaimer_screen.dart';
+import 'package:divinecontrol/screens/settings/privacy_screen.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 
@@ -25,22 +25,22 @@ class AccountPage extends StatelessWidget {
     return SimpleSettingsTile(
   
     title: 'Account Settings',
-  titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
   subtitle: 'Privacy,Security,Language',
   showDivider: false,
   subtitleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 14:20)),
   leading:const IconWidget(color: Colors.green, icon: Icons.person),
   child: SettingsScreen(
-    hasAppBar: false,
 
-    title: 'Account Settings',
+   title: 'Account Settings',
+
     children:width<AppConstants.maxTabletWidth? getMobileSettingsList(context, width, height):getDesktopSettingsList(context, width, height)),
   );
   }
 
   List<Widget> getMobileSettingsList(BuildContext context, double width, double height) {
     return [
-        const  CustomBackButton(title: 'Account Settings',),
+   // const  CustomSettingsTitle(title: "Account Settings"),
 
     const SizedBox(height: 32,),
     buildLanguage(context,width),
@@ -55,7 +55,7 @@ class AccountPage extends StatelessWidget {
 
     buildPrivacy(context,width),
      SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
-    buildSecurity(context,width),
+    buildDisclaimer(context,width),
      SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:width<AppConstants.maxTabletWidth? height*0.025:height*0.035,),
 
     buildAcountInfo(context,width),
@@ -70,7 +70,7 @@ class AccountPage extends StatelessWidget {
 
   List<Widget> getDesktopSettingsList(BuildContext context, double width, double height) {
     return [
-        const  CustomBackButton(title: 'Account Settings',),
+        //const  CustomBackButton(title: 'Account Settings',),
 
     const SizedBox(height: 32,),
     Row(
@@ -101,7 +101,7 @@ class AccountPage extends StatelessWidget {
             children: [
               buildPrivacy(context,width),
                SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-              buildSecurity(context,width),
+              buildDisclaimer(context,width),
                SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
               
               buildAcountInfo(context,width),
@@ -119,19 +119,24 @@ class AccountPage extends StatelessWidget {
   ];
   }
   
- Widget buildPrivacy(BuildContext context,double width) =>SimpleSettingsTile(title: 'Privacy',
+ Widget buildPrivacy(BuildContext context,double width) =>SimpleSettingsTile(title: 'Privacy Policy',
  subtitle: '',
  showDivider: false,
  titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
  leading:const IconWidget(color: Colors.blue, icon: Icons.lock),
- onTap: (){},);
+ onTap: (){
+  Get.to(()=>const  PrivacyPolicyScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+
+ },);
   
- Widget buildSecurity(BuildContext context,double width) =>SimpleSettingsTile(title: 'Security',
+ Widget buildDisclaimer(BuildContext context,double width) =>SimpleSettingsTile(title: 'Disclaimer',
  subtitle: '',
  showDivider: false,
  titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
- leading:const IconWidget(color: Colors.red, icon: Icons.security),
- onTap: (){},);
+ leading:const IconWidget(color: Colors.red, icon: Icons.no_adult_content),
+ onTap: (){
+  Get.to(()=>const DisclaimerScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+ },);
   
  Widget buildAcountInfo(BuildContext context,double width) =>SimpleSettingsTile(title: 'Account Info',
  subtitle: '',

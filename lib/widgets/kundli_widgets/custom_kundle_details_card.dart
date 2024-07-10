@@ -26,16 +26,7 @@ class _CustomKundleDetailsCardState extends State<CustomKundleDetailsCard> {
    String countryValue="";
    String stateValue="";
    String cityValue="";
-  // final List<String> items = [
-  //   'City 1',
-  //   'City 2',
-  //   'City 3',
-  //   'City 4',
-  //   'City 5',
-  //   'City 6',
-  //   'City 7',
-  //   'City 8',
-  // ];
+ 
 
   @override
   void dispose() {
@@ -94,12 +85,12 @@ class _CustomKundleDetailsCardState extends State<CustomKundleDetailsCard> {
                
                 const CustomTimePicker(hintText: "Birth Time", label: "Birth Time", iconData: Icons.watch),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                CustomCheckBox(isChecked: isChecked),
                 
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 // CustomKundleDropDownList(items: items, label: "Birth Place", controller: textListController)
                 CustomKundlicscPicker(

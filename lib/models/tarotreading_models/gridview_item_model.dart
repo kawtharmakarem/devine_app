@@ -2,9 +2,10 @@ class GridViewItemModel {
   final String imageBg;
   final String image;
   final String title;
+  final String subTitle;
   final String description;
-  final double likesNumber;
-  final double seeNumber;
+  // final double likesNumber;
+  // final double seeNumber;
   final String cardTitle;
   final String detailsTitle;
   final String details;
@@ -14,8 +15,9 @@ class GridViewItemModel {
       required this.imageBg,
       required this.title,
       required this.description,
-      required this.likesNumber,
-      required this.seeNumber,
+      required this.subTitle,
+      // required this.likesNumber,
+      // required this.seeNumber,
       required this.cardTitle, 
   required  this.details,
      required this.detailsTitle});

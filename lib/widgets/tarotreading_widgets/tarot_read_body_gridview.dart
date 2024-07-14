@@ -1,4 +1,5 @@
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/widgets/tarotreading_widgets/custom_tarot_searchcard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -47,7 +48,8 @@ class TarotBodyGridView extends StatelessWidget {
                         }));
                       },
                     ),
-                    )
+                    ),
+
           ]),
     );
   }
@@ -60,9 +62,9 @@ class TarotBodyGridView extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.2
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
+              childAspectRatio: 1.1
               ),
           children: [
             ...List.generate(
@@ -85,10 +87,10 @@ Widget getMobileTarotGridView(BuildContext context) {
     return Expanded(
       child: GridView(
         shrinkWrap: true,
-        gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.5),
+        gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.2),
         children: [
           ...List.generate(items.length, (index) =>Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 20),
             child: GridViewItem(
                     itemModel: items[index],
                     onSlectedItem: (itemModel)
@@ -97,11 +99,12 @@ Widget getMobileTarotGridView(BuildContext context) {
                     //      .push(MaterialPageRoute(builder: (context) {
                     //    return CardsPage(itemModel: itemModel);
                     //   }));
-                    Get.to(()=>CardsPage(itemModel: itemModel),transition: Transition.fade,duration:const Duration(seconds: 3));
+                    Get.to(()=>CardsPage(itemModel: itemModel),transition: Transition.fade,duration:const Duration(seconds: AppConstants.durationSecond));
                     },
                   ),
           ),
-                )
+                ),
+                CustomSearchQuestionCard()
             
         ],
           

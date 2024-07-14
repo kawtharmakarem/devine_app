@@ -1,7 +1,10 @@
+import 'package:divinecontrol/screens/settings/about_us_screen.dart';
 import 'package:divinecontrol/screens/settings/account_page.dart';
+import 'package:divinecontrol/screens/settings/conditions_screen.dart';
 import 'package:divinecontrol/screens/settings/faqs_screen.dart';
 import 'package:divinecontrol/screens/settings/header_page.dart';
 import 'package:divinecontrol/screens/settings/notifications_page.dart';
+import 'package:divinecontrol/screens/settings/references_screen.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
@@ -19,151 +22,279 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
-    double width=MediaQuery.sizeOf(context).width;
-    double height=MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.sizeOf(context).width;
+    double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-      
-      body: width<AppConstants.maxTabletWidth?
-    getMobileSettingsContent(context, width, height):getDesktopSettingsContent(context, width, height));
+        body: width < AppConstants.maxTabletWidth
+            ? getMobileSettingsContent(context, width, height)
+            : getDesktopSettingsContent(context, width, height));
   }
 
-  ListView getMobileSettingsContent(BuildContext context, double width, double height) {
+  ListView getMobileSettingsContent(
+      BuildContext context, double width, double height) {
     return ListView(
-      padding:const EdgeInsets.symmetric(horizontal: 5),
-    children: [
-      
-      SettingsGroup(
-
-        title: 'GENERAl',
-      titleTextStyle: AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
-       children: [
-      const  HeaderPage(),
-                   SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
-       const AccountPage(),
-                            SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
-       const NotificationsPage(),
-                            SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
-        buildLogout(width),
-                   SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-        buildDeleteAccount(width),
-                             SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
-
-      ]),
-      const SizedBox(child: Divider(thickness: 1,color: AppColors.primary,endIndent: 10,indent: 10,height: 16,),),
-      SettingsGroup(title: 'FEEDBACK', 
-      titleTextStyle: AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       children: [
-         SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-        buildFAQs(width),
-         SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025,),
-        buildSendFeedBack(width),
-      ])
-    ],
-  );
+        SettingsGroup(
+            title: 'GENERAl',
+            titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+                color: AppColors.darkPrimary,
+                fontWeight: FontWeight.w600,
+                fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+            children: [
+              const HeaderPage(),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              const AccountPage(),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              const NotificationsPage(),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              buildLogout(width),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              buildDeleteAccount(width),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+            ]),
+        const SizedBox(
+          child: Divider(
+            thickness: 1,
+            color: AppColors.primary,
+            endIndent: 10,
+            indent: 10,
+            height: 16,
+          ),
+        ),
+        SettingsGroup(
+            title: 'IMPORTANT LINKS',
+            titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+                color: AppColors.darkPrimary,
+                fontWeight: FontWeight.w600,
+                fontSize: getResponsiveFontSizeText(context, fontSize: 22)),
+            children: [
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              buildAllReferences(width),
+            //   SizedBox(
+            //     height: width < AppConstants.maxMobileWidth
+            //         ? height * 0.012
+            //         : height * 0.025,
+            //   ),
+            //  const ContactUsScreen(),
+
+               SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              const AboutUs(),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              buildFAQs(width),
+              SizedBox(
+                height: width < AppConstants.maxMobileWidth
+                    ? height * 0.012
+                    : height * 0.025,
+              ),
+              buildTermAndConditions(width),
+            ])
+      ],
+    );
   }
 
-
-  Widget getDesktopSettingsContent(BuildContext context, double width, double height) {
+  Widget getDesktopSettingsContent(
+      BuildContext context, double width, double height) {
     return GridView(
-      padding:const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-
-      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-    children: [
-      
-      SizedBox(
-        width: width*0.45,
-        child: SettingsGroup(title: 'GENERAl',
-        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
-         children: [
-        const  HeaderPage(),
-                     SizedBox(height:height*0.035 ,),
-        
-         const AccountPage(),
-                              SizedBox(height:height*0.035 ,),
-        
-         const NotificationsPage(),
-                              SizedBox(height:height*0.035 ,),
-        
-          buildLogout(width),
-                     SizedBox(height:height*0.035 ,),
-          buildDeleteAccount(width),
-                               SizedBox(height:height*0.035,),
-        
-        ]),
-      ),
-      const SizedBox(
-        height: double.infinity,
-        child: VerticalDivider(thickness: 1,color: AppColors.darkPrimary,endIndent: 10,indent: 10,width: 10),),
-      Container(width: width*0.5,
-      alignment: Alignment.topLeft,
-        child: SettingsGroup(
-          title: 'FEEDBACK', 
-        titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
-        children: [
-           SizedBox(height:height*0.035,),
-          buildFAQs(width),
-           SizedBox(height:height*0.035,),
-          buildSendFeedBack(width),
-        ]),
-      )
-    ],
-  );
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      gridDelegate:
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      children: [
+        SizedBox(
+          width: width * 0.45,
+          child: SettingsGroup(
+              title: 'GENERAl',
+              titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+                  fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
+              children: [
+                const HeaderPage(),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                const AccountPage(),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                const NotificationsPage(),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                buildLogout(width),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                buildDeleteAccount(width),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+              ]),
+        ),
+        const SizedBox(
+          height: double.infinity,
+          child: VerticalDivider(
+              thickness: 1,
+              color: AppColors.darkPrimary,
+              endIndent: 10,
+              indent: 10,
+              width: 10),
+        ),
+        Container(
+          width: width * 0.5,
+          alignment: Alignment.topLeft,
+          child: SettingsGroup(
+              title: 'IMPORTANT LINKS',
+              titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+                  fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
+              children: [
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                buildAllReferences(width),
+                // SizedBox(
+                //   height: height * 0.035,
+                // ),
+                // const ContactUsScreen(),
+                 SizedBox(
+                  height: height * 0.035,
+                ),
+                const AboutUs(),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                buildFAQs(width),
+                SizedBox(
+                  height: height * 0.035,
+                ),
+                buildTermAndConditions(width),
+              ]),
+        )
+      ],
+    );
   }
 
-  Widget buildLogout(double width)=>SimpleSettingsTile(
-    title: 'Logout',
-    titleTextStyle:width<AppConstants.maxMobileWidth? AppStyles.styleRegular20(context):AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
-    subtitle: '',
-    showDivider: false,
-    leading:const IconWidget(icon:Icons.logout,color:Colors.blueAccent,),
-    onTap: (){
-      Settings.clearCache();
-    });
+  Widget buildLogout(double width) => SimpleSettingsTile(
+      title: 'Logout',
+      titleTextStyle: width < AppConstants.maxMobileWidth
+          ? AppStyles.styleRegular20(context)
+          : AppStyles.styleRegular20(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
+      subtitle: '',
+      showDivider: false,
+      leading: const IconWidget(
+        icon: Icons.logout,
+        color: Colors.blueAccent,
+      ),
+      onTap: () {
+        Settings.clearCache();
+      });
 
-    Widget buildDeleteAccount(double width)=>SimpleSettingsTile(
-
+  Widget buildDeleteAccount(double width) => SimpleSettingsTile(
       title: 'DeleteAccount',
-    titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
-    subtitle: '',showDivider: false,
-        leading:const IconWidget(icon:Icons.delete,color:Colors.pink),
+      titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+          fontSize: getResponsiveFontSizeText(context,
+              fontSize: width < AppConstants.maxMobileWidth ? 20 : 28)),
+      subtitle: '',
+      showDivider: false,
+      leading: const IconWidget(icon: Icons.delete, color: Colors.pink),
+      onTap: () {});
 
-    onTap: (){});
+  Widget buildFAQs(double width) => SimpleSettingsTile(
+        title: 'FAQs',
+        subtitle: '',
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+            fontSize: getResponsiveFontSizeText(context,
+                fontSize: width < AppConstants.maxMobileWidth ? 20 : 28)),
+        showDivider: false,
+        leading: const IconWidget(
+            color: Colors.teal, icon: Icons.question_mark_rounded),
+        onTap: () {
+          Get.to(() => const FaqsScreen(),
+              transition: Transition.zoom,
+              duration: const Duration(seconds: AppConstants.durationSecond));
+        },
+      );
 
-    Widget buildFAQs(double width)=>SimpleSettingsTile(title: 'FAQs',
-    subtitle: '',
-    titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
-    showDivider: false,
-    leading:const IconWidget(color: Colors.teal, icon: Icons.question_mark_rounded),
-    onTap: (){
-      Get.to(()=>const FaqsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
-    },);
-
-    Widget buildSendFeedBack(double width)=>SimpleSettingsTile(title: 'Send FeedBack',
-    subtitle: '',
-    showDivider: false,
-    titleTextStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:28)),
-    leading:const IconWidget(color: Colors.purple, icon: Icons.thumb_up),
-    onTap: (){},);
+  Widget buildAllReferences(double width) => SimpleSettingsTile(
+        title: 'References',
+        subtitle: '',
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+            fontSize: getResponsiveFontSizeText(context,
+                fontSize: width < AppConstants.maxMobileWidth ? 20 : 28)),
+        showDivider: false,
+        leading: const IconWidget(
+            color: Colors.redAccent, icon: Icons.picture_as_pdf_outlined),
+        onTap: () {
+          Get.to(() => const ReferencesScreen(),
+              transition: Transition.zoom,
+              duration: const Duration(seconds: AppConstants.durationSecond));
+        },
+      );
+  Widget buildTermAndConditions(double width) => SimpleSettingsTile(
+        title: 'Term And Conditions',
+        subtitle: '',
+        showDivider: false,
+        titleTextStyle: AppStyles.styleRegular20(context).copyWith(
+            fontSize: getResponsiveFontSizeText(context,
+                fontSize: width < AppConstants.maxMobileWidth ? 20 : 28)),
+        leading:
+            const IconWidget(color: Colors.purple, icon: Icons.book_outlined),
+        onTap: () {
+          Get.to(() => const TermsAndConditions(),
+              transition: Transition.zoom,
+              duration: const Duration(seconds: AppConstants.durationSecond));
+        },
+      );
 }
 
 class IconWidget extends StatelessWidget {
   const IconWidget({super.key, required this.color, required this.icon});
-final Color color;
-final IconData icon;
+  final Color color;
+  final IconData icon;
   @override
-  Widget build(BuildContext context){
-    double width=MediaQuery.sizeOf(context).width;
-   return Transform.scale(
-    scale: width<AppConstants.maxMobileWidth? 1:2,
-     child: CircleAvatar(
-        radius:40,
+  Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
+    return Transform.scale(
+      scale: width < AppConstants.maxMobileWidth ? 1 : 2,
+      child: CircleAvatar(
+        radius: 40,
         backgroundColor: color,
-        child: Icon(icon,color: Colors.white,),
-      
+        child: Icon(
+          icon,
+          color: Colors.white,
         ),
-   );
+      ),
+    );
   }
 }

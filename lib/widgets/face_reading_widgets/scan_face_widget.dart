@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:divinecontrol/models/facereading_models/facereading_card_model.dart';
 import 'package:divinecontrol/screens/face_reading_screens/face_reading_results.dart';
@@ -8,7 +7,6 @@ import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 import 'custom_facereading_card.dart';
 import 'custom_scan_button.dart';

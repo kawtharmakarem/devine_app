@@ -49,6 +49,15 @@ static const String reservedtarotBg="assets/tarotimages/reservedtarot.jpg";
 //tarot
    static const String logo="assets/tarotimages/logo.png";
    static const String tarotLogo="assets/tarotimages/tarotlogo.png";
+      static const String loveReadingCard="assets/tarotimages/love reading card.png";
+      static const String yoga="assets/tarotimages/yoga.png";
+      static const String wellness="assets/tarotimages/wellness.png";
+      static const String breakupAdviceCard="assets/tarotimages/breakup advice card.png";
+      static const String shuffleCard="assets/tarotimages/shuffle_card.png";
+      static const String tarotCardGirl="assets/tarotimages/tarot_card_girl.png";
+      static const String newcard="assets/tarotimages/newcard.jpeg";
+
+
    static const String fortuneBg="assets/tarotimages/fortuneBg.png";
    static const String fortune="assets/tarotimages/fortune.png";
   static const String todayluck="assets/tarotimages/todayluck.svg";
@@ -117,6 +126,7 @@ static const String facebook="assets/homepageimages/facebook.png";
 static const String logoonly="assets/homepageimages/logoonly.png";
 static const String forgotpassword="assets/homepageimages/forgotpassword.png";
 static const String ques="assets/homepageimages/question.png";
+static const String captcha="assets/homepageimages/captcha.png";
 
 //Numerology
 static const String numerologyLogo="assets/numerologyimages/numlogo.png";

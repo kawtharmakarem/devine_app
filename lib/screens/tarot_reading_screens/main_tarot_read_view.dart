@@ -1,5 +1,6 @@
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_desktop_layout.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/tarot_mobile_layout.dart';
@@ -41,16 +42,17 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SizedBox(
-              width: width * 0.35,
-              height: height * 0.3,
+              width: width * 0.4,
+              height: height * 0.28,
               child: Image.asset(
-                'assets/tarotimages/card.png',
+                // 'assets/tarotimages/card.png',
+                AppImages.newcard,
                 fit: BoxFit.fill,
               )),
           Container(
               decoration: const BoxDecoration(),
               child: Text(
-                'This one card prediction will reveal the answers to all of your underlying questions about business, love, finance, and relationships.',
+                "Reveal the answers to All of your Questions about Business, Love, Finance, Career, Relationships and much more !!!",
                 style: width < AppConstants.maxMobileWidth
                     ? AppStyles.styleRegular20(context)
                     : AppStyles.styleRegular20(context).copyWith(
@@ -102,7 +104,8 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
               width: width * 0.2,
               height: height * 0.5,
               child: Image.asset(
-                'assets/tarotimages/card.png',
+                // 'assets/tarotimages/card.png',
+                AppImages.newcard,
                 fit: BoxFit.fill,
               )),
           SizedBox(

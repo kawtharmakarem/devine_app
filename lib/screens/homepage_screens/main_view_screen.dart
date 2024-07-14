@@ -1,5 +1,6 @@
 
 import 'package:divinecontrol/screens/settings/app_settings_page.dart';
+import 'package:divinecontrol/screens/settings/contactus_screen.dart';
 import 'package:divinecontrol/screens/shopping_screens/shopping_main_screen.dart';
 import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
@@ -29,20 +30,23 @@ class _MainViewScreenState extends State<MainViewScreen>
     'Divine Connection',
     'shopping',
     'Today\'s Lucky',
-    'Settings'
+    'Settings',
+        "Contact"
+
   ];
   final _screens = [
   const DesktopLayout(),
    const ShoppingMainPage(),
          const  TodaysLuckScreen(),
-          const  SettingsPage()
+          const  SettingsPage(),
+          const ContactUsScreen()
   ];
 
   @override
   void initState() {
     super.initState();
     _motionTabBarController = MotionTabBarController(
-      length: 4,
+      length: 5,
       initialIndex: 0,
       vsync: this,
     );
@@ -70,7 +74,7 @@ class _MainViewScreenState extends State<MainViewScreen>
         bottomNavigationBar:width<AppConstants.maxTabletWidth? MotionTabBar(
           controller: _motionTabBarController,
           initialSelectedTab: 'Connect',
-          labels: const ['Connect', 'Shopping', 'Lucky', 'Settings'],
+          labels: const ['Connect', 'Shopping', 'Lucky', 'Settings','Contact'],
           onTabItemSelected: (value) {
             setState(() {
               _motionTabBarController!.index = value;
@@ -81,7 +85,8 @@ class _MainViewScreenState extends State<MainViewScreen>
             Icons.search,
             Icons.shopping_cart,
             Icons.card_giftcard,
-            Icons.settings
+            Icons.settings,
+            Icons.phone
           ],
           textStyle: AppStyles.styleBold20(context).copyWith(
               color: AppColors.darkPrimary,
@@ -105,7 +110,8 @@ class _MainViewScreenState extends State<MainViewScreen>
          width<AppConstants.maxMobileWidth?const  MobileLayout():const TabletLayout(),
            const ShoppingMainPage(),
          const  TodaysLuckScreen(),
-          const  SettingsPage()
+          const  SettingsPage(),
+          const ContactUsScreen()
           ],
         ):Row(
           children: [
@@ -150,6 +156,13 @@ class _MainViewScreenState extends State<MainViewScreen>
                         Icons.settings,
                       ),
                       label:const Text('Setting')),
+                       NavigationRailDestination(
+                    padding: EdgeInsets.only(
+                          bottom: height * 0.05, left: 10, right: 10),
+                      icon:const Icon(
+                        Icons.phone,
+                      ),
+                      label:const Text('Contact')),
                 ],
                 selectedIndex: currentIndex),
             Expanded(child: _screens[currentIndex]),

@@ -27,11 +27,9 @@ class CustomDetailsSettingsCard extends StatelessWidget {
               ),
           child: ExpansionTile(
               //initiallyExpanded: true,
-              leading: SizedBox(
-                width: 25,
-                height: 25,
-                child: Image.asset(cardModel.image ?? AppImages.logoonly)),
-              title: Text(cardModel.title,
+              leading: cardModel.image!=null ? SizedBox(height: 60,width: 60,child: Image.asset(cardModel.image!,fit: BoxFit.fill,)):SizedBox(height: 25,width: 25,child: Image.asset(AppImages.logoonly,fit: BoxFit.fill,),)
+            
+              ,title: Text(cardModel.title,
                   style:AppStyles.styleRufinaBold32(context).copyWith(fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 18))),
               children: [
                 const Divider(

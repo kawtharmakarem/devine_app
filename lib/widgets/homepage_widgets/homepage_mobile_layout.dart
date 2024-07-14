@@ -1,5 +1,6 @@
 
 import 'package:divinecontrol/screens/onboarding_screens/onboarding_screen.dart';
+import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 import '../../animation/staggered_raindrop_animation.dart';
 import '../../utils/app_colors.dart';
@@ -102,7 +103,7 @@ late  StaggeredRaindropAnimation _animation;
                 visible: _animation.dropVisible.value
               ),
               child:_animation.dropVisible.value? Transform.scale(
-                scale: 1.3,
+                scale:size.width<AppConstants.maxMobileWidth? 1.2:1.5,
                 child: Image.asset(AppImages.logoonly,fit: BoxFit.cover,)):Container(),
           )
           )

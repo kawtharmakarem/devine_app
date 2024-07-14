@@ -1,4 +1,3 @@
-import 'package:divinecontrol/screens/settings/about_us_screen.dart';
 import 'package:divinecontrol/screens/settings/app_settings_page.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
@@ -20,7 +19,6 @@ class HeaderPage extends StatelessWidget {
       buildUser(context,width),
       SizedBox(height:width<AppConstants.maxMobileWidth? height*0.012:height*0.025 ,),
      // buildDarkMode(context,width),
-    const AboutUs()
       
 
 

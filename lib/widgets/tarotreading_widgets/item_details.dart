@@ -75,50 +75,50 @@ class ItemDetails extends StatelessWidget {
             ),
           ),
           
-          Row(
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: width*0.05,
-                    height: width*0.05,
-                    child: SvgPicture.asset(AppImages.hand)),
-                  Text(
-                    '${itemModel.likesNumber}',
-                    style: AppStyles.styleBold24(context)
-                        .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?24:28)),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                     width: width*0.05,
-                    height: width*0.05,
-                    child: SvgPicture.asset(AppImages.eye)),
-                  Text(
-                    '${itemModel.seeNumber}k',
-                    style: AppStyles.styleBold24(context)
-                        .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?24:28)),
-                  )
-                ],
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding:const EdgeInsets.all(20),
-                decoration: BoxDecoration(color:Colors.grey[300],borderRadius: BorderRadius.circular(80)),
-                child: SvgPicture.asset(AppImages.save,height:width<AppConstants.maxMobileWidth? 20:40,width:width<AppConstants.maxMobileWidth? 20:40)),
-              const SizedBox(width: 10,),
-              Container(
-                padding:const EdgeInsets.all(20),
-                decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
-                child: SvgPicture.asset(AppImages.share,height:width<AppConstants.maxMobileWidth? 20:40,width:width<AppConstants.maxMobileWidth? 20:40)),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Row(
+          //       children: [
+          //         SizedBox(
+          //           width: width*0.05,
+          //           height: width*0.05,
+          //           child: SvgPicture.asset(AppImages.hand)),
+          //         Text(
+          //           '${itemModel.likesNumber}',
+          //           style: AppStyles.styleBold24(context)
+          //               .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?24:28)),
+          //         )
+          //       ],
+          //     ),
+          //     Row(
+          //       children: [
+          //         SizedBox(
+          //            width: width*0.05,
+          //           height: width*0.05,
+          //           child: SvgPicture.asset(AppImages.eye)),
+          //         Text(
+          //           '${itemModel.seeNumber}k',
+          //           style: AppStyles.styleBold24(context)
+          //               .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?24:28)),
+          //         )
+          //       ],
+          //     )
+          //   ],
+          // ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Container(
+          //       padding:const EdgeInsets.all(20),
+          //       decoration: BoxDecoration(color:Colors.grey[300],borderRadius: BorderRadius.circular(80)),
+          //       child: SvgPicture.asset(AppImages.save,height:width<AppConstants.maxMobileWidth? 20:40,width:width<AppConstants.maxMobileWidth? 20:40)),
+          //     const SizedBox(width: 10,),
+          //     Container(
+          //       padding:const EdgeInsets.all(20),
+          //       decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
+          //       child: SvgPicture.asset(AppImages.share,height:width<AppConstants.maxMobileWidth? 20:40,width:width<AppConstants.maxMobileWidth? 20:40)),
+          //   ],
+          // ),
         ],
       ),
     );
@@ -177,51 +177,51 @@ class ItemDetails extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            SvgPicture.asset(AppImages.hand,width: 40,height: 40,),
-                            Text(
-                              '${itemModel.likesNumber}',
-                              style: AppStyles.styleBold24(context)
-                                  .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            SvgPicture.asset(AppImages.eye,width: 40,height: 40,),
-                            Text(
-                              '${itemModel.seeNumber}k',
-                              style: AppStyles.styleBold24(context)
-                                  .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     Row(
+                    //       children: [
+                    //         SvgPicture.asset(AppImages.hand,width: 40,height: 40,),
+                    //         Text(
+                    //           '${itemModel.likesNumber}',
+                    //           style: AppStyles.styleBold24(context)
+                    //               .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
+                    //         )
+                    //       ],
+                    //     ),
+                    //     Row(
+                    //       children: [
+                    //         SvgPicture.asset(AppImages.eye,width: 40,height: 40,),
+                    //         Text(
+                    //           '${itemModel.seeNumber}k',
+                    //           style: AppStyles.styleBold24(context)
+                    //               .copyWith(color: AppColors.black,fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
+                    //         )
+                    //       ],
+                    //     )
+                    //   ],
+                    // ),
                 ],
               ),
                      ),
            ],
          ),
         const Expanded(child:SizedBox() ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding:const EdgeInsets.all(20),
-              decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
-              child: SvgPicture.asset(AppImages.save,height: 40,width: 40,)),
-            const SizedBox(width: 10,),
-            Container(
-              padding:const EdgeInsets.all(20),
-              decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
-              child: SvgPicture.asset(AppImages.share,height: 40,width: 40,)),
-          ],
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Container(
+        //       padding:const EdgeInsets.all(20),
+        //       decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
+        //       child: SvgPicture.asset(AppImages.save,height: 40,width: 40,)),
+        //     const SizedBox(width: 10,),
+        //     Container(
+        //       padding:const EdgeInsets.all(20),
+        //       decoration: BoxDecoration(color: Colors.grey[300],borderRadius: BorderRadius.circular(80)),
+        //       child: SvgPicture.asset(AppImages.share,height: 40,width: 40,)),
+        //   ],
+        // )
       ],
     );
   }

@@ -1,12 +1,8 @@
 import 'package:divinecontrol/utils/app_constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../models/tarotreading_models/gridview_item_model.dart';
 import '../../utils/app_colors.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
 class GridViewItem extends StatelessWidget {
@@ -30,88 +26,7 @@ class GridViewItem extends StatelessWidget {
     ));
   }
 
-  // Widget getMobileGridViewItem(BuildContext context, double width) {
-  //   return GestureDetector(
-  //     onTap: () => onSlectedItem(itemModel),
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         ClipRRect(
-  //             borderRadius: const BorderRadius.only(
-  //                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-  //             child: Container(
-  //                width: double.infinity,
-
-  //                 decoration: const BoxDecoration(
-  //                   borderRadius: BorderRadius.only(
-  //                       topLeft: Radius.circular(20),
-  //                       topRight: Radius.circular(20)),
-  //                 ),
-  //                 child: Image.asset(itemModel.image))),
-  //         Expanded(
-  //           child: ListView(
-  //             padding: const EdgeInsets.only(left: 5,right: 5),
-  //             //shrinkWrap: true,
-  //             children: [
-  //               Text(itemModel.title,
-  //                   style: AppStyles.styleSemiBold24(context).copyWith(
-  //                       color: AppColors.black,
-  //                       fontSize: getResponsiveFontSizeText(context,
-  //                           fontSize: width < AppConstants.maxMobileWidth
-  //                               ? 20
-  //                               : 24))),
-  //                               Text('Date',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 18:20)),),
-  //               Text(itemModel.description,
-  //                   style: AppStyles.styleRegular20(context).copyWith(
-  //                       color: AppColors.black,
-  //                       fontSize: getResponsiveFontSizeText(context,
-  //                           fontSize: width < AppConstants.maxMobileWidth
-  //                               ? 18
-  //                               : 20))),
-  //             ],
-  //           ),
-  //         ),
-  //         // width < AppConstants.maxMobileWidth
-  //         //     ? Container()
-  //         //     : const Expanded(child: SizedBox()),
-  //         Container(
-  //           padding: const EdgeInsets.only(left: 5),
-  //           child: Row(
-  //             children: [
-  //               Row(
-  //                 children: [
-  //                   SvgPicture.asset(AppImages.hand),
-  //                   Text(
-  //                     '${itemModel.likesNumber}',
-  //                     style: AppStyles.styleBold24(context).copyWith(
-  //                         color: AppColors.black,
-  //                         fontSize:
-  //                             getResponsiveFontSizeText(context, fontSize: 18)),
-  //                   )
-  //                 ],
-  //               ),
-  //               Row(
-  //                 children: [
-  //                   SvgPicture.asset(AppImages.eye),
-  //                   Text(
-  //                     '${itemModel.seeNumber}k',
-  //                     style: AppStyles.styleBold24(context).copyWith(
-  //                         color: AppColors.black,
-  //                         fontSize:
-  //                             getResponsiveFontSizeText(context, fontSize: 18)),
-  //                   )
-  //                 ],
-  //               )
-  //             ],
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
-
-
-
+ 
 Widget getNewMobileGridViewItem(BuildContext context, double width,double height) {
     return  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +44,7 @@ Widget getNewMobileGridViewItem(BuildContext context, double width,double height
                 children: [
                   SizedBox(
                     width: width,
-                    height: height/5,
+                    height: height/6,
                     child: Image.asset(itemModel.imageBg,fit: BoxFit.fill,)),
                     Positioned(
                       child: Padding(
@@ -145,13 +60,15 @@ Widget getNewMobileGridViewItem(BuildContext context, double width,double height
               //shrinkWrap: true,
               children: [
                 Text(itemModel.title,
-                    style: AppStyles.styleSemiBold24(context).copyWith(
+                    style: AppStyles.styleBold24(context).copyWith(
                         color: AppColors.black,
                         fontSize: getResponsiveFontSizeText(context,
                             fontSize: width < AppConstants.maxMobileWidth
                                 ? 20
                                 : 24))),
-                                Text('Date',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 18:20)),),
+                                                const SizedBox(height: 5,),
+
+                                 Text(itemModel.subTitle,style: AppStyles.styleRegular20(context).copyWith(fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context,fontSize:width<AppConstants.maxMobileWidth? 18:20)),),
                 Text(itemModel.description,
                     style: AppStyles.styleRegular20(context).copyWith(
                         color: AppColors.black,
@@ -162,40 +79,7 @@ Widget getNewMobileGridViewItem(BuildContext context, double width,double height
               ],
             ),
           ),
-          // width < AppConstants.maxMobileWidth
-          //     ? Container()
-          //     : const Expanded(child: SizedBox()),
-          Container(
-            padding: const EdgeInsets.only(left: 5),
-            child: Row(
-              children: [
-                Row(
-                  children: [
-                    SvgPicture.asset(AppImages.hand),
-                    Text(
-                      '${itemModel.likesNumber}',
-                      style: AppStyles.styleBold24(context).copyWith(
-                          color: AppColors.black,
-                          fontSize:
-                              getResponsiveFontSizeText(context, fontSize: 18)),
-                    )
-                  ],
-                ),
-                Row(
-                  children: [
-                    SvgPicture.asset(AppImages.eye),
-                    Text(
-                      '${itemModel.seeNumber}k',
-                      style: AppStyles.styleBold24(context).copyWith(
-                          color: AppColors.black,
-                          fontSize:
-                              getResponsiveFontSizeText(context, fontSize: 18)),
-                    )
-                  ],
-                )
-              ],
-            ),
-          )
+         
         ],
       
     );
@@ -236,42 +120,15 @@ Widget getNewMobileGridViewItem(BuildContext context, double width,double height
                         color: AppColors.black,
                         fontSize:
                             getResponsiveFontSizeText(context, fontSize: 28))),
-                            Text('Date',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24)),),
+                            const SizedBox(height: 5,),
+                             Text(itemModel.subTitle,style: AppStyles.styleRegular20(context).copyWith(fontWeight: FontWeight.w600,fontSize: getResponsiveFontSizeText(context, fontSize: 24)),),
                 Text(itemModel.description,
                    
                     style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))),
               ],
             ),
           ),
-          // width < AppConstants.maxMobileWidth
-          //     ? Container()
-          //     : const Expanded(child: SizedBox()),
-          Row(
-            children: [
-              Row(
-                children: [
-                  SvgPicture.asset(AppImages.hand,width: 30,height: 30,),
-                  Text(
-                    '${itemModel.likesNumber}',
-                    style: AppStyles.styleBold24(context).copyWith(
-                        color: AppColors.black,
-                       ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  SvgPicture.asset(AppImages.eye,width: 30,height: 30,),
-                  Text(
-                    '${itemModel.seeNumber}k',
-                    style: AppStyles.styleBold24(context).copyWith(
-                        color: AppColors.black,
-                    ),
-                  )
-                ],
-              )
-            ],
-          )
+         
         ],
       
     );

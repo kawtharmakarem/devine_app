@@ -1,7 +1,7 @@
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -45,19 +45,63 @@ class BiorhythmPage extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: width < AppConstants.maxMobileWidth ? 10 : 30),
-          child: width < AppConstants.maxTabletWidth
-              ? getMobileBiorhythmContent(context, width)
-              : getDesktopBiorhythmContent(context, width),
-        ),
+      appBar: CustomAppBar(title: "Biorhythm", leading: true),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: width < AppConstants.maxMobileWidth ? 10 : 30),
+        child: width < AppConstants.maxTabletWidth
+            ? getMobileBiorhythmContent(context, width)
+            : getDesktopBiorhythmContent(context, width),
       ),
     );
   }
 
   Column getMobileBiorhythmContent(BuildContext context, double width) {
+    return Column(
+      children: [
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //   children: [
+        //     IconButton(
+        //         onPressed: () {
+        //           Navigator.pop(context);
+        //         },
+        //         icon: SvgPicture.asset(AppImages.leftArrow)),
+        //     Text(
+        //       'February 16 - Biorhythm',
+        //       style: width < AppConstants.maxMobileWidth
+        //           ? AppStyles.styleBold24(context)
+        //               .copyWith(color: AppColors.moveColor)
+        //           : AppStyles.styleBold24(context)
+        //               .copyWith(color: AppColors.moveColor, fontSize: 40),
+        //       textAlign: TextAlign.center,
+        //     ),
+        //     const SizedBox()
+        //   ],
+        // ),
+        const SizedBox(height: 16),
+        const BiorhythmChart(),
+        const SizedBox(height: 16),
+        const BiorhythmIndicators(),
+        const SizedBox(height: 16),
+        Expanded(
+          child: ListView(
+                    // shrinkWrap: true,
+                    children: [
+          for (final descriptionModel in descriptions)
+            Padding(
+              padding: EdgeInsets.only(
+                  bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
+              child: BiorhythmDescription(descriptionModel: descriptionModel),
+            )
+                    ],
+                  ),
+        )
+      ],
+    );
+  }
+
+  Widget getDesktopBiorhythmContent(BuildContext context, double width) {
     return Column(
       children: [
         Row(
@@ -80,86 +124,40 @@ class BiorhythmPage extends StatelessWidget {
             const SizedBox()
           ],
         ),
-        const SizedBox(height: 16),
-        const BiorhythmChart(),
-        const SizedBox(height: 16),
-        const BiorhythmIndicators(),
-        const SizedBox(height: 16),
-        Expanded(
-            child: ListView(
-          shrinkWrap: true,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (final descriptionModel in descriptions)
-              Padding(
-                padding: EdgeInsets.only(
-                    bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
-                child: BiorhythmDescription(descriptionModel: descriptionModel),
-              )
+            const Expanded(
+              child: Column(
+                children: [
+                 BiorhythmChart(),
+                  SizedBox(height: 16),
+                  BiorhythmIndicators(),
+                ],
+              ),
+            ),
+            const SizedBox(
+              width: 30,
+            ),
+            Expanded(
+              child: ListView(
+                //shrinkWrap: true,
+                children: [
+                  for (final descriptionModel in descriptions)
+                    Padding(
+                      padding: EdgeInsets.only(
+                          bottom: width < AppConstants.maxMobileWidth
+                              ? 10
+                              : 30),
+                      child: BiorhythmDescription(
+                          descriptionModel: descriptionModel),
+                    )
+                ],
+              ),
+            )
           ],
-        ))
+        ),
       ],
-    );
-  }
-
-  Widget getDesktopBiorhythmContent(BuildContext context, double width) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: SvgPicture.asset(AppImages.leftArrow)),
-              Text(
-                'February 16 - Biorhythm',
-                style: width < AppConstants.maxMobileWidth
-                    ? AppStyles.styleBold24(context)
-                        .copyWith(color: AppColors.moveColor)
-                    : AppStyles.styleBold24(context)
-                        .copyWith(color: AppColors.moveColor, fontSize: 40),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox()
-            ],
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Expanded(
-                child: Column(
-                  children: [
-                   BiorhythmChart(),
-                    SizedBox(height: 16),
-                    BiorhythmIndicators(),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 30,
-              ),
-              Expanded(
-                child: ListView(
-                  shrinkWrap: true,
-                  children: [
-                    for (final descriptionModel in descriptions)
-                      Padding(
-                        padding: EdgeInsets.only(
-                            bottom: width < AppConstants.maxMobileWidth
-                                ? 10
-                                : 30),
-                        child: BiorhythmDescription(
-                            descriptionModel: descriptionModel),
-                      )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
     );
   }
 }

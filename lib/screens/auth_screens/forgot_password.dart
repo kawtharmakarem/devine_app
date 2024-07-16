@@ -1,11 +1,8 @@
-import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:divinecontrol/widgets/auth_widgets/normal_textfield.dart';
 import 'package:divinecontrol/widgets/auth_widgets/animation_homepage_widget.dart';
 import 'package:divinecontrol/widgets/auth_widgets/custom_homepage_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';

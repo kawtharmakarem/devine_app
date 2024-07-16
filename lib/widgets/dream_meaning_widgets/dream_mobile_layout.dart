@@ -1,9 +1,12 @@
 
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 import '../../models/dream_meaning.models/custom_card_model.dart';
+import '../../models/homepage_models/carousel_model.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
@@ -56,41 +59,42 @@ class _MobileLayoutState extends State<MobileLayout> {
                                     cardModel: getCardPart1(context)[index]))));
                   }),
                 ),
-                SizedBox(
-                  height: width / 20,
-                ),
-                AnimatedContainer(
-                  duration: const Duration(seconds: 2),
-                  curve: Curves.fastOutSlowIn,
-                  transform: Matrix4.translationValues(
-                      _startAnimation ? 0 : width, 0, 0),
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: AppColors.primary.withOpacity(0.7)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                          width: width * 0.15,
-                          child: const Divider(
-                            color: AppColors.darkPrimary,
-                            thickness: 1,
-                          )),
-                      Text(
-                        'Swiping Qestions',
-                        style: AppStyles.styleBold24(context)
-                            .copyWith(color: AppColors.darkPrimary),
-                      ),
-                      SizedBox(
-                          width: width * 0.15,
-                          child: const Divider(
-                            color: AppColors.darkPrimary,
-                            thickness: 1,
-                          ))
-                    ],
-                  ),
-                ),
+                // SizedBox(
+                //   height: width / 20,
+                // ),
+                // AnimatedContainer(
+                //   duration: const Duration(seconds: 2),
+                //   curve: Curves.fastOutSlowIn,
+                //   transform: Matrix4.translationValues(
+                //       _startAnimation ? 0 : width, 0, 0),
+                //   padding: const EdgeInsets.symmetric(vertical: 20),
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(8),
+                //       color: AppColors.primary.withOpacity(0.7)),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //     children: [
+                //       SizedBox(
+                //           width: width * 0.15,
+                //           child: const Divider(
+                //             color: AppColors.darkPrimary,
+                //             thickness: 1,
+                //           )),
+                //       Text(
+                //         'Swiping Qestions',
+                //         style: AppStyles.styleBold24(context)
+                //             .copyWith(color: AppColors.darkPrimary),
+                //       ),
+                //       SizedBox(
+                //           width: width * 0.15,
+                //           child: const Divider(
+                //             color: AppColors.darkPrimary,
+                //             thickness: 1,
+                //           ))
+                //     ],
+                //   ),
+                // ),
+                getCarouselSection(sliders,),
                 AnimatedContainer(
                     duration: const Duration(seconds: 2),
                     curve: Curves.fastOutSlowIn,
@@ -214,6 +218,62 @@ class _MobileLayoutState extends State<MobileLayout> {
       ),
     );
   }
+
+   Widget getCarouselSection(List<CarouselModel>? sliders) {
+    if (sliders != null) {
+      return CarouselSlider(
+          items: sliders
+              .map((carouselModel) => SizedBox(
+                    width: double.infinity,
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        side: BorderSide(
+                            color: AppColors.darkPrimary, width:1),
+                      ),
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                carouselModel.image,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 10,
+                            left: 10,
+                            right: 10,
+                            child: Text(carouselModel.title,style: AppStyles.styleBold24(context).copyWith(color: AppColors.white,fontWeight: FontWeight.w900,fontSize: getResponsiveFontSizeText(context, fontSize: 18)),textAlign: TextAlign.center,))
+                        ],
+                      ),
+                    ),
+                  ))
+              .toList(),
+          options: CarouselOptions(
+              height:150,//190
+              autoPlay: true,
+              enableInfiniteScroll: true,
+              enlargeCenterPage: true));
+    } else {
+      return Container();
+    }
+  }
+
+  static final sliders=[
+    CarouselModel(title: "When Will I Expect A Baby?", image: AppImages.carouselBaby),
+    CarouselModel(title: "Does My Crush Loves me?", image: AppImages.carouselRealtion),
+    CarouselModel(title: "What Secrets Does Your Palm Holds?", image: AppImages.carouselPalmread),
+    CarouselModel(title: "Glimpse Into The Future", image: AppImages.carouselFuture),
+    CarouselModel(title: "Ever Wondered What Your Dreams are telling You?", image: AppImages.carouselDream),
+    CarouselModel(title: "Uncover the Number that shape your Destiny?", image: AppImages.carouselNumero),
+    CarouselModel(title: "How Can I Control My Anger?", image: AppImages.carouselAnger),
+  ];
+
+
 
   static List getCardPart1(BuildContext context) {
     return [

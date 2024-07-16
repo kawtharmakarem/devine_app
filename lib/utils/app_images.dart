@@ -72,6 +72,30 @@ static const String reservedtarotBg="assets/tarotimages/reservedtarot.jpg";
   static const String save="assets/tarotimages/save.svg";
   static const String card="assets/tarotimages/card.jpg";
   static const String shuffleImage="assets/tarotimages/shuffleimage.png";
+  //tarotresultscards
+  static const String chariot="assets/tarotresultscards/chariot.png";
+  static const String death="assets/tarotresultscards/death.png";
+  static const String devil="assets/tarotresultscards/devil.png";
+  static const String emperor="assets/tarotresultscards/emperor.png";
+  static const String empress="assets/tarotresultscards/empress.png";
+  
+  static const String fool="assets/tarotresultscards/fool.png";
+  static const String hangedMan="assets/tarotresultscards/hanged_man.png";
+  static const String hermit="assets/tarotresultscards/hermit.png";
+  static const String hierophant="assets/tarotresultscards/hierophant.jpg";
+  static const String highpriestess="assets/tarotresultscards/highpriestess.jpg";
+  static const String judgement="assets/tarotresultscards/judgement.png";
+  static const String justice="assets/tarotresultscards/justice.png";
+  static const String lovers="assets/tarotresultscards/lovers.png";
+  static const String magician="assets/tarotresultscards/magician.jpg";
+  static const String moon="assets/tarotresultscards/moon.png";
+  static const String starresult="assets/tarotresultscards/star.png";
+  static const String strength="assets/tarotresultscards/strength.png";
+  static const String sun="assets/tarotresultscards/sun.png";
+  static const String temperance="assets/tarotresultscards/temperance.png";
+  static const String tower="assets/tarotresultscards/tower.png";
+  static const String wheel="assets/tarotresultscards/wheel.png";
+  static const String world="assets/tarotresultscards/world.jpg";
 
   //facereading
 
@@ -232,4 +256,13 @@ static const String cbox="assets/todayluckimages/cbox.json";
 static const String onboardingcard="assets/onboardingimages/tarotcard.png";
 static const String onboardingfirst="assets/onboardingimages/onboardingfirst.png";
 static const String onboardingsecond="assets/onboardingimages/onboardingsecond.png";
+
+//carouselImages
+static const String carouselDream="assets/carouselimages/dream.png";
+static const String carouselFuture="assets/carouselimages/future.png";
+static const String carouselNumero="assets/carouselimages/numero.png";
+static const String carouselPalmread="assets/carouselimages/palmread.png";
+static const String carouselRealtion="assets/carouselimages/realtion.png";
+static const String carouselBaby="assets/carouselimages/baby.png";
+static const String carouselAnger="assets/carouselimages/anger.png";
 }

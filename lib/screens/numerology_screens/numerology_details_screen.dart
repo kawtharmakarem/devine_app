@@ -1,12 +1,10 @@
 import 'package:divinecontrol/models/numerlogy_models/numerology_details_model.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/numerology_widgets/custom_numerology_details_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
 class NumerologyDetailsScreen extends StatelessWidget {
@@ -17,25 +15,7 @@ class NumerologyDetailsScreen extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          'Life Path Number',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: CustomAppBar(title: 'Life Path Number', leading: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(

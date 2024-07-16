@@ -13,7 +13,8 @@ typedef void BoolCallBack(bool value);
 
 class CaptchaVerify extends StatefulWidget {
   const CaptchaVerify({
-    super.key, required this.callBack,
+    super.key,
+    required this.callBack,
   });
   final BoolCallBack callBack;
 
@@ -56,8 +57,8 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-            width:width*0.2,
-            height: height*0.2,
+            width: width * 0.15,
+            height: height * 0.15,
             child: Image.asset(
               "assets/homepageimages/captcha.png",
               fit: BoxFit.fill,
@@ -66,7 +67,14 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
         // SvgPicture.asset("assets/homepageimages/recaptcha-icon.svg"
         Text(
           "Enter Captcha Value",
-          style: AppStyles.styleBold24(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 24:width<AppConstants.maxTabletWidth? 32:40)),
+          textAlign: TextAlign.center,
+          style: AppStyles.styleBold24(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context,
+                  fontSize: width < AppConstants.maxMobileWidth
+                      ? 18
+                      : width < AppConstants.maxTabletWidth
+                          ? 24
+                          : 28)),
         ),
         SizedBox(
           height: height * 0.03,
@@ -82,7 +90,13 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
                   borderRadius: BorderRadius.circular(8)),
               child: Text(
                 randomString,
-                style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:width<AppConstants.maxTabletWidth? 28:32)),
+                style: AppStyles.styleRegular20(context).copyWith(
+                    fontSize: getResponsiveFontSizeText(context,
+                        fontSize: width < AppConstants.maxMobileWidth
+                            ? 18
+                            : width < AppConstants.maxTabletWidth
+                                ? 24
+                                : 28)),
               ),
             ),
             SizedBox(
@@ -93,9 +107,9 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
                 onPressed: () {
                   buildCaptcha();
                 },
-                icon:  Icon(
+                icon: Icon(
                   Icons.refresh,
-                  size:width<AppConstants.maxMobileWidth? 40:70,
+                  size: width < AppConstants.maxMobileWidth ? 40 : 70,
                   color: AppColors.darkPrimary,
                 )),
           ],
@@ -105,20 +119,29 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
           height: height * 0.015,
         ),
         TextFormField(
-          style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?20:width<AppConstants.maxTabletWidth?28:32)),
+          style: AppStyles.styleRegular20(context).copyWith(
+              fontSize: getResponsiveFontSizeText(context,
+                  fontSize: width < AppConstants.maxMobileWidth
+                      ? 18
+                      : width < AppConstants.maxTabletWidth
+                          ? 28
+                          : 32)),
           onChanged: (value) {
             setState(() {
               isVerified = false;
             });
           },
-          decoration:  InputDecoration(
-
-            border:const OutlineInputBorder(),
-           // hintText: "Enter captcha value",
-            labelText: "Enter captcha value",
-            labelStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?20:28))
-            ,hintStyle: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?18:24))
-          ),
+          decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              // hintText: "Enter captcha value",
+              labelText: "Enter captcha value",
+              labelStyle: AppStyles.styleRegular20(context).copyWith(
+                  fontSize: getResponsiveFontSizeText(context,
+                      fontSize: width < AppConstants.maxMobileWidth ? 18 : 28)),
+              hintStyle: AppStyles.styleRegular20(context).copyWith(
+                  fontSize: getResponsiveFontSizeText(context,
+                      fontSize:
+                          width < AppConstants.maxMobileWidth ? 16 : 24))),
           controller: controller,
         ),
         SizedBox(
@@ -129,17 +152,17 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
           child: CustomHomePageButton(
               onTap: () async {
                 isVerified = controller.text == randomString;
-                 widget.callBack(isVerified);
-                  ContactUsScreen.of(context)?.isChecked = isVerified;
+                widget.callBack(isVerified);
+                ContactUsScreen.of(context)?.isChecked = isVerified;
                 setState(() {});
-               await Future.delayed(const Duration(seconds: 2));
-            
-               // Get.back();
-               Navigator.of(context,rootNavigator: true).pop(isVerified);
+                await Future.delayed(const Duration(seconds: 2));
+
+                // Get.back();
+                Navigator.of(context, rootNavigator: true).pop(isVerified);
               },
               title: "CheckValue"),
         ),
-      
+
         const SizedBox(
           height: 10,
         ),
@@ -150,9 +173,15 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
               Icon(
                 Icons.verified,
                 color: AppColors.darkPrimary,
-                size:width<AppConstants.maxMobileWidth? 40:70,
+                size: width < AppConstants.maxMobileWidth ? 40 : 70,
               ),
-              Text("Verified",style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?20:28)),)
+              Text(
+                "Verified",
+                style: AppStyles.styleRegular20(context).copyWith(
+                    fontSize: getResponsiveFontSizeText(context,
+                        fontSize:
+                            width < AppConstants.maxMobileWidth ? 20 : 28)),
+              )
             ],
           )
         else
@@ -161,7 +190,8 @@ class _CaptchaVerifyState extends State<CaptchaVerify> {
             textAlign: TextAlign.center,
             style: AppStyles.styleRegular20(context).copyWith(
                 color: AppColors.darkPrimary,
-                fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 18:24)),
+                fontSize: getResponsiveFontSizeText(context,
+                    fontSize: width < AppConstants.maxMobileWidth ? 18 : 24)),
           )
       ],
     );

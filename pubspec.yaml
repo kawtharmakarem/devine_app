@@ -59,6 +59,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   flutter_pdfview: ^1.3.2
   font_awesome_flutter: ^10.7.0
+  carousel_slider: ^4.2.1
 
 
 dev_dependencies:
@@ -123,6 +124,8 @@ flutter:
     - assets/sounds/
     - assets/onboardingimages/
     - assets/pdffiles/
+    - assets/tarotresultscards/
+    - assets/carouselimages/
 
   #   - images/a_dot_ham.jpeg
 

@@ -1,34 +1,44 @@
+import 'package:animations/animations.dart';
 import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
+import 'package:divinecontrol/screens/astrology_screens/astrology_details_screen.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_container.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AstrologyCustomCard extends StatelessWidget {
-  const AstrologyCustomCard(
-      {super.key, required this.onTap, required this.astrologyModel});
-  final void Function() onTap;
+  const AstrologyCustomCard({super.key, required this.astrologyModel});
+  //final void Function() onTap;
   final AstrologyModel astrologyModel;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 2,
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: width < AppConstants.maxMobileWidth
-            ? getMobileCustomCard(context, width)
-            : width < AppConstants.maxTabletWidth
-                ? getTabletCustomCard(context, width)
-                : getDesktopCustomCard(context, width),
-      ),
-    );
+    return OpenContainer(
+        transitionDuration:
+            const Duration(seconds: AppConstants.durationSecond),
+        transitionType: ContainerTransitionType.fade,
+        closedBuilder: (context, VoidCallback openContainer) {
+          return GestureDetector(
+            onTap: openContainer,
+            child: Card(
+              elevation: 2,
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: width < AppConstants.maxMobileWidth
+                  ? getMobileCustomCard(context, width)
+                  : width < AppConstants.maxTabletWidth
+                      ? getTabletCustomCard(context, width)
+                      : getDesktopCustomCard(context, width),
+            ),
+          );
+        },
+        openBuilder: (context, _) =>
+            AstrologyDetailsPage(astrologyModel: astrologyModel));
   }
 
   Column getMobileCustomCard(BuildContext context, double width) {
@@ -73,11 +83,20 @@ class AstrologyCustomCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: CustomAstrologyButton(title: 'Book Now', onTap: () {}))
+                  child: CustomAstrologyButton(
+                      title: 'Book Now',
+                      onTap: () {
+                        Get.to(
+                            () => AstrologyDetailsPage(
+                                astrologyModel: astrologyModel),
+                            transition: Transition.circularReveal,
+                            duration: const Duration(
+                                seconds: AppConstants.durationSecond));
+                      }))
             ],
           ),
         ),
-       const Expanded(child: SizedBox())
+        const Expanded(child: SizedBox())
       ],
     );
   }
@@ -122,7 +141,16 @@ class AstrologyCustomCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: CustomAstrologyButton(title: 'Book Now', onTap: () {}))
+                  child: CustomAstrologyButton(
+                      title: 'Book Now',
+                      onTap: () {
+                        Get.to(
+                            () => AstrologyDetailsPage(
+                                astrologyModel: astrologyModel),
+                            transition: Transition.circularReveal,
+                            duration: const Duration(
+                                seconds: AppConstants.durationSecond));
+                      }))
             ],
           ),
         ),
@@ -173,11 +201,20 @@ class AstrologyCustomCard extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  child: CustomAstrologyButton(title: 'Book Now', onTap: () {}))
+                  child: CustomAstrologyButton(
+                      title: 'Book Now',
+                      onTap: () {
+                        Get.to(
+                            () => AstrologyDetailsPage(
+                                astrologyModel: astrologyModel),
+                            transition: Transition.zoom,
+                            duration: const Duration(
+                                seconds: AppConstants.durationSecond));
+                      }))
             ],
           ),
         ),
-       const Expanded(child: SizedBox())
+        const Expanded(child: SizedBox())
       ],
     );
   }

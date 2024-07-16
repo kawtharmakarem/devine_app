@@ -1,10 +1,9 @@
 import 'package:divinecontrol/models/astrology_models/astrology_cardmodel.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
 class AstrologyDescriptionScreen extends StatefulWidget {
@@ -27,25 +26,7 @@ class _AstrologyDescriptionScreenState
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.astrologyModel.title,
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: CustomAppBar(title:widget.astrologyModel.title, leading: true),
       body: width < AppConstants.maxMobileWidth
           ? getMobileDescription(width, context)
           : width < AppConstants.maxTabletWidth

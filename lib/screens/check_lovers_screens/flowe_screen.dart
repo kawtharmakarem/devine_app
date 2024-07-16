@@ -2,9 +2,8 @@ import 'dart:developer';
 
 import 'package:divinecontrol/screens/check_lovers_screens/custom_checklover_button.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
-import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
 import '../../utils/app_constants.dart';
@@ -71,25 +70,7 @@ class _FlowerState extends State<Flower> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
         backgroundColor: AppColors.lightPurple1,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(
-            "Love Check",
-            style: width < AppConstants.maxMobileWidth
-                ? AppStyles.styleBold24(context)
-                    .copyWith(color: AppColors.darkPrimary)
-                : AppStyles.styleBold24(context).copyWith(
-                    color: AppColors.darkPrimary,
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-          ),
-          backgroundColor: AppColors.primary,
-          centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: SvgPicture.asset(AppImages.leftArrow)),
-        ),
+        appBar: CustomAppBar(title: "Love Check", leading: true),
         body: width < AppConstants.maxMobileWidth
             ? getMobileFlower(context, size)
             : width < AppConstants.maxTabletWidth

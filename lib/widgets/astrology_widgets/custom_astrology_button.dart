@@ -36,7 +36,7 @@ class CustomAstrologyButton extends StatelessWidget {
       child: Text(
         title,
         style:AppStyles.styleBold24(context).copyWith(
-            fontSize: getResponsiveFontSizeText(context, fontSize: 14),
+            fontSize: getResponsiveFontSizeText(context, fontSize:14),
             color: textColor)
       ),
     ),

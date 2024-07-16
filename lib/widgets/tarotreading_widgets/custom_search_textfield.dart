@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -5,13 +6,13 @@ import '../../utils/app_constants.dart';
 import '../../utils/app_styles.dart';
 
 class CustomSearchTextField extends StatelessWidget {
-  const CustomSearchTextField({super.key, required this.labelText, required this.prefixIcon, required this.hintText,  this.controller, required this.onChanged,this.maxLines});
+  const CustomSearchTextField({super.key, required this.labelText, required this.prefixIcon, required this.hintText,  this.controller, required this.onChanged, this.onSubmitted});
 final String labelText;
 final Icon prefixIcon;
 final String hintText;
 final void Function(String) onChanged;
+final void Function(String)? onSubmitted;
 final TextEditingController? controller;
-final int? maxLines;
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
@@ -22,16 +23,14 @@ final int? maxLines;
         ? AppStyles.stylePoppinsRegular20(context)
         : AppStyles.stylePoppinsRegular20(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxTabletWidth? 28:32)),
-            maxLines: maxLines,
       decoration: InputDecoration(
         contentPadding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 5):const EdgeInsets.symmetric(horizontal: 5,vertical: 15),
         prefixIcon: prefixIcon,
-        prefixIconColor: AppColors.darkPrimary,
          floatingLabelBehavior: FloatingLabelBehavior.always,
             
             label: Container(
                 margin:const EdgeInsets.all(0),child: Text(labelText),),
-        labelStyle: AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 28:32)),
+        labelStyle: AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 20:32)),
       hintText: hintText,
       hintStyle: AppStyles.stylePoppinsRegular20(context).copyWith(color: AppColors.primary,fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?20:24)),
       enabledBorder: OutlineInputBorder(
@@ -50,6 +49,7 @@ final int? maxLines;
     
       ),
       onChanged:  onChanged,
+      onSubmitted:onSubmitted ,
     );
   }
 

@@ -1,15 +1,12 @@
 import 'package:divinecontrol/models/numerlogy_models/numer_table_model.dart';
 import 'package:divinecontrol/screens/numerology_screens/numerology_details_screen.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/numerology_widgets/custom_table_widet.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 import '../../widgets/numerology_widgets/custom_numerlogy_card.dart';
 
 class Numerology extends StatelessWidget {
@@ -20,25 +17,7 @@ class Numerology extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          'Numerology',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:CustomAppBar(title: 'Numerology', leading: true),
       body: width < AppConstants.maxMobileWidth
           ? getMobileNumerologyContent(context, width)
           : width < AppConstants.maxTabletWidth

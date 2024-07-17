@@ -1,6 +1,7 @@
 import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_checkbox.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -49,20 +50,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          widget.emotionModel.title,
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-      ),
+      appBar: CustomAppBar(title:  widget.emotionModel.title, leading: false),
       body: width < AppConstants.maxMobileWidth
           ? getMobileDescription(width, context)
           : width < AppConstants.maxTabletWidth

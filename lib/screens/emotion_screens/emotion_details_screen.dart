@@ -1,13 +1,11 @@
 import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_description_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 
 class EmotionDetailsPage extends StatelessWidget {
@@ -18,25 +16,7 @@ class EmotionDetailsPage extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          emotionModel.title,
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: CustomAppBar(title: emotionModel.title, leading: true),
       body: width < AppConstants.maxTabletWidth
           ? getMobileDetailsContent(width, context)
           : getDesktopDetailsContent(width, context),

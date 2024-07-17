@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_details_screen.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_image_widget.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_palem_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../utils/app_colors.dart';
@@ -30,31 +30,14 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
     setState(() {
       this.photo = photo;
     });
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Palem Reading',
-            style: width < AppConstants.maxMobileWidth
-                ? AppStyles.styleBold24(context)
-                    .copyWith(color: AppColors.darkPrimary)
-                : AppStyles.styleBold24(context).copyWith(
-                    color: AppColors.darkPrimary,
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-          ),
-          backgroundColor: AppColors.primary,
-          centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: SvgPicture.asset(AppImages.leftArrow),
-          ),
-        ),
+        appBar: CustomAppBar(title: 'Palem Reading', leading: true),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

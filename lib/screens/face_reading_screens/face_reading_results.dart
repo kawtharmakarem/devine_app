@@ -1,6 +1,4 @@
-import 'package:divinecontrol/screens/face_reading_screens/facereading_result_card_details.dart';
 import 'package:divinecontrol/widgets/face_reading_widgets/facereading_results_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

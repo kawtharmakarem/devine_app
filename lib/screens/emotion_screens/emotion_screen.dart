@@ -1,70 +1,13 @@
-// import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
-// import 'package:divinecontrol/screens/emotion_screens/emotion_details_screen.dart';
-// import 'package:divinecontrol/widgets/emotion_widgets/custom_emtion_card.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-
-// import '../../utils/app_colors.dart';
-// import '../../utils/app_constants.dart';
-// import '../../utils/app_images.dart';
-// import '../../utils/app_styles.dart';
-
-// class EmotionScreen extends StatelessWidget {
-//   const EmotionScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     double width=MediaQuery.sizeOf(context).width;
-//    return Scaffold(
-//       backgroundColor: AppColors.lightPurple1,
-//       appBar: AppBar(
-//         title: Text(
-//           'Emotional Support',
-//           style: width < AppConstants.maxMobileWidth
-//               ? AppStyles.styleBold24(context)
-//                   .copyWith(color: AppColors.darkPrimary)
-//               : AppStyles.styleBold24(context).copyWith(
-//                   color: AppColors.darkPrimary,
-//                   fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-//         ),
-//         backgroundColor: AppColors.primary,
-//         centerTitle: true,
-//         leading: IconButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           icon: SvgPicture.asset(AppImages.leftArrow),
-//         ),
-//       ),
-//        body: Container(
-//         width: width,
-//         child: SingleChildScrollView(
-//           child: Wrap(
-//             alignment: WrapAlignment.spaceEvenly,
-//           children: [
-//            for(final emotion in emotions)
-//            Padding(
-//              padding:width<AppConstants.maxMobileWidth? const EdgeInsets.symmetric(horizontal: 5,vertical: 10):const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-//              child: CustomEmotionCard(onTap: (){
-//               Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EmotionDetailsPage(emotionModel: emotion)));
-//              }, emotionModel:emotion, index: emotions.indexOf(emotion), ),
-//            )
-//           ],),
-//         ),
-//       ),
-//       );
-//   }
 
 import 'package:divinecontrol/screens/emotion_screens/emotion_details_screen.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_emtion_card.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../models/emotion_models/emotion_model.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 
 class EmotionScreen extends StatefulWidget {
   const EmotionScreen({super.key});
@@ -84,25 +27,7 @@ class _EmotionScreenState extends State<EmotionScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        title: Text(
-          'Emotional Support',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.lightPurple1,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:CustomAppBar(title: 'Emotional Support', leading: true),
       body: Padding(padding: EdgeInsets.symmetric(horizontal: width/20,vertical: width/20),
       child: SingleChildScrollView(
         physics:const BouncingScrollPhysics(),

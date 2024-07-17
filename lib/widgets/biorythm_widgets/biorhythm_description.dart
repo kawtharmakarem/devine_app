@@ -48,6 +48,7 @@ class BiorhythmDescription extends StatelessWidget {
                   endIndent: 20,
                 ),
                 ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
                   shrinkWrap: true,
                   children: [
                     Text(

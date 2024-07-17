@@ -1,42 +1,19 @@
 import 'package:divinecontrol/models/traveltime_models/traveltime_details_model.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/traveltime_widgets/seefuture_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
-import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 
 class SeeFutureDetailsScreen extends StatelessWidget {
   const SeeFutureDetailsScreen({super.key, this.dateTime});
   final DateTime? dateTime;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          'See Your Future',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: CustomAppBar(title:  'See Your Future', leading: true),
       body: Padding(
         padding:const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: SizedBox(

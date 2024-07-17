@@ -3,7 +3,6 @@ import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
-import 'package:divinecontrol/widgets/face_reading_widgets/custom_scan_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

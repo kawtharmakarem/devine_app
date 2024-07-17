@@ -245,7 +245,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                             ),
                           ),
                           Positioned(
-                              top: 10,
+                              bottom: 10,
                               left: 10,
                               right: 10,
                               child: Container(
@@ -268,9 +268,8 @@ class _MobileLayoutState extends State<MobileLayout> {
               .toList(),
           options: CarouselOptions(
             
-            // scrollDirection: axisDirectionToAxis(AxisDirection.right),
              reverse: true,
-              height: 150, //190
+              height: 160, //190
               autoPlay: true,
               enableInfiniteScroll: true,
               enlargeCenterPage: true));

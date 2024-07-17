@@ -1,5 +1,4 @@
 import 'package:divinecontrol/models/biorhythm_models/biorhythm_description_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
@@ -48,27 +47,22 @@ class BiorhythmDescription extends StatelessWidget {
                   indent: 20,
                   endIndent: 20,
                 ),
-                Container(
-                  padding:const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
-                  child: Expanded(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Text(
-                          descriptionModel.description,
-                          // overflow: TextOverflow.ellipsis,
-                          // maxLines: 5,
-                          style: width < AppConstants.maxMobileWidth
-                              ? AppStyles.styleRegular20(context)
-                              : width < AppConstants.maxTabletWidth
-                                  ? AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))
-                                  : AppStyles.styleRegular20(context).copyWith(
-                                      fontSize: getResponsiveFontSizeText(context,
-                                          fontSize: 28)),
-                        ),
-                      ],
+                ListView(
+                  shrinkWrap: true,
+                  children: [
+                    Text(
+                      descriptionModel.description,
+                      // overflow: TextOverflow.ellipsis,
+                      // maxLines: 5,
+                      style: width < AppConstants.maxMobileWidth
+                          ? AppStyles.styleRegular20(context)
+                          : width < AppConstants.maxTabletWidth
+                              ? AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))
+                              : AppStyles.styleRegular20(context).copyWith(
+                                  fontSize: getResponsiveFontSizeText(context,
+                                      fontSize: 28)),
                     ),
-                  ),
+                  ],
                 )
               ],
             )

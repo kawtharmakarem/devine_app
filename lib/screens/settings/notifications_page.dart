@@ -2,7 +2,6 @@ import 'package:divinecontrol/screens/settings/app_settings_page.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 import '../../utils/app_constants.dart';

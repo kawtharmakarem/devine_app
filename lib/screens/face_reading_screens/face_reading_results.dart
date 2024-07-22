@@ -1,12 +1,11 @@
 import 'package:divinecontrol/widgets/face_reading_widgets/facereading_results_card.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../models/facereading_models/facereading_model.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_images.dart';
-import '../../utils/app_styles.dart';
 
 class FaceReadingResults extends StatelessWidget {
   const FaceReadingResults({super.key});
@@ -21,25 +20,7 @@ class FaceReadingResults extends StatelessWidget {
     double width=MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          'Face Results !',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.primary,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar: CustomAppBar(title: 'Face Results !', leading: true),
       body:width<AppConstants.maxTabletWidth? getMobileFaceReadingResults(context,width):getDesktopFaceReadingResults(context, width),
     );
   }

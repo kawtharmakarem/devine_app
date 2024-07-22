@@ -245,17 +245,17 @@ class _MobileLayoutState extends State<MobileLayout> {
                             ),
                           ),
                           Positioned(
-                              bottom: 10,
-                              left: 10,
-                              right: 10,
+                              top: 2,
+                              left: 5,
+                              right: 5,
                               child: Container(
-                                padding: const EdgeInsets.all(5),
-                                color: Colors.black54,
+                                //padding: const EdgeInsets.all(5),
+                                //color: Colors.black54,
                                 child: Text(
                                   carouselModel.title,
-                                  style: AppStyles.styleBold24(context).copyWith(
+                                  style: AppStyles.styleRufinaBold32(context).copyWith(
                                       color: AppColors.white,
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.w900,backgroundColor: Colors.black54,
                                       fontSize: getResponsiveFontSizeText(context,
                                           fontSize: 18)),
                                   textAlign: TextAlign.center,
@@ -267,9 +267,9 @@ class _MobileLayoutState extends State<MobileLayout> {
                   ))
               .toList(),
           options: CarouselOptions(
-            
+            autoPlayAnimationDuration: Duration(seconds: 5),
              reverse: true,
-              height: 160, //190
+              height: 170, //190
               autoPlay: true,
               enableInfiniteScroll: true,
               enlargeCenterPage: true));

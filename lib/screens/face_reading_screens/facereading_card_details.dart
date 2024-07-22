@@ -3,7 +3,9 @@ import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FaceReadingCardDetails extends StatelessWidget {
@@ -48,7 +50,13 @@ class FaceReadingCardDetails extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(cardModel.description)
+          Expanded(
+            child: ListView(
+              children: [
+                Text(cardModel.description),
+              ],
+            ),
+          )
         ],
       );
   }
@@ -80,7 +88,14 @@ class FaceReadingCardDetails extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Text(cardModel.description,style:AppStyles.styleBold24(context).copyWith(fontSize: 32))
+          Expanded(
+            child: ListView(
+              // shrinkWrap: true,
+              children: [
+                Text(cardModel.description,style:AppStyles.styleBold24(context).copyWith(fontSize: 32)),
+              ],
+            ),
+          )
         ],
       );
   }

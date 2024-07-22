@@ -66,9 +66,14 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
           height: 20,
         ),
         PickedPalemImageWidget(
-            image: photo == null
-                ? Image.asset(AppImages.scanpalem)
-                : Image(image: FileImage(File(photo!.path)))),
+          image: photo == null
+              ? Image.asset(AppImages.scanpalem)
+              : Image(
+                  image: FileImage(
+                    File(photo!.path),
+                  ),
+                ),
+        ),
         const SizedBox(
           height: 30,
         ),
@@ -134,6 +139,8 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                     isVisible = !isVisible;
                   });
                 },
+
+
               ),
               const SizedBox(
                 height: 20,
@@ -163,7 +170,8 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
               CustomPalemButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const PalemReadingDetailsScreen()));
+                        builder: (context) =>
+                            const PalemReadingDetailsScreen()));
                   },
                   title: 'Scan '),
               const SizedBox(
@@ -304,6 +312,9 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                             isVisible = !isVisible;
                           });
                         },
+
+
+                        
                       ),
                       const SizedBox(
                         height: 10,

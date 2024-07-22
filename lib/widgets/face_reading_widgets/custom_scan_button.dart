@@ -15,25 +15,28 @@ class CustomScanButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
-    return Container(
-      height: width < AppConstants.maxMobileWidth ? 35 : 65,
-      width: width < AppConstants.maxMobileWidth ? 130 : 300,
-      child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.white,
-              foregroundColor: AppColors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8))),
-          child: Text(
-            title,
-            style: width < AppConstants.maxMobileWidth
-                ? AppStyles.styleMedium16(context).copyWith(
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 24),
-                    color: AppColors.black)
-                : AppStyles.styleBold24(context).copyWith(
-                    fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
-          )),
+    return Center(
+      child: Container(
+        //height: width < AppConstants.maxMobileWidth ? 35 : 65,
+        width: width < AppConstants.maxMobileWidth ? width/2 : 300,
+        child: ElevatedButton(
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.white,
+                foregroundColor: AppColors.darkPrimary,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    )),
+            child: Text(
+              title,
+              style: width < AppConstants.maxMobileWidth
+                  ? AppStyles.styleRegular20(context).copyWith(fontWeight: FontWeight.w800,
+                      fontSize: getResponsiveFontSizeText(context, fontSize: 18),
+                      color: AppColors.darkPrimary)
+                  : AppStyles.styleRegular20(context).copyWith(
+                      fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
+            )),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../models/dream_meaning.models/custom_card_model.dart';
 import '../../models/homepage_models/carousel_model.dart';
@@ -69,42 +70,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                   ),
                 ],
               ),
-              // AnimatedContainer(
-              //   duration: const Duration(seconds: 2),
-              //   curve: Curves.fastOutSlowIn,
-              //   transform: Matrix4.translationValues(
-              //       _startAnimation ? 0 : width, 0, 0),
-              //   padding: const EdgeInsets.symmetric(vertical: 20),
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(8),
-              //       //  gradient: LinearGradient(colors: [AppColors.primary,AppColors.primary.withOpacity(0.7)]),
-              //       color: AppColors.primary.withOpacity(0.7)),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //     children: [
-              //       SizedBox(
-              //           width: width * 0.15,
-              //           child: const Divider(
-              //             color: AppColors.black,
-              //             thickness: 1,
-              //           )),
-              //       Text(
-              //         'Swiping Qestions',
-              //         style: AppStyles.styleBold24(context).copyWith(
-              //             color: AppColors.darkPrimary,
-              //             fontSize:
-              //                 getResponsiveFontSizeText(context, fontSize: 40)),
-              //       ),
-              //       SizedBox(
-              //           width: width * 0.15,
-              //           child: const Divider(
-              //             color: AppColors.black,
-              //             thickness: 1,
-              //           ))
-              //     ],
-              //   ),
-              // ),
-              getCarouselSection(sliders),
+             
+              Row(
+                children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: SizedBox()),
+
+                  Expanded(
+                    flex: 8,
+                    child: getCarouselSection(sliders)),
+                     
+                ],
+              ),
               SizedBox(
                 height: height / 20,
               ),
@@ -331,18 +309,31 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               ),
                             ),
                           ),
-                          Positioned(
-                            bottom: 10,
-                            left: 10,
-                            right: 10,
-                            child: Text(carouselModel.title,style: AppStyles.styleRegular20(context).copyWith(color: AppColors.white,fontSize: getResponsiveFontSizeText(context, fontSize: 18)),textAlign: TextAlign.center,))
+                           Positioned(
+                              top: 10,
+                              left: 10,
+                              right: 10,
+                              child: Container(
+                                padding: const EdgeInsets.all(5),
+                                color: Colors.black54,
+                                child: Text(
+                                  carouselModel.title,
+                                  style: AppStyles.styleRufinaBold32(context).copyWith(
+                                      color: AppColors.white,
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: getResponsiveFontSizeText(context,
+                                          fontSize: 28)),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ))
                         ],
                       ),
                     ),
                   ))
               .toList(),
           options: CarouselOptions(
-              height: 190,
+              height: 350,
+              
               autoPlay: true,
               enableInfiniteScroll: true,
               enlargeCenterPage: true));

@@ -46,32 +46,26 @@ class FaceReadingResultsCard extends StatelessWidget {
                   indent: 20,
                   endIndent: 20,
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.only(left: 10, right: 10, bottom: 5),
-                  child: Expanded(
-                    
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Text(
-                          faceModel.subTitle,
-                          // overflow: TextOverflow.ellipsis,
-                          // maxLines: 5,
-                          style: width < AppConstants.maxMobileWidth
-                              ? AppStyles.styleRegular20(context).copyWith(
+                ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  shrinkWrap: true,
+                  children: [
+                    Text(
+                      faceModel.subTitle,
+                      // overflow: TextOverflow.ellipsis,
+                      // maxLines: 5,
+                      style: width < AppConstants.maxMobileWidth
+                          ? AppStyles.styleRegular20(context).copyWith(
+                              fontSize: getResponsiveFontSizeText(context,
+                                  fontSize: 20),
+                              color: AppColors.black)
+                          : width < AppConstants.maxTabletWidth
+                              ? AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))
+                              : AppStyles.styleRegular20(context).copyWith(
                                   fontSize: getResponsiveFontSizeText(context,
-                                      fontSize: 20),
-                                  color: AppColors.black)
-                              : width < AppConstants.maxTabletWidth
-                                  ? AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 24))
-                                  : AppStyles.styleRegular20(context).copyWith(
-                                      fontSize: getResponsiveFontSizeText(context,
-                                          fontSize: 28)),
-                        ),
-                      ],
+                                      fontSize: 28)),
                     ),
-                  ),
+                  ],
                 )
               ],
             )

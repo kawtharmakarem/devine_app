@@ -17,7 +17,7 @@ class TravelTimeScreen extends StatelessWidget {
     double width=MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-       appBar:CustomAppBar(title: 'Future Prediction', leading: true),
+       appBar:CustomAppBar(title: 'Time Travel', leading: true),
         body:width<AppConstants.maxTabletWidth? getMobileTravelScreen(width, context):getDesktopTravelScreen(width, context),
     );
   }

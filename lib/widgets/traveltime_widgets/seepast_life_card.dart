@@ -1,4 +1,5 @@
-import 'package:divinecontrol/models/traveltime_models/traveltime_details_model.dart';
+import 'package:divinecontrol/models/traveltime_models/pastlife_model.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -6,24 +7,29 @@ import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
 import '../../utils/app_styles.dart';
 
-class SeeDetailsCard extends StatelessWidget {
-   SeeDetailsCard({
-    super.key, required this.travelTimeDetailsModel,
+class SeePastLifeDetailsCard extends StatelessWidget {
+   SeePastLifeDetailsCard({
+    super.key, required this.pastLifeModel,
   });
- final TravelTimeDetailsModel travelTimeDetailsModel;
+  final PastLifeModel pastLifeModel;
   final formatter = DateFormat.yMd();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     double height=MediaQuery.sizeOf(context).height;
-    return width < AppConstants.maxMobileWidth
-        ? getMobileSeeDetailsCard(context, width,height)
+    return  Scaffold(
+      backgroundColor: AppColors.lightPurple1,
+      appBar: CustomAppBar(title: "See Your Past", leading: true),
+
+  body:  width < AppConstants.maxMobileWidth
+        ? getMobileSeePastLifeDetailsCard(context, width,height)
         : width < AppConstants.maxTabletWidth
-            ? getTabletSeeDetailsCard(context, width,height)
-            : getDesktopSeeDetailsCard(context, width,height);
+            ? getTabletSeePastLifeDetailsCard(context, width,height)
+            : getDesktopSeePastLifeDetailsCard(context, width,height)
+    );
   }
 
-  Padding getMobileSeeDetailsCard(BuildContext context, double width,double height) {
+  Padding getMobileSeePastLifeDetailsCard(BuildContext context, double width,double height) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Container(
@@ -39,15 +45,12 @@ class SeeDetailsCard extends StatelessWidget {
          
               Align(
                 alignment: Alignment.center,
-                child: Text("${travelTimeDetailsModel.title} ",
+                child: Text("Results",
                     style: AppStyles.styleBold24(context).copyWith(
                         fontSize: getResponsiveFontSizeText(context,
                             fontSize: 24))),
               ),
-               travelTimeDetailsModel.image==null? Container():  SizedBox(
-            width: 75,
-            height: 65,
-            child: Image.asset(travelTimeDetailsModel.image!)),
+             
               const Divider(
                 color: AppColors.black,
                 indent: 20,
@@ -56,7 +59,7 @@ class SeeDetailsCard extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                       Text(travelTimeDetailsModel.details,
+                       Text(pastLifeModel.prediction,
                         style: AppStyles.styleRegular18(context).copyWith(
                             fontSize: getResponsiveFontSizeText(context,
                                 fontSize: 20),
@@ -71,11 +74,11 @@ class SeeDetailsCard extends StatelessWidget {
         );
   }
 
-  Padding getTabletSeeDetailsCard(BuildContext context, double width,double height) {
+  Padding getTabletSeePastLifeDetailsCard(BuildContext context, double width,double height) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
         child: Container(
-          height:height*0.3 ,
+          //height:height*0.3 ,
           padding:const EdgeInsets.symmetric(horizontal: 20),
           decoration: ShapeDecoration(
             color: Colors.white,
@@ -87,17 +90,14 @@ class SeeDetailsCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                child: Text(travelTimeDetailsModel.title,
+                child: Text("Results",
                     textAlign: TextAlign.center,
                     style: AppStyles.styleBold20(context).copyWith(
                         fontSize:
                             getResponsiveFontSizeText(context, fontSize: 40))),
 
               ),
-              travelTimeDetailsModel.image==null? Container():  SizedBox(
-            width: 95,
-            height: 75,
-            child: Image.asset(travelTimeDetailsModel.image!)),
+            
               const Divider(
                 color: AppColors.black,
                 indent: 20,
@@ -106,7 +106,7 @@ class SeeDetailsCard extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                        Text(travelTimeDetailsModel.details,
+                        Text(pastLifeModel.prediction,
                         style: AppStyles.styleRegular18(context).copyWith(
                             fontSize: getResponsiveFontSizeText(context,
                                 fontSize: 30),
@@ -124,7 +124,7 @@ class SeeDetailsCard extends StatelessWidget {
         );
   }
 
-  Padding getDesktopSeeDetailsCard(
+  Padding getDesktopSeePastLifeDetailsCard(
       BuildContext context, double width,double height) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
@@ -140,16 +140,13 @@ class SeeDetailsCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                child: Text(travelTimeDetailsModel.title,
+                child: Text("Results",
                     textAlign: TextAlign.center,
                     style: AppStyles.styleBold20(context).copyWith(
                         fontSize:
                             getResponsiveFontSizeText(context, fontSize: 32))),
               ),
-              travelTimeDetailsModel.image==null? Container():  SizedBox(
-            width: 105,
-            height: 85,
-            child: Image.asset(travelTimeDetailsModel.image!)),
+             
               const Divider(
                 color: AppColors.black,
                 indent: 20,
@@ -158,7 +155,7 @@ class SeeDetailsCard extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                        Text(travelTimeDetailsModel.details,
+                        Text(pastLifeModel.prediction,
                         style: AppStyles.styleRegular18(context).copyWith(
                             fontSize: getResponsiveFontSizeTextTarot(context,
                                 fontSize: 20),

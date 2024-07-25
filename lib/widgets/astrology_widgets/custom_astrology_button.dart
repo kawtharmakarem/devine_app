@@ -9,12 +9,14 @@ class CustomAstrologyButton extends StatelessWidget {
       {super.key,
       required this.title,
       required this.onTap,
+
       this.color = Colors.white,
-      this.textColor = Colors.black});
+      this.textColor = Colors.black,this.iconData});
   final String title;
   final void Function() onTap;
   final Color? color;
   final Color? textColor;
+  final IconData? iconData;
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
@@ -33,12 +35,22 @@ class CustomAstrologyButton extends StatelessWidget {
         border: Border.all(width: 1, color: AppColors.black),
         color: color,
       ),
-      child: Text(
+      child:iconData==null? Text(
         title,
         style:AppStyles.styleBold24(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize:14),
             color: textColor)
-      ),
+      ):Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+        Icon(iconData,size:15,color: textColor,),
+         Text(
+        title,
+        style:AppStyles.styleBold24(context).copyWith(
+            fontSize: getResponsiveFontSizeText(context, fontSize:14),
+            color: textColor))
+
+      ],),
     ),
   );
   }

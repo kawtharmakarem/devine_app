@@ -1,8 +1,11 @@
 
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:divinecontrol/screens/traveltime_screens/seefuture_details_screen.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/traveltime_widgets/custom_travelbutton.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../utils/app_colors.dart';
@@ -18,18 +21,25 @@ class FutureTimeScreen extends StatefulWidget {
 }
 
 class _FutureTimeScreenState extends State<FutureTimeScreen> {
+  //  List<DateTime?> _singleDatePickerValueWithDefaultValue = [
+  //   DateTime.now().add(const Duration(days: 1)),
+  // ];
   // DateTime dateTime = DateTime.now();
   // final formatter = DateFormat.yMd();
   DateTime? _selectedDate;
   final TextEditingController _dateController = TextEditingController();
   final formatter = DateFormat.yMd();
-
+ @override
+ void dispose() {
+   _dateController.dispose();
+   super.dispose();
+ }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: CustomAppBar(title: 'Time Travel', leading: true),
+      appBar: CustomAppBar(title: 'Future Prediction', leading: true),
       body:width<AppConstants.maxTabletWidth? getMobileFutureContent(width, context):getDesktopFutureContent(width, context),
     );
   }
@@ -50,15 +60,34 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
           ),
           getDatePickerTextField(context,width),
           const SizedBox(
-            height: 40,
+            height: 20,
           ),
-          CustomTravelButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const SeeFutureDetailsScreen()));
-            },
-            title: "See future",
-          )
+        _selectedDate!=null?  Row(
+          children: [
+            Expanded(
+              child: CustomTravelButton(
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const SeeFutureDetailsScreen()));
+                    Get.off(()=>SeeFutureDetailsScreen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
+                  },
+                  title: "Monthly",
+                ),
+            ),
+            const SizedBox(width: 10,),
+            Expanded(
+              child: CustomTravelButton(
+                  onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const SeeFutureDetailsScreen()));
+                                        Get.off(()=>SeeFutureDetailsScreen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
+
+                  },
+                  title: "Yearly",
+                ),
+            ),
+          ],
+        ):SizedBox()
         ],
       ),
     );
@@ -89,13 +118,32 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
                 const SizedBox(
                   height: 60,
                 ),
-                CustomTravelButton(
+                _selectedDate!=null?  Row(
+          children: [
+            Expanded(
+              child: CustomTravelButton(
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const SeeFutureDetailsScreen()));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (context) => const SeeFutureDetailsScreen()));
+                                        Get.off(()=>SeeFutureDetailsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+
                   },
-                  title: "See future",
+                  title: "Monthly",
                 ),
+            ),
+            const SizedBox(width: 10,),
+            Expanded(
+              child: CustomTravelButton(
+                  onPressed: () {
+                   
+                  Get.off(()=>SeeFutureDetailsScreen(),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+
+                  },
+                  title: "Yearly",
+                ),
+            ),
+          ],
+        ):SizedBox()
               ],
             ),
           )
@@ -105,24 +153,41 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
   }
 
 
-  TextField getDatePickerTextField(BuildContext context,double width) {
-    return TextField(
-      style:width<AppConstants.maxMobileWidth? AppStyles.styleRegular20(context)
-          .copyWith(color: AppColors.darkPrimary):AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 26)),
-      decoration: InputDecoration(
-          fillColor: AppColors.white,
-          filled: true,
-          hintText: "SelectDate",
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
-      controller: _dateController,
-      onTap: () async {
-        FocusScope.of(context).requestFocus(new FocusNode());
-        _selectDate(context,width);
-      },
+  Widget getDatePickerTextField(BuildContext context,double width) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+         Text(
+          'Date of Birth:',
+          style: width < AppConstants.maxMobileWidth
+              ? AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,
+                  fontSize: getResponsiveFontSizeText(context, fontSize: 20))
+              : AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,
+                  fontSize: getResponsiveFontSizeText(context, fontSize: 32)),
+        ),
+        const SizedBox(
+          height: 2,
+        ),
+        TextField(
+          style:width<AppConstants.maxMobileWidth? AppStyles.styleRegular20(context)
+              .copyWith(color: AppColors.darkPrimary):AppStyles.styleRegular20(context).copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 26)),
+          decoration: InputDecoration(
+            suffix: Icon(FontAwesomeIcons.calendarCheck,size: 30,color: AppColors.darkPrimary,),
+              fillColor: AppColors.white,
+              filled: true,
+              // hintText: "SelectDate",
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+          controller: _dateController,
+          onTap: () async {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          width<AppConstants.maxMobileWidth?  _selectDate(context,width):_selectDateForTablet(context, width);
+          },
+        ),
+      ],
     );
   }
 
-  _selectDate(BuildContext context,double width) async {
+  _selectDateForTablet(BuildContext context,double width) async {
     DateTime? newSlectedDate = await showDatePicker(
       context: context,
       initialDate: _selectedDate != null ? _selectedDate : DateTime.now(),
@@ -161,5 +226,86 @@ class _FutureTimeScreenState extends State<FutureTimeScreen> {
             affinity: TextAffinity.upstream));
       setState(() {});
     }
+  }
+
+
+  _selectDate(BuildContext context, double width) async {
+    List<DateTime?>? newSlectedDate = await showCalendarDatePicker2Dialog(
+        dialogBackgroundColor: AppColors.lightPurple1,
+        context: context,
+        
+              //value: _singleDatePickerValueWithDefaultValue,
+              
+
+        builder: (context,child){
+          return child!;
+        },
+        config: CalendarDatePicker2WithActionButtonsConfig(
+           
+          dayBorderRadius: BorderRadius.circular(20),
+          selectedDayHighlightColor: AppColors.darkPrimary,
+          okButtonTextStyle: AppStyles.styleRegular20(context).copyWith(
+              color: AppColors.darkPrimary,
+              fontSize: getResponsiveFontSizeText(context, fontSize: 18)),
+          cancelButtonTextStyle: AppStyles.styleRegular20(context).copyWith(
+              color: AppColors.darkPrimary,
+              fontSize: getResponsiveFontSizeText(context, fontSize: 18)),
+          calendarType: CalendarDatePicker2Type.single,
+          weekdayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          weekdayLabelTextStyle: const TextStyle(
+            color: AppColors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          //firstDayOfWeek: 1,
+          controlsHeight: 60,
+          dayMaxWidth: 30,
+          animateToDisplayedMonthDate: true,
+          controlsTextStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          dayTextStyle: const TextStyle(
+              color: AppColors.darkPrimary,
+              fontWeight: FontWeight.bold,
+              fontSize: 18),
+          disabledDayTextStyle:
+              const TextStyle(color: Colors.grey, fontSize: 18),
+          centerAlignModePicker: true,
+          useAbbrLabelForMonthModePicker: true,
+          modePickerTextHandler: ({required monthDate, isMonthPicker}) {
+            if (isMonthPicker ?? false) {
+              // Custom month picker text
+              return '${getLocaleShortMonthFormat(const Locale('en')).format(monthDate)} ';
+            }
+
+            return null;
+          },
+          lastDate: DateTime(4000),
+          firstDate: DateTime(2023),
+          // firstDate: DateTime(DateTime.now().year - 2, DateTime.now().month - 1,
+          //     DateTime.now().day - 5),
+          // lastDate: DateTime(DateTime.now().year + 10, DateTime.now().month + 2,
+          //     DateTime.now().day + 10),
+          // selectableDayPredicate: (day) =>
+          //     !day
+          //         .difference(DateTime.now().add(const Duration(days: 1)))
+          //         .isNegative &&
+          //     day.isBefore(DateTime.now().add(const Duration(days: 30))),
+        ),
+        dialogSize: Size(324, 400),
+        );
+  if(newSlectedDate!.length>0){
+
+_selectedDate=newSlectedDate.first;
+_dateController
+..text=formatter.format(_selectedDate!)
+..selection=TextSelection.fromPosition(TextPosition(offset: _dateController.text.length,affinity: TextAffinity.upstream));
+setState(() {
+  
+});
+  }
+  
   }
 }

@@ -243,19 +243,18 @@ class _TabletLayoutState extends State<TabletLayout> {
                             ),
                           ),
                          Positioned(
-                              bottom: 10,
-                              left: 10,
-                              right: 10,
+                              top: 2,
+                              left: 5,
+                              right: 5,
                               child: Container(
-                                padding: const EdgeInsets.all(5),
-                                color: Colors.black54,
+                                
                                 child: Text(
                                   carouselModel.title,
-                                  style: AppStyles.styleBold24(context).copyWith(
+                                  style: AppStyles.styleRufinaBold32(context).copyWith(
                                       color: AppColors.white,
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.w900,backgroundColor: Colors.black54,
                                       fontSize: getResponsiveFontSizeText(context,
-                                          fontSize: 24)),
+                                          fontSize: 28)),
                                   textAlign: TextAlign.center,
                                 ),
                               ))
@@ -265,7 +264,8 @@ class _TabletLayoutState extends State<TabletLayout> {
                   ))
               .toList(),
           options: CarouselOptions(
-            reverse: true,
+             autoPlayAnimationDuration: Duration(seconds: 5),
+             reverse: true,
               height: 250,//190
               autoPlay: true,
               enableInfiniteScroll: true,

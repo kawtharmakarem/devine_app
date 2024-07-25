@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import '../../models/dream_meaning.models/custom_card_model.dart';
 import '../../models/homepage_models/carousel_model.dart';
@@ -309,20 +308,19 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                               ),
                             ),
                           ),
-                           Positioned(
-                              top: 10,
-                              left: 10,
-                              right: 10,
+                            Positioned(
+                              top: 2,
+                              left: 5,
+                              right: 5,
                               child: Container(
-                                padding: const EdgeInsets.all(5),
-                                color: Colors.black54,
+                                
                                 child: Text(
                                   carouselModel.title,
                                   style: AppStyles.styleRufinaBold32(context).copyWith(
                                       color: AppColors.white,
-                                      fontWeight: FontWeight.w900,
+                                      fontWeight: FontWeight.w900,backgroundColor: Colors.black54,
                                       fontSize: getResponsiveFontSizeText(context,
-                                          fontSize: 28)),
+                                          fontSize: 32)),
                                   textAlign: TextAlign.center,
                                 ),
                               ))
@@ -332,6 +330,8 @@ class _DesktopLayoutState extends State<DesktopLayout> {
                   ))
               .toList(),
           options: CarouselOptions(
+             autoPlayAnimationDuration: Duration(seconds: 5),
+             reverse: true,
               height: 350,
               
               autoPlay: true,

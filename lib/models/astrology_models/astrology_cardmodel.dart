@@ -1,7 +1,8 @@
 class AstrologyModel {
   final String image;
   final String title;
-  final double value;
+  //final double valueM;
+  //final double valueC;
   final String description;
   final String title1;
   final String title2;
@@ -12,7 +13,8 @@ class AstrologyModel {
   const AstrologyModel( 
       {required this.image,
       required this.title,
-      required this.value,
+      //required this.valueM,
+      //required this.valueC,
       required this.description,
       required this.title1,
       required this.title2,

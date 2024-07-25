@@ -15,19 +15,20 @@ class CustomTravelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
-    return SizedBox(
-      width: double.infinity,
-      height: width < AppConstants.maxMobileWidth ? 60 : 80,
-      child: ElevatedButton(
+    return Container(
+        decoration: BoxDecoration(
+            color: AppColors.black, borderRadius: BorderRadius.circular(8)),
+        //width: double.infinity,
+         height: width < AppConstants.maxMobileWidth ? 60 : 80,
+        child: MaterialButton(
           onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.white,
-              textStyle: width < AppConstants.maxMobileWidth
-                  ? AppStyles.styleBold24(context)
-                  : AppStyles.styleBold24(context).copyWith(
-                      fontSize:
-                          getResponsiveFontSizeText(context, fontSize: 32))),
-          child: Text(title)),
-    );
+          child: Text(
+            title,
+            style: AppStyles.styleRegular20(context).copyWith(
+                color: AppColors.white,
+                fontSize: getResponsiveFontSizeText(context,
+                    fontSize: width < AppConstants.maxMobileWidth ? 20 : 32)),
+          ),
+        ));
   }
 }

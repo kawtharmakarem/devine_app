@@ -37,7 +37,7 @@ class CustomTravelTimeCard extends StatelessWidget {
                       fontSize:
                           getResponsiveFontSizeText(context, fontSize: 22))
                   : AppStyles.styleBold24(context)
-                      .copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
+                      .copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 28)),
             ),
             const SizedBox(
               height: 10,

@@ -2,9 +2,7 @@ import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class CustomToggleButton extends StatefulWidget {
   const CustomToggleButton({super.key});

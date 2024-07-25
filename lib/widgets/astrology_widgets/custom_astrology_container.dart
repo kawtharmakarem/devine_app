@@ -21,9 +21,10 @@ class CustomAstrologyContainer extends StatelessWidget {
     padding: const EdgeInsets.symmetric(vertical: 5),
     decoration: const BoxDecoration(
         color: Colors.black54,
-        borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(15),
-            bottomRight: Radius.circular(15))),
+         borderRadius: BorderRadius.only(
+         bottomLeft: Radius.circular(15),
+             bottomRight: Radius.circular(15))
+         ),
     child: Center(
         child: Text(title,
             style: 

@@ -127,6 +127,7 @@ class _AstrologyDescriptionScreenState
           ],
         ),
         Row(
+         crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Checkbox(
               value: isChecked4,

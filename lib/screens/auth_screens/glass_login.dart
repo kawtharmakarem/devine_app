@@ -377,10 +377,7 @@ class _GlassLoginState extends State<GlassLogin> {
                       ),
                       CustomHomePageButton(
                         onTap: () {
-                          // Navigator.of(context).pushReplacement(
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             const MainViewScreen()));
+                        
                           Get.off(()=>const MainViewScreen(),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
                         },
                         title: 'Login',

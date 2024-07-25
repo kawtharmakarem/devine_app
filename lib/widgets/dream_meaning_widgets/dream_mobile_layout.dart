@@ -249,8 +249,7 @@ class _MobileLayoutState extends State<MobileLayout> {
                               left: 5,
                               right: 5,
                               child: Container(
-                                //padding: const EdgeInsets.all(5),
-                                //color: Colors.black54,
+                                
                                 child: Text(
                                   carouselModel.title,
                                   style: AppStyles.styleRufinaBold32(context).copyWith(

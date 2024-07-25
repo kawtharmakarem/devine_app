@@ -10,19 +10,19 @@ class SeeFutureDetailsScreen extends StatelessWidget {
   final DateTime? dateTime;
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
       appBar: CustomAppBar(title:  'See Your Future', leading: true),
       body: Padding(
         padding:const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: SizedBox(
-            height: height * 0.7,
-            child: SeeFutureDetailsCard(
+            //height: height * 0.7,
+            child: SeeDetailsCard(
               travelTimeDetailsModel: TravelTimeDetailsModel(
                   title: "Results",
-                  details:
-                      "You are usually a very practical and down-to-Earth person, but today you may be more inclined than usual toward mysticism. Spiritual matters seem extremely appealing, and you could find yourself gravitating toward metaphysical bookstores or seeking discussions with people who are well versed in such matters. You also find your imagination working overtime. Indulge in a few flights of fancy, Gemini. We all need to escape from time to time!"),
+                  details:""
+                      // "You are usually a very practical and down-to-Earth person, but today you may be more inclined than usual toward mysticism. Spiritual matters seem extremely appealing, and you could find yourself gravitating toward metaphysical bookstores or seeking discussions with people who are well versed in such matters. You also find your imagination working overtime. Indulge in a few flights of fancy, Gemini. We all need to escape from time to time!"
+                      ),
             )),
       ),
     );

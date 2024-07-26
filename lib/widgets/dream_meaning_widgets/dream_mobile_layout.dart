@@ -300,34 +300,19 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart1(BuildContext context) {
     return [
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const HoroscopeScreen()));
-          //   Get.to(() => const HoroscopeScreen(),
-          //       transition: Transition.zoom, duration: const Duration(seconds: 1));
-          // },
+        
           title: "Horoscope",
           image: AppImages.horoscopelogo,
           index: 0),
 
       //this is place of kundle
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const KundliScreen()));
-          //   Get.to(() => const KundliScreen(),
-          //       transition: Transition.zoom, duration: const Duration(seconds: 1));
-          // },
+         
           title: "Kundli",
           image: AppImages.kundlilogo,
           index: 1),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const MyFortuneWheel()));
-          //   Get.to(() => const MyFortuneWheel(),
-          //       transition: Transition.zoom, duration: const Duration(seconds: 1));
-          // },
+
           title: "Fortune Wheel",
           image: AppImages.fortunewheellogo,
           index: 2),
@@ -346,23 +331,12 @@ class _MobileLayoutState extends State<MobileLayout> {
           image: AppImages.tarotLogo,
           index: 3),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const FaceReadingView()));
-          //   Get.to(() => const FaceReadingView(),
-          //       transition: Transition.zoom,
-          //       duration: const Duration(seconds: 1));
-          // },
+          
           title: "Face Reading",
           image: AppImages.facelogo,
           index: 4),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(MaterialPageRoute(
-          //   //     builder: (context) => const PalemReadingScreen()));
-          //   Get.to(() => const PalemReadingScreen(),
-          //       transition: Transition.zoom, duration: const Duration(seconds: 1));
-          // },
+          
           title: "Palm Reading",
           image: AppImages.palemreadingLogo,
           index: 5),
@@ -372,30 +346,18 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart3(BuildContext context) {
     return [
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const TravelTimeScreen()));
-          //   Get.to(()=>const TravelTimeScreen(),transition: Transition.zoom,duration: const Duration(seconds: 1));
-          // },
+         
           title: "Time Travel",
           image: AppImages.travellogo,
           index: 6),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const AstrologyMainPage()));
-          //   Get.to(()=>const AstrologyMainPage(),transition: Transition.zoom,duration: const Duration(seconds: 1));
-          // },
+          
           title: "Astrology",
           image: AppImages.astrologylogo,
           index: 7),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(
-          //   //     MaterialPageRoute(builder: (context) => const BiorhythmPage()));
-          //   Get.to(()=>const BiorhythmPage(),transition: Transition.zoom,duration: const Duration(seconds: 1));
-          // },
-          title: "Biorythm",
+         
+          title: "BioRhythm",
           image: AppImages.biorythmlogo,
           index: 8),
     ];
@@ -404,32 +366,19 @@ class _MobileLayoutState extends State<MobileLayout> {
   static List getCardPart4(BuildContext context) {
     return [
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context).push(MaterialPageRoute(
-          //   //     builder: (context) => const DreamMeaningMainView()));
-          //   Get.to(()=>const DreamMeaningMainView(),transition: Transition.zoom,duration: const Duration(seconds: 1));
-          // },
+          
           title: "Dream Meaning",
           image: AppImages.dream,
           index: 9),
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context)
-          //   //     .push(MaterialPageRoute(builder: (context) => const Numerology()));
-          //   Get.to(()=>const Numerology(),transition: Transition.zoom,duration: const Duration(seconds: 1));
-          // },
+         
           title: "Numerology",
           image: AppImages.numerologyLogo,
           index: 10),
 
       //this is the place of check love
       CustomCardModel(
-          //   () {
-          //   // Navigator.of(context)
-          //   //     .push(MaterialPageRoute(builder: (context) => const Flower()));
-          //   Get.to(() => const Flower(),
-          //       transition: Transition.zoom, duration: const Duration(seconds: 1));
-          // },
+         
           title: "Love Check",
           image: AppImages.checklovelogo,
           index: 11),

@@ -1,3 +1,5 @@
+import 'package:divinecontrol/utils/app_colors.dart';
+import 'package:divinecontrol/widgets/dream_meaning_widgets/contact_us_dream_dialog.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_sleep_card.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -34,33 +36,57 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
     'Moonlight Stress Relief Music',
     'Ultra Calm Sound Sleep Music'
   ];
-  final _controller = ScrollController();
+  //final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
+      backgroundColor: AppColors.lightPurple1,
       appBar:const CustomAppBar(title: "Sleep Music", leading: true),
       body: width < AppConstants.maxTabletWidth
-          ? getMobileSleepMusic()
+          ? getMobileSleepMusicWithContact()
           : getDesktopSleepMusic(),
     );
   }
 
-  Column getMobileSleepMusic() {
+  // Column getMobileSleepMusic() {
+  //   return Column(
+  //     children: [
+  //       Expanded(
+  //         child: ListView.builder(
+  //             controller: _controller,
+  //             itemCount: videoIds.length,
+  //             itemBuilder: (context, index) {
+  //               return SleepMusic(
+  //                 videoId: videoIds[index],
+  //                 title: titles[index],
+  //               );
+  //             }),
+  //       ),
+
+  //     ],
+  //   );
+  // }
+
+  Column getMobileSleepMusicWithContact() {
     return Column(
       children: [
         Expanded(
-          child: ListView.builder(
-              controller: _controller,
-              itemCount: videoIds.length,
-              itemBuilder: (context, index) {
-                return SleepMusic(
+          child: ListView(
+            children: [
+              ...List.generate(videoIds.length, (index){
+                 return SleepMusic(
                   videoId: videoIds[index],
                   title: titles[index],
                 );
               }),
+              ContactUsDreamDialog()
+              
+               
+              ]),
         ),
+        
       ],
     );
   }

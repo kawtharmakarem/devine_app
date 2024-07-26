@@ -358,7 +358,7 @@ class _TabletLayoutState extends State<TabletLayout> {
       //   Navigator.of(context).push(
       //       MaterialPageRoute(builder: (context) => const BiorhythmPage()));
       // },
-       title: "Biorythm", image: AppImages.biorythmlogo,index: 8),
+       title: "BioRhythm", image: AppImages.biorythmlogo,index: 8),
     ];
   }
 

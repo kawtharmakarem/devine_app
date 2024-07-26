@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:divinecontrol/screens/astrology_screens/astrology_screen.dart';
-import 'package:divinecontrol/screens/biorythm_screes/biorhythm_page.dart';
+import 'package:divinecontrol/screens/biorythm_screes/biorythm_dob_page.dart';
 import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/dream_meaning_screens/dream_main_view.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
@@ -36,7 +36,7 @@ class CustomCard extends StatelessWidget {
     const PalemReadingScreen(),
     const TravelTimeScreen(),
     const AstrologyMainPage(),
-    const BiorhythmPage(),
+    const BiorythmDobPage(),
     const DreamMeaningMainView(),
     const Numerology(),
     const Flower(),

@@ -382,7 +382,7 @@ class _DesktopLayoutState extends State<DesktopLayout> {
       CustomCardModel(
           title: "Astrology", image: AppImages.astrologylogo, index: 7),
       CustomCardModel(
-          title: "Biorythm", image: AppImages.biorythmlogo, index: 8),
+          title: "BioRhythm", image: AppImages.biorythmlogo, index: 8),
     ];
   }
 

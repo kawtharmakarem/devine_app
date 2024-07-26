@@ -1,3 +1,4 @@
+import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -37,7 +38,7 @@ class _CustomDropdownListState extends State<CustomDropdownList> {
       decoration: BoxDecoration(
           border: Border.all(
             width: 1,
-            color: Colors.grey,
+            color: AppColors.black
           ),
           borderRadius: BorderRadius.circular(5)),
       child: Material(
@@ -45,7 +46,7 @@ class _CustomDropdownListState extends State<CustomDropdownList> {
         child: DropdownButton2<String>(
           isExpanded: true,
           hint: Text(
-            'Select Item',
+            'Chooze your Dream',
             style: TextStyle(
               fontSize: getResponsiveFontSizeText(context,
                   fontSize: width < AppConstants.maxMobileWidth ? 18 : 32),

@@ -1,3 +1,4 @@
+import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'biorhythm_circle.dart';
@@ -13,22 +14,22 @@ class BiorhythmIndicators extends StatelessWidget {
         IndicatorCircle(
           label: 'Physical',
           value: 29,
-          color: Colors.green,
+          color: AppColors.red,
         ),
         IndicatorCircle(
           label: 'Emotional',
           value: 78,
-          color: Colors.red,
-        ),
-        IndicatorCircle(
-          label: 'Spiritual',
-          value: 43,
-          color: Colors.orange,
+          color: AppColors.blue,
         ),
         IndicatorCircle(
           label: 'Intellectual',
+          value: 43,
+          color: AppColors.green,
+        ),
+        IndicatorCircle(
+          label: 'Spiritual',
           value: 51,
-          color: Colors.blue,
+          color: AppColors.yello,
         ),
       ],
     );

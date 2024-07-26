@@ -51,7 +51,7 @@ class _DreamMeaningState extends State<DreamMeaning> {
         padding: const EdgeInsets.only(left: 20, right: 20),
         width: double.infinity,
         decoration: BoxDecoration(
-            color: AppColors.primary.withOpacity(0.5),
+            color: AppColors.lightPurple1,
             borderRadius: BorderRadius.circular(5)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,9 +78,10 @@ class _DreamMeaningState extends State<DreamMeaning> {
                 child: SingleChildScrollView(
               child: Container(
                 width: width * 0.9,
-                height: height * 0.4,
+                height: height * 0.6,
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.5),
+                    color: AppColors.white,
                     borderRadius: BorderRadius.circular(5),
                     border: Border.all(width: 1, color: Colors.black54)),
                 child: Column(
@@ -129,23 +130,27 @@ class _DreamMeaningState extends State<DreamMeaning> {
                 ),
               ),
             )),
-            const SizedBox(
-              height: 20,
-            ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CustomButton(
-                    onPressed: () {
-                      setState(() {
-                        dreamDescription = dreams[selectedDream];
-                      });
-                    },
-                    title: "Interpret"),
+                Transform.scale(
+                  scale: 1.2,
+                  child: CustomButton(
+                      onPressed: () {
+                        setState(() {
+                          dreamDescription = dreams[selectedDream];
+                        });
+                      },
+                      title: "Interpret"),
+                ),
               ],
             ),
             SizedBox(
-              height: height * 0.1,
+              height: height * 0.05,
             )
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:divinecontrol/utils/app_colors.dart';
-import 'package:divinecontrol/widgets/dream_meaning_widgets/contact_us_dream_dialog.dart';
+import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/custom_sleep_card.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,7 @@ class _SleepMusicScreenState extends State<SleepMusicScreen> {
                   title: titles[index],
                 );
               }),
-              ContactUsDreamDialog()
+              CustomContactUsCard(image: AppImages.head, description: "Do you have Sleep Disorders ?\nBook personalised call Now!!")
               
                
               ]),

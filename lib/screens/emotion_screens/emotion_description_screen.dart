@@ -1,8 +1,10 @@
 import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
+import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/widgets/dream_meaning_widgets/history_button.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_checkbox.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -65,9 +67,12 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
         const SizedBox(
           height: 10,
         ),
-        SizedBox(
+        Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             width: width * 0.6,
-            child: Image.asset(widget.emotionModel.detailsImage)),
+            child: ClipRRect(borderRadius: BorderRadius.circular(20),child: Image.network(widget.emotionModel.detailsImage,fit: BoxFit.cover,),)
+            // Image.asset(widget.emotionModel.detailsImage)
+            ),
         const SizedBox(
           height: 10,
         ),
@@ -180,7 +185,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
         ),
         CustomButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.off(()=>EmotionScreen());
             },
             title: 'Cancel'),
         const SizedBox(
@@ -196,11 +201,16 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
         const SizedBox(
           height: 20,
         ),
-        SizedBox(
+        Container(
             width: width * 0.6,
-            child: Image.asset(
-              widget.emotionModel.detailsImage,
-              fit: BoxFit.fill,
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(widget.emotionModel.detailsImage,
+              // Image.asset(
+              //   widget.emotionModel.detailsImage,
+                fit: BoxFit.cover,
+              ),
             )),
         const SizedBox(
           height: 10,

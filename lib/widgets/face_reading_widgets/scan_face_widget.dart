@@ -7,6 +7,7 @@ import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
+import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -262,19 +263,25 @@ void dispose() {
           ),
           Expanded(
               child: ListView(
-            // shrinkWrap: true,
 
             children: [
-              for (final cardModel in _cards)
-                Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: CustomFaceReadingCard(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => FaceReadingCardDetails(
-                                  cardModel: cardModel)));
-                        },
-                        cardModel: cardModel))
+              // for (final cardModel in _cards)
+              //   Container(
+              //       margin: const EdgeInsets.only(bottom: 10),
+              //       child: CustomFaceReadingCard(
+              //           onTap: () {
+              //             Navigator.of(context).push(MaterialPageRoute(
+              //                 builder: (context) => FaceReadingCardDetails(
+              //                     cardModel: cardModel)));
+              //           },
+              //           cardModel: cardModel))
+              ...List.generate(_cards.length, (index) => Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: CustomFaceReadingCard(onTap: (){
+                  Get.to(()=>FaceReadingCardDetails(cardModel: _cards[index]),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
+                }, cardModel: _cards[index]),
+              )),
+              CustomContactUsCard(iconData: Icons.face_2_sharp, horizontalPadding: 0,description: 'Unlock Your Inner Beauty with Face Analysis.\nBook personalised call Now !')
             ],
           ))
         ],
@@ -482,16 +489,16 @@ void dispose() {
             // shrinkWrap: true,
             //physics: const NeverScrollableScrollPhysics(),
             children: [
-              for (final cardModel in _cards)
-                Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: CustomFaceReadingCard(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => FaceReadingCardDetails(
-                                  cardModel: cardModel)));
-                        },
-                        cardModel: cardModel))
+             
+
+
+                         ...List.generate(_cards.length, (index) => Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: CustomFaceReadingCard(onTap: (){
+                  Get.to(()=>FaceReadingCardDetails(cardModel: _cards[index]),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+                }, cardModel: _cards[index]),
+              )),
+              CustomContactUsCard(image: AppImages.facelogo, horizontalPadding: 0,description: 'Unlock Your Inner Beauty with Face Analysis.\nBook personalised call Now !')
             ],
           ))
         ],

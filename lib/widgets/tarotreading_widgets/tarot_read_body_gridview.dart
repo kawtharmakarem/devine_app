@@ -1,6 +1,8 @@
 import 'package:divinecontrol/animation/card_page_question.dart';
 import 'package:divinecontrol/animation/card_page_tablet_question.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
+import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/custom_tarot_searchcard.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/result_cards_data.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +69,9 @@ class TarotBodyGridView extends StatelessWidget {
                 description: "",
                 subTitle: "",
                 results: resultCards),
-          )
+          ),
+                    CustomContactUsCard(image: AppImages.tarotLogo, description: 'For more Details Book a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
+
         ],
       ),
     );
@@ -113,7 +117,9 @@ class TarotBodyGridView extends StatelessWidget {
                 description: "",
                 subTitle: "",
                 results: resultCards),
-          )
+          ),
+                    CustomContactUsCard(image: AppImages.tarotLogo, description: 'For more Details Book a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
+
         ],
       ),
     );
@@ -152,7 +158,8 @@ class TarotBodyGridView extends StatelessWidget {
                 description: "",
                 subTitle: "",
                 results: resultCards),
-          )
+          ),
+          CustomContactUsCard(image: AppImages.tarotLogo, description: 'Ready to Rewrite Your Story ?\nBook a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
         ],
       ),
     );

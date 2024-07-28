@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_details_screen.dart';
+import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_image_widget.dart';
 import 'package:divinecontrol/widgets/palemreading_widgets/custom_palem_button.dart';
@@ -38,168 +39,168 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
         appBar: CustomAppBar(title: 'Palem Reading', leading: true),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.all(20),
+        body: width < AppConstants.maxTabletWidth
+            ? getMobileContent(width, context)
+            : getDesktopContent(width, context));
+  }
+
+  Widget getMobileContent(double width, BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+             margin: const EdgeInsets.all(20),
                 width: width,
                 // height: height,
                 decoration: BoxDecoration(
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: width < AppConstants.maxTabletWidth
-                    ? getMobileContent(width, context)
-                    : getDesktopContent(width, context),
-              ),
-            ],
-          ),
-        ));
-  }
-
-  Column getMobileContent(double width, BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        PickedPalemImageWidget(
-          image: photo == null
-              ? Image.asset(AppImages.scanpalem)
-              : Image(
-                  image: FileImage(
-                    File(photo!.path),
-                  ),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
                 ),
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        const Divider(
-          color: AppColors.black,
-          endIndent: 20,
-          indent: 20,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        AnimatedCrossFade(
-          firstChild: Column(
-            children: [
-              SizedBox(
-                  width: width < AppConstants.maxMobileWidth ? 500 : 500,
-                  height: width < AppConstants.maxMobileWidth ? 150 : 200,
-                  child: Image.asset(
-                    AppImages.brows,
-                    fit: BoxFit.fill,
-                  )),
-              CustomPalemButton(
-                title: 'Browse',
-                onPressed: () async {
-                  showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  'Pick Image :',
-                                  style: width < AppConstants.maxMobileWidth
-                                      ? AppStyles.styleBold24(context)
-                                      : AppStyles.styleBold24(context).copyWith(
-                                          fontSize: getResponsiveFontSizeText(
-                                              context,
-                                              fontSize: 28)),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                getMediaButton(context,
-                                    icon: Icons.browse_gallery,
-                                    title: "From Gallery",
-                                    source: ImageSource.gallery,
-                                    width: width),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                getMediaButton(context,
-                                    icon: Icons.camera,
-                                    title: "From Camera",
-                                    source: ImageSource.camera,
-                                    width: width)
-                              ],
-                            ),
-                          ));
-                  setState(() {
-                    isVisible = !isVisible;
-                  });
-                },
-
-
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Or drag files here',
-                style: width < AppConstants.maxMobileWidth
-                    ? AppStyles.styleRegular20(context).copyWith(
-                        fontSize:
-                            getResponsiveFontSizeText(context, fontSize: 24))
-                    : AppStyles.styleRegular20(context).copyWith(
-                        fontSize:
-                            getResponsiveFontSizeText(context, fontSize: 32)),
-                textAlign: TextAlign.start,
-              ),
-              const SizedBox(
-                height: 20,
-              )
-            ],
+                PickedPalemImageWidget(
+                  image: photo == null
+                      ? Image.asset(AppImages.scanpalem)
+                      : Image(
+                          image: FileImage(
+                            File(photo!.path),
+                          ),
+                        ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Divider(
+                  color: AppColors.black,
+                  endIndent: 20,
+                  indent: 20,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                AnimatedCrossFade(
+                  firstChild: Column(
+                    children: [
+                      SizedBox(
+                          width: width < AppConstants.maxMobileWidth ? 500 : 500,
+                          height: width < AppConstants.maxMobileWidth ? 150 : 200,
+                          child: Image.asset(
+                            AppImages.brows,
+                            fit: BoxFit.fill,
+                          )),
+                      CustomPalemButton(
+                        title: 'Browse',
+                        onPressed: () async {
+                          showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        Text(
+                                          'Pick Image :',
+                                          style: width < AppConstants.maxMobileWidth
+                                              ? AppStyles.styleBold24(context)
+                                              : AppStyles.styleBold24(context).copyWith(
+                                                  fontSize: getResponsiveFontSizeText(
+                                                      context,
+                                                      fontSize: 28)),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        getMediaButton(context,
+                                            icon: Icons.browse_gallery,
+                                            title: "From Gallery",
+                                            source: ImageSource.gallery,
+                                            width: width),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        getMediaButton(context,
+                                            icon: Icons.camera,
+                                            title: "From Camera",
+                                            source: ImageSource.camera,
+                                            width: width)
+                                      ],
+                                    ),
+                                  ));
+                          setState(() {
+                            isVisible = !isVisible;
+                          });
+                        },
+            
+            
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Or drag files here',
+                        style: width < AppConstants.maxMobileWidth
+                            ? AppStyles.styleRegular20(context).copyWith(
+                                fontSize:
+                                    getResponsiveFontSizeText(context, fontSize: 24))
+                            : AppStyles.styleRegular20(context).copyWith(
+                                fontSize:
+                                    getResponsiveFontSizeText(context, fontSize: 32)),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
+                  secondChild: Column(
+                    children: [
+                      PickedPalemImageWidget(image: Image.asset(AppImages.palemhand)),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomPalemButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const PalemReadingDetailsScreen()));
+                          },
+                          title: 'Scan '),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomPalemButton(
+                          onPressed: () {
+                            setState(() {
+                              isVisible = !isVisible;
+                            });
+                          },
+                          title: 'Cancel'),
+                      const SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
+                  crossFadeState:
+                      !isVisible ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  duration: const Duration(milliseconds: 300),
+                ),
+              ],
+            ),
           ),
-          secondChild: Column(
-            children: [
-              PickedPalemImageWidget(image: Image.asset(AppImages.palemhand)),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomPalemButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            const PalemReadingDetailsScreen()));
-                  },
-                  title: 'Scan '),
-              const SizedBox(
-                height: 10,
-              ),
-              CustomPalemButton(
-                  onPressed: () {
-                    setState(() {
-                      isVisible = !isVisible;
-                    });
-                  },
-                  title: 'Cancel'),
-              const SizedBox(
-                height: 20,
-              )
-            ],
-          ),
-          crossFadeState:
-              !isVisible ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          duration: const Duration(milliseconds: 300),
-        ),
-      ],
+       CustomContactUsCard(image: AppImages.palemreadingLogo, horizontalPadding: 20,description: "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
+        ],
+      ),
     );
   }
 
   Widget getDesktopContent(double width, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
       child: Column(
         children: [
           Container(
@@ -312,8 +313,8 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                             isVisible = !isVisible;
                           });
                         },
-
-
+      
+      
                         
                       ),
                       const SizedBox(
@@ -388,6 +389,8 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
           const SizedBox(
             height: 20,
           ),
+       CustomContactUsCard(image: AppImages.palemreadingLogo, horizontalPadding: 20,description: "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
+
         ],
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:divinecontrol/models/numerlogy_models/numerology_details_model.dart';
+import 'package:divinecontrol/utils/app_images.dart';
+import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/numerology_widgets/custom_numerology_details_card.dart';
 import 'package:flutter/material.dart';
@@ -49,8 +51,10 @@ class NumerologyDetailsScreen extends StatelessWidget {
                   crossAxisCount: width < AppConstants.maxTabletWidth ? 1 : 2,
                 ),
                 children: [
-                  for (final detail in details)
-                    CustomNumerologyDetailsCard(detailsModel: detail)
+                  // for (final detail in details)
+                  //   CustomNumerologyDetailsCard(detailsModel: detail)
+                  ...List.generate(details.length, (index) =>CustomNumerologyDetailsCard(detailsModel: details[index])),
+                  CustomContactUsCard(image: AppImages.numerologyLogo, description: 'Unlock your Destiny with an experienced Numerologist and solve all your Problems !\nBook personalised call Now!')
                 ],
               ),
             )

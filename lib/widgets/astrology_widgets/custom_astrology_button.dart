@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
 
-class CustomAstrologyButton extends StatelessWidget {
+class CustomAstrologyButton extends StatefulWidget {
   const CustomAstrologyButton(
       {super.key,
       required this.title,
@@ -14,64 +14,69 @@ class CustomAstrologyButton extends StatelessWidget {
       this.textColor = Colors.black,this.iconData});
   final String title;
   final void Function() onTap;
-  final Color? color;
-  final Color? textColor;
+  final Color color;
+  final Color textColor;
   final IconData? iconData;
+
+  @override
+  State<CustomAstrologyButton> createState() => _CustomAstrologyButtonState();
+}
+
+class _CustomAstrologyButtonState extends State<CustomAstrologyButton> {
   @override
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
     return width<AppConstants.maxMobileWidth?getMobileButtonContent(width, context): getTabletButtonContent(width, context);
   }
 
-  InkWell getMobileButtonContent(double width, BuildContext context) {
-    return InkWell(
-    splashColor: AppColors.white,
-    onTap: onTap,
+  Widget getMobileButtonContent(double width, BuildContext context) {
+    return GestureDetector(
+    onTap: widget.onTap,
     child: Container(
       padding: const EdgeInsets.symmetric(vertical: 5),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(width: 1, color: AppColors.black),
-        color: color,
+        color: widget.color,
       ),
-      child:iconData==null? Text(
-        title,
+      child:widget.iconData==null? Text(
+        widget.title,
         style:AppStyles.styleBold24(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize:14),
-            color: textColor)
+            color: widget.textColor)
       ):Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        Icon(iconData,size:15,color: textColor,),
+        Icon(widget.iconData,size:15,color: widget.textColor,),
          Text(
-        title,
+        widget.title,
         style:AppStyles.styleBold24(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize:14),
-            color: textColor))
-
+            color: widget.textColor))
+    
       ],),
     ),
-  );
+      );
   }
 
   InkWell getTabletButtonContent(double width, BuildContext context) {
     return InkWell(
     splashColor: AppColors.primary,
-    onTap: onTap,
+    onTap: widget.onTap,
     child: Container(
       padding: const EdgeInsets.symmetric(vertical: 5),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         border: Border.all(width: 1, color: AppColors.black),
-        color: color,
+        color: widget.color,
       ),
       child: Text(
-        title,
+        widget.title,
         style:width<AppConstants.maxTabletWidth? AppStyles.styleBold24(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize: 26),
-            color: textColor):AppStyles.styleBold32(context).copyWith(color: textColor),
+            color: widget.textColor):AppStyles.styleBold32(context).copyWith(color: widget.textColor),
       ),
     ),
   );

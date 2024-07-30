@@ -1,4 +1,4 @@
-
+import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +9,10 @@ class CustomEmotionCard extends StatefulWidget {
   const CustomEmotionCard(
       {super.key,
       required this.index,
-      required this.onTap,required this.emotionModel});
+      required this.onTap,
+      required this.emotionModel});
   final int index;
- final EmotionModel emotionModel;
+  final EmotionModel emotionModel;
   final void Function() onTap;
 
   @override
@@ -47,10 +48,8 @@ class _CustomEmotionCardState extends State<CustomEmotionCard> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 1)
-                ),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, border: Border.all(width: 1)),
                   width: width < AppConstants.maxMobileWidth
                       ? width / 4
                       : width < AppConstants.maxTabletWidth
@@ -61,33 +60,54 @@ class _CustomEmotionCardState extends State<CustomEmotionCard> {
                       : width < AppConstants.maxTabletWidth
                           ? width / 6.5
                           : width / 10,
-                  child:ClipRRect(
+                  child:
+                 
+                   ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.network(
-                       widget.emotionModel.image,
-                             // "https://images.unsplash.com/photo-1609852234838-147db6815968?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    
-                    fit: BoxFit.cover,
+                    child:
+                    Image.network(
+                      widget.emotionModel.image,
+
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context,child,progress){
+                        if(progress==null){
+                          return child;
+                        }else{
+                          return Center(child: CircularProgressIndicator(color: AppColors.darkPrimary,),);
+                        }
+                      },
                     ),
                   )
-                  //  Image.asset(
-                  //   widget.emotionModel.image,
-                  //   fit: BoxFit.cover,
-                  // )
+                 
                   ),
-                  const SizedBox(height: 5,),
-                  Text('Rs.99',style: AppStyles.styleRegular20(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: width<AppConstants.maxMobileWidth?20:24)),textAlign: TextAlign.center,),
+              const SizedBox(
+                height: 5,
+              ),
               Text(
-                widget.emotionModel.title,textAlign: TextAlign.center,
+                'Rs.99',
+                style: AppStyles.styleRegular20(context).copyWith(
+                    fontSize: getResponsiveFontSizeText(context,
+                        fontSize: width < AppConstants.maxMobileWidth
+                            ? 20
+                            : width < AppConstants.maxTabletWidth
+                                ? 24
+                                : 28)),
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                widget.emotionModel.title,
+                textAlign: TextAlign.center,
                 style: width < AppConstants.maxMobileWidth
-                    ? AppStyles.styleBold24(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize: 18))
+                    ? AppStyles.styleBold24(context).copyWith(
+                        fontSize:
+                            getResponsiveFontSizeText(context, fontSize: 18))
                     : width < AppConstants.maxTabletWidth
                         ? AppStyles.styleBold24(context).copyWith(
-                            fontSize:
-                                getResponsiveFontSizeText(context, fontSize: 24))
+                            fontSize: getResponsiveFontSizeText(context,
+                                fontSize: 24))
                         : AppStyles.styleBold24(context).copyWith(
-                            fontSize:
-                                getResponsiveFontSizeText(context, fontSize: 32)),
+                            fontSize: getResponsiveFontSizeText(context,
+                                fontSize: 32)),
               )
             ],
           ),

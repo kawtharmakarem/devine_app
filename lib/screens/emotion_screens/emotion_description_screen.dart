@@ -52,7 +52,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: CustomAppBar(title:  widget.emotionModel.title, leading: false),
+      appBar: CustomAppBar(title: widget.emotionModel.title, leading: false),
       body: width < AppConstants.maxMobileWidth
           ? getMobileDescription(width, context)
           : width < AppConstants.maxTabletWidth
@@ -68,11 +68,22 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
           height: 10,
         ),
         Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             width: width * 0.6,
-            child: ClipRRect(borderRadius: BorderRadius.circular(20),child: Image.network(widget.emotionModel.detailsImage,fit: BoxFit.cover,),)
-            // Image.asset(widget.emotionModel.detailsImage)
-            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                widget.emotionModel.detailsImage,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if(loadingProgress==null){
+                    return child;
+                  }else{
+                    return CircularProgressIndicator(color: AppColors.darkPrimary,strokeCap: StrokeCap.round,);
+                  }
+                },
+                fit: BoxFit.cover,
+              ),
+            )),
         const SizedBox(
           height: 10,
         ),
@@ -82,7 +93,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 24)),
         ),
-       const Divider(),
+        const Divider(),
         Row(
           children: [
             Checkbox(
@@ -95,7 +106,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding:const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title1,
                   softWrap: true,
@@ -119,7 +130,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding:const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title2,
                   softWrap: true,
@@ -143,7 +154,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding:const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title3,
                   softWrap: true,
@@ -167,7 +178,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ),
             Container(
                 width: width * 0.8,
-                padding:const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Text(
                   widget.emotionModel.title4,
                   softWrap: true,
@@ -179,13 +190,16 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ))
           ],
         ),
-      const  Divider(),
+        const Divider(),
         const SizedBox(
           height: 40,
         ),
         CustomButton(
             onPressed: () {
-              Get.off(()=>EmotionScreen());
+              Get.off(() => EmotionScreen(),
+                  transition: Transition.circularReveal,
+                  duration:
+                      const Duration(seconds: AppConstants.durationSecond));
             },
             title: 'Cancel'),
         const SizedBox(
@@ -206,9 +220,16 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.network(widget.emotionModel.detailsImage,
-              // Image.asset(
-              //   widget.emotionModel.detailsImage,
+              child: Image.network(
+                widget.emotionModel.detailsImage,
+                loadingBuilder: (context, child, loadingProgress){
+                  if(loadingProgress==null)
+                  {
+                    return child;
+                  }else{
+                    return CircularProgressIndicator(color: AppColors.darkPrimary,strokeCap: StrokeCap.round,);
+                  }
+                },
                 fit: BoxFit.cover,
               ),
             )),
@@ -221,7 +242,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               color: AppColors.black,
               fontSize: getResponsiveFontSizeText(context, fontSize: 30)),
         ),
-      const  Divider(),
+        const Divider(),
         const SizedBox(
           height: 10,
         ),
@@ -245,7 +266,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding:const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title1,
                     softWrap: true,
@@ -278,7 +299,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding:const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title2,
                     softWrap: true,
@@ -311,7 +332,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding:const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title3,
                     softWrap: true,
@@ -344,7 +365,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
               ),
               Container(
                   width: width * 0.8,
-                  padding:const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     widget.emotionModel.title4,
                     softWrap: true,
@@ -357,13 +378,16 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             ],
           ),
         ),
-       const Divider(),
+        const Divider(),
         const SizedBox(
           height: 40,
         ),
         CustomButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.off(() => EmotionScreen(),
+                  transition: Transition.circularReveal,
+                  duration:
+                      const Duration(seconds: AppConstants.durationSecond));
             },
             title: 'Cancel'),
         const SizedBox(
@@ -382,11 +406,23 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
+            Container(
                 width: width * 0.35,
-                child: Image.asset(
-                  widget.emotionModel.detailsImage,
-                  fit: BoxFit.fill,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    widget.emotionModel.detailsImage,
+                    loadingBuilder: (context, child, loadingProgress){
+                      if(loadingProgress==null){
+                        return child;
+                      }else{
+                        return CircularProgressIndicator(color: AppColors.darkPrimary,strokeCap: StrokeCap.round,);
+                      }
+                    },
+                    fit: BoxFit.cover,
+                  ),
                 )),
             const SizedBox(
               height: 10,
@@ -403,7 +439,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                     fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
               ),
             ),
-         const   Divider(),
+            const Divider(),
             const SizedBox(
               height: 10,
             ),
@@ -425,7 +461,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding:const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title1,
                       softWrap: true,
@@ -455,7 +491,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding:const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title2,
                       softWrap: true,
@@ -485,7 +521,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding:const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title3,
                       softWrap: true,
@@ -515,7 +551,7 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                 ),
                 Container(
                     width: width * 0.8,
-                    padding:const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.emotionModel.title4,
                       softWrap: true,
@@ -527,13 +563,16 @@ class _EmotionDescriptionScreenState extends State<EmotionDescriptionScreen> {
                     ))
               ],
             ),
-          const  Divider(),
+            const Divider(),
             const SizedBox(
               height: 40,
             ),
             CustomButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Get.off(() => EmotionScreen(),
+                      transition: Transition.zoom,
+                      duration:
+                          const Duration(seconds: AppConstants.durationSecond));
                 },
                 title: 'Cancel'),
             const SizedBox(

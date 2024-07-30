@@ -1,4 +1,6 @@
 import 'package:divinecontrol/screens/emotion_screens/emotion_details_screen.dart';
+import 'package:divinecontrol/screens/homepage_screens/main_view_screen.dart';
+import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/contact_us_emotiondialog.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_contactus_button.dart';
 import 'package:divinecontrol/widgets/emotion_widgets/custom_emtion_card.dart';
@@ -27,7 +29,9 @@ class _EmotionScreenState extends State<EmotionScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: CustomAppBar(title: 'Emotional Support', leading: true),
+      appBar: CustomAppBar(title: 'Emotional Support', leading: false,actions:Icons.close ,actionesFn: (){
+      Get.offAll(()=>MainViewScreen());
+      },),
       body: width < AppConstants.maxMobileWidth
           ? getMobileEmotionalContent()
           : getTabletEmotionalContent(),
@@ -35,46 +39,75 @@ class _EmotionScreenState extends State<EmotionScreen> {
   }
 
   Widget getMobileEmotionalContent() {
-    return GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        shrinkWrap: true,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ...List.generate(emotions1.length, (index){
-            return CustomEmotionCard(index: index, onTap: (){
-              Get.off(()=>EmotionDetailsPage(emotionModel: emotions1[index]),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
-            }, emotionModel: emotions1[index]);
-          }),
-          CustomContactUsEmotionButton(onTap: (){
-                                   showDialog(context: context, builder: (context)=>AlertDialog(content: CustomEmotionContactUsDialog(),));
+          const SizedBox(height: 10,),
+          GridView(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              children: [
+                ...List.generate(emotions1.length, (index){
+                  return CustomEmotionCard(index: index, onTap: (){
+                    Get.to(()=>EmotionDetailsPage(emotionModel: emotions1[index]),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
+                  }, emotionModel: emotions1[index]);
+                }),
+                
+               
+              ],
+             
+              ),
+               CustomContactUsEmotionButton(title: "Get Help",image: AppImages.emotionLogo,onTap: (){
+                                         showDialog(context: context, builder: (context)=>AlertDialog(content: CustomEmotionContactUsDialog(description: "Ready to Spice up Your Love Life ?",image: AppImages.emotionLogo,),));
+          
+                }
+                ),
+                const SizedBox(height: 10,)
 
-          })
         ],
-       
-        );
+      ),
+    );
   }
 
   Widget getTabletEmotionalContent() {
-    return GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: width < AppConstants.maxTabletWidth ? 3 : 4,
-            mainAxisSpacing: 50,
-            crossAxisSpacing: 30),
-        shrinkWrap: true,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ...List.generate(emotions1.length, (index){
-             return CustomEmotionCard(index: index, onTap: (){
-              Get.off(()=>EmotionDetailsPage(emotionModel: emotions1[index]),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
-             }, emotionModel: emotions1[index]);
-          }),
-           CustomContactUsEmotionButton(onTap: (){
-                                   showDialog(context: context, builder: (context)=>AlertDialog(content: CustomEmotionContactUsDialog(),));
+                    const SizedBox(height: 20,),
 
-          })
+          GridView(
+            physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: width < AppConstants.maxTabletWidth ? 3 : 4,
+                  mainAxisSpacing: 50,
+                  crossAxisSpacing: 30),
+              shrinkWrap: true,
+              children: [
+                ...List.generate(emotions1.length, (index){
+                   return CustomEmotionCard(index: index, onTap: (){
+                    Get.to(()=>EmotionDetailsPage(emotionModel: emotions1[index]),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+                   }, emotionModel: emotions1[index]);
+                }),
+                
+              ],
+             
+              ),
+              const SizedBox(height: 20,),
+               CustomContactUsEmotionButton(title:"Get Help" ,image: AppImages.emotionLogo,
+                onTap: (){
+                showDialog(context: context, builder: (context)=>AlertDialog(content: CustomEmotionContactUsDialog(description: "Ready to Spice up Your Love Life ?",image: AppImages.emotionLogo,),));
+          
+                }
+                ),
+                const SizedBox(height: 10,)
         ],
-       
-        );
+      ),
+    );
   }
 
   // static final List<EmotionModel> emotions = [

@@ -1,4 +1,6 @@
+import 'package:divinecontrol/screens/homepage_screens/main_view_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_details_screen.dart';
+import 'package:divinecontrol/utils/app_images.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:divinecontrol/widgets/meditation_widgets/contact_us_medititationdialog.dart';
 import 'package:divinecontrol/widgets/meditation_widgets/custom_contactus_meditation.dart';
@@ -9,7 +11,8 @@ import 'package:get/get.dart';
 import '../../models/meditation_models/meditation_models.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
+import '../../widgets/emotion_widgets/contact_us_emotiondialog.dart';
+import '../../widgets/emotion_widgets/custom_contactus_button.dart';
 
 class MeditationScreen extends StatefulWidget {
   const MeditationScreen({super.key});
@@ -27,8 +30,10 @@ class _MeditationScreenState extends State<MeditationScreen> {
     width = MediaQuery.sizeOf(context).width;
 
     return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: CustomAppBar(title: "Meditation", leading: true),
+      backgroundColor: AppColors.lightPurple1,
+      appBar: CustomAppBar(title: "Meditation", leading: false,actions: Icons.close,actionesFn: (){
+        Get.offAll(()=>MainViewScreen());
+      },),
       body: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: width / 20, vertical: width / 20),
@@ -63,18 +68,18 @@ class _MeditationScreenState extends State<MeditationScreen> {
       ),
       shrinkWrap: true,
       children: [
-        ...List.generate(items.length, (index) {
+        ...List.generate(items1.length, (index) {
           return CustomMeditationCard(
               index: index,
               onTap: () {
                 Get.to(
                     () =>
-                        MeditationDetailsScreen(meditationModel: items[index]),
+                        MeditationDetailsScreen(meditationModel: items1[index]),
                     transition: Transition.circularReveal,
                     duration:
                         const Duration(seconds: AppConstants.durationSecond));
               },
-              meditationModel: items[index]);
+              meditationModel: items1[index]);
         }),
         CustomMeditationContactUsButton(
           onTap: () {
@@ -88,25 +93,38 @@ class _MeditationScreenState extends State<MeditationScreen> {
   }
 
   Widget getTabletMeditationContent() {
-    return GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: width < AppConstants.maxTabletWidth ? 3 : 4,
-            mainAxisSpacing: 50,
-            crossAxisSpacing: 30),
-        shrinkWrap: true,
+    return SingleChildScrollView(
+      child: Column(
         children: [
-          ...List.generate(items.length, (index){
-            return CustomMeditationCard(index: index, onTap: (){
-              Get.to(()=>MeditationDetailsScreen(meditationModel: items[index]),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
-            }, meditationModel:items[index]);
-          }),
-          CustomMeditationContactUsButton(onTap: (){
-                       showDialog(context: context, builder: (context)=>AlertDialog(content: CustomMeditationContactUsDialog(),));
+          GridView(
+            physics: NeverScrollableScrollPhysics(),
+            
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: width < AppConstants.maxTabletWidth ? 3 : 4,
+                  mainAxisSpacing: 50,
+                  crossAxisSpacing: 30),
+              shrinkWrap: true,
+              children: [
+                ...List.generate(items1.length, (index){
+                  return CustomMeditationCard(index: index, onTap: (){
+                    Get.to(()=>MeditationDetailsScreen(meditationModel: items1[index]),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+                  }, meditationModel:items1[index]);
+                }),
+               
+              ],
+             
+              ),
+             SizedBox(height:width<AppConstants.maxTabletWidth? 100:50,),
 
-          })
+               CustomContactUsEmotionButton(title: "Get Help",image: AppImages.meditationLogo,onTap: (){
+                                         showDialog(context: context, builder: (context)=>AlertDialog(content: CustomEmotionContactUsDialog(description: "Let's do Meditation to Manifest with Low of Attraction and Affirmations.",image: AppImages.meditationLogo,),));
+          
+                }
+                ),
+
         ],
-       
-        );
+      ),
+    );
   }
 
   static List<String>? dailyVideos = [
@@ -320,52 +338,114 @@ class _MeditationScreenState extends State<MeditationScreen> {
     "A Fire Cleansing Epic Power Guided Meditation for Healing"
   ];
 
-  static final List<MeditationModel> items = [
+  // static final List<MeditationModel> items = [
+  //   MeditationModel(
+  //       image: AppImages.daily,
+  //       title: "Daily Meditation",
+  //       videos: dailyVideos,
+  //       videoTitles: dailyTitles),
+  //   MeditationModel(
+  //       image: AppImages.chakram,
+  //       title: "Chakra Meditation",
+  //       videos: chakraVideos,
+  //       videoTitles: chakraTitles),
+  //   MeditationModel(
+  //       image: AppImages.sleep,
+  //       title: "Meditation for sleep",
+  //       videos: sleepVideos,
+  //       videoTitles: sleepTitles),
+  //   MeditationModel(
+  //       image: AppImages.minutes,
+  //       title: "5 minute Meditation",
+  //       videos: minutesVideos,
+  //       videoTitles: minutesTitles),
+  //   MeditationModel(
+  //       image: AppImages.mindfullness,
+  //       title: "Mindfullness Meditation",
+  //       videos: mindfulVideo,
+  //       videoTitles: mindfulTitles),
+  //   MeditationModel(
+  //       image: AppImages.positive,
+  //       title: "Meditation for Positive Energy",
+  //       videos: positiveVideos,
+  //       videoTitles: positiveTitles),
+  //   MeditationModel(
+  //       image: AppImages.beginners,
+  //       title: "Meditation for beginners",
+  //       videos: beginnersVideos,
+  //       videoTitles: beginnersTitles),
+  //   MeditationModel(
+  //       image: AppImages.mental,
+  //       title: "Meditation for Mental Health",
+  //       videos: mentalVideos,
+  //       videoTitles: mentalTitles),
+  //   MeditationModel(
+  //     image: AppImages.power,
+  //     title: "Epic Power Meditation",
+  //     videos: powerVideos,
+  //     videoTitles: powerTitles,
+  //   ),
+  // ];
+
+
+  static final List<MeditationModel> items1 = [
     MeditationModel(
-        image: AppImages.daily,
+        image:"https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Daily Meditation",
         videos: dailyVideos,
         videoTitles: dailyTitles),
     MeditationModel(
-        image: AppImages.chakram,
+        image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?q=80&w=1753&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Chakra Meditation",
         videos: chakraVideos,
         videoTitles: chakraTitles),
     MeditationModel(
-        image: AppImages.sleep,
+        image: "https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Meditation for sleep",
         videos: sleepVideos,
         videoTitles: sleepTitles),
     MeditationModel(
-        image: AppImages.minutes,
+        image:     "https://images.unsplash.com/photo-1602192509154-0b900ee1f851?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "5 minute Meditation",
         videos: minutesVideos,
         videoTitles: minutesTitles),
     MeditationModel(
-        image: AppImages.mindfullness,
+        image:     "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Mindfullness Meditation",
         videos: mindfulVideo,
         videoTitles: mindfulTitles),
     MeditationModel(
-        image: AppImages.positive,
+        image:     "https://images.unsplash.com/photo-1592895792095-85fa785192a9?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Meditation for Positive Energy",
         videos: positiveVideos,
         videoTitles: positiveTitles),
     MeditationModel(
-        image: AppImages.beginners,
+        image:     "https://images.unsplash.com/photo-1489659639091-8b687bc4386e?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Meditation for beginners",
         videos: beginnersVideos,
         videoTitles: beginnersTitles),
     MeditationModel(
-        image: AppImages.mental,
+        image:     "https://images.unsplash.com/photo-1559595500-e15296bdbb48?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
         title: "Meditation for Mental Health",
         videos: mentalVideos,
         videoTitles: mentalTitles),
     MeditationModel(
-      image: AppImages.power,
+      image:     "https://images.unsplash.com/photo-1554067559-269708c83fb6?q=80&w=1994&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
       title: "Epic Power Meditation",
       videos: powerVideos,
       videoTitles: powerTitles,
     ),
   ];
 }
+
+
+ 

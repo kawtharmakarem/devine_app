@@ -144,7 +144,7 @@ class _CustomMeditationCardState extends State<CustomMeditationCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            Container(
                 width: width < AppConstants.maxMobileWidth
                     ? width / 4
                     : width < AppConstants.maxTabletWidth
@@ -155,10 +155,18 @@ class _CustomMeditationCardState extends State<CustomMeditationCard> {
                     : width < AppConstants.maxTabletWidth
                         ? width / 6.5
                         : width / 10,
-                child: Image.asset(
-                  widget.meditationModel.image,
-                  fit: BoxFit.cover,
-                )),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(100),
+                        border: Border.all(width: 1)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(widget.meditationModel.image,
+fit: BoxFit.cover,),
+                )
+                // Image.asset(
+                //   widget.meditationModel.image,
+                //   fit: BoxFit.cover,
+                // )
+                ),
                 const SizedBox(height: 5,),
             Text(
               widget.meditationModel.title,textAlign: TextAlign.center,

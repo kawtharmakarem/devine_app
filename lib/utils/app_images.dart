@@ -161,15 +161,15 @@ static const String stone="assets/numerologyimages/stone.png";
 static const String numerlogy="assets/numerologyimages/numerlogy.png";
 //meditationimages
 static const String meditationLogo="assets/meditationimages/meditationlogo.png";
-static const String daily="assets/meditationimages/daily.jpg";
-static const String beginners="assets/meditationimages/beginners.jpg";
-static const String chakram="assets/meditationimages/chakra.jpg";
-static const String mental="assets/meditationimages/mental.jpg";
-static const String mindfullness="assets/meditationimages/mindfullness.jpg";
-static const String minutes="assets/meditationimages/minutes.jpg";
-static const String positive="assets/meditationimages/positive.jpg";
-static const String power="assets/meditationimages/power.jpg";
-static const String sleep="assets/meditationimages/sleep.jpg";
+// static const String daily="assets/meditationimages/daily.jpg";
+// static const String beginners="assets/meditationimages/beginners.jpg";
+// static const String chakram="assets/meditationimages/chakra.jpg";
+// static const String mental="assets/meditationimages/mental.jpg";
+// static const String mindfullness="assets/meditationimages/mindfullness.jpg";
+// static const String minutes="assets/meditationimages/minutes.jpg";
+// static const String positive="assets/meditationimages/positive.jpg";
+// static const String power="assets/meditationimages/power.jpg";
+// static const String sleep="assets/meditationimages/sleep.jpg";
 //emotion
 static const String emotionLogo="assets/emotionalimages/emotion.png";
 //static const String anger="assets/emotionalimages/anger.jpg";

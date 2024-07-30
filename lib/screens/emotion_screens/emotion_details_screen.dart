@@ -1,5 +1,6 @@
 import 'package:divinecontrol/models/emotion_models/emotion_model.dart';
 import 'package:divinecontrol/screens/emotion_screens/emotion_description_screen.dart';
+import 'package:divinecontrol/screens/emotion_screens/emotion_screen.dart';
 import 'package:divinecontrol/widgets/astrology_widgets/custom_astrology_button.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,9 @@ class EmotionDetailsPage extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: CustomAppBar(title: emotionModel.title, leading: true),
+      appBar: CustomAppBar(title: emotionModel.title, leading: false,actions: Icons.close,actionesFn: (){
+        Get.offAll(()=>EmotionScreen());
+      },),
       body: width < AppConstants.maxTabletWidth
           ? getMobileDetailsContent(width, context)
           : getDesktopDetailsContent(width, context),
@@ -39,7 +42,13 @@ class EmotionDetailsPage extends StatelessWidget {
                borderRadius: BorderRadius.circular(20),
                 child: Image.network(
                   emotionModel.detailsImage,
-                          //"https://images.pexels.com/photos/313690/pexels-photo-313690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  loadingBuilder: (context,child,progress){
+                    if(progress==null){
+                      return child;
+                    }else{
+                      return CircularProgressIndicator(color: AppColors.darkPrimary,);
+                    }
+                  },
                 
                   fit: BoxFit.cover,
                 ),
@@ -58,10 +67,7 @@ class EmotionDetailsPage extends StatelessWidget {
                 child: CustomAstrologyButton(
                   title: 'Book Now',
                   onTap: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //     builder: (context) => EmotionDescriptionScreen(
-                    //           emotionModel: emotionModel,
-                    //         )));
+                    
                     Get.off(()=>EmotionDescriptionScreen(emotionModel: emotionModel),transition: Transition.circularReveal,duration: const Duration(seconds: AppConstants.durationSecond));
                   },
                   color: AppColors.black,
@@ -112,7 +118,13 @@ class EmotionDetailsPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(
                       emotionModel.detailsImage,
-                      // emotionModel.detailsImage,
+                      loadingBuilder: (context, child, loadingProgress){
+                        if(loadingProgress==null){
+                          return child;
+                        }else{
+                          return CircularProgressIndicator(color: AppColors.darkPrimary,);
+                        }
+                      },
                       fit: BoxFit.cover,
                     ),
                   )),
@@ -124,9 +136,11 @@ class EmotionDetailsPage extends StatelessWidget {
                   child: CustomAstrologyButton(
                     title: 'Book Now',
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => EmotionDescriptionScreen(
-                              emotionModel: emotionModel)));
+                      // Navigator.of(context).push(MaterialPageRoute(
+                      //     builder: (context) => EmotionDescriptionScreen(
+                      //         emotionModel: emotionModel)));
+                                          Get.off(()=>EmotionDescriptionScreen(emotionModel: emotionModel),transition: Transition.zoom,duration: const Duration(seconds: AppConstants.durationSecond));
+
                     },
                     color: AppColors.black,
                     textColor: AppColors.white,

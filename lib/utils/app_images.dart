@@ -246,9 +246,35 @@ static const String taurus="assets/horoscopeimages/taurus.png";
 static const String virgo="assets/horoscopeimages/virgo.png";
 //shoppingimages
 static const String durga="assets/shoppingimages/durga.png";
-static const String krishna="assets/shoppingimages/krishna.png";
-static const String plant="assets/shoppingimages/plant.png";
-static const String shani="assets/shoppingimages/shani.png";
+static const String bhaghwatGeeta="assets/shoppingimages/bhaghwat_geeta.png";
+static const String brihaspati="assets/shoppingimages/brihaspati.png";
+static const String chandra="assets/shoppingimages/chandra.png";
+static const String gathBandhan="assets/shoppingimages/gath_bandhan.png";
+static const String gopal="assets/shoppingimages/gopal.jpg";
+static const String kaali="assets/shoppingimages/kaali.png";
+static const String ketu="assets/shoppingimages/ketu.png";
+static const String mahalakshmi="assets/shoppingimages/mahalakshmi.png";
+static const String mangalDosh="assets/shoppingimages/mangal_dosh.png";
+static const String mangal="assets/shoppingimages/mangal.png";
+static const String mritynjaya="assets/shoppingimages/mritynjaya.png";
+static const String nakshatra="assets/shoppingimages/nakshatra.png";
+static const String pitraDosh="assets/shoppingimages/pitra_dosh.png";
+static const String rahu="assets/shoppingimages/rahu.png";
+static const String rudraAbhishek="assets/shoppingimages/rudra_abhishek.png";
+static const String saraswati="assets/shoppingimages/saraswati.png";
+static const String satyaNarayan="assets/shoppingimages/satya_narayan.png";
+static const String surya="assets/shoppingimages/surya.png";
+static const String vastu="assets/shoppingimages/vastu.jpeg";
+static const String navgrah="assets/shoppingimages/navgrah.png";
+static const String finalImage="assets/shoppingimages/final.jpg";
+
+// static const String krishna="assets/shoppingimages/krishna.png";
+// static const String plant="assets/shoppingimages/plant.png";
+// static const String shani="assets/shoppingimages/shani.png";
+
+
+
+
 //todayluckimages
 static const String obox="assets/todayluckimages/obox.json";
 static const String cbox="assets/todayluckimages/cbox.json";

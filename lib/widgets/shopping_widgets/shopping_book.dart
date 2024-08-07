@@ -22,7 +22,7 @@ class ShoppingBookWidget extends StatelessWidget {
       SizedBox(
         width: width/5,
         height: width/5,
-        child: Image.asset(AppImages.shani,fit: BoxFit.fill,)),
+        child: Image.asset(AppImages.durga,fit: BoxFit.fill,)),
       const SizedBox(height: 30,),
       Text('Welcome To Pooja Book',style: AppStyles.styleBold24(context),)
     ],),);

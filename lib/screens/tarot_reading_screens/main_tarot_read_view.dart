@@ -60,21 +60,7 @@ class _MainTarotReadViewState extends State<MainTarotReadView> {
                             getResponsiveFontSizeText(context, fontSize:28)),
                 textAlign: TextAlign.center,
               )),
-          // CustomSearchTextField(
-          //     onChanged: (value) {
-          //       setState(() {
-          //         textFieldValue = value;
-          //         searchController.text = value;
-          //       });
-          //     },
-          //     controller: searchController,
-          //     labelText: 'Enter Your Question',
-          //     prefixIcon:  Icon(
-          //       Icons.search,
-          //       color: AppColors.darkPrimary,
-          //       size: width<AppConstants.maxMobileWidth? 30:50,
-          //     ),
-          //     hintText: 'your question'),
+          
           CustomTarotButton(
             title: 'Next',
             onPressed: () {

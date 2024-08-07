@@ -72,40 +72,14 @@ class _TarotReadViewBodyState extends State<TarotReadViewBody> {
           ),
          
           TarotBodyGridView(items: searchList(searchController.text, items)),
+
           
         ],
       ),
     );
   }
 
-  // Container getTabletTarotBody(double width,double height) {
-  //   return Container(
-  //     padding:  EdgeInsets.symmetric(horizontal: width/20,vertical: height/40),
-  //     decoration: BoxDecoration(
-  //         color: AppColors.lightPurple1,
-  //         borderRadius: BorderRadius.circular(20)),
-  //     child: Column(
-  //       children: [
-  //         const SizedBox(
-  //           height: 35,
-  //        ),
-  //        const TarotReadingTitle(),
-  //         const SizedBox(
-  //         height: 45,
-  //          ),
-  //         TarotBodyGridView(items: items),
-  //         const SizedBox(
-  //           height: 40,
-  //         ),
-  //         const SeeMore(),
-  //         const SizedBox(
-  //           height: 100,
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
-
+  
   Container getDesktopTarotBody(double height, double width) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),

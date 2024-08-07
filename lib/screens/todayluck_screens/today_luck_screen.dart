@@ -1,3 +1,5 @@
+
+
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:audioplayers/audioplayers.dart';
@@ -20,6 +22,7 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
   late AudioPlayer player;
   bool isVisible = false;
   int index = 0;
+  bool repeat=false;
  
   @override
   void initState() {
@@ -75,14 +78,15 @@ class _TodaysLuckScreenState extends State<TodaysLuckScreen> {
           ),
           Transform.scale(
               scale: 1.5,
-              child: Lottie.asset(AppImages.obox, fit: BoxFit.fill,repeat: false)),
+              child: Lottie.asset(AppImages.obox, fit: BoxFit.fill,repeat:isVisible?false:true,)),
           ElevatedButton(
             onPressed: () {
               setState(() {
-                index = math.Random().nextInt(quotes.length-1);
+                index = math.Random().nextInt(quotes.length);
 
-               // isVisible = !isVisible;
-               Navigator.popAndPushNamed(context, "todayluckroute");
+               isVisible = !isVisible;
+              //Navigator.popAndPushNamed(context, "todayluckroute");
+              //  Get.offAndToNamed("todayluckroute");
                 
               });
             },

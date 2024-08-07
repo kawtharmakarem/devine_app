@@ -1,9 +1,10 @@
 import 'dart:developer';
 
-import 'package:divinecontrol/screens/check_lovers_screens/custom_checklover_button.dart';
+import 'package:divinecontrol/widgets/checklove_widgets/custom_checklover_button.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:math' as math;
 
 import '../../utils/app_constants.dart';
@@ -97,7 +98,7 @@ class _FlowerState extends State<Flower> {
                           index: index,
                           callBack: (val) {
                             setState(() {
-                                                          _counter = val;
+                              _counter = val;
 
                             });
                             return _counter;
@@ -112,7 +113,8 @@ class _FlowerState extends State<Flower> {
                               
                               setState(() {
                                 _counter=0;
-                               Navigator.popAndPushNamed(context, "flowerroute");
+                               //Navigator.popAndPushNamed(context, "flowerroute");
+                               Get.offAndToNamed("flowerroute");
                               });
                             },
                             title: "Restart")
@@ -277,7 +279,7 @@ static int counter = 0;
                   opacity = 0;
                   ScaffoldMessenger.of(context)
                     ..removeCurrentSnackBar()
-                    ..showSnackBar(SnackBar(
+                    ..showSnackBar(SnackBar(duration: const Duration(milliseconds: 500),
                       backgroundColor: AppColors.lightPurple1,
                       content: Align(
                         child: Text(

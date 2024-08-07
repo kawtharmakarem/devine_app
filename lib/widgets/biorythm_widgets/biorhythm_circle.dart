@@ -21,7 +21,7 @@ class IndicatorCircle extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          radius: width < AppConstants.maxMobileWidth ? 24 : 40,
+          radius: width < AppConstants.maxMobileWidth ? 22 : 40,
           backgroundColor: color,
           child: Text(
             '$value',
@@ -36,10 +36,10 @@ class IndicatorCircle extends StatelessWidget {
         Text(label,
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.styleRegular20(context).copyWith(fontSize: 16)
-                : AppStyles.styleRegular28(context).copyWith(
+                : AppStyles.styleRegular20(context).copyWith(
                     color: AppColors.black,
                     fontSize:
-                        getResponsiveFontSizeText(context, fontSize: 30))),
+                        getResponsiveFontSizeText(context, fontSize: 24))),
       ],
     );
   }

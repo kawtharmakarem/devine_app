@@ -5,16 +5,28 @@ import 'package:divinecontrol/widgets/biorythm_widgets/custom_biorythm_contactbu
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'dart:math';
 import '../../models/biorhythm_models/biorhythm_description_model.dart';
 import '../../widgets/biorythm_widgets/biorhythm_chart.dart';
 import '../../widgets/biorythm_widgets/biorhythm_description.dart';
-import '../../widgets/biorythm_widgets/biorhythm_indicators.dart';
 import '../../widgets/biorythm_widgets/contact_us_dialog.dart';
 
 class BiorhythmPage extends StatefulWidget {
   const BiorhythmPage({super.key});
-  static List<BiorhythmDescriptionModel> descriptions = [
+ 
+
+  @override
+  State<BiorhythmPage> createState() => _BiorhythmPageState();
+   static _BiorhythmPageState? of(BuildContext context) =>
+      context.findAncestorStateOfType<_BiorhythmPageState>();
+  
+}
+
+class _BiorhythmPageState extends State<BiorhythmPage> {
+
+
+
+   final List<BiorhythmDescriptionModel> descriptions = [
     BiorhythmDescriptionModel(
       title: 'Physical',
       description:
@@ -40,84 +52,99 @@ class BiorhythmPage extends StatefulWidget {
       image: AppImages.spiritual,
     ),
   ];
-
-  @override
-  State<BiorhythmPage> createState() => _BiorhythmPageState();
-}
-
-class _BiorhythmPageState extends State<BiorhythmPage> {
   String dob = "";
-  int mydays = 0;
-  int months = 0;
-  int years = 0;
-  int days = 0;
-  int _calculateAge(DateTime birth) {
-    DateTime now = DateTime.now();
-    Duration age = now.difference(birth);
-    //int years=age.inDays ~/365;
-    // int months=(age.inDays%365)~/30;
-    // int days=((age.inDays%365)%30);
-    int mydays = age.inDays;
-    return mydays;
-  }
+  int physicalValue=0;
+  int emotionalValue=0;
+  int intellectualValue=0;
+  List<int> values=[];
+//   int get physicalValue{
+//   return ((sin((2 * pi * (widget.mydays + 0)) / 23) + 1) * 50).toInt();
+// }  
+
+// int get emotionalValue{
+//   return ((sin((2 * pi * (widget.mydays + 0)) / 28) + 1) * 50).toInt();
+// }
+
+//  int get intellectualValue{
+//   return ((sin((2 * pi * (widget.mydays + 0)) / 33) + 1) * 50).toInt();
+// }
+
+   int calculateBiorythm(DateTime? dob) {
+  if (dob == null) return 0;
+ const int millisecondsInDay = 1000 * 60 * 60 * 24;
+  final int daysSinceBirth = (DateTime.now().millisecondsSinceEpoch - dob.millisecondsSinceEpoch);
+  return daysSinceBirth~/millisecondsInDay;
+   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     dob = ModalRoute.of(context)?.settings.arguments as String;
-    mydays = _calculateAge(DateTime.parse(dob));
+    physicalValue=((sin((2 * pi * (calculateBiorythm(DateTime.parse(dob)) + 0)) / 23) + 1) * 50).toInt();
+    emotionalValue=((sin((2 * pi * (calculateBiorythm(DateTime.parse(dob)) + 0)) / 28) + 1) * 50).toInt();
+    intellectualValue=((sin((2 * pi * (calculateBiorythm(DateTime.parse(dob)) + 0)) / 33) + 1) * 50).toInt();
+    values=[physicalValue,emotionalValue,intellectualValue,0];
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
       appBar: CustomAppBar(title: "Biorhythm", leading: true),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: width < AppConstants.maxMobileWidth ? 10 : 30),
-        child: width < AppConstants.maxTabletWidth
-            ? getMobileBiorhythmContent(context, width)
-            : getDesktopBiorhythmContent(context, width),
-      ),
+      body: width < AppConstants.maxTabletWidth
+          ? getMobileBiorhythmContent(context, width)
+          : getDesktopBiorhythmContent(context, width),
     );
   }
 
-  Column getMobileBiorhythmContent(BuildContext context, double width) {
-    return Column(
-      children: [
-        BiorhythmChart(
-          mydays: mydays,
-        ),
-        const SizedBox(height: 16),
-        const BiorhythmIndicators(),
-        const SizedBox(height: 16),
-        Expanded(
-          child: ListView(
-            // shrinkWrap: true,
-            children: [
-              for (final descriptionModel in BiorhythmPage.descriptions)
-                Padding(
-                  padding: EdgeInsets.only(
-                      bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
-                  child:
-                      BiorhythmDescription(descriptionModel: descriptionModel),
-                ),
-                 CustomBiorythmContactButton(
-            title: "Book a Call",
-            onTap: () {
-              showDialog(
-                  context: context,
-                  
-                  builder: (context) {
-                    return AlertDialog(
-                     
-                      content: ContactUsDialog(),
-                    );
-                  });
-            },
-            icon: FontAwesomeIcons.heartCircleCheck)
-            ],
+  Widget getMobileBiorhythmContent(BuildContext context, double width) {
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: width<AppConstants.maxMobileWidth?5:10),
+      child: Column(
+        children: [
+          BiorhythmChart(
+         
+            mydays: calculateBiorythm(DateTime.parse(dob)),
           ),
-        ),
-       
-      ],
+          const SizedBox(height: 20),
+          //const BiorhythmIndicators(),
+          //const SizedBox(height: 16),
+          Expanded(
+            
+            child: ListView(
+              // shrinkWrap: true,
+              children: [
+                // for (final descriptionModel in descriptions)
+                //   Padding(
+                //     padding: EdgeInsets.only(
+                //         bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
+                //     child:
+                //         BiorhythmDescription(descriptionModel: descriptionModel,),
+                //   ),
+                ...List.generate(descriptions.length,(index){
+                 return  Padding(
+                    padding: EdgeInsets.only(
+                        bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
+                    child:
+                        BiorhythmDescription(descriptionModel: descriptions[index],value: values[index],),
+                  );
+                }),
+                   CustomBiorythmContactButton(
+              title: "Book a Call",
+              onTap: () {
+                showDialog(
+                    context: context,
+                    
+                    builder: (context) {
+                      return AlertDialog(
+                       
+                        content: ContactUsDialog(),
+                      );
+                    });
+              },
+              icon: FontAwesomeIcons.heartCircleCheck)
+              ],
+            ),
+          ),
+         
+        ],
+      ),
     );
   }
 
@@ -129,10 +156,11 @@ class _BiorhythmPageState extends State<BiorhythmPage> {
           child: Column(
             children: [
               BiorhythmChart(
-                mydays: mydays,
+               
+                mydays: calculateBiorythm(DateTime.parse(dob)),
               ),
               SizedBox(height: 16),
-              BiorhythmIndicators(),
+            //  BiorhythmIndicators(),
             ],
           ),
         ),
@@ -143,13 +171,21 @@ class _BiorhythmPageState extends State<BiorhythmPage> {
           child: ListView(
             shrinkWrap: true,
             children: [
-              for (final descriptionModel in BiorhythmPage.descriptions)
-                Padding(
+              // for (final descriptionModel in descriptions)
+              //   Padding(
+              //     padding: EdgeInsets.only(
+              //         bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
+              //     child:
+              //         BiorhythmDescription(descriptionModel: descriptionModel),
+              //   ),
+              ...List.generate(descriptions.length,(index){
+                 return Padding(
                   padding: EdgeInsets.only(
                       bottom: width < AppConstants.maxMobileWidth ? 10 : 30),
                   child:
-                      BiorhythmDescription(descriptionModel: descriptionModel),
-                ),
+                      BiorhythmDescription(descriptionModel: descriptions[index],value: values[index],),
+                );
+              }),
                  CustomBiorythmContactButton(
             title: "Book a Call",
             onTap: () {

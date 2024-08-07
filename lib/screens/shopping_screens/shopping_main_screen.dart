@@ -3,7 +3,6 @@ import 'package:divinecontrol/widgets/shopping_widgets/shopping_book.dart';
 import 'package:divinecontrol/widgets/shopping_widgets/shopping_custom_card.dart';
 import 'package:divinecontrol/widgets/shopping_widgets/shopping_lists.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
@@ -29,108 +28,122 @@ class _ShoppingMainPageState extends State<ShoppingMainPage> {
     ShoppingDataModel(
         image: AppImages.durga,
         title: "Durga Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[0]),
     ShoppingDataModel(
-        image: AppImages.shani,
+        image: AppImages.gopal,
         title: "Gopal Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[1]),
     ShoppingDataModel(
-        image: AppImages.krishna,
+        image: AppImages.vastu,
         title: "Vastu Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[2]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.chandra,
         title: "Chandra Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[3]),
     ShoppingDataModel(
-        image: AppImages.durga,
+        image: AppImages.mahalakshmi,
         title: "Mahalaxmhi Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[4]),
     ShoppingDataModel(
-        image: AppImages.shani,
+        image: AppImages.mritynjaya,
         title: "Mrityunjay Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[5]),
     ShoppingDataModel(
-        image: AppImages.krishna,
+        image: AppImages.surya,
         title: "Surya Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[6]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.saraswati,
         title: "Saraswati Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[7]),
     ShoppingDataModel(
-        image: AppImages.durga,
+        image: AppImages.kaali,
         title: "Kaali Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[8]),
     ShoppingDataModel(
-        image: AppImages.shani,
+        image: AppImages.bhaghwatGeeta,
         title: "Bhagwat Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[9]),
     ShoppingDataModel(
-        image: AppImages.krishna,
+        image: AppImages.navgrah,
         title: "Navgrah Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[10]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.rahu,
         title: "Rahu Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[11]),
     ShoppingDataModel(
-        image: AppImages.durga,
+        image: AppImages.ketu,
         title: "Ketu Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[12]),
     ShoppingDataModel(
-        image: AppImages.shani,
+        image: AppImages.mangal,
         title: "Mangal Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[13]),
     ShoppingDataModel(
-        image: AppImages.krishna,
+        image: AppImages.rudraAbhishek,
         title: "Rudrabhishek Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[14]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.gathBandhan,
         title: "Gath Bandhan Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[15]),
     ShoppingDataModel(
-        image: AppImages.durga,
+        image: AppImages.satyaNarayan,
         title: "Satya Narayan Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[16]),
     ShoppingDataModel(
-        image: AppImages.shani,
+        image: AppImages.brihaspati,
         title: "Brihaspati Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[17]),
     ShoppingDataModel(
-        image: AppImages.krishna,
+        image: AppImages.nakshatra,
         title: "Nakshatra Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[18]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.pitraDosh,
         title: "Pitra Dosh Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[19]),
     ShoppingDataModel(
-        image: AppImages.plant,
+        image: AppImages.mangalDosh,
         title: "Manglik Pooja",
-        value: 5100,
+        value: 500,
         shoppingDetailsModel: details[20]),
+         ShoppingDataModel(
+        image: AppImages.finalImage,
+        title: "Learn Astrology",
+        value: 2000,
+        shoppingDetailsModel:details[21]),
+         
+        
+  ];
+  final List<ShoppingDataModel> learn=[
+    ShoppingDataModel(
+        image: AppImages.finalImage,
+        title: "Learn Astrology",
+        value: 2000,
+        shoppingDetailsModel:learnDetails[0]),
   ];
 
 GlobalKey<ScaffoldState> key=GlobalKey();
@@ -141,8 +154,7 @@ GlobalKey<ScaffoldState> key=GlobalKey();
       child: Scaffold(
         key: key,
           backgroundColor: AppColors.lightPurple1,
-         // appBar:width<AppConstants.maxTabletWidth? getAppBar(width, context):null,
-        //  drawer: width<AppConstants.maxTabletWidth?const MainDrawer() :null,
+         
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: width < AppConstants.maxMobileWidth
@@ -154,27 +166,7 @@ GlobalKey<ScaffoldState> key=GlobalKey();
     );
   }
 
-  AppBar getAppBar(double width, BuildContext context) {
-    return AppBar(
-        title: Text(
-          'Pooja',
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.lightPurple1,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      );
-  }
+  
 
   Container getMobileMainContent(double width) {
     return Container(
@@ -183,12 +175,14 @@ GlobalKey<ScaffoldState> key=GlobalKey();
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomShoppingToggleButton(callBack: (val) {
-            setState(() {
-              _index = val;
-            });
-            return _index;
-          }),
+          Center(
+            child: CustomShoppingToggleButton(callBack: (val) {
+              setState(() {
+                _index = val;
+              });
+              return _index;
+            }),
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -220,29 +214,32 @@ GlobalKey<ScaffoldState> key=GlobalKey();
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          CustomShoppingToggleButton(callBack: (val) {
-            setState(() {
-              _index = val;
-            });
-            return _index;
-          }),
+          Center(
+            child: CustomShoppingToggleButton(callBack: (val) {
+              setState(() {
+                _index = val;
+              });
+              return _index;
+            }),
+          ),
           const SizedBox(
             height: 20,
           ),
           _index == 0
               ? Expanded(
-                  child: GridView.builder(
+                  child: GridView(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                              childAspectRatio: 0.62,
+                              childAspectRatio: 0.58,
                               crossAxisCount: 3,
                               mainAxisSpacing: 15,
                               crossAxisSpacing: 15),
-                      itemCount: items.length,
-                      itemBuilder: (context, i) {
-                        return ShoppingCustomCard(
-                            onTap: () {}, shoppingModel: items[i]);
-                      }),
+                              children: [
+                                ...List.generate(items.length, (index) => ShoppingCustomCard(onTap: (){}, shoppingModel: items[index])),
+                                
+                              ],
+                    
+                      ),
                 )
               : const ShoppingBookWidget()
         ],
@@ -254,14 +251,15 @@ GlobalKey<ScaffoldState> key=GlobalKey();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        // CustomDrawer(),
         const SizedBox(height: 20,),
-        CustomShoppingToggleButton(callBack: (val) {
-          setState(() {
-            _index = val;
-          });
-          return _index;
-        }),
+        Center(
+          child: CustomShoppingToggleButton(callBack: (val) {
+            setState(() {
+              _index = val;
+            });
+            return _index;
+          }),
+        ),
         const SizedBox(
           height: 20,
         ),
@@ -383,47 +381,3 @@ class _CustomShoppingToggleButtonState
 
 
 
-//  return SafeArea(
-//       child: Scaffold(
-//         key: scaffoldState,
-//         appBar: width < TarotAppConstants.mobileMaxWidth ? getAppBar() : null,
-//         drawer:
-//             width < TarotAppConstants.mobileMaxWidth ? const CustomDrawer() : null,
-//         body: TarotAdaptiveLayout(
-//             mobileLayout: (context) => const TarotMobileLayout(),
-//             tabletLayout: (context) => const TarotTabletLayout(),
-//             desktopLayout: (context) => const TarotDesktopLayout()),
-//       ),
-//     );
-//   }
-
-//   AppBar getAppBar() {
-//     return AppBar(
-//       title: Text(
-//         'TarotReading',
-//         style: AppStyles.styleBold24(context).copyWith(color: AppColors.purple),
-//       ),
-//       backgroundColor: AppColors.lightPurple2,
-//       leading: IconButton(
-//           onPressed: () {
-//             scaffoldState.currentState!.openDrawer();
-//           },
-//           icon: const Icon(
-//             Icons.menu,
-//             color: AppColors.purple,
-//             size: 30,
-//           )),
-//       actions: [
-//         SvgPicture.asset(
-//           AppImages.bell,
-//         ),
-//         SvgPicture.asset(
-//           AppImages.profile,
-//         ),
-//         const SizedBox(
-//           width: 10,
-//         )
-//       ],
-//     );
-//   }
-// }

@@ -2,7 +2,6 @@ import 'package:device_preview/device_preview.dart';
 import 'package:divinecontrol/screens/check_lovers_screens/flowe_screen.dart';
 import 'package:divinecontrol/screens/homepage_screens/main_homepage_screen.dart';
 import 'package:divinecontrol/screens/settings/header_page.dart';
-import 'package:divinecontrol/screens/todayluck_screens/today_luck_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
@@ -43,7 +42,6 @@ class MyApp extends StatelessWidget {
          routes: {
           "/":(context)=>const MainHomePageScreen(),
           "flowerroute":(context)=>const Flower(),
-          "todayluckroute":(context)=>const TodaysLuckScreen()
          },
         );
       }

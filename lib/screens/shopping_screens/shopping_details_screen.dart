@@ -1,10 +1,9 @@
 import 'package:divinecontrol/models/shopping_models/shopping_model.dart';
+import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_constants.dart';
-import '../../utils/app_images.dart';
 import '../../utils/app_styles.dart';
 import '../../widgets/shopping_widgets/custom_showdetails_card.dart';
 
@@ -12,6 +11,7 @@ class ShoppingDetailsScreen extends StatelessWidget {
   const ShoppingDetailsScreen({
     super.key,
     required this.shoppingDataModel,
+
   });
   final ShoppingDataModel shoppingDataModel;
 
@@ -20,25 +20,7 @@ class ShoppingDetailsScreen extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: AppColors.lightPurple1,
-      appBar: AppBar(
-        title: Text(
-          shoppingDataModel.title,
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleBold24(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : AppStyles.styleBold24(context).copyWith(
-                  color: AppColors.darkPrimary,
-                  fontSize: getResponsiveFontSizeText(context, fontSize: 40)),
-        ),
-        backgroundColor: AppColors.lightPurple1,
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(AppImages.leftArrow),
-        ),
-      ),
+      appBar:CustomAppBar(title:shoppingDataModel.title,leading: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
@@ -46,6 +28,7 @@ class ShoppingDetailsScreen extends StatelessWidget {
             children: [
               ListView(
                 shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 children: [
                   Container(
                     padding:
@@ -70,6 +53,7 @@ class ShoppingDetailsScreen extends StatelessWidget {
                                                 context,
                                                 fontSize: 32))),
                                                 const SizedBox(height: 20,),
+                                              Text('₹ ${shoppingDataModel.value.toStringAsFixed(0)}',style: AppStyles.styleBold24(context).copyWith(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 24:32)),),
                         ElevatedButton(onPressed: (){},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.black,
@@ -84,10 +68,10 @@ class ShoppingDetailsScreen extends StatelessWidget {
                 ],
               ),
               CustomShowDetailsCard(
-                mainTitle: "What are the Benefits?",
+               mainTitle: "What are the Benefits?",
                 text0: shoppingDataModel.shoppingDetailsModel.benefits[0],
-                text2: shoppingDataModel.shoppingDetailsModel.benefits[1],
-                text3: shoppingDataModel.shoppingDetailsModel.benefits[2],
+                // text2: shoppingDataModel.shoppingDetailsModel.benefits[1],
+                // text3: shoppingDataModel.shoppingDetailsModel.benefits[2],
               ),
               const Divider(
                 endIndent: 20,
@@ -95,10 +79,10 @@ class ShoppingDetailsScreen extends StatelessWidget {
                 thickness: 2,
               ),
               CustomShowDetailsCard(
-                  text0: shoppingDataModel.shoppingDetailsModel.howHappen[0],
-                  text2: shoppingDataModel.shoppingDetailsModel.howHappen[1],
-                  text3: shoppingDataModel.shoppingDetailsModel.howHappen[2],
-                  mainTitle: "How will it happen?"),
+                  text0: shoppingDataModel.shoppingDetailsModel.howHappen[0] ,
+                  // text2: shoppingDataModel.shoppingDetailsModel.howHappen[1],
+                  // text3: shoppingDataModel.shoppingDetailsModel.howHappen[2],
+                  mainTitle:shoppingDataModel.title=="Learn Astrology"? "What will you Learn ?":"How will it happen?"),
               const Divider(
                 endIndent: 20,
                 indent: 20,
@@ -106,9 +90,9 @@ class ShoppingDetailsScreen extends StatelessWidget {
               ),
               CustomShowDetailsCard(
                   text0: shoppingDataModel.shoppingDetailsModel.about[0],
-                  text2: shoppingDataModel.shoppingDetailsModel.about[1],
-                  text3: shoppingDataModel.shoppingDetailsModel.about[2],
-                  mainTitle: "About Lord ${shoppingDataModel.title}"),
+                  // text2: shoppingDataModel.shoppingDetailsModel.about[1],
+                  // text3: shoppingDataModel.shoppingDetailsModel.about[2],
+                  mainTitle:  shoppingDataModel.title=="Learn Astrology"? "A bout Course": "About Lord ${shoppingDataModel.title}"),
               const Divider(
                 endIndent: 20,
                 indent: 20,
@@ -117,11 +101,11 @@ class ShoppingDetailsScreen extends StatelessWidget {
               CustomShowDetailsCard(
                   text0: shoppingDataModel
                       .shoppingDetailsModel.getMaximumBenefits[0],
-                  text2: shoppingDataModel
-                      .shoppingDetailsModel.getMaximumBenefits[1],
-                  text3: shoppingDataModel
-                      .shoppingDetailsModel.getMaximumBenefits[2],
-                  mainTitle:
+                  // text2: shoppingDataModel
+                  //     .shoppingDetailsModel.getMaximumBenefits[1],
+                  // text3: shoppingDataModel
+                  //     .shoppingDetailsModel.getMaximumBenefits[2],
+                  mainTitle:shoppingDataModel.title=="Learn Astrology"? "Earn Money & Enhance Career":
                       "What should you do after pooja to get maximum benefits?"),
               const Divider(
                 endIndent: 20,

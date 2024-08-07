@@ -1,14 +1,14 @@
 import 'package:divinecontrol/animation/card_page_question.dart';
 import 'package:divinecontrol/animation/card_page_tablet_question.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
-import 'package:divinecontrol/utils/app_images.dart';
-import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/custom_tarot_searchcard.dart';
 import 'package:divinecontrol/widgets/tarotreading_widgets/result_cards_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../models/tarotreading_models/gridview_item_model.dart';
+import '../../utils/app_images.dart';
+import '../auth_widgets/custom_contactus_card.dart';
 import 'gridview_item.dart';
 
 class TarotBodyGridView extends StatelessWidget {
@@ -46,11 +46,7 @@ class TarotBodyGridView extends StatelessWidget {
             (index) => GridViewItem(
               itemModel: items[index],
               onSlectedItem: (GridViewItemModel itemModel) {
-                // Navigator.of(context)
-                //     .push(MaterialPageRoute(builder: (context) {
-                //   return Expanded(
-                //       child: CardsPageTablet(itemModel: itemModel));
-                // }));
+                
                 Get.to(
                     () => Expanded(
                         child: CardsPageTabletQuestion(
@@ -118,7 +114,7 @@ class TarotBodyGridView extends StatelessWidget {
                 subTitle: "",
                 results: resultCards),
           ),
-                    CustomContactUsCard(image: AppImages.tarotLogo, description: 'For more Details Book a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
+                   // CustomContactUsCard(image: AppImages.tarotLogo, description: 'For more Details Book a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
 
         ],
       ),
@@ -139,7 +135,6 @@ class TarotBodyGridView extends StatelessWidget {
               child: GridViewItem(
                 itemModel: items[index],
                 onSlectedItem: (itemModel) {
-                  // Get.to(()=>CardsPage(itemModel: itemModel),transition: Transition.fade,duration:const Duration(seconds: AppConstants.durationSecond));
                   Get.to(
                       () => CardsPageQuestion(
                           title: itemModel.title, itemModel: itemModel),
@@ -159,7 +154,7 @@ class TarotBodyGridView extends StatelessWidget {
                 subTitle: "",
                 results: resultCards),
           ),
-          CustomContactUsCard(image: AppImages.tarotLogo, description: 'Ready to Rewrite Your Story ?\nBook a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
+         // CustomContactUsCard(image: AppImages.tarotLogo, description: 'Ready to Rewrite Your Story ?\nBook a call and Experience the Magic of Tarot .',horizontalPadding: 0,)
         ],
       ),
     );

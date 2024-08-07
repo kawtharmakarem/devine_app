@@ -1,3 +1,4 @@
+import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -17,19 +18,19 @@ class CustomShoppingLine extends StatelessWidget {
     return Row(
       children: [
         Icon(
-          Icons.assistant_direction_sharp,
+          Icons.assistant_direction_sharp,color: AppColors.darkPrimary,
           size: width < AppConstants.maxMobileWidth ? 20 : 30,
         ),
         const SizedBox(
           width: 10,
         ),
-        SizedBox(
+        Container(
           width: width * 0.8,
           child: Text(
             text,
-            softWrap: true,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 3,
+            // softWrap: true,
+            // overflow: TextOverflow.ellipsis,
+            // maxLines: 3,
             style: width < AppConstants.maxMobileWidth
                 ? AppStyles.styleRegular20(context)
                 : width < AppConstants.maxTabletWidth

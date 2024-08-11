@@ -37,9 +37,8 @@ class CustomContactUsCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       width:width<AppConstants.maxMobileWidth? 70:150,
-                      child:image!=null? Image.asset(image!,fit: BoxFit.fill,):Icon(iconData,size: 60,color: AppColors.darkPrimary,)),
-                    Container(
-                      width: width*0.7,
+                      child:image!=null? Image.asset(image!,fit: BoxFit.fill,):Icon(iconData,size:width<AppConstants.maxTabletWidth? 60:100,color: AppColors.darkPrimary,)),
+                    Expanded(
                       child: Text(
                         description,textAlign: TextAlign.center,
                         style: AppStyles.styleRufinaBold32(context).copyWith(

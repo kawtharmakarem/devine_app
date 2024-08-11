@@ -33,6 +33,7 @@ class CustomCard extends StatelessWidget {
     const MyFortuneWheel(),
     const MainTarotReadView(),
     const FaceReadingView(),
+    //const PalmDetectionScreen3(),
     const PalemReadingScreen(),
     const TravelTimeScreen(),
     const AstrologyMainPage(),

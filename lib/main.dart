@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
           title: 'Divine App',
          //theme: isDarkMode? ThemeData.dark():ThemeData.light(),
          theme: ThemeData.light(),
-        // home:const MainHomePageScreen(),
          routes: {
           "/":(context)=>const MainHomePageScreen(),
           "flowerroute":(context)=>const Flower(),

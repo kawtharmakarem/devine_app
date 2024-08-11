@@ -12,8 +12,8 @@ class PickedImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
     return Container(
-      width:width<AppConstants.maxTabletWidth? width*0.3:width*0.2,
-      height:width<AppConstants.maxTabletWidth? width*0.3:width*0.2,
+      width:width<AppConstants.maxTabletWidth? width*0.3:width*0.17,
+      height:width<AppConstants.maxTabletWidth? width*0.3:width*0.17,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(40),
       ),

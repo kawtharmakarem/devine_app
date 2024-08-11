@@ -17,7 +17,7 @@ class CustomScanButton extends StatelessWidget {
     double width = MediaQuery.sizeOf(context).width;
     return Center(
       child: Container(
-        //height: width < AppConstants.maxMobileWidth ? 35 : 65,
+        height: width < AppConstants.maxMobileWidth ? 35 : 65,
         width: width < AppConstants.maxMobileWidth ? width/2 : 300,
         child: ElevatedButton(
             onPressed: onPressed,

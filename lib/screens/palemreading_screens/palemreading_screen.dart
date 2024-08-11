@@ -1,5 +1,7 @@
 import 'dart:io';
-
+import 'package:divinecontrol/widgets/palemreading_widgets/custom_alert_dialog.dart';
+import 'package:divinecontrol/widgets/palemreading_widgets/custom_browes_alert.dart';
+import 'package:google_ml_vision/google_ml_vision.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_details_screen.dart';
 import 'package:divinecontrol/widgets/auth_widgets/custom_contactus_card.dart';
 import 'package:divinecontrol/widgets/homepage_widgets/custom_appbar.dart';
@@ -22,26 +24,102 @@ class PalemReadingScreen extends StatefulWidget {
 
 class _PalemReadingScreenState extends State<PalemReadingScreen> {
   bool isVisible = false;
+  File? _image;
+  bool _isPalmDetected = false;
+  final ImagePicker _picker = ImagePicker();
+  final ImageLabeler _imageLabeler = GoogleVision.instance.imageLabeler();
+  int palmFoundCount = 0;
+  bool processing = false;
+  Future<void> pickImage(ImageSource source) async {
+    final pickedFile = await _picker.pickImage(source: source);
 
-  XFile? photo;
-  Future<XFile?> pickImage(ImageSource source) async {
-    final ImagePicker _picker = ImagePicker();
-    // Capture a photo
-    final XFile? photo = await _picker.pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+        detectPalm();
+      });
+    }
+  }
+
+  Future<void> detectPalm() async {
     setState(() {
-      this.photo = photo;
+      palmFoundCount = 0;
+      _isPalmDetected = false;
+      processing = true;
     });
-    return null;
+    if (_image == null) return;
+    debugPrint("image path: ${_image!.path}");
+
+    detect(
+      image: _image!,
+      detectInImage: _getDetectionMethod(),
+      // imageRotation: description.sensorOrientation,
+      imageRotation: 0,
+    ).then(
+      (dynamic results) {
+        debugPrint("result list :$results");
+        for (var element in results as List<ImageLabel>) {
+          debugPrint("result list element :${element.text}");
+          //// you can use 'eyelash' for eye detection.
+          if (element.text!.toLowerCase() == 'hand' &&
+              element.confidence! > 0.75) {
+            palmFoundCount = palmFoundCount + 1;
+            if (palmFoundCount == 1) {
+              _isPalmDetected = true;
+            }
+          }
+        }
+        setState(() {
+          processing = false;
+        });
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _imageLabeler.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
     return Scaffold(
+        backgroundColor: AppColors.lightPurple1,
         appBar: CustomAppBar(title: 'Palem Reading', leading: true),
         body: width < AppConstants.maxTabletWidth
             ? getMobileContent(width, context)
             : getDesktopContent(width, context));
+  }
+
+  static Future<dynamic> detect({
+    required File image,
+    required Future<dynamic> Function(GoogleVisionImage image) detectInImage,
+    required int imageRotation,
+  }) async {
+    // var imageByte = await image.readAsBytes();
+    // var meteData= await _buildMetaData(image, ImageRotation.rotation0);
+    return detectInImage(
+      GoogleVisionImage.fromFile(image),
+    );
+  }
+
+  // static Future<GoogleVisionImageMetadata> _buildMetaData(
+  //     File image,
+  //     ImageRotation rotation,
+  //     ) async{
+  //   var decodedImage = await decodeImageFromList(image.readAsBytesSync());
+  //   return GoogleVisionImageMetadata(
+  //     // rawFormat: image.,
+  //     size: Size(decodedImage.width.toDouble(), decodedImage.height.toDouble()),
+  //     rotation: rotation,
+
+  //   );
+  // }
+
+  Future<dynamic> Function(GoogleVisionImage image) _getDetectionMethod() {
+    return _imageLabeler.processImage;
   }
 
   Widget getMobileContent(double width, BuildContext context) {
@@ -49,29 +127,24 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
       child: Column(
         children: [
           Container(
-             margin: const EdgeInsets.all(20),
-                width: width,
-                // height: height,
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(20),
-                ),
+            margin: const EdgeInsets.all(20),
+            width: width,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: Column(
               children: [
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 PickedPalemImageWidget(
-                  image: photo == null
-                      ? Image.asset(AppImages.scanpalem)
-                      : Image(
-                          image: FileImage(
-                            File(photo!.path),
-                          ),
-                        ),
-                ),
+                    image: Image.asset(
+                  AppImages.scanpalem,
+                  fit: BoxFit.fill,
+                )),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 const Divider(
                   color: AppColors.black,
@@ -85,72 +158,33 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                   firstChild: Column(
                     children: [
                       SizedBox(
-                          width: width < AppConstants.maxMobileWidth ? 500 : 500,
-                          height: width < AppConstants.maxMobileWidth ? 150 : 200,
+                          width:
+                              width < AppConstants.maxMobileWidth ? 500 : 500,
+                          height:
+                              width < AppConstants.maxMobileWidth ? 150 : 200,
                           child: Image.asset(
                             AppImages.brows,
                             fit: BoxFit.fill,
                           )),
                       CustomPalemButton(
                         title: 'Browse',
-                        onPressed: () async {
+                        onPressed: () {
                           showDialog(
                               context: context,
-                              builder: (context) => AlertDialog(
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          'Pick Image :',
-                                          style: width < AppConstants.maxMobileWidth
-                                              ? AppStyles.styleBold24(context)
-                                              : AppStyles.styleBold24(context).copyWith(
-                                                  fontSize: getResponsiveFontSizeText(
-                                                      context,
-                                                      fontSize: 28)),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        getMediaButton(context,
-                                            icon: Icons.browse_gallery,
-                                            title: "From Gallery",
-                                            source: ImageSource.gallery,
-                                            width: width),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        getMediaButton(context,
-                                            icon: Icons.camera,
-                                            title: "From Camera",
-                                            source: ImageSource.camera,
-                                            width: width)
-                                      ],
-                                    ),
+                              builder: (context) => BrowesDialog(
+                                    pickFromCamera: () {
+                                      pickImage(ImageSource.camera);
+                                      Navigator.pop(context);
+                                    },
+                                    pickFromGallery: () {
+                                      pickImage(ImageSource.gallery);
+                                      Navigator.pop(context);
+                                    },
                                   ));
                           setState(() {
                             isVisible = !isVisible;
                           });
                         },
-            
-            
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Or drag files here',
-                        style: width < AppConstants.maxMobileWidth
-                            ? AppStyles.styleRegular20(context).copyWith(
-                                fontSize:
-                                    getResponsiveFontSizeText(context, fontSize: 24))
-                            : AppStyles.styleRegular20(context).copyWith(
-                                fontSize:
-                                    getResponsiveFontSizeText(context, fontSize: 32)),
-                        textAlign: TextAlign.start,
                       ),
                       const SizedBox(
                         height: 20,
@@ -158,16 +192,36 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                     ],
                   ),
                   secondChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      PickedPalemImageWidget(image: Image.asset(AppImages.palemhand)),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      PickedPalemImageWidget(
+                          image: _image == null
+                              ? Image.asset(
+                                  AppImages.palemhand,
+                                  fit: BoxFit.fill,
+                                )
+                              : Image.file(
+                                  _image!,
+                                  fit: BoxFit.cover,
+                                )),
                       const SizedBox(
                         height: 10,
                       ),
                       CustomPalemButton(
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    const PalemReadingDetailsScreen()));
+                            _isPalmDetected
+                                ? Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const PalemReadingDetailsScreen()))
+                                : showDialog(
+                                    context: context,
+                                    builder: (context) => CustomAlertDialog(
+                                        title:
+                                            "No Palm is detected\nPlease try again later!"));
                           },
                           title: 'Scan '),
                       const SizedBox(
@@ -176,23 +230,51 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                       CustomPalemButton(
                           onPressed: () {
                             setState(() {
+                              _image = null;
+                              _isPalmDetected=false;
                               isVisible = !isVisible;
                             });
                           },
                           title: 'Cancel'),
                       const SizedBox(
-                        height: 20,
-                      )
+                        height: 5,
+                      ),
+                      //   Text(
+                      //  _image==null?   'No Image Selected':"",
+                      processing
+                          ? const Text(
+                              "Image is processing",
+                              style: TextStyle(fontSize: 20),
+                            )
+                          : Text(
+                              _isPalmDetected
+                                  ? 'Palm Detected!'
+                                  : 'No Palm Detected.',
+                              textAlign: TextAlign.center,
+                              style: AppStyles.styleRegular20(context).copyWith(
+                                  color: _isPalmDetected
+                                      ? Colors.blue
+                                      : Colors.red,
+                                  fontSize: getResponsiveFontSizeText(context,
+                                      fontSize:
+                                          width < AppConstants.maxMobileWidth
+                                              ? 20
+                                              : 28))),
                     ],
                   ),
-                  crossFadeState:
-                      !isVisible ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  crossFadeState: !isVisible
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
                   duration: const Duration(milliseconds: 300),
                 ),
               ],
             ),
           ),
-       CustomContactUsCard(image: AppImages.palemreadingLogo, horizontalPadding: 20,description: "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
+          CustomContactUsCard(
+              image: AppImages.palemreadingLogo,
+              horizontalPadding: 20,
+              description:
+                  "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
         ],
       ),
     );
@@ -200,7 +282,7 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
 
   Widget getDesktopContent(double width, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
           Container(
@@ -215,7 +297,7 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                   width: width * 0.25,
                   height: width * 0.25,
                   child: PickedPalemImageWidget(
-                      image: photo == null
+                      image: _image == null
                           ? Image.asset(
                               AppImages.scanpalem,
                               fit: BoxFit.fill,
@@ -223,7 +305,7 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                           : Image(
                               image: FileImage(
                                 File(
-                                  photo!.path,
+                                  _image!.path,
                                 ),
                               ),
                               fit: BoxFit.fill,
@@ -255,91 +337,32 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                         onPressed: () async {
                           showDialog(
                               context: context,
-                              builder: (context) => AlertDialog(
-                                    alignment:
-                                        width < AppConstants.maxTabletWidth
-                                            ? Alignment.center
-                                            : Alignment.centerRight,
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text(
-                                          'Pick Image :',
-                                          style: width <
-                                                  AppConstants.maxMobileWidth
-                                              ? AppStyles.styleBold24(context)
-                                              : width <
-                                                      AppConstants
-                                                          .maxTabletWidth
-                                                  ? AppStyles.styleBold24(
-                                                          context)
-                                                      .copyWith(
-                                                          fontSize:
-                                                              getResponsiveFontSizeText(
-                                                                  context,
-                                                                  fontSize: 28))
-                                                  : AppStyles.styleBold24(
-                                                          context)
-                                                      .copyWith(
-                                                          fontSize:
-                                                              getResponsiveFontSizeText(
-                                                                  context,
-                                                                  fontSize:
-                                                                      40)),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        getMediaButton(context,
-                                            icon: Icons.browse_gallery,
-                                            title: "From Gallery",
-                                            source: ImageSource.gallery,
-                                            width: width),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        getMediaButton(context,
-                                            icon: Icons.camera,
-                                            title: "From Camera",
-                                            source: ImageSource.camera,
-                                            width: width)
-                                      ],
-                                    ),
-                                  ));
+                              builder: (context) =>
+                                  BrowesDialog(pickFromGallery: () {
+                                    pickImage(ImageSource.gallery);
+                                    Navigator.pop(context);
+                                  }, pickFromCamera: () {
+                                    pickImage(ImageSource.camera);
+                                    Navigator.pop(context);
+                                  }));
                           setState(() {
                             isVisible = !isVisible;
                           });
                         },
-      
-      
-                        
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        'Or drag files here',
-                        style: width < AppConstants.maxMobileWidth
-                            ? AppStyles.styleRegular20(context).copyWith(
-                                fontSize: getResponsiveFontSizeText(context,
-                                    fontSize: 24))
-                            : AppStyles.styleRegular20(context).copyWith(
-                                fontSize: getResponsiveFontSizeText(context,
-                                    fontSize: 32)),
-                        textAlign: TextAlign.start,
-                      ),
                     ],
                   ),
                   secondChild: Row(
-                    mainAxisSize: MainAxisSize.min,
+                    // mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Expanded(
                         child: SizedBox(
-                          width: width * 0.2,
-                          height: width * 0.15,
+                          width: width * 0.3,
+                          height: width * 0.2,
                           child: PickedPalemImageWidget(
                               image: Image.asset(
                             AppImages.palemhand,
@@ -347,17 +370,24 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                           )),
                         ),
                       ),
-                      const SizedBox(
-                        width: 60,
+                      SizedBox(
+                        width: width * 0.05,
                       ),
                       Expanded(
                         child: Column(
                           children: [
                             CustomPalemButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PalemReadingDetailsScreen()));
+                                  _isPalmDetected
+                                      ? Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const PalemReadingDetailsScreen()))
+                                      : showDialog(
+                                          context: context,
+                                          builder: (context) => CustomAlertDialog(
+                                              title:
+                                                  "No Palm is detected\n Please try again later!"));
                                 },
                                 title: 'Scan '),
                             const SizedBox(
@@ -367,12 +397,30 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
                                 onPressed: () {
                                   setState(() {
                                     isVisible = !isVisible;
+                                    _image = null;
                                   });
                                 },
                                 title: 'Cancel'),
                             const SizedBox(
                               height: 20,
-                            )
+                            ),
+                            processing
+                                ? const Text(
+                                    "Image is processing",
+                                    style: TextStyle(fontSize: 20),
+                                  )
+                                : Text(
+                                    _isPalmDetected
+                                        ? 'Palm is Detected!'
+                                        : 'No Palm is Detected.',
+                                    style: AppStyles.styleRegular20(context)
+                                        .copyWith(
+                                            color: _isPalmDetected
+                                                ? Colors.blue
+                                                : Colors.red,
+                                            fontSize: getResponsiveFontSizeText(
+                                                context,
+                                                fontSize: 32))),
                           ],
                         ),
                       ),
@@ -389,38 +437,202 @@ class _PalemReadingScreenState extends State<PalemReadingScreen> {
           const SizedBox(
             height: 20,
           ),
-       CustomContactUsCard(image: AppImages.palemreadingLogo, horizontalPadding: 20,description: "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
-
+          // CustomContactUsCard(image: AppImages.palemreadingLogo, horizontalPadding: 20,description: "Get Details Palm Reading for Holistic Insights.\nBook personalised call Now !")
         ],
       ),
     );
   }
 
-  Widget getMediaButton(BuildContext context,
-      {required IconData icon,
-      required String title,
-      required ImageSource source,
-      required double width}) {
-    return ElevatedButton.icon(
-        onPressed: () async {
-          await pickImage(source);
-          Navigator.pop(context);
-        },
-        icon: Icon(icon),
-        label: Text(
-          title,
-          style: width < AppConstants.maxMobileWidth
-              ? AppStyles.styleRegular20(context)
-                  .copyWith(color: AppColors.darkPrimary)
-              : width < AppConstants.maxTabletWidth
-                  ? width < AppConstants.maxTabletWidth
-                      ? AppStyles.styleRegular20(context).copyWith(
-                          fontSize:
-                              getResponsiveFontSizeText(context, fontSize: 28))
-                      : AppStyles.styleRegular20(context)
-                  : AppStyles.styleRegular20(context).copyWith(
-                      fontSize:
-                          getResponsiveFontSizeText(context, fontSize: 32)),
-        ));
-  }
+  // Widget getMediaButton(BuildContext context,
+  //     {required IconData icon,
+  //     required String title,
+  //     required ImageSource source,
+  //     required double width}) {
+  //   return ElevatedButton.icon(
+  //       onPressed: () {
+  //         pickImage(source);
+  //         Navigator.pop(context);
+  //       },
+  //       icon: Icon(icon),
+  //       label: Text(
+  //         title,
+  //         style: width < AppConstants.maxMobileWidth
+  //             ? AppStyles.styleRegular20(context)
+  //                 .copyWith(color: AppColors.darkPrimary)
+  //             : width < AppConstants.maxTabletWidth
+  //                 ? width < AppConstants.maxTabletWidth
+  //                     ? AppStyles.styleRegular20(context).copyWith(
+  //                         fontSize:
+  //                             getResponsiveFontSizeText(context, fontSize: 28))
+  //                     : AppStyles.styleRegular20(context)
+  //                 : AppStyles.styleRegular20(context).copyWith(
+  //                     fontSize:
+  //                         getResponsiveFontSizeText(context, fontSize: 32)),
+  //       ));
+  // }
 }
+
+
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'package:google_ml_vision/google_ml_vision.dart';
+// import 'package:image_picker/image_picker.dart';
+// class PalmDetectionScreen3 extends StatefulWidget {
+//   const PalmDetectionScreen3({super.key});
+
+//   @override
+//   PalmDetectionScreen3State createState() => PalmDetectionScreen3State();
+// }
+
+// class PalmDetectionScreen3State extends State<PalmDetectionScreen3> {
+//   File? _image;
+//   bool _isPalmDetected = false;
+//   final ImagePicker _picker = ImagePicker();
+//   final ImageLabeler _imageLabeler = GoogleVision.instance.imageLabeler();
+//   int palmFoundCount = 0;
+//   bool processing = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//   }
+
+//   Future<void> pickImage(ImageSource source) async {
+//     final pickedFile = await _picker.pickImage(source: source);
+
+//     if (pickedFile != null) {
+//       setState(() {
+//         _image = File(pickedFile.path);
+//         detectPalm();
+//       });
+//     }
+//   }
+
+
+
+//   Future<void> detectPalm() async {
+//     setState(() {
+//       palmFoundCount=0;
+//       _isPalmDetected=false;
+//       processing=true;
+//     });
+//     if (_image == null) return;
+//     debugPrint("image path: ${_image!.path}");
+
+//     detect(
+//       image: _image!,
+//       detectInImage: _getDetectionMethod(),
+//       // imageRotation: description.sensorOrientation,
+//       imageRotation:0,
+//     ).then(
+//           (dynamic results) {
+//             debugPrint("result list :$results");
+//         for (var element in results as List<ImageLabel>) {
+//           debugPrint("result list element :${element.text}");
+//           //// you can use 'eyelash' for eye detection.
+//           if (element.text!.toLowerCase() == 'hand' &&
+//               element.confidence! > 0.75) {
+//             palmFoundCount = palmFoundCount + 1;
+//             if (palmFoundCount == 1) {
+//               _isPalmDetected=true;
+//             }
+//           }
+//         }
+//           setState(() {
+//             processing=false;
+//           });
+
+//           },
+//     );
+//   }
+
+//   @override
+//   void dispose() {
+//     _imageLabeler.close();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Palm Detection with ML Kit'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             _image == null
+//                 ? const Text('No image selected.')
+//                 : SizedBox(
+//               height: 300,
+//                 child: Image.file(_image!)),
+//             const SizedBox(height: 20),
+//             processing?
+//                 const Text("Image is processing",style: TextStyle(fontSize: 20),)
+//                 :
+//             Text(_isPalmDetected ? 'Palm Detected!' : 'No Palm Detected.',
+//               style: TextStyle(
+//                 fontSize:20,
+//                 color: _isPalmDetected?Colors.blue:Colors.red
+//               ),
+//             ),
+//             const SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () => pickImage(ImageSource.camera),
+//               child: const Text('Pick Image from Camera'),
+//             ),
+//             ElevatedButton(
+//               onPressed: () => pickImage(ImageSource.gallery),
+//               child: const Text('Pick Image from Gallery'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+
+//   static Future<dynamic> detect({
+//     required File image,
+//     required Future<dynamic> Function(GoogleVisionImage image) detectInImage,
+//     required int imageRotation,
+//   }) async {
+//     var imageByte = await image.readAsBytes();
+//     var meteData= await _buildMetaData(image, ImageRotation.rotation0);
+//     return detectInImage(
+//       GoogleVisionImage.fromFile(image),
+//     );
+//   }
+
+//   static Future<GoogleVisionImageMetadata> _buildMetaData(
+//       File image,
+//       ImageRotation rotation,
+//       ) async{
+//     var decodedImage = await decodeImageFromList(image.readAsBytesSync());
+//     return GoogleVisionImageMetadata(
+//       // rawFormat: image.,
+//       size: Size(decodedImage.width.toDouble(), decodedImage.height.toDouble()),
+//       rotation: rotation,
+//      
+//     );
+//   }
+
+//   Future<dynamic> Function(GoogleVisionImage image) _getDetectionMethod() {
+//     return _imageLabeler.processImage;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+

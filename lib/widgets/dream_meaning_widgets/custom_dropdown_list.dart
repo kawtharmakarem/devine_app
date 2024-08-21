@@ -1,32 +1,40 @@
+import 'package:divinecontrol/screens/dream_meaning_screens/dream_meaning.dart';
 import 'package:divinecontrol/utils/app_colors.dart';
 import 'package:divinecontrol/utils/app_constants.dart';
 import 'package:divinecontrol/utils/app_styles.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+
+typedef void StringCallBack(String selectedValue);
+
 class CustomDropdownList extends StatefulWidget {
-  CustomDropdownList({super.key, this.onChanged});
-  void Function(String?)? onChanged;
+  CustomDropdownList({super.key, required this.dreamTitles, required this.callBack });
+ //final void Function(String?)? onChanged;
+ final List<String> dreamTitles;
+ final StringCallBack callBack;
+
+ 
   @override
   State<CustomDropdownList> createState() => _CustomDropdownListState();
 }
 
 class _CustomDropdownListState extends State<CustomDropdownList> {
-  final List<String> items = [
-    'A_Item1',
-    'A_Item2',
-    'A_Item3',
-    'A_Item4',
-    'B_Item1',
-    'B_Item2',
-    'B_Item3',
-    'B_Item4',
-  ];
-  final TextEditingController textEditingController = TextEditingController();
+  // final List<String> items = [
+  //   'A_Item1',
+  //   'A_Item2',
+  //   'A_Item3',
+  //   'A_Item4',
+  //   'B_Item1',
+  //   'B_Item2',
+  //   'B_Item3',
+  //   'B_Item4',
+  // ];
+ final TextEditingController textEditingController = TextEditingController();
   String? selectedValue;
   @override
   void dispose() {
-    textEditingController.dispose();
+    //textEditingController.dispose();
 
     super.dispose();
   }
@@ -43,18 +51,22 @@ class _CustomDropdownListState extends State<CustomDropdownList> {
           borderRadius: BorderRadius.circular(5)),
       child: Material(
           child: DropdownButtonHideUnderline(
+
         child: DropdownButton2<String>(
           isExpanded: true,
+          
           hint: Text(
-            'Chooze your Dream',
+            'Choose your last night dream here!..',
             style: TextStyle(
               fontSize: getResponsiveFontSizeText(context,
-                  fontSize: width < AppConstants.maxMobileWidth ? 18 : 32),
+                  fontSize: width < AppConstants.maxMobileWidth ? 16 : 24),
               color: Theme.of(context).hintColor,
             ),
           ),
-          items: items
+          
+          items: widget.dreamTitles
               .map((item) => DropdownMenuItem(
+              
                     value: item,
                     child: Text(
                       item,
@@ -67,25 +79,27 @@ class _CustomDropdownListState extends State<CustomDropdownList> {
                   ))
               .toList(),
           value: selectedValue,
-          // onChanged: (value) {
-          //   setState(() {
-          //     selectedValue = value;
-          //   });
-          // },
-          onChanged: widget.onChanged,
+          onChanged: (value) {
+            setState(() {
+              selectedValue = value;
+              DreamMeaning.of(context)?.string=selectedValue!;
+            });
+          },
+          //onChanged: widget.onChanged,
           buttonStyleData: ButtonStyleData(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             height: width < AppConstants.maxMobileWidth ? 40 : 70,
-            width: width < AppConstants.maxMobileWidth ? 300 : 600,
+            width:  width,//300
           ),
-          dropdownStyleData: const DropdownStyleData(
-            maxHeight: 300,
+          dropdownStyleData: DropdownStyleData(
+            maxHeight:width<AppConstants.maxMobileWidth? 300:500,
           ),
           menuItemStyleData: MenuItemStyleData(
             height: width < AppConstants.maxMobileWidth ? 40 : 60,
           ),
           dropdownSearchData: DropdownSearchData(
-            searchController: textEditingController,
+            searchController:textEditingController,
+
             searchInnerWidgetHeight: 50,
             searchInnerWidget: Container(
               height: width < AppConstants.maxMobileWidth ? 50 : 80,
@@ -96,22 +110,25 @@ class _CustomDropdownListState extends State<CustomDropdownList> {
                 left: 8,
               ),
               child: TextFormField(
+                style: TextStyle(fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 14:20)),
                 expands: true,
                 maxLines: null,
-                controller: textEditingController,
+                controller:textEditingController,
                 decoration: InputDecoration(
+                  
                   isDense: true,
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 10,
                     vertical: 8,
                   ),
+                  
                   hintText: 'Search for an item...',
                   hintStyle: TextStyle(
-                      fontSize: width < AppConstants.maxMobileWidth
-                          ? getResponsiveFontSizeText(context, fontSize: 14)
-                          : getResponsiveFontSizeText(context, fontSize: 20)),
+                      fontSize: getResponsiveFontSizeText(context, fontSize:width<AppConstants.maxMobileWidth? 14:24)),
+                      
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
+
                   ),
                 ),
               ),

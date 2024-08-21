@@ -132,6 +132,7 @@ flutter:
     - assets/carouselimages/
     - assets/models/MobileNet_V2.tflite
     - assets/models/yolov2_tiny.txt
+    - assets/jsonfiles/
 
   #   - images/a_dot_ham.jpeg
 

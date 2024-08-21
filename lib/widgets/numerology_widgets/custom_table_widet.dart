@@ -26,7 +26,7 @@ class CustomTableWidget extends StatelessWidget {
       subtitle: Text(
         numerologyTableModel.subtitle,
         style:width<AppConstants.maxMobileWidth? AppStyles.styleBold20(context).copyWith(
-            fontSize: getResponsiveFontSizeText(context, fontSize: 22)): AppStyles.styleBold20(context).copyWith(
+            fontSize: getResponsiveFontSizeText(context, fontSize: 20)): AppStyles.styleBold20(context).copyWith(
             fontSize: getResponsiveFontSizeText(context, fontSize: 26)),
       ),
     );

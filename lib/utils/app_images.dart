@@ -159,46 +159,20 @@ static const String day="assets/numerologyimages/day.png";
 static const String luckyNumbers="assets/numerologyimages/lucky.png";
 static const String stone="assets/numerologyimages/stone.png";
 static const String numerlogy="assets/numerologyimages/numerlogy.png";
+static const String description="assets/numerologyimages/description.png";
+static const String financeNum="assets/numerologyimages/finance.png";
+static const String healthNum="assets/numerologyimages/health.png";
+static const String negative="assets/numerologyimages/negative.png";
+static const String positive="assets/numerologyimages/positive.png";
+static const String profession="assets/numerologyimages/profession.png";
+static const String relationNum="assets/numerologyimages/relation.png";
+
 //meditationimages
 static const String meditationLogo="assets/meditationimages/meditationlogo.png";
-// static const String daily="assets/meditationimages/daily.jpg";
-// static const String beginners="assets/meditationimages/beginners.jpg";
-// static const String chakram="assets/meditationimages/chakra.jpg";
-// static const String mental="assets/meditationimages/mental.jpg";
-// static const String mindfullness="assets/meditationimages/mindfullness.jpg";
-// static const String minutes="assets/meditationimages/minutes.jpg";
-// static const String positive="assets/meditationimages/positive.jpg";
-// static const String power="assets/meditationimages/power.jpg";
-// static const String sleep="assets/meditationimages/sleep.jpg";
+
 //emotion
 static const String emotionLogo="assets/emotionalimages/emotion.png";
-//static const String anger="assets/emotionalimages/anger.jpg";
-// static const String anger="assets/emotionalimages/anger.svg";
 
-// static const String angerDetails="assets/emotionalimages/angerdetails.JPG";
-
-// static const String depression="assets/emotionalimages/depression.jpg";
-// static const String loneliness="assets/emotionalimages/loneliness.jpg";
-// static const String loss="assets/emotionalimages/loss.jpg";
-// static const String obsession="assets/emotionalimages/obsession.jpg";
-// static const String pastemotion="assets/emotionalimages/past.jpg";
-// static const String relationship="assets/emotionalimages/relationship.jpg";
-// static const String self="assets/emotionalimages/self.jpg";
-// static const String sexual="assets/emotionalimages/sex.jpg";
-// static const String sleepemtion="assets/emotionalimages/sleep.jpg";
-// static const String stress="assets/emotionalimages/stress.jpg";
-// static const String work="assets/emotionalimages/work.jpg";
-// static const String depressiondetails="assets/emotionalimages/depressiondetails.JPG";
-// static const String lonelinessdetails="assets/emotionalimages/lonelinessdetails.JPG";
-// static const String lossdetails="assets/emotionalimages/lossdetails.JPG";
-// static const String obsessiondetails="assets/emotionalimages/obsessiondetails.JPG";
-// static const String pastdetails="assets/emotionalimages/pastdetails.JPG";
-// static const String relationshipdetails="assets/emotionalimages/relationshipdetails.JPG";
-// static const String selfdetails="assets/emotionalimages/depressiondetails.JPG";
-// static const String sexdetails="assets/emotionalimages/sexdetails.JPG";
-// static const String sleepdetails="assets/emotionalimages/sleepdetails.JPG";
-// static const String stressdetails="assets/emotionalimages/stressdetails.JPG";
-// static const String workdetails="assets/emotionalimages/workdetails.JPG";
 //palemimages
 static const String palemreadingLogo="assets/palmreadingimages/palemlogo.png";
 static const String browesimage="assets/palmreadingimages/browesimage.png";
@@ -267,11 +241,6 @@ static const String surya="assets/shoppingimages/surya.png";
 static const String vastu="assets/shoppingimages/vastu.jpeg";
 static const String navgrah="assets/shoppingimages/navgrah.png";
 static const String finalImage="assets/shoppingimages/final.jpg";
-
-// static const String krishna="assets/shoppingimages/krishna.png";
-// static const String plant="assets/shoppingimages/plant.png";
-// static const String shani="assets/shoppingimages/shani.png";
-
 
 
 

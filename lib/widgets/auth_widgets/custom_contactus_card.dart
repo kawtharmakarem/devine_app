@@ -17,7 +17,7 @@ class CustomContactUsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double width=MediaQuery.sizeOf(context).width;
     return Padding(
-              padding:  EdgeInsets.symmetric(horizontal:horizontalPadding ?? 10, vertical: 10),
+              padding:  EdgeInsets.symmetric(horizontal:horizontalPadding ?? 5, vertical: 10),
       child: Material(
         elevation: 4,
         borderRadius: BorderRadius.circular(20),

@@ -9,7 +9,7 @@ import 'package:divinecontrol/screens/fortunewheel_screens/fortunewheel_screen.d
 import 'package:divinecontrol/screens/horoscope_screens/horoscope_screen.dart';
 import 'package:divinecontrol/screens/kundli_screens/kundli_screen.dart';
 import 'package:divinecontrol/screens/meditation_screens/meditation_screen.dart';
-import 'package:divinecontrol/screens/numerology_screens/numerology_screen.dart';
+import 'package:divinecontrol/screens/numerology_screens/numerology_main_screen.dart';
 import 'package:divinecontrol/screens/palemreading_screens/palemreading_screen.dart';
 import 'package:divinecontrol/screens/tarot_reading_screens/main_tarot_read_view.dart';
 import 'package:divinecontrol/screens/traveltime_screens/traveltime_screen.dart';
@@ -33,13 +33,13 @@ class CustomCard extends StatelessWidget {
     const MyFortuneWheel(),
     const MainTarotReadView(),
     const FaceReadingView(),
-    //const PalmDetectionScreen3(),
     const PalemReadingScreen(),
     const TravelTimeScreen(),
     const AstrologyMainPage(),
     const BiorythmDobPage(),
     const DreamMeaningMainView(),
-    const Numerology(),
+    // const Numerology(),
+    const NumerologyMainScreen(),
     const Flower(),
     const MeditationScreen(),
     const EmotionScreen()

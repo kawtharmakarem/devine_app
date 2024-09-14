@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 import 'package:get/get.dart';
 
+//import 'admin_panel/admin_panel_screens/admin_panel_mainscreen.dart';
+
 
 void main() async {
     await Settings.init(cacheProvider: SharePreferenceCache());
@@ -39,6 +41,7 @@ class MyApp extends StatelessWidget {
          //theme: isDarkMode? ThemeData.dark():ThemeData.light(),
          theme: ThemeData.light(),
          routes: {
+         // "/":(context)=>AdminPanelMainScreen(),
           "/":(context)=>const MainHomePageScreen(),
           "flowerroute":(context)=>const Flower(),
          },

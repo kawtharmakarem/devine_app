@@ -69,7 +69,7 @@ class _MainViewScreenState extends State<MainViewScreen>
                 : titles[currentIndex],
             style: width < AppConstants.maxTabletWidth
                 ? AppStyles.styleRufinaBold32(context)
-                    .copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 40))
+                    .copyWith(color: AppColors.darkPrimary,fontSize: getResponsiveFontSizeText(context, fontSize: 38))
                 : AppStyles.styleRufinaBold32(context).copyWith(
                     color: AppColors.darkPrimary,
                     fontSize: getResponsiveFontSizeText(context, fontSize: 40)),

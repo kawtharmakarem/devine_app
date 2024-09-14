@@ -218,6 +218,7 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       onTap: () {
         Settings.clearCache();
+        Get.back();
       });
 
   Widget buildDeleteAccount(double width) => SimpleSettingsTile(
